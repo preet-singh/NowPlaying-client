@@ -8,7 +8,7 @@ import Login from '../../components/Login/Login';
 
 function LoginRoute() {
   return(
-    <div className="Login">
+    <div className="LoginRoute">
       <Header />
       <main>
         <Login />

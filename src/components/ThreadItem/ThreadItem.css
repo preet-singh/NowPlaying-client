@@ -1,3 +1,10 @@
 .thread-item {
   border: 1px solid black;
+  display: flex;
+  justify-content: center;
+}
+
+.thread-item img {
+  height: 100px;
+  width: auto;
 }
