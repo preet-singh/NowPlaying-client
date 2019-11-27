@@ -3,18 +3,19 @@ import React from 'react';
 
 //Components
 import Header from '../../components/Header/Header';
+import Login from '../../components/Login/Login';
 
 
-function NotFoundRoute() {
+function LoginRoute() {
   return(
-    <div className="NotFound">
+    <div className="Login">
       <Header />
       <main>
-        OOPSIES
+        <Login />
       </main>
     </div>
   );
 
 }
 
-export default NotFoundRoute;
+export default LoginRoute;

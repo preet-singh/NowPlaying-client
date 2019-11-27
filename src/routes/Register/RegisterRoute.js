@@ -3,18 +3,19 @@ import React from 'react';
 
 //Components
 import Header from '../../components/Header/Header';
+import RegisterForm from '../../components/RegisterForm';
 
 
-function NotFoundRoute() {
+function RegisterRoute() {
   return(
-    <div className="NotFound">
+    <div className="Register">
       <Header />
       <main>
-        OOPSIES
+        <RegisterForm />
       </main>
     </div>
   );
 
 }
 
-export default NotFoundRoute;
+export default RegisterRoute;
