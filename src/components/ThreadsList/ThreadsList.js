@@ -1,4 +1,5 @@
 import React from 'react';
+import ThreadItem from '../ThreadItem';
 import './ThreadsList.css';
 
 function ThreadsList(props) {
