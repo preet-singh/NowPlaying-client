@@ -11,7 +11,7 @@ import ThreadCommentList from '../../components/ThreadCommentList/ThreadCommentL
 import FixedBar from '../../components/FixedBar/FixedBar';
 
 
-function ThreadRoute() {
+function ThreadRoute(props) {
   return(
     <div className="ThreadRoute">
       <Header />

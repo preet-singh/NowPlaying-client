@@ -21,7 +21,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={HomePageRoute} />
         <Route path="/category/:id" component={CategoryRoute} />
-        <Route path="/thread/:id" component={ThreadRoute} />
+        {/* <Route path="/thread/:id" component={ThreadRoute} /> */}
+        <Route path="/thread/testthread" component={ThreadRoute} />
         <Route path="/login" component={LoginRoute} />
         <Route path="/register" component={RegisterRoute} />
         <Route component={NotFoundRoute} />

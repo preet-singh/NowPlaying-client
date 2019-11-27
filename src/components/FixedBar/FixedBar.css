@@ -1,0 +1,8 @@
+.fixed-bar {
+  border: 1px solid black;
+}
+
+.fixed-bar-header {
+  display: flex;
+  justify-content: center;
+}

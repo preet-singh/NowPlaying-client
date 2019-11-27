@@ -10,4 +10,4 @@ function ScrubBar(props) {
   )
 }
 
-export default ScrubBar
+export default ScrubBar;

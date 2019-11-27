@@ -1,0 +1,10 @@
+.add-comment-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add-comment-box textarea {
+  height: 5em;
+  width: 20em;
+}
