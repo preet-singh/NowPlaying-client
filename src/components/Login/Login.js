@@ -2,10 +2,26 @@
 import React from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
+import AuthApiService from '../../utils/auth-service';
+import UserContext from '../../utils/context';
 
-function Login() {
+class Login extends React.Component{
+  static contextType = UserContext;
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { username, password } = e.target;
+    AuthApiService.postLogin({ username, password })
+    .then(res => {
+      username.value = '';
+      password.value = '';
+      this.context.processLogin(res.authToken)
+      this.props.onLoginSuccess()
+    })
+  }
+  render() {
   return(
-    <form className="Login" name="login">
+    <form className="Login" name="login" onSubmit={this.handleSubmit}>
       <legend>Login</legend>
       <label for="username-input" id="username-label" name="username-label">username:</label>
       <input type="text" id="username-input" name="username-input" />
@@ -16,7 +32,8 @@ function Login() {
       <p className="sign-up">Don't have an account?</p>
       </Link>
     </form>
-  );
+  )
+  }
 }
 
 export default Login;
