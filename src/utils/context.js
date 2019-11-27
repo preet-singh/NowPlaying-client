@@ -29,7 +29,6 @@ export class UserProvider extends Component {
       }
 
     this.state = state;
-    IdleService.setIdleCallback(this.logoutBecauseIdle)
   }
 
   setError = error => {
