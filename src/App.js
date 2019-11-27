@@ -10,6 +10,8 @@ import LoginRoute from './routes/Login/LoginRoute';
 import RegisterRoute from './routes/Register/RegisterRoute';
 import NotFoundRoute from './routes/NotFound/NotFound';
 
+//EJ IS TESTING HERE TO PUSH
+
 //CSS
 import './App.css';
 

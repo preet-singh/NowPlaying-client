@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import './ThreadCategory.css'
+
+
 
 function ThreadCategory() {
   return (
-    <div>
-      Hi
+    <div className='thread-category'>
+      <h3>Categories</h3>
     </div>
   )
 }
