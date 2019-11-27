@@ -3,7 +3,7 @@ import React from 'react';
 
 //Components
 import Header from '../../components/Header/Header';
-import RegisterForm from '../../components/RegisterForm';
+import RegisterForm from '../../components/RegisterForm/RegisterForm';
 
 
 function RegisterRoute() {

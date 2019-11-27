@@ -8,7 +8,6 @@ function ThreadCategory() {
     <div className='thread-category'>
       <h3>Categories</h3>
     </div>
-
   )
 }
 

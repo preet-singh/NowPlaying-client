@@ -7,7 +7,7 @@ import Directory from '../../components/Directory/Directory';
 import Happenings from '../../components/Happenings/Happenings';
 import ThreadCategory from '../../components/ThreadCategory/ThreadCategory';
 
-function HomePageRoute() {
+function HomePageRoute(props) {
   return(
     <div className="HomePage">
       <Header />
