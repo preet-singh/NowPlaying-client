@@ -1,6 +1,10 @@
 import React from 'react';
 import './PlayButton.css'
 
-function PlayButton(props) {
-  
+export default function PlayButton(props) {
+  return (
+      <div>
+        <p>Im the play button lol</p>
+      </div>
+  )
 }
