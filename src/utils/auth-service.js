@@ -63,11 +63,11 @@ const AuthApiService = {
         'content-type': 'application/json',
       },
     })
-      .then(res =>
+    .then(res => 
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
-          : res.json(),
-      )
+          : res.json()
+    )
     },
     getSpecificEvent(thread, id) {
       return fetch(config.API_ENDPOINT + `/main/${thread}/${id}`, 

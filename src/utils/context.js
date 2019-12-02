@@ -4,7 +4,7 @@ import TokenService from './token-service'
 
 const UserContext = React.createContext({
   user: {},
-  category: 'Movies',
+  category: '',
   error: null,
   setError: () => {},
   clearError: () => {},
@@ -73,6 +73,7 @@ export class UserProvider extends Component {
   render() {
     const value = {
       user: this.state.user,
+      category: 'movies',
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
