@@ -11,21 +11,20 @@ import ThreadCommentList from '../../components/ThreadCommentList/ThreadCommentL
 import FixedBar from '../../components/FixedBar/FixedBar';
 
 
-function ThreadRoute(props) {
-  return(
-    <div className="ThreadRoute">
-      <Header />
-      <Directory />
-      <main>
-        <ThreadDetails />
-        <ScrubBox />
-        <PrivateThreadMessage />
-        <ThreadCommentList />
-      </main>
-      <FixedBar />
-    </div>
-  );
-
+export default class ThreadRoute extends React.Component {
+  render(){
+    return(
+      <div className="ThreadRoute">
+        <Header />
+        <Directory />
+        <main>
+          <ThreadDetails thread={this.props.match.params.thread} id={this.props.match.params.id}/>
+          <ScrubBox />
+          <PrivateThreadMessage />
+          <ThreadCommentList />
+        </main>
+        <FixedBar />
+      </div>
+    );
+  }
 }
-
-export default ThreadRoute;
