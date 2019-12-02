@@ -70,8 +70,8 @@ const AuthApiService = {
       )
     },
     getSpecificEvent(thread, id) {
-      return fetch(config.API_ENDPOINT + `/main/${thread}/${id}`, 
-        {method: 'GET',
+      return fetch(`${config.API_ENDPOINT}/main/${thread}/${id}`, 
+        { method: 'GET',
         header: {
           'content-type': 'application/json'
         }
@@ -81,6 +81,7 @@ const AuthApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json(),
       )
+      .catch(error => Promise.reject(error))
     },
     getComments(thread,id) {
       return fetch(config.API_ENDPOINT + `/main/${thread}/${id}/movie_comments`,
