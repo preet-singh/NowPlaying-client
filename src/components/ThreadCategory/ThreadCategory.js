@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 function ThreadCategory() {
   return (
     <div className='thread-category'>
-      <h3>Categories</h3>
+      <h3>Popular</h3>
       <ThreadsList />
     </div>
   )

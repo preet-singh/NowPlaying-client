@@ -81,7 +81,20 @@ const AuthApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json(),
       )
-    }
+    },
+    getComments(thread,id) {
+      return fetch(config.API_ENDPOINT + `/main/${thread}/${id}/movie_comments`,
+      {method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      }
+    })
+    .then(res => 
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json(),
+    )
+  }
   }
   
   export default AuthApiService

@@ -4,6 +4,7 @@ import TokenService from './token-service'
 
 const UserContext = React.createContext({
   user: {},
+  category: 'Movies',
   error: null,
   setError: () => {},
   clearError: () => {},
