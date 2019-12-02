@@ -48,7 +48,6 @@ const AuthApiService = {
       {method: 'GET',
        headers: {
         'content-type': 'application/json',
-        'authorization': `bearer ${TokenService.getAuthToken()}`
       },
     })
       .then(res =>
@@ -57,12 +56,11 @@ const AuthApiService = {
           : res.json(),
       )
     },
-    getAllThreads(thread) {
+    getSpecificThreads(thread) {
       return fetch(config.API_ENDPOINT + `/main/${thread}`, 
       {method: 'GET',
        headers: {
         'content-type': 'application/json',
-        'authorization': `bearer ${TokenService.getAuthToken()}`
       },
     })
       .then(res =>
@@ -71,6 +69,19 @@ const AuthApiService = {
           : res.json(),
       )
     },
+    getSpecificEvent(thread, id) {
+      return fetch(config.API_ENDPOINT + `/main/${thread}/${id}`, 
+        {method: 'GET',
+        header: {
+          'content-type': 'application/json'
+        }
+      })
+      .then(res => 
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json(),
+      )
+    }
   }
   
   export default AuthApiService

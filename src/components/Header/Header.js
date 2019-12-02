@@ -9,7 +9,6 @@ import LoginButton from '../../components/LoginButton/LoginButton';
 import './Header.css';
 
 //images
-import banner from './banner.png'
 
 function pathSpecificLogin(location) {
   console.log(location);
