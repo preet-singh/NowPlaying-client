@@ -9,7 +9,9 @@ export default class ThreadDetails extends React.Component {
   }
 
   componentDidMount(){
-    AuthApi.getSpecificEvent('movies', 1)
+    let thread = this.props.thread;
+    let id = this.props.id;
+    AuthApi.getSpecificEvent(thread, id)
     .then(resJSON => this.setState({
       event: {...resJSON}
     }))

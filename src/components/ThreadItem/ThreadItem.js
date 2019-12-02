@@ -16,7 +16,9 @@ class ThreadItem extends React.Component {
   
 
   getComments = async (context,id) => {
-    AuthService.getComments(context.category,id)
+    let slicedWord = context.category.slice(0,context.category.length-1);
+    if (slicedWord === 'movie') {
+      AuthService.getMovieComments('movies',id)
       .then(comments => {
         console.log('comments');
         console.log(comments);
@@ -26,6 +28,43 @@ class ThreadItem extends React.Component {
           this.setState({lastComment: date})
         }
       })
+    }
+    else if (slicedWord === 'tv_show') {
+      AuthService.getTVShowComments('tv_shows',id)
+      .then(comments => {
+        console.log('comments');
+        console.log(comments);
+        let final = comments[comments.length-1] || {}
+        let date = moment(final.date_created).format('MMMM Do YYYY, h:mm:ss a')
+        if (!this.state.lastComment) {
+          this.setState({lastComment: date})
+        }
+      })
+    }
+    else if (slicedWord === 'podcast') {
+      AuthService.getPodcastComments('podcasts',id)
+      .then(comments => {
+        console.log('comments');
+        console.log(comments);
+        let final = comments[comments.length-1] || {}
+        let date = moment(final.date_created).format('MMMM Do YYYY, h:mm:ss a')
+        if (!this.state.lastComment) {
+          this.setState({lastComment: date})
+        }
+      })
+    }
+    else if (slicedWord === 'book') {
+      AuthService.getBookComments('books',id)
+      .then(comments => {
+        console.log('comments');
+        console.log(comments);
+        let final = comments[comments.length-1] || {}
+        let date = moment(final.date_created).format('MMMM Do YYYY, h:mm:ss a')
+        if (!this.state.lastComment) {
+          this.setState({lastComment: date})
+        }
+      })
+    }
   }
 
   componentDidMount() {

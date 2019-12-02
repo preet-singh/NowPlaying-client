@@ -83,8 +83,32 @@ const AuthApiService = {
       )
       .catch(error => Promise.reject(error))
     },
-    getComments(thread,id) {
-      return fetch(config.API_ENDPOINT + `/main/${thread}/${id}/movie_comments`,
+    getMovieComments(thread,id) {
+      return fetch(config.API_ENDPOINT + `/main/movies/${id}/movie_comments`,
+      {method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      }
+    })
+  },
+    getTVShowComments(thread,id) {
+      return fetch(config.API_ENDPOINT + `/main/tv_shows/${id}/tv_show_comments`,
+      {method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      }
+    })
+  },
+    getPodcastComments(thread,id) {
+      return fetch(config.API_ENDPOINT + `/main/podcasts/${id}/podcast_comments`,
+      {method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      }
+    })
+  },
+    getBookComments(thread,id) {
+      return fetch(config.API_ENDPOINT + `/main/books/${id}/book_comments`,
       {method: 'GET',
       header: {
         'content-type': 'application/json'
