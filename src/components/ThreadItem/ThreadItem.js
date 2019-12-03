@@ -70,7 +70,7 @@ class ThreadItem extends React.Component {
           <h3>{this.props.details.title}</h3>
           <img src='https://img01.mgo-images.com/image/thumbnail/v2/content/MMVAF76018A477C2826A4EC8747C40B7BE27.jpeg' alt='Movie poster image'/>
           <p>{this.props.details.date_created}</p>
-          <p>Last comment {commentInfo}</p>
+          <p2>Last comment {commentInfo}</p2>
         </Link>
       </div>
     )

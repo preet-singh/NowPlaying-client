@@ -5,6 +5,9 @@ import React from 'react';
 import Header from '../../components/Header/Header';
 import Login from '../../components/Login/Login';
 
+//Styling
+import './LoginRoute.css'
+
 
 function LoginRoute() {
   return(

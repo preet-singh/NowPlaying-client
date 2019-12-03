@@ -1,0 +1,14 @@
+@media screen and (min-width: 350px){
+
+    .Login {
+        border: none;
+    }
+
+    .Login label {
+        display: hidden;
+    }
+
+    #email-label {
+        display: none;
+    }
+}
