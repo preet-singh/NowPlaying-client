@@ -11,24 +11,10 @@ class ThreadsList extends React.Component {
     this.state = {
     }
   }
-  
-  componentDidMount() {
-    this.getStuff();
-  }
 
   getThreads = (context) => {
-    let threads = this.state.threads || [];
+    let threads = this.context.categoryItems || [];
     return threads.map((item,index) => <ThreadItem details={item} key={index} />);
-  }
-
- getStuff() {
-    AuthService.getSpecificThreads('movies')
-      .then(response => {
-        console.log(response);
-        if (!this.state.threads) {
-          this.setState({threads: response})
-        }
-      });
   }
 
   render() {

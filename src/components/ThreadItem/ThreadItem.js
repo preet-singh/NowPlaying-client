@@ -20,8 +20,6 @@ class ThreadItem extends React.Component {
     if (slicedWord === 'movie') {
       AuthService.getMovieComments('movies',id)
       .then(comments => {
-        console.log('comments');
-        console.log(comments);
         let final = comments[comments.length-1] || {}
         let date = moment(final.date_created).format('MMMM Do YYYY, h:mm:ss a')
         if (!this.state.lastComment) {
@@ -32,8 +30,6 @@ class ThreadItem extends React.Component {
     else if (slicedWord === 'tv_show') {
       AuthService.getTVShowComments('tv_shows',id)
       .then(comments => {
-        console.log('comments');
-        console.log(comments);
         let final = comments[comments.length-1] || {}
         let date = moment(final.date_created).format('MMMM Do YYYY, h:mm:ss a')
         if (!this.state.lastComment) {
@@ -44,8 +40,6 @@ class ThreadItem extends React.Component {
     else if (slicedWord === 'podcast') {
       AuthService.getPodcastComments('podcasts',id)
       .then(comments => {
-        console.log('comments');
-        console.log(comments);
         let final = comments[comments.length-1] || {}
         let date = moment(final.date_created).format('MMMM Do YYYY, h:mm:ss a')
         if (!this.state.lastComment) {
@@ -56,8 +50,6 @@ class ThreadItem extends React.Component {
     else if (slicedWord === 'book') {
       AuthService.getBookComments('books',id)
       .then(comments => {
-        console.log('comments');
-        console.log(comments);
         let final = comments[comments.length-1] || {}
         let date = moment(final.date_created).format('MMMM Do YYYY, h:mm:ss a')
         if (!this.state.lastComment) {

@@ -5,8 +5,13 @@ import TokenService from './token-service'
 const UserContext = React.createContext({
   user: {},
   category: '',
+  categoryList: [],
+  categoryItems: [],
   error: null,
   setError: () => {},
+  setCategory: () => {},
+  setCategoryList: () => {},
+  setCategoryItems: () => {},
   clearError: () => {},
   setUser: () => {},
   processLogin: () => {},
@@ -37,6 +42,19 @@ export class UserProvider extends Component {
     this.setState({ error })
   }
 
+  setCategory = async (category) => {
+    this.setState({ category});
+    let categoryItems = await AuthApiService.getSpecificThreads(category).then(response => response)
+    this.setCategoryItems(categoryItems);
+  }
+
+  setCategoryList = categoryList => {
+    this.setState({categoryList});
+  }
+
+  setCategoryItems = categoryItems => {
+    this.setState({categoryItems});
+  }
   clearError = () => {
     this.setState({ error: null })
   }
@@ -73,11 +91,16 @@ export class UserProvider extends Component {
   render() {
     const value = {
       user: this.state.user,
-      category: 'movies',
+      category: this.state.category,
+      categoryList: this.state.categoryList,
+      categoryItems: this.state.categoryItems,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
       setUser: this.setUser,
+      setCategory: this.setCategory,
+      setCategoryList: this.setCategoryList,
+      setCategoryItems: this.setCategoryItems,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
     }

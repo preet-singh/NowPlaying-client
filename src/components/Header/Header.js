@@ -11,7 +11,6 @@ import './Header.css';
 //images
 
 function pathSpecificLogin(location) {
-  console.log(location);
   if (location.pathname === "/") {
     return <Login />;
   }
@@ -25,7 +24,6 @@ function pathSpecificLogin(location) {
 
 function Header(props) {
   let location = useLocation();
-  console.log(location);
   return(
     <div className="Header">
       <Link to='/'>
