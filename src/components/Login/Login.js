@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import AuthApiService from '../../utils/auth-service';
 import FormValidationError from '../FormValidationError/FormValidationError';
 import TokenService from '../../utils/token-service';
+import UserContext from '../../utils/context';
 
 //Styling
 import './Login.css'
@@ -20,6 +21,14 @@ class Login extends React.Component{
        usernameTouch: false,
        passwordTouch: false
     }
+  }
+  
+  static contextType = UserContext;
+
+  handleLoginSuccess = () => {
+    const { location, history } = this.props
+    const destination = (location.state || {}).from || '/'
+    history.push(destination)
   }
   
   handleInputChange = e => {
@@ -51,7 +60,7 @@ class Login extends React.Component{
       .then(res => {
         username.value = '';
         password.value = '';
-        TokenService.saveAuthToken(res.authToken);
+        this.context.processLogin(res.authToken)
         this.props.history.push('/')
       })
       .catch(res => {
