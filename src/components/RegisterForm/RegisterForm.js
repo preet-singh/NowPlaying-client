@@ -102,7 +102,7 @@ class RegisterForm extends Component {
     let passwordError = this.validatePassword();
     console.log(this.props.history);
       return(
-        <form className="Register" name="register" onSubmit={this.handleSubmit}>
+        <form className="Login" name="register" onSubmit={this.handleSubmit}>
           <legend>Register</legend>
           <label htmlFor="email-input">E-Mail:</label>
           <input 
