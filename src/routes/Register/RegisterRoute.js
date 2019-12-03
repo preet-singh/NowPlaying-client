@@ -6,12 +6,14 @@ import RegisterForm from '../../components/RegisterForm/RegisterForm';
 
 
 
-function RegisterRoute() {
+function RegisterRoute(props) {
   return(
     <div className="Register">
       <Header />
       <main>
-        <RegisterForm />
+        <RegisterForm 
+          history={props.history}
+        />
       </main>
     </div>
   );
