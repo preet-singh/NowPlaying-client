@@ -10,15 +10,14 @@ import PrivateThreadMessage from '../../components/PrivateThreadMessage/PrivateT
 import ThreadCommentList from '../../components/ThreadCommentList/ThreadCommentList';
 import FixedBar from '../../components/FixedBar/FixedBar';
 import AuthApiService from '../../utils/auth-service';
-import ThreadCommentItem from '../../components/ThreadCommentItem/ThreadCommentItem';
-
 
 export default class ThreadRoute extends React.Component {
   static defaultProps = [];
 
   state = {
     comments: [],
-    mediaTimer: {},
+    mediaTimer: 0,
+    playing: false,
   }
 
   componentDidMount() {
@@ -51,12 +50,30 @@ export default class ThreadRoute extends React.Component {
       return null;
     }
   }
+  
+  updatePlayTimer = () => {
+    if(this.state.playing === true){
+    this.setState({mediaTimer: this.state.mediaTimer + 1});
+    }
+    else {
+      return
+    }
+  }
+
+  playTimer = () => {
+    this.setState({playing: !this.state.playing})
+    setInterval(() => this.updatePlayTimer(), 1000)
+  }
+
   render(){
+    console.log(this.state.mediaTimer)
     return(
       <div className="ThreadRoute">
         <Header />
         <Directory />
         <main>
+          <button onClick={() => this.playTimer()}>Timer</button>
+          <h4>{this.state.mediaTimer}</h4>
           <ThreadDetails thread={this.props.match.params.thread} id={this.props.match.params.id}/>
           <ScrubBox />
           <PrivateThreadMessage />
