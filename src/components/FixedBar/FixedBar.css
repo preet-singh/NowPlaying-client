@@ -8,13 +8,14 @@
 .fixed-bar-header {
   margin-top: -20px;
   margin-bottom: 10px;
-  /* background-color: tomato; */
+  border: none;
   padding: 10px;
   position: relative;
+  margin-left: -50px;
 }
 
 .fixed-bar-header h3 {
   position: absolute;
-  right: 20px;
-  top: 42%;
+  right: 65px;
+  top: 43%;
 }
