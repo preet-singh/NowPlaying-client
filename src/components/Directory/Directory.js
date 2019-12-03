@@ -7,6 +7,9 @@ import SearchBar from '../SearchBar/SearchBar';
 import UserContext from '../../utils/context';
 import AuthService from '../../utils/auth-service';
 
+//Style
+import './Directory.css';
+
 
 class Directory extends React.Component {
   static contextType = UserContext;

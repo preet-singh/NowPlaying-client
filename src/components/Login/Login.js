@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import AuthApiService from '../../utils/auth-service';
 import UserContext from '../../utils/context';
 
+//Styling
+import './Login.css'
+
 class Login extends React.Component{
   static contextType = UserContext;
 
@@ -24,9 +27,9 @@ class Login extends React.Component{
     <form className="Login" name="login" onSubmit={this.handleSubmit}>
       <legend>Login</legend>
       <label htmlFor="username-input" id="username-label" name="username-label">username:</label>
-      <input type="text" id="username-input" name="username-input" />
+      <input type="text" id="username-input" placeholder='ex. FlixMaster12' name="username-input" />
       <label htmlFor="password-input" id="password-label" name="password-label">password:</label>
-      <input type="text" id="password-input" name="password-input" />
+      <input type="password" id="password-input" placeholder='********' name="password-input" />
       <button type="submit" value="submit">Submit</button>
       <Link to='/register'>
       <p className="sign-up">Don't have an account?</p>

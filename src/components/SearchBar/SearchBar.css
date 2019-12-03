@@ -1,0 +1,7 @@
+.SearchBar input {
+    border: none;
+    border-radius: 5px;
+    border-bottom: 1px solid grey;
+    background-color: transparent;
+    text-align: center;
+}

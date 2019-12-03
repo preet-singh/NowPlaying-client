@@ -1,0 +1,20 @@
+@media screen and (min-width: 350px){
+
+    .LoginRoute {
+        background-color: rgb(8, 8, 8);
+        min-height: 105vh;
+        display: flex;
+        justify-content: center;
+    }
+
+    .LoginRoute main form {
+        border: none;
+    }
+
+    .LoginRoute main {
+        width: 95%;
+        display: flex;
+        justify-content: center;
+        margin-top: -100px;
+    }
+}
