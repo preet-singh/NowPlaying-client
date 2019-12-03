@@ -90,6 +90,11 @@ const AuthApiService = {
         'content-type': 'application/json'
       }
     })
+    .then(res => 
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json(),
+    )
   },
     getTVShowComments(thread,id) {
       return fetch(config.API_ENDPOINT + `/main/tv_shows/${id}/tv_show_comments`,
@@ -98,6 +103,11 @@ const AuthApiService = {
         'content-type': 'application/json'
       }
     })
+    .then(res => 
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json(),
+    )
   },
     getPodcastComments(thread,id) {
       return fetch(config.API_ENDPOINT + `/main/podcasts/${id}/podcast_comments`,
@@ -106,6 +116,11 @@ const AuthApiService = {
         'content-type': 'application/json'
       }
     })
+    .then(res => 
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json(),
+    )
   },
     getBookComments(thread,id) {
       return fetch(config.API_ENDPOINT + `/main/books/${id}/book_comments`,

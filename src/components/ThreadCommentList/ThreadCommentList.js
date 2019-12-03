@@ -3,12 +3,19 @@ import './ThreadCommentList.css';
 import ThreadCommentItem from '../ThreadCommentItem/ThreadCommentItem';
 
 function ThreadCommentList(props) {
+  const renderCommentList = () => {
+    console.log(props)
+    return props.comments.map(comment => {
+      return (
+        <ThreadCommentItem id={comment.id} username={comment.user_name} comment={comment.user_comment} />
+      )
+    })
+  }
+
   return (
-    <div className='thread-comment-list'>
-      <ThreadCommentItem />
-      <ThreadCommentItem />
-      <ThreadCommentItem />
-    </div>
+    <ul className='thread-comment-list'>
+      {renderCommentList()}
+    </ul>
   )
 }
 
