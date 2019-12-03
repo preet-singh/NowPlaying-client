@@ -9,12 +9,14 @@ import Login from '../../components/Login/Login';
 import './LoginRoute.css'
 
 
-function LoginRoute() {
+function LoginRoute(props) {
   return(
     <div className="LoginRoute">
       <Header />
       <main>
-        <Login />
+        <Login 
+          history={props.history}
+        />
       </main>
     </div>
   );
