@@ -1,7 +1,6 @@
 //Dependencies
 import React from 'react';
 import {Link} from 'react-router-dom';
-<<<<<<< HEAD
 
 //Style
 import './LoginButton.css'
