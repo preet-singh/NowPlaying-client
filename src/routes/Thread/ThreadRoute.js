@@ -13,6 +13,7 @@ import FixedBar from '../../components/FixedBar/FixedBar';
 
 export default class ThreadRoute extends React.Component {
   render(){
+    console.log(this.props);
     return(
       <div className="ThreadRoute">
         <Header />

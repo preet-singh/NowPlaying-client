@@ -3,6 +3,7 @@ import ThreadItem from '../ThreadItem/ThreadItem';
 import './ThreadsList.css';
 import AuthService from '../../utils/auth-service';
 import UserContext from '../../utils/context';
+import {withRouter, Link} from 'react-router-dom';
 
 class ThreadsList extends React.Component {
   static contextType = UserContext;
@@ -17,14 +18,20 @@ class ThreadsList extends React.Component {
     return threads.map((item,index) => <ThreadItem details={item} key={index} />);
   }
 
+  checkIfHome = () => {
+    if (this.props.location.pathname === '/') {
+      return <Link to={`category/${this.context.categoryID}`}>see more</Link>
+    }
+  }
+
   render() {
     return (
       <div className='threads-list'>
-        <h3>{this.context.category}</h3>
+        <h3>{this.context.category} {this.checkIfHome()}</h3>
         {this.getThreads(this.context)}
       </div>
     )
   }
 }
 
-export default ThreadsList;
+export default withRouter(ThreadsList);

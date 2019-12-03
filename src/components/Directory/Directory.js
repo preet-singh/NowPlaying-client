@@ -1,5 +1,6 @@
 //Dependencies
 import React from 'react';
+import {withRouter, Link} from 'react-router-dom';
 
 //Components
 import SearchBar from '../SearchBar/SearchBar';
@@ -16,15 +17,10 @@ class Directory extends React.Component {
   }
   
   getCategoryList = (categoryList, category) => {
-    console.log(categoryList);
-    console.log(category);
     let categoryListNames = categoryList.map(item => item.media_type) || [];
-    console.log(categoryListNames);
-    let allExceptCurrent = categoryListNames.filter(item => item.toLowerCase() !== category.toLowerCase()) || [];
     let selectOptions = [];
-    selectOptions.push(<option value={category}>{category}</option>);
-    allExceptCurrent.forEach(item => {
-      selectOptions.push(<option value={item}>{item}</option>)
+    categoryListNames.forEach((item,index) => {
+        selectOptions.push(<option value={item} key={item}>{item}</option>)
     });
     return selectOptions;
   }
@@ -47,4 +43,4 @@ class Directory extends React.Component {
   }
 }
 
-export default Directory;
+export default withRouter(Directory);

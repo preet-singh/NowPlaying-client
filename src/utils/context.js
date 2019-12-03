@@ -5,6 +5,7 @@ import TokenService from './token-service'
 const UserContext = React.createContext({
   user: {},
   category: '',
+  categoryID: '',
   categoryList: [],
   categoryItems: [],
   error: null,
@@ -42,8 +43,12 @@ export class UserProvider extends Component {
     this.setState({ error })
   }
 
+  //sets category AND categoryID AND categoryItems
   setCategory = async (category) => {
     this.setState({ category});
+    let categoryFull = this.state.categoryList.filter(item => item.media_type.toLowerCase() === category.toLowerCase()) || {};
+    let categoryID = categoryFull[0].id || '';
+    this.setState({categoryID});
     let categoryItems = await AuthApiService.getSpecificThreads(category).then(response => response)
     this.setCategoryItems(categoryItems);
   }
@@ -92,6 +97,7 @@ export class UserProvider extends Component {
     const value = {
       user: this.state.user,
       category: this.state.category,
+      categoryID: this.state.categoryID,
       categoryList: this.state.categoryList,
       categoryItems: this.state.categoryItems,
       error: this.state.error,
