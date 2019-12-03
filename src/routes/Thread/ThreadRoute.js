@@ -20,8 +20,12 @@ export default class ThreadRoute extends React.Component {
   state = {
     comments: [],
     mediaTimer: 0,
+    seconds: 0,
+    minutes: 0,
+    hours: 0,
     playing: false,
   }
+
 
   componentDidMount() {
     const mediaType = this.props.match.params;
@@ -58,7 +62,7 @@ export default class ThreadRoute extends React.Component {
     if(this.state.playing === true){
     this.setState({mediaTimer: this.state.mediaTimer + 1});
     }
-    else {
+    if(this.state.playing === false){
       return
     }
   }
@@ -76,7 +80,7 @@ export default class ThreadRoute extends React.Component {
         <Directory thread={this.props.match.params.thread} id={this.props.match.params.id} />
         <main>
           <button onClick={() => this.playTimer()}>Timer</button>
-          <h4>{this.state.mediaTimer}</h4>
+          <h4>{this.state.hours}:{this.state.minutes}:{this.state.seconds}</h4>
           <ThreadDetails thread={this.props.match.params.thread} id={this.props.match.params.id}/>
           <ScrubBox />
           <PrivateThreadMessage />
