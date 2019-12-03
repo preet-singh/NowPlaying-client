@@ -3,10 +3,10 @@ import './ThreadCommentItem.css';
 
 function ThreadCommentItem(props) {
   return (
-    <div className='thread-comment-item'>
-      <p>username: This movie WOW!!!!!!!</p>
+    <li key={props.id} className='thread-comment-item'>
+      <p>{props.username}: {props.comment}</p>
       <p className='comment-time-stamp'>0:00</p>
-    </div>
+    </li>
   )
 }
 
