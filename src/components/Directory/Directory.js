@@ -28,6 +28,16 @@ class Directory extends React.Component {
     return selectOptions;
   }
 
+  checkSelectChange = async e => {
+    if (!this.props.match.params.thread) {
+      this.context.setCategory(e.target.value);
+    }
+    else {
+      await this.context.setCategory(e.target.value);
+      this.props.history.push(`/category/${this.context.categoryID}`)
+    }
+  }
+
   render() {
     let categoryList = this.context.categoryList || [];
     let category = this.context.category || ''
@@ -35,7 +45,7 @@ class Directory extends React.Component {
       <div className="Directory">
         <section className="directory-box">
           <div className="directory-dropdown">
-            <select onChange={(e) => this.context.setCategory(e.target.value)}>
+            <select onChange={(e) => this.checkSelectChange(e)}>
               {this.getCategoryList(categoryList, category)}
             </select>
           </div>
