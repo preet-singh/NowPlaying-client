@@ -1,5 +1,8 @@
 import React from 'react';
 
+//Style
+import './PrivateThreadMessage.css'
+
 function PrivateThreadMessage(props) {
   return (
     <div className='hidden-play-message'>

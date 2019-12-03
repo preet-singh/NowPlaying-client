@@ -1,20 +1,22 @@
 //Dependencies
 import React from 'react';
-
-//Components
 import Header from '../../components/Header/Header';
 import RegisterForm from '../../components/RegisterForm/RegisterForm';
+//Components
+
 
 //Style
 import './RegisterRoute.css';
 
 
-function RegisterRoute() {
+function RegisterRoute(props) {
   return(
     <div className="Register">
       <Header />
       <main>
-        <RegisterForm />
+        <RegisterForm 
+          history={props.history}
+        />
       </main>
     </div>
   );

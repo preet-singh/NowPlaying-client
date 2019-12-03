@@ -1,4 +1,10 @@
 #play-button{
-  height: 50px;
-  width: 50px;
+  margin: auto;
+  margin-top: 20px;
+  color: white;
+  border: 1px solid white;
+  background-color: transparent;
+  height: 40px;
+  width: 40%;
+  font-weight: bold;
 }

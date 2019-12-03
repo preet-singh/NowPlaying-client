@@ -1,6 +1,9 @@
 //Dependencies
 import React from 'react';
 
+//Style
+import './Happenings.css'
+
 
 function Happenings() {
   return(
