@@ -6,12 +6,14 @@ import Header from '../../components/Header/Header';
 import Login from '../../components/Login/Login';
 
 
-function LoginRoute() {
+function LoginRoute(props) {
   return(
     <div className="LoginRoute">
       <Header />
       <main>
-        <Login />
+        <Login 
+          history={props.history}
+        />
       </main>
     </div>
   );
