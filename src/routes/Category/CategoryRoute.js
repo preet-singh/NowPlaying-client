@@ -6,6 +6,9 @@ import Header from '../../components/Header/Header';
 import Directory from '../../components/Directory/Directory';
 import ThreadList from '../../components/ThreadsList/ThreadsList';
 
+//Style
+import './CategoryRoute.css'
+
 
 function CategoryRoute() {
   return(

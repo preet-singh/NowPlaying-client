@@ -11,6 +11,9 @@ import ThreadCommentList from '../../components/ThreadCommentList/ThreadCommentL
 import FixedBar from '../../components/FixedBar/FixedBar';
 import AuthApiService from '../../utils/auth-service';
 
+//Style
+import './ThreadRoute.css'
+
 export default class ThreadRoute extends React.Component {
   static defaultProps = [];
 

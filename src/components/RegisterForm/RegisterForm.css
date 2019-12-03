@@ -1,14 +1,28 @@
-@media screen and (min-width: 350px){
+@media screen and (min-width: 320px){
 
     .Login {
         border: none;
     }
 
     .Login label {
-        display: hidden;
+        display: none;
     }
 
     #email-label {
         display: none;
+    }
+
+    #email-input {
+        margin-top: 10px;
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid grey;
+        border-radius: 3px;
+        text-align: left;
+        padding-left: 10px;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        color: white;
     }
 }
