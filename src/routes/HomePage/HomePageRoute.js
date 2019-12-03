@@ -13,7 +13,7 @@ import './HomePage.css'
 function HomePageRoute(props) {
   return(
     <div className="HomePage">
-      <h1>Now Playing</h1>
+      <h1>Now Playing teehee</h1>
       <Header />
       <Directory />
       <Happenings />

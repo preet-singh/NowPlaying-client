@@ -13,9 +13,16 @@ class ThreadsList extends React.Component {
     }
   }
 
-  getThreads = (context) => {
+  getThreads = () => {
+    let limit = this.props.limit || 10;
     let threads = this.context.categoryItems || [];
-    return threads.map((item,index) => <ThreadItem details={item} key={index} />);
+    let returnItem = [];
+    for (let i=0;i<limit;i++) {
+      if (threads[i]) {
+        returnItem.push(<ThreadItem details={threads[i]} key={i} />)
+      }
+    }
+    return returnItem;
   }
 
   checkIfHome = () => {
@@ -28,7 +35,7 @@ class ThreadsList extends React.Component {
     return (
       <div className='threads-list'>
         <h3>{this.context.category} {this.checkIfHome()}</h3>
-        {this.getThreads(this.context)}
+        {this.getThreads()}
       </div>
     )
   }

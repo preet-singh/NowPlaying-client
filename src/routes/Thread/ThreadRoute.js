@@ -70,7 +70,7 @@ export default class ThreadRoute extends React.Component {
     return(
       <div className="ThreadRoute">
         <Header />
-        <Directory />
+        <Directory thread={this.props.match.params.thread} id={this.props.match.params.id} />
         <main>
           <button onClick={() => this.playTimer()}>Timer</button>
           <h4>{this.state.mediaTimer}</h4>

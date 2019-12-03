@@ -9,7 +9,7 @@ function ThreadCategory() {
   return (
     <div className='thread-category'>
       <h3>Popular</h3>
-      <ThreadsList />
+      <ThreadsList limit={3} />
     </div>
   )
 }

@@ -68,9 +68,9 @@ class ThreadItem extends React.Component {
       <div className='thread-item'>
         <Link to={`/${this.context.category}/${this.props.details.id}`}>
           <h3>{this.props.details.title}</h3>
-          <img src='https://img01.mgo-images.com/image/thumbnail/v2/content/MMVAF76018A477C2826A4EC8747C40B7BE27.jpeg' alt='Movie poster image'/>
+          <img src='https://img01.mgo-images.com/image/thumbnail/v2/content/MMVAF76018A477C2826A4EC8747C40B7BE27.jpeg' alt='Movie poster'/>
           <p>{this.props.details.date_created}</p>
-          <p2>Last comment {commentInfo}</p2>
+          <p>Last comment {commentInfo}</p>
         </Link>
       </div>
     )
