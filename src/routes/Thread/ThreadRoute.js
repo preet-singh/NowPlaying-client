@@ -10,12 +10,13 @@ import PrivateThreadMessage from '../../components/PrivateThreadMessage/PrivateT
 import ThreadCommentList from '../../components/ThreadCommentList/ThreadCommentList';
 import FixedBar from '../../components/FixedBar/FixedBar';
 import AuthApiService from '../../utils/auth-service';
-
+import UserContext from '../../utils/context';
 //Style
 import './ThreadRoute.css'
 
 export default class ThreadRoute extends React.Component {
   static defaultProps = [];
+  static contextType = UserContext;
 
   state = {
     comments: [],
@@ -26,29 +27,41 @@ export default class ThreadRoute extends React.Component {
     playing: false,
   }
 
-
   componentDidMount() {
     const mediaType = this.props.match.params;
     console.log(mediaType.thread, mediaType.id)
     if(mediaType.thread === 'books'){
       AuthApiService.getBookComments(mediaType.thread, mediaType.id)
-      .then(res => this.setState({comments: res}))
+      .then(res => {
+        const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+        this.context.setCurrentThreadComments(orderedComments);
+      })
     } 
     else if(mediaType.thread === 'movies'){
       AuthApiService.getMovieComments(mediaType.thread, mediaType.id)
-      .then(res => this.setState({comments: res}))
+      .then(res => {
+        const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+        this.context.setCurrentThreadComments(orderedComments);
+      })
     }
     else if(mediaType.thread === 'podcasts'){
       AuthApiService.getPodcastComments(mediaType.thread, mediaType.id)
-      .then(res => this.setState({comments: res}))
+      .then(res => {
+        const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+        this.context.setCurrentThreadComments(orderedComments);
+      })
     }
     else if(mediaType.thread === 'tv_shows'){
       AuthApiService.getTVShowComments(mediaType.thread, mediaType.id)
-      .then(res => this.setState({comments: res}))
+      .then(res => {
+        const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+        this.context.setCurrentThreadComments(orderedComments);
+      })
     }
   }
+
   renderCommentList = () => {
-    if (this.state.comments) {
+    if (this.state.comments && this.state.playing) {
       return (
         <ThreadCommentList comments={this.state.comments}/>
       )
@@ -57,36 +70,26 @@ export default class ThreadRoute extends React.Component {
       return null;
     }
   }
-  
-  updatePlayTimer = () => {
-    if(this.state.playing === true){
-    this.setState({mediaTimer: this.state.mediaTimer + 1});
-    }
-    if(this.state.playing === false){
-      return
-    }
-  }
 
-  playTimer = () => {
+  playButton = () => {
     this.setState({playing: !this.state.playing})
-    setInterval(() => this.updatePlayTimer(), 1000)
   }
 
   render(){
-    console.log(this.state.mediaTimer)
+    console.log(this.state)
+    console.log(this.context.currentThreadComments)
     return(
       <div className="ThreadRoute">
         <Header />
         <Directory thread={this.props.match.params.thread} id={this.props.match.params.id} />
         <main>
-          <button onClick={() => this.playTimer()}>Timer</button>
-          <h4>{this.state.hours}:{this.state.minutes}:{this.state.seconds}</h4>
+          <button onClick={() => this.playButton()}>Play</button>
           <ThreadDetails thread={this.props.match.params.thread} id={this.props.match.params.id}/>
           <ScrubBox />
           <PrivateThreadMessage />
           {this.renderCommentList()}
         </main>
-        <FixedBar />
+        {this.state.playing ? <FixedBar category={this.props.match.params.thread} mediaId={this.props.match.params.id}/> : null}
       </div>
     );
   }

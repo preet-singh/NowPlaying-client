@@ -8,11 +8,14 @@ const UserContext = React.createContext({
   categoryID: '',
   categoryList: [],
   categoryItems: [],
+  currentThreadComments: [],
+  mediaTimer: null,
   error: null,
   setError: () => {},
   setCategory: () => {},
   setCategoryList: () => {},
   setCategoryItems: () => {},
+  setCurrentThreadComments: () => {},
   clearError: () => {},
   setUser: () => {},
   processLogin: () => {},
@@ -24,7 +27,7 @@ export default UserContext
 export class UserProvider extends Component {
   constructor(props) {
     super(props)
-    const state = { user: {}, error: null }
+    const state = { user: {}, mediaTimer: 0, error: null }
 
     const jwtPayload = TokenService.parseAuthToken()
 
@@ -68,6 +71,13 @@ export class UserProvider extends Component {
     this.setState({ user })
   }
 
+  updateMediaTimer = () => {
+    this.setState({mediaTimer: this.state.mediaTimer + 1});
+  }
+
+  setCurrentThreadComments = comments => {
+    this.setState({currentThreadComments: comments})
+  }
   processLogin = authToken => {
     TokenService.saveAuthToken(authToken)
     const jwtPayload = TokenService.parseAuthToken()
@@ -100,6 +110,8 @@ export class UserProvider extends Component {
       categoryID: this.state.categoryID,
       categoryList: this.state.categoryList,
       categoryItems: this.state.categoryItems,
+      mediaTimer: this.state.mediaTimer,
+      currentThreadComments: this.state.currentThreadComments,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
@@ -107,6 +119,8 @@ export class UserProvider extends Component {
       setCategory: this.setCategory,
       setCategoryList: this.setCategoryList,
       setCategoryItems: this.setCategoryItems,
+      setCurrentThreadComments: this.setCurrentThreadComments,
+      updateMediaTimer: this.updateMediaTimer,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
     }
