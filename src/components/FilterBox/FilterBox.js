@@ -39,6 +39,18 @@ class FilterBox extends Component {
       currentCategoryItems = currentCategoryItems.filter(item => Number(this.state.minimumYear) <= Number(item.release_date.slice(0,4)))
     }
 
+    if(this.state.maximumYear){
+      currentCategoryItems = currentCategoryItems.filter(item => Number(this.state.minimumYear) >= Number(item.release_date.slice(0,4)))
+    }
+
+    if(this.state.genre) {
+      currentCategoryItems = currentCategoryItems.filter(item => item.genre === this.state.genre);
+    }
+
+    if(this.state.rating) {
+      currentCategoryItems = currentCategoryItems.filter(item => item.rating >= this.state.rating);
+    }
+
 
     return (
       <form id="filterForm" name="filterForm">
