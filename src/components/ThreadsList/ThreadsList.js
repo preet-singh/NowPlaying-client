@@ -15,7 +15,7 @@ class ThreadsList extends React.Component {
 
   getThreads = () => {
     let limit = this.props.limit || 10;
-    let threads = this.context.categoryItems || [];
+    let threads = this.context.filteredCategoryItems || []; // MAY NEED TO LOOK INTO LATER...CATEGORY VS. FILTERED CATEGORY, which takes precedence???
     let returnItem = [];
     for (let i=0;i<limit;i++) {
       if (threads[i]) {

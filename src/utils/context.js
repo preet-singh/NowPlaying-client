@@ -9,6 +9,7 @@ const UserContext = React.createContext({
   categoryList: [],
   categoryItems: [],
   searchedCategoryItems: [],
+  filteredCategoryItems: [],
   error: null,
   setError: () => {},
   setCategory: () => {},
@@ -53,6 +54,8 @@ export class UserProvider extends Component {
     this.setState({categoryID});
     let categoryItems = await AuthApiService.getSpecificThreads(category).then(response => response)
     this.setCategoryItems(categoryItems);
+    this.setSearchedCategoryItems(categoryItems);
+    this.setFilteredCategoryItems(categoryItems);
   }
 
   setCategoryList = categoryList => {
@@ -66,6 +69,10 @@ export class UserProvider extends Component {
   setSearchedCategoryItems = searchedCategoryItems => {
     this.setState({searchedCategoryItems});
   }
+  setFilteredCategoryItems = filteredCategoryItems => {
+    this.setState({filteredCategoryItems})
+  }
+
   clearError = () => {
     this.setState({ error: null })
   }
@@ -107,6 +114,7 @@ export class UserProvider extends Component {
       categoryList: this.state.categoryList,
       categoryItems: this.state.categoryItems,
       searchedCategoryItems: this.state.searchedCategoryItems,
+      filteredCategoryItems: this.state.filteredCategoryItems,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
@@ -115,6 +123,7 @@ export class UserProvider extends Component {
       setCategoryList: this.setCategoryList,
       setCategoryItems: this.setCategoryItems,
       setSearchedCategoryItems: this.setSearchedCategoryItems,
+      setFilteredCategoryItems: this.setFilteredCategoryItems,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
     }
