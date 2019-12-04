@@ -15,8 +15,24 @@ class ThreadCommentList extends React.Component {
     this.setState({comments: this.context.currentThreadComments})
   }
   
-  convertSeconds() {
-    
+  convertTimeString = timeValue => {
+    if(timeValue < 10) {
+      return `0${timeValue}`;
+    }
+    else {
+      return `${timeValue}`;
+    }
+  }
+
+  convertSeconds = seconds => {
+    let secondsValue = seconds % 60;
+    let hoursValue = seconds > 3600 ? (seconds - (seconds % 3600)) / 3600 : 0;
+    let minutesValue = seconds < 3600 ? (seconds - secondsValue) / 60 : (seconds - secondsValue) % 3600 / 60
+    let timeArray = [hoursValue, minutesValue, secondsValue]
+    let timeStringArray = timeArray.map(time => this.convertTimeString(time))
+
+    let timeString = timeStringArray.join(':')
+    return timeString;
   }
 
   handleTimedComments = () => {
@@ -34,13 +50,14 @@ class ThreadCommentList extends React.Component {
     }
     return this.state.renderedComments.map(comment => {
       return (
-        <ThreadCommentItem username={comment.user_name} comment={comment.user_comment} timestamp={comment.comment_timestamp} key={comment.id}/>
+        <ThreadCommentItem username={comment.user_name} comment={comment.user_comment} timestamp={this.convertSeconds(comment.comment_timestamp)} key={comment.id}/>
       )
     })
 
   }
 
   render() {
+    console.log(this.convertSeconds(9))
     return (
       <ul className='thread-comment-list'>
         {this.renderCommentList()}
