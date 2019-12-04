@@ -1,7 +1,7 @@
 //Dependencies
 import React, { Component } from 'react';
 
-class FilterBox extends Component() {
+class FilterBox extends Component {
   render(){
     return (
       <form id="filterForm" name="filterForm">

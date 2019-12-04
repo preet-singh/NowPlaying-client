@@ -17,3 +17,22 @@
         text-decoration: none;
     }
 }
+
+@media screen and (min-width: 768px){
+
+    #logout_button {
+        position: absolute;
+        top: -125px;
+        right: 40px;
+        color: white;
+        background-color: transparent;
+        border: none;
+        font-size: 16px;
+    }
+
+    #logout_button:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+}

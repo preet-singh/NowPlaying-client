@@ -29,7 +29,7 @@
     text-decoration: none;
   }
 
-  .thread-item img {
+  .thread-item a > img {
     position: absolute;
     height: 150px;
     width: auto;
@@ -38,3 +38,71 @@
   }
 }
 
+@media screen and (min-width: 768px){
+  .thread-item {
+    width: 95%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid gray;
+    background-color: hsl(84, 60%, 45%);
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .thread-item:hover {
+    background-color: hsl(84, 95%, 25%);
+  }
+
+  .thread-item a {
+    /* background-color: lightcoral; */
+    color: white;
+    text-decoration: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    padding: 10px;
+    width: auto;
+    margin-left: 40%;
+    margin-right: auto;
+  }
+
+  .thread-item a h3 {
+    font-size: 40px;
+  }
+
+  .thread-item a > p {
+    font-size: 20px;
+  }
+
+  .thread-item a > img {
+    position: absolute;
+    width: 40%;
+    height: auto;
+    border-radius: initial;
+    top: 0px;
+    left: 0px;
+    transform: translateY(-45px);
+  }
+
+  #play-button {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 130px !important;
+    height: 130px !important;
+    border: none !important;
+    border: none;
+  }
+
+  #last_comment {
+    
+  }
+
+}

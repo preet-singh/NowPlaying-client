@@ -10,13 +10,22 @@ import ThreadCategory from '../../components/ThreadCategory/ThreadCategory';
 //Styling
 import './HomePage.css'
 
+//Token
+import TokenService from '../../utils/token-service'
+
 function HomePageRoute(props) {
   return(
     <div className="HomePage">
-      <h1>Now Playing teehee</h1>
-      <Header />
+      <h1>Now Playing</h1>
+      <div className={TokenService.hasAuthToken() ? 'signedIn_home' : 'home_eventBar'}>
+        <div>
+          <Header />
+        </div>
+        <section>
+          <Happenings />
+        </section>
+      </div>
       <Directory />
-      <Happenings />
       <main>
         <ThreadCategory />
       </main>
