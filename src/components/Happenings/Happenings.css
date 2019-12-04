@@ -3,3 +3,28 @@
         font-size: 32px;
     }
 }
+
+@media screen and (min-width: 768px){
+    .Happenings h3 {
+        padding: 15px;
+    }
+
+    .Happenings ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .Happenings ul li {
+        list-style-type: none;
+        /* background-color: yellow; */
+        border: 1px solid yellow;
+        height: 175px;
+        width: 30%;
+        text-align: center;
+        justify-content: center;
+        padding-top: 60px;
+    }
+
+}

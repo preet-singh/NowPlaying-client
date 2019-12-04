@@ -10,7 +10,7 @@ function LoginButton() {
   if(TokenService.hasAuthToken()){
     return (
       <Link to='/'>
-        <button onClick={() => TokenService.clearAuthToken()}>
+        <button id='logout_button' onClick={() => TokenService.clearAuthToken()}>
           Log out
         </button>
       </Link>

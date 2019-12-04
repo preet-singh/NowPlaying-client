@@ -73,7 +73,7 @@ class FilterBox extends Component {
     if(this.state.familyRating) {
       currentCategoryItems = currentCategoryItems.filter(item => item.mpaa_rating === this.state.familyRating);
     }
-
+    
     return (
       <form id="filterForm" name="filterForm" onSubmit={e => {this.handleSubmit(e,currentCategoryItems)}}>
         <label htmlFor="minimumYear" id="minimumYearLabel" name="minimumYearLabel">Earliest Year:</label>

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import AuthService from '../../utils/auth-service';
 import UserContext from '../../utils/context';
 import moment from 'moment';
+import playbutton from '../Images/play-button.svg'
 
 
 class ThreadItem extends React.Component {
@@ -69,9 +70,9 @@ class ThreadItem extends React.Component {
         <Link to={`/${this.context.category}/${this.props.details.id}`}>
           <h3>{this.props.details.title}</h3>
           <img src='https://img01.mgo-images.com/image/thumbnail/v2/content/MMVAF76018A477C2826A4EC8747C40B7BE27.jpeg' alt='Movie poster'/>
-          <p>{this.props.details.date_created}</p>
-          <p>Last comment {commentInfo}</p>
+          <p id='last_comment'>Last comment {commentInfo}</p>
         </Link>
+        <img id='play-button' src={playbutton} alt='play button' />
       </div>
     )
   }
