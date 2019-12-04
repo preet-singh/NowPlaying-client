@@ -11,6 +11,7 @@
     justify-content: center;
     margin-bottom: 10px;
     position: relative;
+    overflow: hidden;
   }
 
   .thread-item a {
@@ -32,16 +33,28 @@
   .thread-item a > img {
     position: absolute;
     height: 150px;
-    width: auto;
-    border-radius: 5px;
-    left: 10px;
+    width: 40%;
+    object-fit: cover;
+    min-height: 200px;
+    left: 0px;
+    top: 0px;
+  }
+
+  #play-button_home {
+    position: absolute;
+    bottom: -40px;
+    right: 5px;
+    width: 40px;
+    height: 130px;
+    border: none !important;
+    border: none;
   }
 }
 
 @media screen and (min-width: 768px){
   .thread-item {
     width: 95%;
-    height: 300px;
+    height: 250px;
     margin-left: auto;
     margin-right: auto;
     border: 1px solid gray;
@@ -57,6 +70,7 @@
 
   .thread-item:hover {
     background-color: hsl(84, 95%, 25%);
+    cursor: pointer;
   }
 
   .thread-item a {
@@ -85,24 +99,25 @@
     position: absolute;
     width: 40%;
     height: auto;
+    min-height: 300px;
     border-radius: initial;
     top: 0px;
     left: 0px;
     transform: translateY(-45px);
   }
 
-  #play-button {
+  #play-button_home {
     position: absolute;
     top: 50px;
     right: 50px;
-    width: 130px !important;
-    height: 130px !important;
+    width: 10%;
+    height: 130px;
     border: none !important;
     border: none;
   }
 
   #last_comment {
-    
+    margin-top: 125px;
   }
 
 }

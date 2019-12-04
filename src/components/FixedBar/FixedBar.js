@@ -8,7 +8,7 @@ function FixedBar(props) {
     <div className='fixed-bar'>
       <div className='fixed-bar-header'>
       <PlayButton />
-      <h3>0:00</h3>
+      <h3>Timer is at: 0:00</h3>
       </div>
       <AddCommentBox />
     </div>
