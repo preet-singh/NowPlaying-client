@@ -13,6 +13,7 @@ import UserContext from './utils/context';
 import AuthService from './utils/auth-service';
 import PublicOnlyRoute from './routes/PublicOnlyRoute/PublicOnlyRoute';
 import PrivateOnlyRoute from './routes/PrivateOnlyRoute/PrivateOnlyRoute';
+import NewThread from './routes/NewThread/NewThread';
 
 //EJ IS TESTING HERE TO PUSH
 
@@ -40,6 +41,7 @@ class App extends React.Component {
           <Route exact path="/" component={HomePageRoute} />
           <Route path="/category/:id" component={CategoryRoute} />
           <Route path="/:thread/:id" component={ThreadRoute} />
+          <Route path="/new" component={NewThread} />
           <PublicOnlyRoute path="/login" component={LoginRoute} />
           <PublicOnlyRoute path="/register" component={RegisterRoute} />
           <Route component={NotFoundRoute} />
