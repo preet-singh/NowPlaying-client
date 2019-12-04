@@ -20,7 +20,7 @@ class FilterBox extends Component {
   
   componentDidMount() {
     this.setState({
-      originalCategoryItems: this.context.categoryItems
+      originalCategoryItems: this.context.filteredCategoryItems
     })
   }
   
@@ -32,7 +32,7 @@ class FilterBox extends Component {
 
   handleSubmit = (e, currentCategoryItems) => {
     e.preventDefault();
-    this.context.setCategoryItems(currentCategoryItems);
+    this.context.setFilteredCategoryItems(currentCategoryItems);
     this.setState({
       minimumYear: '',
       maximumYear: '',
@@ -52,7 +52,7 @@ class FilterBox extends Component {
       familyRating: '',
       originalCategoryItems: this.state.originalCategoryItems
     })
-    this.context.setCategoryItems(this.state.originalCategoryItems);
+    this.context.setFilteredCategoryItems(this.state.originalCategoryItems);
   }
 
   render() {
