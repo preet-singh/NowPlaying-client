@@ -45,7 +45,7 @@ export class UserProvider extends Component {
 
   //sets category AND categoryID AND categoryItems
   setCategory = async (category) => {
-    this.setState({ category});
+    this.setState({ category });
     let categoryFull = this.state.categoryList.filter(item => item.media_type.toLowerCase() === category.toLowerCase()) || {};
     let categoryID = categoryFull[0].id || '';
     this.setState({categoryID});

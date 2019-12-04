@@ -14,16 +14,14 @@ class FilterBox extends Component {
       rating: '',
       familyRating: '',
       error: null,
+      originalCategoryItems: []
     }
   }
   
-  componentDidMount(){
-    this.context.setCategory(this.context.category)
-      .catch(res => {
-        this.setState({
-          error: res.error
-        })
-      })
+  componentDidMount() {
+    this.setState({
+      originalCategoryItems: this.context.categoryItems
+    })
   }
   
   handleChange = e => {
@@ -32,28 +30,52 @@ class FilterBox extends Component {
     })
   }
 
-  render(){
-    let currentCategoryItems = this.context.categoryItems;
+  handleSubmit = (e, currentCategoryItems) => {
+    e.preventDefault();
+    this.context.setCategoryItems(currentCategoryItems);
+    this.setState({
+      minimumYear: '',
+      maximumYear: '',
+      genre: '',
+      rating: '',
+      familyRating: ''
+    })
+  }
+
+  handleClear = e => {
+    e.preventDefault();
+    this.setState({
+      minimumYear: '',
+      maximumYear: '',
+      genre: '',
+      rating: '',
+      familyRating: '',
+      originalCategoryItems: this.state.originalCategoryItems
+    })
+    this.context.setCategoryItems(this.state.originalCategoryItems);
+  }
+
+  render() {
+    let currentCategoryItems = this.state.originalCategoryItems;
 
     if(this.state.minimumYear){
-      currentCategoryItems = currentCategoryItems.filter(item => Number(this.state.minimumYear) <= Number(item.release_date.slice(0,4)))
+      currentCategoryItems = currentCategoryItems.filter(item => Number(this.state.minimumYear) <= Number(item.release_date.slice(-4)))
     }
-
     if(this.state.maximumYear){
-      currentCategoryItems = currentCategoryItems.filter(item => Number(this.state.minimumYear) >= Number(item.release_date.slice(0,4)))
+      currentCategoryItems = currentCategoryItems.filter(item => Number(this.state.maximumYear) >= Number(item.release_date.slice(-4)))
     }
-
     if(this.state.genre) {
       currentCategoryItems = currentCategoryItems.filter(item => item.genre === this.state.genre);
     }
-
     if(this.state.rating) {
-      currentCategoryItems = currentCategoryItems.filter(item => item.rating >= this.state.rating);
+      currentCategoryItems = currentCategoryItems.filter(item => Number(item.imdb_rating) >= Number(this.state.rating));
+    }
+    if(this.state.familyRating) {
+      currentCategoryItems = currentCategoryItems.filter(item => item.mpaa_rating === this.state.familyRating);
     }
 
-
     return (
-      <form id="filterForm" name="filterForm">
+      <form id="filterForm" name="filterForm" onSubmit={e => {this.handleSubmit(e,currentCategoryItems)}}>
         <label htmlFor="minimumYear" id="minimumYearLabel" name="minimumYearLabel">Earliest Year:</label>
         <input 
           type="text" 
@@ -84,6 +106,11 @@ class FilterBox extends Component {
           defaultValue="1"
           onChange={this.handleChange} 
         >
+          <option value="10">10</option>
+          <option value="9">9</option>
+          <option value="8">8</option>
+          <option value="7">7</option>
+          <option value="6">6</option>
           <option value="5">5</option>
           <option value="4">4</option>
           <option value="3">3</option>
@@ -103,6 +130,7 @@ class FilterBox extends Component {
           <option value="R">R</option>
         </select>
         <button type="submit">Submit</button>
+        <button type="button" onClick={(e) => this.handleClear(e)}>Clear</button>
       </form>
     );
   }
