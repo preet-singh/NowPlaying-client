@@ -8,11 +8,13 @@ const UserContext = React.createContext({
   categoryID: '',
   categoryList: [],
   categoryItems: [],
+  searchedCategoryItems: [],
   error: null,
   setError: () => {},
   setCategory: () => {},
   setCategoryList: () => {},
   setCategoryItems: () => {},
+  setSearchedCategoryItems: () => {},
   clearError: () => {},
   setUser: () => {},
   processLogin: () => {},
@@ -60,6 +62,10 @@ export class UserProvider extends Component {
   setCategoryItems = categoryItems => {
     this.setState({categoryItems});
   }
+
+  setSearchedCategoryItems = searchedCategoryItems => {
+    this.setState({searchedCategoryItems});
+  }
   clearError = () => {
     this.setState({ error: null })
   }
@@ -100,6 +106,7 @@ export class UserProvider extends Component {
       categoryID: this.state.categoryID,
       categoryList: this.state.categoryList,
       categoryItems: this.state.categoryItems,
+      searchedCategoryItems: this.state.searchedCategoryItems,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
@@ -107,6 +114,7 @@ export class UserProvider extends Component {
       setCategory: this.setCategory,
       setCategoryList: this.setCategoryList,
       setCategoryItems: this.setCategoryItems,
+      setSearchedCategoryItems: this.setSearchedCategoryItems,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
     }
