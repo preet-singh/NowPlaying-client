@@ -9,6 +9,7 @@ const UserContext = React.createContext({
   categoryList: [],
   categoryItems: [],
   currentThreadComments: [],
+  renderedComments: [],
   mediaTimer: null,
   error: null,
   setError: () => {},
@@ -78,6 +79,11 @@ export class UserProvider extends Component {
   setCurrentThreadComments = comments => {
     this.setState({currentThreadComments: comments})
   }
+
+  setRenderedComments = comments => {
+    this.setState({renderedComments: [...comments]})
+  }
+  
   processLogin = authToken => {
     TokenService.saveAuthToken(authToken)
     const jwtPayload = TokenService.parseAuthToken()
@@ -112,6 +118,7 @@ export class UserProvider extends Component {
       categoryItems: this.state.categoryItems,
       mediaTimer: this.state.mediaTimer,
       currentThreadComments: this.state.currentThreadComments,
+      renderedComments: this.state.renderedComments,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
@@ -120,6 +127,7 @@ export class UserProvider extends Component {
       setCategoryList: this.setCategoryList,
       setCategoryItems: this.setCategoryItems,
       setCurrentThreadComments: this.setCurrentThreadComments,
+      setRenderedComments: this.setRenderedComments,
       updateMediaTimer: this.updateMediaTimer,
       processLogin: this.processLogin,
       processLogout: this.processLogout,

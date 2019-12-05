@@ -150,6 +150,21 @@ const AuthApiService = {
             : res.json()
         )
   },
+    postCommentHappenings(reqBody) {
+      return fetch(`${config.API_ENDPOINT}/happening`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'authorization': `Bearer ${TokenService.getAuthToken()}`,
+        },
+        body: JSON.stringify(reqBody),
+      })
+        .then(res =>
+          (!res.ok)
+            ? res.json().then(err => Promise.reject(err))
+            : res.json()
+        )
+  },
 }
   
   export default AuthApiService

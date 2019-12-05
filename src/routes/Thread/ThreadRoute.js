@@ -62,7 +62,7 @@ export default class ThreadRoute extends React.Component {
   renderCommentList = () => {
     if (this.state.comments && this.state.playing) {
       return (
-        <ThreadCommentList comments={this.state.comments}/>
+        <ThreadCommentList />
       )
     }
     else {

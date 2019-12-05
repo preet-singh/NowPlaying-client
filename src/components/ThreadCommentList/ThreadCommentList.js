@@ -15,6 +15,19 @@ class ThreadCommentList extends React.Component {
     this.setState({comments: this.context.currentThreadComments})
   }
   
+  // componentDidUpdate() {
+  //   let copy = [];
+  //   this.state.comments.forEach(comment => {
+  //     if(comment.comment_timestamp === this.context.mediaTimer){
+  //       copy.push(comment);
+  //     }
+  //   })
+  //   this.setState({
+  //     renderedComments: [...this.state.renderedComments, ...copy]
+  //   })
+  //   return copy;
+  // }
+
   convertTimeString = timeValue => {
     if(timeValue < 10) {
       return `0${timeValue}`;
@@ -35,20 +48,20 @@ class ThreadCommentList extends React.Component {
     return timeString;
   }
 
+
   handleTimedComments = () => {
-    this.state.comments.forEach(comment => {
+    let copy = [];
+     this.state.comments.forEach(comment => {
       if(comment.comment_timestamp === this.context.mediaTimer){
-          this.state.renderedComments.push(comment);
+        copy.push(comment)
       }
     })
+    return copy;
   }
 
   renderCommentList = () => {
-    this.handleTimedComments();
-    while(this.state.renderedComments.length > 10){
-      this.state.renderedComments.shift();
-    }
-    return this.state.renderedComments.map(comment => {
+    let comments = this.handleTimedComments();
+    return comments.map(comment => {
       return (
         <ThreadCommentItem 
         username={comment.user_name} 
