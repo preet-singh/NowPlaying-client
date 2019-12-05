@@ -10,13 +10,13 @@ const UserContext = React.createContext({
   categoryItems: [],
   currentThreadComments: [],
   mediaTimer: null,
-  testTimer: 0,
+  playing: false,
   error: null,
   setError: () => {},
   setCategory: () => {},
   setCategoryList: () => {},
   setCategoryItems: () => {},
-  setTestTimer: () => {},
+  setPlaying: () => {},
   setCurrentThreadComments: () => {},
   clearError: () => {},
   setUser: () => {},
@@ -73,8 +73,8 @@ export class UserProvider extends Component {
     this.setState({ user })
   }
 
-  setTestTimer = testTimer => {
-    this.setState({testTimer});
+  setPlaying = playing => {
+    this.setState({playing});
   }
 
   updateMediaTimer = () => {
@@ -117,11 +117,11 @@ export class UserProvider extends Component {
       categoryList: this.state.categoryList,
       categoryItems: this.state.categoryItems,
       mediaTimer: this.state.mediaTimer,
-      testTimer: this.state.testTimer,
+      playing: this.state.playing,
       currentThreadComments: this.state.currentThreadComments,
       error: this.state.error,
       setError: this.setError,
-      setTestTimer: this.setTestTimer,
+      setPlaying: this.setPlaying,
       clearError: this.clearError,
       setUser: this.setUser,
       setCategory: this.setCategory,

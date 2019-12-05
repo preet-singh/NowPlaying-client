@@ -8,11 +8,13 @@ class ThreadCommentList extends React.Component {
   state = {
     comments: [],
     renderedComments: [],
+    renderedComments2: [],
     currentComment: [],
   }
   
   async componentDidMount() {
     await this.setState({comments: this.context.currentThreadComments})
+    console.log(this.state.comments);
     let renderedComments2 = await this.renderCommentList();
     await this.setState({renderedComments2});
   }
@@ -39,14 +41,16 @@ class ThreadCommentList extends React.Component {
 
   handleTimedComments = () => {
     return this.state.comments.map(comment => {
+      console.log(comment);
       if(comment.comment_timestamp <= this.context.mediaTimer){
         return comment;
       }
-    })
+    }) || []
   }
 
   renderCommentList = () => {
     let comments = this.handleTimedComments();
+    console.log(comments);
     // while(this.state.renderedComments.length > 10){
     //   this.state.renderedComments.shift();
     // }
@@ -55,7 +59,6 @@ class ThreadCommentList extends React.Component {
         <ThreadCommentItem username={comment.user_name} comment={comment.user_comment} timestamp={this.convertSeconds(comment.comment_timestamp)} key={comment.id}/>
       )
     })
-
   }
 
   render() {
