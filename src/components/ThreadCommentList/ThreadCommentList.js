@@ -11,8 +11,10 @@ class ThreadCommentList extends React.Component {
     currentComment: [],
   }
   
-  componentDidMount() {
-    this.setState({comments: this.context.currentThreadComments})
+  async componentDidMount() {
+    await this.setState({comments: this.context.currentThreadComments})
+    let renderedComments2 = await this.renderCommentList();
+    await this.setState({renderedComments2});
   }
   
   convertTimeString = timeValue => {
@@ -37,18 +39,18 @@ class ThreadCommentList extends React.Component {
 
   handleTimedComments = () => {
     return this.state.comments.map(comment => {
-      if(comment.comment_timestamp === this.context.mediaTimer){
-        this.state.renderedComments.push(comment);
+      if(comment.comment_timestamp <= this.context.mediaTimer){
+        return comment;
       }
     })
   }
 
   renderCommentList = () => {
-    this.handleTimedComments();
-    while(this.state.renderedComments.length > 10){
-      this.state.renderedComments.shift();
-    }
-    return this.state.renderedComments.map(comment => {
+    let comments = this.handleTimedComments();
+    // while(this.state.renderedComments.length > 10){
+    //   this.state.renderedComments.shift();
+    // }
+    return comments.map(comment => {
       return (
         <ThreadCommentItem username={comment.user_name} comment={comment.user_comment} timestamp={this.convertSeconds(comment.comment_timestamp)} key={comment.id}/>
       )
@@ -57,10 +59,9 @@ class ThreadCommentList extends React.Component {
   }
 
   render() {
-    console.log(this.convertSeconds(9))
     return (
       <ul className='thread-comment-list'>
-        {this.renderCommentList()}
+        {this.state.renderedComments2}
       </ul>
     )
   }
