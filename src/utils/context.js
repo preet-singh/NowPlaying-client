@@ -46,7 +46,7 @@ export class UserProvider extends Component {
     this.setState({ error })
   }
 
-  //sets category AND categoryID AND categoryItems
+  //sets category AND categoryID AND categoryItems AND searchedCategoryItems AND filteredCategoryItems
   setCategory = async (category) => {
     this.setState({ category });
     let categoryFull = this.state.categoryList.filter(item => item.media_type.toLowerCase() === category.toLowerCase()) || {};
@@ -68,6 +68,7 @@ export class UserProvider extends Component {
 
   setSearchedCategoryItems = searchedCategoryItems => {
     this.setState({searchedCategoryItems});
+    this.setState({filteredCategoryItems: searchedCategoryItems})
   }
   setFilteredCategoryItems = filteredCategoryItems => {
     this.setState({filteredCategoryItems})

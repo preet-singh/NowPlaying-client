@@ -26,6 +26,7 @@ class CreateNewThreadForm extends React.Component {
     this.setState({existError: false});
     let find = this.context.categoryItems.find(item => item.title.toLowerCase() === this.state.title.toLowerCase());
     if (find) {
+      this.context.setSearchedCategoryItems([find])
       this.setState({existError: find})
     }
     else {

@@ -53,16 +53,17 @@ class FilterBox extends Component {
       originalCategoryItems: this.state.originalCategoryItems
     })
     this.context.setFilteredCategoryItems(this.state.originalCategoryItems);
+    this.context.setSearchedCategoryItems(this.state.originalCategoryItems);
   }
 
   render() {
     let currentCategoryItems = this.state.originalCategoryItems;
 
     if(this.state.minimumYear){
-      currentCategoryItems = currentCategoryItems.filter(item => Number(this.state.minimumYear) <= Number(item.release_date.slice(-4)))
+      currentCategoryItems = currentCategoryItems.filter(item => Number(this.state.minimumYear) <= Number(item.release_date.slice(0,4)))
     }
     if(this.state.maximumYear){
-      currentCategoryItems = currentCategoryItems.filter(item => Number(this.state.maximumYear) >= Number(item.release_date.slice(-4)))
+      currentCategoryItems = currentCategoryItems.filter(item => Number(this.state.maximumYear) >= Number(item.release_date.slice(0,4)))
     }
     if(this.state.genre) {
       currentCategoryItems = currentCategoryItems.filter(item => item.genre === this.state.genre);
