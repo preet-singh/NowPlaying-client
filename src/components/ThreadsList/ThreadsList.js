@@ -14,13 +14,14 @@ class ThreadsList extends React.Component {
     }
   }
 
-  getThreads = () => {
+  getThreads = async () => {
     let limit = this.props.limit || 10;
     let threads = this.context.filteredCategoryItems || []; // MAY NEED TO LOOK INTO LATER...CATEGORY VS. FILTERED CATEGORY, which takes precedence???
     let returnItem = [];
     for (let i=0;i<limit;i++) {
       if (threads[i]) {
-        let comment = decideCommentService(this.context,threads[i].id)
+        let comment = await decideCommentService(this.context,threads[i].id)
+        console.log(';feoaijfioeajf');
         console.log(comment);
         returnItem.push(<ThreadItem details={threads[i]} comment={comment} key={i} />)
       }
