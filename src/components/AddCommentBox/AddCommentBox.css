@@ -9,8 +9,8 @@
     display: block;
     margin: auto;
     height: 5em;
-    min-width: 80%;
-    max-width: 80%;
+    min-width: 50%;
+    max-width: 50%;
   }
 
   .reaction-buttons button {

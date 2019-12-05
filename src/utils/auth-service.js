@@ -146,7 +146,37 @@ const AuthApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json(),
     )},
-  }
+    postComment(category, commentBody) {
+      return fetch(`${config.API_ENDPOINT}/comments/${category}_comments`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'authorization': `Bearer ${TokenService.getAuthToken()}`,
+        },
+        body: JSON.stringify(commentBody),
+      })
+        .then(res =>
+          (!res.ok)
+            ? res.json().then(err => Promise.reject(err))
+            : res.json()
+        )
+  },
+    postCommentHappenings(reqBody) {
+      return fetch(`${config.API_ENDPOINT}/happening`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'authorization': `Bearer ${TokenService.getAuthToken()}`,
+        },
+        body: JSON.stringify(reqBody),
+      })
+        .then(res =>
+          (!res.ok)
+            ? res.json().then(err => Promise.reject(err))
+            : res.json()
+        )
+  },
+}
   
   export default AuthApiService
   
