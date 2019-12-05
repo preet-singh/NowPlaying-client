@@ -24,7 +24,6 @@ export default class ThreadRoute extends React.Component {
     seconds: 0,
     minutes: 0,
     hours: 0,
-    playing: false,
   }
 
   componentDidMount() {
@@ -60,7 +59,7 @@ export default class ThreadRoute extends React.Component {
   }
 
   renderCommentList = () => {
-    if (this.state.comments && this.state.playing) {
+    if (this.state.comments && this.context.playing) {
       return (
         <ThreadCommentList />
       )
@@ -71,7 +70,7 @@ export default class ThreadRoute extends React.Component {
   }
 
   playButton = () => {
-    this.setState({playing: !this.state.playing})
+    this.context.setPlaying({playing: !this.context.playing})
   }
 
   render(){
@@ -86,7 +85,7 @@ export default class ThreadRoute extends React.Component {
           <PrivateThreadMessage />
           {this.renderCommentList()}
         </main>
-        {this.state.playing ? <FixedBar category={this.props.match.params.thread} mediaId={this.props.match.params.id}/> : null}
+        {this.context.playing ? <FixedBar category={this.props.match.params.thread} mediaId={this.props.match.params.id}/> : null}
       </div>
     );
   }

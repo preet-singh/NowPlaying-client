@@ -15,8 +15,6 @@ export default class ThreadDetails extends React.Component {
     .then(resJSON => this.setState({
       event: {...resJSON}
     }))
-
-    console.log(this.state)
   }
 
   convertDate = date => {
@@ -27,7 +25,6 @@ export default class ThreadDetails extends React.Component {
   }
 
   render(){
-    console.log(this.state)
     return (
       <div className='thread-details'>
         <h3>{this.state.event ? this.state.event[0].title : 'Loading...'}</h3>
