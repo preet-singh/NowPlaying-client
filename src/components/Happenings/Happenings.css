@@ -2,6 +2,33 @@
     .Happenings h3 {
         font-size: 32px;
     }
+
+    .underline {
+        border: 0;
+        height: 1px;
+        border-top: 1px solid #C9C9C9;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 35%;
+        margin-right: 35%;
+      }
+
+      .thread-created {
+          color: rgb(135, 135, 252);
+      }
+
+      .comment-created {
+          color: rgb(245, 204, 129);
+      }
+
+      .media-title {
+          color: rgb(223, 65, 223);
+          font-weight: bold;
+      }
+
+      .user-comment {
+          color: rgb(63, 63, 214);
+      }
 }
 
 @media screen and (min-width: 768px){
@@ -11,20 +38,24 @@
 
     .Happenings ul {
         list-style-type: none;
-        display: flex;
+        /* display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: space-evenly; */
+        width: 80%;
+        border: 1px solid yellow;
+
     }
 
     .Happenings ul li {
         list-style-type: none;
         /* background-color: yellow; */
-        border: 1px solid yellow;
-        height: 175px;
-        width: 30%;
+        /* border: 1px solid yellow; */
+        /* height: 175px; */
+        /* width: 30%; */
         text-align: center;
         justify-content: center;
-        padding-top: 60px;
+        padding-top: 8px;
+        padding-bottom: 8px;
     }
 
 }
