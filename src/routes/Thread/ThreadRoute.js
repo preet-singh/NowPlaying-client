@@ -20,10 +20,6 @@ export default class ThreadRoute extends React.Component {
 
   state = {
     comments: [],
-    mediaTimer: 0,
-    seconds: 0,
-    minutes: 0,
-    hours: 0,
   }
 
   componentDidMount() {
@@ -76,11 +72,11 @@ export default class ThreadRoute extends React.Component {
   render(){
     return(
       <div className="ThreadRoute">
+        <Header />
+        <Directory thread={this.props.match.params.thread} id={this.props.match.params.id} />
         <main>
-          <button onClick={() => this.playButton()}>Play</button>
+          <button onClick={() => this.playButton()} id='display-comment'>Play</button>
           <ThreadDetails thread={this.props.match.params.thread} id={this.props.match.params.id}/>
-          <h4>{this.state.mediaTimer}</h4>
-          <button onClick={() => this.playTimer()}>Timer</button>
           <ScrubBox />
           <PrivateThreadMessage />
           {this.renderCommentList()}
