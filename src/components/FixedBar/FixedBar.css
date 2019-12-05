@@ -1,21 +1,69 @@
-.fixed-bar {
-  border-top: 1px solid grey;
-  padding: 10px;
-  width: 95%;
-  margin: auto;
+@media screen and (min-width: 320px){
+  .fixed-bar {
+    border-top: 1px solid grey;
+    padding: 10px;
+    width: 100%;
+    height: 260px;
+    margin: auto;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgb(58, 175, 58);
+    z-index: 2;
+  }
+  
+  .fixed-bar-header {
+    margin-top: -20px;
+    margin-bottom: 10px;
+    border: none;
+    padding: 10px;
+    position: relative;
+    margin-left: -50px;
+  }
+  
+  .fixed-bar-header h3 {
+    position: absolute;
+    right: 65px;
+    top: 43%;
+  }
+
+  .fixed-bar-header button {
+    border: none;
+  }
 }
 
-.fixed-bar-header {
-  margin-top: -20px;
-  margin-bottom: 10px;
-  border: none;
-  padding: 10px;
-  position: relative;
-  margin-left: -50px;
-}
+@media screen and (min-width: 768px){
+  .fixed-bar {
+    min-width: 445px;
+    height: 300px;
+    max-width: 30%;
+    position: fixed;
+    bottom: 0px;
+    right: -441px;
+    margin-right: 445px;
+  }
 
-.fixed-bar-header h3 {
-  position: absolute;
-  right: 65px;
-  top: 43%;
+  .fixed-bar-header {
+    margin-top: 0px;
+    margin-left: 0px;
+    padding: 0px;
+    position: relative;
+    text-align: center;
+  }
+
+  .fixed-bar-header h3 {
+    position: initial;
+  }
+
+  .fixed-bar-header button {
+    position: absolute !important;
+    z-index: 3;
+    top: -25px !important;
+    right: 45px !important;
+  }
+
+  .fixed-bar-header button:hover {
+    cursor: pointer;
+  }
+
 }

@@ -36,3 +36,28 @@
   }
 
 }
+
+@media screen and (min-width: 768px){
+  
+  .add-comment-box textarea {
+    display: block;
+    margin: auto;
+    height: 5em;
+    min-width: 80%;
+    max-width: 80%;
+    min-height: 200px;
+  }
+
+  .reaction-buttons {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 85px;
+    left: 5px;
+  }
+
+  .reaction-buttons button:hover {
+    cursor: pointer;
+  }
+
+}

@@ -1,8 +1,24 @@
-.thread-comment-list {
-  border: 1px solid white;
-  padding: 10px !important;
-  width: 95%;
-  margin: auto !important;
-  margin-top: 20px !important;
-  margin-bottom: 20px !important;
+@media screen and (min-width: 768px){
+
+    .thread-comment-list {
+    border: 1px solid white;
+    padding: 10px !important;
+    width: 95%;
+    margin: auto !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+  }
+
+}
+
+
+@media screen and (min-width: 768px){
+  .thread-comment-list {
+    border: 1px solid white;
+    padding: 10px !important;
+    width: 500px;
+    margin: auto !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+  }
 }

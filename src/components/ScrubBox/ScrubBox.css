@@ -1,5 +1,22 @@
-.scrub-box {
-  display: flex;
-  flex-direction: column-reverse;
-  width: 100%;
+@media screen and (min-width: 320px){
+
+    .scrub-box {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+}
+
+@media screen and (min-width: 768px){
+
+  .scrub-box {
+    background-color: red !important;
+    height: 100px;
+    flex-direction: column;
+  }
+
+  .scrub-box button {
+    
+  }
 }

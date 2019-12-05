@@ -80,7 +80,7 @@ class ThreadItem extends React.Component {
           <img src='https://img01.mgo-images.com/image/thumbnail/v2/content/MMVAF76018A477C2826A4EC8747C40B7BE27.jpeg' alt='Movie poster'/>
           <p id='last_comment'>{this.state.lastComment? lastCommentExists : 'No comments yet! Be the first!'}</p>
         </Link>
-        <img id='play-button' src={playbutton} alt='play button' />
+        <img id='play-button_home' src={playbutton} alt='play button' />
       </div>
     )
   }
