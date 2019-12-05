@@ -36,9 +36,9 @@ class ThreadCommentList extends React.Component {
   }
 
   handleTimedComments = () => {
-    return this.state.comments.map(comment => {
+    this.state.comments.forEach(comment => {
       if(comment.comment_timestamp === this.context.mediaTimer){
-        this.state.renderedComments.push(comment);
+          this.state.renderedComments.push(comment);
       }
     })
   }
@@ -50,14 +50,17 @@ class ThreadCommentList extends React.Component {
     }
     return this.state.renderedComments.map(comment => {
       return (
-        <ThreadCommentItem username={comment.user_name} comment={comment.user_comment} timestamp={this.convertSeconds(comment.comment_timestamp)} key={comment.id}/>
+        <ThreadCommentItem 
+        username={comment.user_name} 
+        comment={comment.user_comment} 
+        timestamp={this.convertSeconds(comment.comment_timestamp)} 
+        key={comment.id}
+        />
       )
     })
-
   }
 
   render() {
-    console.log(this.convertSeconds(9))
     return (
       <ul className='thread-comment-list'>
         {this.renderCommentList()}

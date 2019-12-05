@@ -29,7 +29,6 @@ export default class ThreadRoute extends React.Component {
 
   componentDidMount() {
     const mediaType = this.props.match.params;
-    console.log(mediaType.thread, mediaType.id)
     if(mediaType.thread === 'books'){
       AuthApiService.getBookComments(mediaType.thread, mediaType.id)
       .then(res => {
@@ -76,8 +75,6 @@ export default class ThreadRoute extends React.Component {
   }
 
   render(){
-    console.log(this.state)
-    console.log(this.context.currentThreadComments)
     return(
       <div className="ThreadRoute">
         <Header />
