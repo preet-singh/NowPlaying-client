@@ -4,6 +4,7 @@ import './ThreadsList.css';
 import AuthService from '../../utils/auth-service';
 import UserContext from '../../utils/context';
 import {withRouter, Link} from 'react-router-dom';
+import decideCommentService from '../../utils/decideCommentService';
 
 class ThreadsList extends React.Component {
   static contextType = UserContext;
@@ -19,7 +20,9 @@ class ThreadsList extends React.Component {
     let returnItem = [];
     for (let i=0;i<limit;i++) {
       if (threads[i]) {
-        returnItem.push(<ThreadItem details={threads[i]} key={i} />)
+        let comment = decideCommentService(this.context,threads[i].id)
+        console.log(comment);
+        returnItem.push(<ThreadItem details={threads[i]} comment={comment} key={i} />)
       }
     }
     return returnItem;

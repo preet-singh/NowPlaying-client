@@ -68,10 +68,8 @@ class ThreadItem extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.getComments(this.context,this.props.details.id)
-  }
   render() {
+    this.getComments(this.context,this.props.details.id)
     let lastCommentExists = `Last comment: ${this.state.lastComment}` || '';
     return (
       <div className='thread-item'>
