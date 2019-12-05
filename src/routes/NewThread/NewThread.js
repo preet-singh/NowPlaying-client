@@ -21,11 +21,8 @@ class NewThread extends React.Component {
     return(
       <div className="NewThread">
           <Header />
-          <Directory />
-          <SortOptions />
           <main>
             <CreateNewThreadForm />
-            <ThreadsList />
           </main>
       </div>
     );
@@ -33,3 +30,8 @@ class NewThread extends React.Component {
 }
 
 export default NewThread;
+
+// <Directory />
+// <SortOptions />
+// <ThreadsList />
+// Line 23, 24, 25, 26

@@ -11,9 +11,12 @@
 @media screen and (min-width: 768px){
 
   .scrub-box {
-    background-color: red !important;
     height: 100px;
-    flex-direction: column;
+    padding: 10px;
+    padding-left: 50px;
+    text-align: left;
+    margin-right: auto;
+    width: 40%;
   }
 
   .scrub-box button {

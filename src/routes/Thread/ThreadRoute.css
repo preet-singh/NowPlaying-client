@@ -25,5 +25,23 @@
 }
 
 @media screen and (min-width: 768px){
-    
+
+    .ThreadRoute > main > button {
+        display: block;
+        padding-left: 50px;
+        width: 40%;
+        height: 30px;
+        text-align: center;
+        border: none;
+    }
+
+    .ThreadRoute > main > button:hover {
+        cursor: pointer;
+    }
+
+    .ThreadRoute > main > h4 {
+        text-align: center;
+        width: 40%;
+        padding-left: 50px;
+    }
 }

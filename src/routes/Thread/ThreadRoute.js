@@ -72,12 +72,10 @@ export default class ThreadRoute extends React.Component {
     console.log(this.state.mediaTimer)
     return(
       <div className="ThreadRoute">
-        <Header />
-        <Directory thread={this.props.match.params.thread} id={this.props.match.params.id} />
         <main>
-          <button onClick={() => this.playTimer()}>Timer</button>
-          <h4>{this.state.mediaTimer}</h4>
           <ThreadDetails thread={this.props.match.params.thread} id={this.props.match.params.id}/>
+          <h4>{this.state.mediaTimer}</h4>
+          <button onClick={() => this.playTimer()}>Timer</button>
           <ScrubBox />
           <PrivateThreadMessage />
           {this.renderCommentList()}
@@ -87,3 +85,5 @@ export default class ThreadRoute extends React.Component {
     );
   }
 }
+
+//<Directory thread={this.props.match.params.thread} id={this.props.match.params.id} /> LINE 75

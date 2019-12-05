@@ -9,6 +9,7 @@
   .scrub-bar {
     height: 50px;
     background-color: rgb(182, 152, 251);
-    width: 50%;
+    width: 100%;
+    margin-top: 10px;
   }
 }

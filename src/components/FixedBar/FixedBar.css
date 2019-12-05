@@ -18,13 +18,11 @@
     border: none;
     padding: 10px;
     position: relative;
-    margin-left: -50px;
+    padding-left: -140px;
   }
   
   .fixed-bar-header h3 {
-    position: absolute;
-    right: 65px;
-    top: 43%;
+    position: initial;
   }
 
   .fixed-bar-header button {

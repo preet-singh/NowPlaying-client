@@ -19,3 +19,32 @@
         font-size: 13px;
     }
 }
+
+@media screen and (min-width: 768px){
+    .thread-details {
+        width: 90%;
+        margin: initial;
+        margin-bottom: 20px;
+        padding-top: 30px;
+        padding-left: 30px;
+        text-align: left;
+        /* background-color: turquoise; */
+    }
+
+    .thread-details h3 {
+        font-size: 48px;
+        padding: initial;
+    }
+
+    .thread-details p:nth-child(even){
+        padding: 5px 17px 5px 5px;
+        font-size: 16px;
+    }
+
+    .thread-details p:nth-child(odd){
+        margin-left: auto;
+        text-align: right;
+        padding: 5px 17px 5px 5px;
+        font-size: 13px;
+    }
+}
