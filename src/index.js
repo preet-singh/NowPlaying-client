@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
-import { UserProvider } from './utils/context'
+import { UserProvider } from './utils/context';
 
 //Components
 import App from './App';
@@ -14,6 +14,6 @@ import './index.css';
 ReactDOM.render(
     <BrowserRouter>
         <UserProvider>
-           <App />
+          <App />
         </UserProvider>
     </BrowserRouter>, document.getElementById('root'));
