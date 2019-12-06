@@ -20,27 +20,14 @@ class CategoryRoute extends React.Component {
   static contextType = UserContext;
   constructor(props) {
     super(props);
-    this.state = {
-      filterOptions: {
-        minimumYear: 0,
-        maximumYear: new Date().getFullYear(),
-        genre: 'all',
-        minimumRating: 1
-      },
     }
-  }
-
-  setFilterOption = (stateChange) => {
-    console.log(stateChange);
-    this.setState(stateChange);
-  }
 
   render() {
     return(
       <div className="CategoryRoute">
         <Header />
         <Directory />
-        <SortOptions state={this.state} setFilterOption={this.setFilterOption} />
+        <SortOptions state={this.state} />
         <main>
           <ThreadsList />
         </main>

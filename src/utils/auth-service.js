@@ -144,11 +144,12 @@ const AuthApiService = {
         },
         body: JSON.stringify(obj),
       })
-       .then(res => 
+       .then(res =>
           (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json(),
-    )},
+       )
+    },
     postComment(category, commentBody) {
       return fetch(`${config.API_ENDPOINT}/comments/${category}_comments`, {
         method: 'POST',

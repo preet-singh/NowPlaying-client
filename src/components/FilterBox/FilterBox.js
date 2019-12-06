@@ -10,7 +10,6 @@ class FilterBox extends Component {
     this.state = {
       minimumYear: '',
       maximumYear: '',
-      genre: '',
       rating: '',
       familyRating: '',
       error: null,
@@ -30,13 +29,26 @@ class FilterBox extends Component {
     })
   }
 
-  handleSubmit = (e, currentCategoryItems) => {
+  handleSubmit = (e) => {
+    let currentCategoryItems = this.context.searchedCategoryItems;
     e.preventDefault();
+
+    if(this.state.minimumYear){
+      currentCategoryItems = currentCategoryItems.filter(item => Number(this.state.minimumYear) <= Number(item.release_date.slice(0,4)))
+    }
+    if(this.state.maximumYear){
+      currentCategoryItems = currentCategoryItems.filter(item => Number(this.state.maximumYear) >= Number(item.release_date.slice(0,4)))
+    }
+    if(this.state.rating) {
+      currentCategoryItems = currentCategoryItems.filter(item => Number(item.imdb_rating) >= Number(this.state.rating));
+    }
+    if(this.state.familyRating) {
+      currentCategoryItems = currentCategoryItems.filter(item => item.mpaa_rating === this.state.familyRating);
+    }
     this.context.setFilteredCategoryItems(currentCategoryItems);
     this.setState({
       minimumYear: '',
       maximumYear: '',
-      genre: '',
       rating: '',
       familyRating: ''
     })
@@ -47,43 +59,25 @@ class FilterBox extends Component {
     this.setState({
       minimumYear: '',
       maximumYear: '',
-      genre: '',
       rating: '',
       familyRating: '',
       originalCategoryItems: this.state.originalCategoryItems
     })
+    document.getElementById('searchBar').value='';
     this.context.setFilteredCategoryItems(this.context.categoryItems);
     this.context.setSearchedCategoryItems(this.context.categoryItems);
   }
 
   render() {
-    let currentCategoryItems = this.state.originalCategoryItems;
-
-    if(this.state.minimumYear){
-      currentCategoryItems = currentCategoryItems.filter(item => Number(this.state.minimumYear) <= Number(item.release_date.slice(0,4)))
-    }
-    if(this.state.maximumYear){
-      currentCategoryItems = currentCategoryItems.filter(item => Number(this.state.maximumYear) >= Number(item.release_date.slice(0,4)))
-    }
-    if(this.state.genre) {
-      currentCategoryItems = currentCategoryItems.filter(item => item.genre === this.state.genre);
-    }
-    if(this.state.rating) {
-      currentCategoryItems = currentCategoryItems.filter(item => Number(item.imdb_rating) >= Number(this.state.rating));
-    }
-    if(this.state.familyRating) {
-      currentCategoryItems = currentCategoryItems.filter(item => item.mpaa_rating === this.state.familyRating);
-    }
-    
     return (
-      <form id="filterForm" name="filterForm" onSubmit={e => {this.handleSubmit(e,currentCategoryItems)}}>
+      <form id="filterForm" name="filterForm" onSubmit={e => this.handleSubmit(e)}>
         <label htmlFor="minimumYear" id="minimumYearLabel" name="minimumYearLabel">Earliest Year:</label>
         <input 
           type="text" 
           placeholder="1920" 
           id="minimumYear" 
           name="minimumYear" 
-          onChange={this.handleChange} 
+          onChange={(e) => this.setState({minimumYear: e.target.value})}
         />
         <label htmlFor="latestYear" id="latestYearLabel" name="latestYearLabel">Latest Year:</label>
         <input 
@@ -91,21 +85,14 @@ class FilterBox extends Component {
           placeholder={new Date().getFullYear()}
           id="latestYear"
           name="maximumYear" 
-          onChange={this.handleChange} 
-        />
-        <label htmlFor="genre" id="genreLabel" name="genreLabel">Genre:</label>
-        <input 
-          type="text" 
-          placeholder="Romance"
-          name="genre"
-          onChange={this.handleChange}   
+          onChange={(e) => this.setState({maximumYear: e.target.value})} 
         />
         <label htmlFor="rating" id="ratingLabel" name="ratingLabel">Minimum Rating:</label>
         <select 
           id="rating" 
           name="rating" 
           defaultValue="1"
-          onChange={this.handleChange} 
+          onChange={(e) => {this.setState({rating: e.target.rating})}} 
         >
           <option value="10">10</option>
           <option value="9">9</option>
@@ -123,7 +110,7 @@ class FilterBox extends Component {
           id="familyRating" 
           name="familyRating" 
           defaultValue="R"
-          onChange={this.handleChange} 
+          onChange={(e) => this.setState({familyRating: e.target.value})} 
         >
           <option value="G">G</option>
           <option value="PG">PG</option>

@@ -21,6 +21,7 @@ const UserContext = React.createContext({
   setCategoryItems: () => {},
   setSearchedCategoryItems: () => {},
   setPlaying: () => {},
+  updateCategoryItems: () => {},
   setCurrentThreadComments: () => {},
   clearError: () => {},
   setUser: () => {},
@@ -60,8 +61,6 @@ export class UserProvider extends Component {
     this.setState({categoryID});
     let categoryItems = await AuthApiService.getSpecificThreads(category).then(response => response)
     this.setCategoryItems(categoryItems);
-    this.setSearchedCategoryItems(categoryItems);
-    this.setFilteredCategoryItems(categoryItems);
   }
 
   setCategoryList = categoryList => {
@@ -70,16 +69,21 @@ export class UserProvider extends Component {
 
   setCategoryItems = categoryItems => {
     this.setState({categoryItems});
+    this.setSearchedCategoryItems(categoryItems);
   }
 
   setSearchedCategoryItems = searchedCategoryItems => {
     this.setState({searchedCategoryItems});
-    this.setState({filteredCategoryItems: searchedCategoryItems})
+    this.setFilteredCategoryItems(searchedCategoryItems);
   }
   setFilteredCategoryItems = filteredCategoryItems => {
     this.setState({filteredCategoryItems})
   }
 
+  updateCategoryItems = async () => {
+    let categoryItems = await AuthApiService.getSpecificThreads(this.state.category).then(response=> response)
+    this.setCategoryItems(categoryItems);
+  }
   clearError = () => {
     this.setState({ error: null })
   }
@@ -153,6 +157,7 @@ export class UserProvider extends Component {
       setSearchedCategoryItems: this.setSearchedCategoryItems,
       setFilteredCategoryItems: this.setFilteredCategoryItems,
       setCurrentThreadComments: this.setCurrentThreadComments,
+      updateCategoryItems: this.updateCategoryItems,
       setRenderedComments: this.setRenderedComments,
       updateMediaTimer: this.updateMediaTimer,
       processLogin: this.processLogin,
