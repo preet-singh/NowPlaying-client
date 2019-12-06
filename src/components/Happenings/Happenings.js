@@ -33,8 +33,11 @@ class Happenings extends Component {
     }
 
   render() {
+    console.log(this.state.happenings);
+    let dateSortedHappenings = this.state.happenings.sort((a,b) => a.date_created = b.date_created);
     let firstFourHappenings = this.state.happenings.slice(0,4);
     let lastHappening = this.state.happenings[4] || {};
+    // console.log(dateSortedHappenings);
     return (
       <div className="Happenings">
         <h3>What's happening</h3>

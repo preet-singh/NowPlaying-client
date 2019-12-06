@@ -3,7 +3,6 @@ import './AddCommentBox.css';
 import PlayButton from '../PlayButton/PlayButton';
 import AuthApiService from '../../utils/auth-service';
 import UserContext from '../../utils/context';
-import config from '../../config';
 
 class AddCommentBox extends React.Component {
   static contextType = UserContext;

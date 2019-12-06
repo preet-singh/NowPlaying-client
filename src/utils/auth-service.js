@@ -190,7 +190,7 @@ const AuthApiService = {
     )
   },
   deleteHappeningEvent(id) {
-    return fetch(`${config.API_ENDPOINT}/happening/${id}`, {
+    fetch(`${config.API_ENDPOINT}/happening/${id}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
