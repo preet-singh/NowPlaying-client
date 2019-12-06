@@ -68,13 +68,13 @@ export class UserProvider extends Component {
   }
 
   setCategoryItems = categoryItems => {
-    this.setState({categoryItems});
     this.setSearchedCategoryItems(categoryItems);
+    this.setState({categoryItems});
   }
 
   setSearchedCategoryItems = searchedCategoryItems => {
-    this.setState({searchedCategoryItems});
     this.setFilteredCategoryItems(searchedCategoryItems);
+    this.setState({searchedCategoryItems});
   }
   setFilteredCategoryItems = filteredCategoryItems => {
     this.setState({filteredCategoryItems})

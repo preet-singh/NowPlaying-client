@@ -18,7 +18,7 @@ class NewThread extends React.Component {
   static contextType = UserContext;
   
   componentDidMount() {
-    this.context.setSearchedCategoryItems([]);
+    // this.context.setSearchedCategoryItems([]);
   }
   render() {
     return(
