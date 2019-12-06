@@ -52,8 +52,8 @@ class FilterBox extends Component {
       familyRating: '',
       originalCategoryItems: this.state.originalCategoryItems
     })
-    this.context.setFilteredCategoryItems(this.state.originalCategoryItems);
-    this.context.setSearchedCategoryItems(this.state.originalCategoryItems);
+    this.context.setFilteredCategoryItems(this.context.categoryItems);
+    this.context.setSearchedCategoryItems(this.context.categoryItems);
   }
 
   render() {
