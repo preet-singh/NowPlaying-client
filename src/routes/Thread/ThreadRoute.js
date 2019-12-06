@@ -76,7 +76,6 @@ export default class ThreadRoute extends React.Component {
         <Directory thread={this.props.match.params.thread} id={this.props.match.params.id} />
         <main>
           <ThreadDetails thread={this.props.match.params.thread} id={this.props.match.params.id}/>
-          <ScrubBox />
           <button onClick={() => this.playButton()} id='display-comment'>Play</button>
           <PrivateThreadMessage />
           {this.renderCommentList()}
@@ -87,4 +86,5 @@ export default class ThreadRoute extends React.Component {
   }
 }
 
+//<ScrubBox /> LINE 79
 //<Directory thread={this.props.match.params.thread} id={this.props.match.params.id} /> LINE 75
