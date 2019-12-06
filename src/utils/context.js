@@ -15,6 +15,8 @@ const UserContext = React.createContext({
   happenings: [],
   mediaTimer: null,
   playing: false,
+  currentThread: '',
+  currentThreadId: null,
   error: null,
   setError: () => {},
   setCategory: () => {},
@@ -24,6 +26,8 @@ const UserContext = React.createContext({
   setPlaying: () => {},
   updateCategoryItems: () => {},
   setHappenings: () => {},
+  setCurrentThread: () => {},
+  setCurrentThreadId: () => {},
   setCurrentThreadComments: () => {},
   clearError: () => {},
   setUser: () => {},
@@ -112,6 +116,14 @@ export class UserProvider extends Component {
     this.setState({currentThreadComments: comments})
   }
 
+  setCurrentThread = thread => {
+    this.setState({currentThread: thread})
+  }
+
+  setCurrentThreadId = id => {
+    this.setState({currentThreadId: id})
+  }
+
   setRenderedComments = comments => {
     this.setState({renderedComments: [...comments]})
   }
@@ -153,6 +165,8 @@ export class UserProvider extends Component {
       mediaTimer: this.state.mediaTimer,
       playing: this.state.playing,
       currentThreadComments: this.state.currentThreadComments,
+      currentThread: this.state.currentThread,
+      currentThreadId: this.state.currentThreadId,
       renderedComments: this.state.renderedComments,
       happenings: this.state.happenings,
       error: this.state.error,
@@ -167,6 +181,8 @@ export class UserProvider extends Component {
       setFilteredCategoryItems: this.setFilteredCategoryItems,
       setCurrentThreadComments: this.setCurrentThreadComments,
       updateCategoryItems: this.updateCategoryItems,
+      setCurrentThread: this.setCurrentThread,
+      setCurrentThreadId: this.setCurrentThreadId,
       setRenderedComments: this.setRenderedComments,
       setHappenings: this.setHappenings,
       updateMediaTimer: this.updateMediaTimer,
