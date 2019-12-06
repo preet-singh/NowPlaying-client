@@ -14,16 +14,11 @@ class ThreadCommentList extends React.Component {
   }
   
   componentDidMount() {
-   this.setState({comments: this.context.currentThreadComments})
-   let renderedComments2 = this.renderCommentList();
-   this.setState({renderedComments2});
+    this.setState({comments: this.context.currentThreadComments})
+    let renderedComments2 = this.renderCommentList();
+    this.setState({renderedComments2});
   }
-
-  componentWillUnmount() {
-    this.setState({comments: []})
-    this.setState({renderedComments2: []})
-  }
-
+  
   convertTimeString = timeValue => {
     if(timeValue < 10) {
       return `0${timeValue}`;

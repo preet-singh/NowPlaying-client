@@ -20,6 +20,7 @@ export default class ThreadRoute extends React.Component {
 
   state = {
     comments: [],
+    updated: 0,
   }
 
   componentDidMount() {
@@ -62,7 +63,7 @@ export default class ThreadRoute extends React.Component {
     if (mediaType.id !== this.context.currentThreadId || mediaType.thread !== this.context.currentThread) {
       this.context.setCurrentThread(mediaType.thread)
       this.context.setCurrentThreadId(mediaType.id)
-    }
+      this.setState({updated: this.state.updated+1})
       if(mediaType.thread === 'books'){
         AuthApiService.getBookComments(mediaType.thread, mediaType.id)
         .then(res => {
@@ -91,6 +92,7 @@ export default class ThreadRoute extends React.Component {
           this.context.setCurrentThreadComments(orderedComments);
         })
       }
+    }
   }
   
 
