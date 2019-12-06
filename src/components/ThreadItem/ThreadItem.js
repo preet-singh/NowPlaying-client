@@ -73,11 +73,12 @@ class ThreadItem extends React.Component {
   }
   render() {
     let lastCommentExists = `Last comment: ${this.state.lastComment}` || '';
+    console.log(this.props)
     return (
       <div className='thread-item'>
         <Link to={`/${this.context.category}/${this.props.details.id}`}>
           <h3>{this.props.details.title}</h3>
-          <img src='https://img01.mgo-images.com/image/thumbnail/v2/content/MMVAF76018A477C2826A4EC8747C40B7BE27.jpeg' alt='Movie poster'/>
+          <img src={`http://image.tmdb.org/t/p/w780//${this.props.details.poster}`} alt='Movie poster'/>
           <p id='last_comment'>{this.state.lastComment? lastCommentExists : 'No comments yet! Be the first!'}</p>
         </Link>
         <img id='play-button_home' src={playbutton} alt='play button' />

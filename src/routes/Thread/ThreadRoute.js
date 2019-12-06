@@ -75,9 +75,9 @@ export default class ThreadRoute extends React.Component {
         <Header />
         <Directory thread={this.props.match.params.thread} id={this.props.match.params.id} />
         <main>
-          <button onClick={() => this.playButton()} id='display-comment'>Play</button>
           <ThreadDetails thread={this.props.match.params.thread} id={this.props.match.params.id}/>
           <ScrubBox />
+          <button onClick={() => this.playButton()} id='display-comment'>Play</button>
           <PrivateThreadMessage />
           {this.renderCommentList()}
         </main>

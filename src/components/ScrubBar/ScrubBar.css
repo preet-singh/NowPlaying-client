@@ -9,7 +9,9 @@
   .scrub-bar {
     height: 50px;
     background-color: rgb(182, 152, 251);
+    min-width: 300px;
     width: 100%;
+    max-width: 650px;
     margin-top: 10px;
   }
 }

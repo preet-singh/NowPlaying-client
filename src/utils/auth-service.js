@@ -136,11 +136,14 @@ const AuthApiService = {
       )
     },
     makeThread(obj, thread){
-      return fetch(config.API_ENDPOINT + `/main/${thread}`,
-      {method: 'POST',
-       header: {
-         'content-type': 'application/json'
-       }})
+      return fetch(`${config.API_ENDPOINT}/main/${thread}`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'authorization': `Bearer ${TokenService.getAuthToken()}`,
+        },
+        body: JSON.stringify(obj),
+      })
        .then(res => 
           (!res.ok)
           ? res.json().then(e => Promise.reject(e))

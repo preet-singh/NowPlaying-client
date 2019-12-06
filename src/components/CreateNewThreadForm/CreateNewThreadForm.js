@@ -1,6 +1,7 @@
+/* eslint-disable no-restricted-globals */
 //Dependencies
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 //Utilities
 import UserContext from '../../utils/context';
@@ -30,7 +31,8 @@ class CreateNewThreadForm extends React.Component {
       allMovieResults: null,
       selectedMovieId: null,
       selectedMovie: null,
-      showMovies: null
+      showMovies: null,
+      selectedMovieImg: null,
     });
     let find = this.context.categoryItems.find(item => item.title.toLowerCase() === this.state.title.toLowerCase());
     if (find) {
@@ -71,7 +73,7 @@ class CreateNewThreadForm extends React.Component {
     console.log(this.state.allMovieResults)
     return this.state.allMovieResults.results.map(movie => 
       <li key={movie.id}>
-        <Link onClick={() => this.setState({ selectedMovie: true, selectedMovieId: movie.id })}>
+        <Link onClick={() => this.setState({ selectedMovie: true, selectedMovieId: movie.id, selectedMovieImg: movie.poster_path })}>
           <h2>{movie.title}</h2>
           <p>Release Date: {movie.release_date}</p>
           <img src={`http://image.tmdb.org/t/p/w185//${movie.poster_path}`} alt={movie.title} />
@@ -110,16 +112,16 @@ class CreateNewThreadForm extends React.Component {
     return this.state.autoFillMovie ? 
           <div>
             <h2>{this.state.autoFillMovie.original_title}</h2>
-            <img src={this.state.autoFillMovie.belongs_to_collection ? 
-            `http://image.tmdb.org/t/p/w185/${this.state.autoFillMovie.belongs_to_collection.poster_path}`
+            <img src={this.state.selectedMovieImg ? 
+            `http://image.tmdb.org/t/p/w185//${this.state.selectedMovieImg}`
             : 
             '#'} 
             alt={this.state.autoFillMovie.original_title}/>
             <p>{this.state.autoFillMovie.overview}</p>
+            <p>Release Date: {this.state.autoFillMovie.release_date}</p>
+            <p>{this.state.autoFillMovie.genres[0].name}</p>
             <form onSubmit={this.handleNewThread}>
-              <label>Description</label>
-              <textarea type='text'></textarea>
-              <button type='submit'></button>
+              <button type='submit'>Make new Thread</button>
             </form>
           </div>
           : 
@@ -132,16 +134,17 @@ class CreateNewThreadForm extends React.Component {
     let allMovieInfo = {
       title: this.state.autoFillMovie.original_title,
       event_description: this.state.autoFillMovie.overview,
-      id: this.state.selectedMovieId,
       media_runtime: this.state.autoFillMovie.runtime,
       release_date: this.state.autoFillMovie.release_date,
       genre: this.state.autoFillMovie.genres[0].name,
-      imdb_rating: this.state.autoFillMovie.vote_average,
-      mpaa_rating: this.state.autoFillMovie.vote_average,
+      imdb_rating: Math.floor(this.state.autoFillMovie.vote_average),
+      mpaa_rating: "PG-13",
       poster: this.state.autoFillMovie.poster_path,
+      media_id: this.state.selectedMovieId,
     }
-    AuthApiService.makeThread(allMovieInfo)
+    AuthApiService.makeThread(allMovieInfo, 'movies')
     console.log('new thread created')
+    this.props.history.push(`/category/1`)
   }
 
   render() {
@@ -165,4 +168,4 @@ class CreateNewThreadForm extends React.Component {
   }
 }
 
-export default CreateNewThreadForm;
+export default withRouter(CreateNewThreadForm);

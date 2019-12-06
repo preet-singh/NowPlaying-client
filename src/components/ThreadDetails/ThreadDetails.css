@@ -22,7 +22,7 @@
 
 @media screen and (min-width: 768px){
     .thread-details {
-        width: 90%;
+        width: 50%;
         margin: initial;
         margin-bottom: 20px;
         padding-top: 30px;
@@ -44,7 +44,7 @@
     .thread-details p:nth-child(odd){
         margin-left: auto;
         text-align: right;
-        padding: 5px 17px 5px 5px;
+        padding: 5px 50px 5px 5px;
         font-size: 13px;
     }
 }

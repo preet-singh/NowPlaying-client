@@ -32,8 +32,10 @@
 
     .ThreadRoute > main > button {
         display: block;
-        padding-left: 50px;
-        width: 40%;
+        margin-left: 50px;
+        width: 35%;
+        max-width: 650px;
+        min-width: 300px;
         height: 30px;
         text-align: center;
         border: none;
