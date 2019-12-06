@@ -11,6 +11,9 @@ import ThreadsList from '../../components/ThreadsList/ThreadsList';
 //Utilities
 import UserContext from '../../utils/context';
 
+//Style
+import './NewThread.css'
+
 class NewThread extends React.Component {
   static contextType = UserContext;
   
@@ -19,7 +22,8 @@ class NewThread extends React.Component {
   }
   render() {
     return(
-      <div className="NewThread">
+      <div className="
+      ">
           <Header />
           <main>
             <CreateNewThreadForm />

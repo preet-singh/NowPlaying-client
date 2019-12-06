@@ -17,14 +17,14 @@ class ThreadCategory extends React.Component {
   }
 
   mostPopular = () => {
-    if(!this.context.filteredCategoryItems || this.context.filteredCategoryItems.length <= 3){
+    if(!this.context.filteredCategoryItems || this.context.filteredCategoryItems.length < 3){
       return null
     }
     let movies = this.context.filteredCategoryItems;
     let first = movies[0];
     let second = movies[1];
     let third = movies[2];
-    for(let i = 0; i < movies.length; i++){
+    for(let i = 3; i < movies.length; i++){
       if(movies[i].imdb_rating > first.imdb_rating){
         first = movies[i]
       } else if (movies[i].imdb_rating > second.imdb_rating){

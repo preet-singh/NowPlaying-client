@@ -8,6 +8,9 @@ import UserContext from '../../utils/context';
 import AuthApiService from '../../utils/auth-service';
 import config from '../../config';
 
+//Style
+import './CreateNewThread.css'
+
 class CreateNewThreadForm extends React.Component {
   static contextType = UserContext;
   constructor(props) {
@@ -76,7 +79,7 @@ class CreateNewThreadForm extends React.Component {
       }
       else {
         return(
-      <li key={movie.id}>
+      <li className='displayedSearch' key={movie.id}>
         <Link onClick={() => this.setState({ selectedMovie: true, selectedMovieId: movie.id, selectedMovieImg: movie.poster_path })}>
           <h2>{movie.title}</h2>
           <p>Release Date: {movie.release_date}</p>
@@ -195,8 +198,8 @@ class CreateNewThreadForm extends React.Component {
           <input type="text" id="newThreadTitle" name="newThreadTitle" placeholder="Game of Thrones" value={this.state.title} onChange={(e) => this.setState({title: e.target.value})} />
           <button type="submit">Search!</button>
         </form>
-        <div>
-          <ul>
+        <div className='grid_for_desktop'>
+          <ul className='UL_displayMovies'>
             {this.state.showMovies ? this.displayMovies() : null}
           </ul>
           {this.state.selectedMovie ? this.autoFillMovie() : null}
