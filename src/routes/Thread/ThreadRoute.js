@@ -24,6 +24,9 @@ export default class ThreadRoute extends React.Component {
 
   componentDidMount() {
     const mediaType = this.props.match.params;
+    this.context.setCurrentThread(mediaType.thread)
+    this.context.setCurrentThreadId(mediaType.id)
+
     if(mediaType.thread === 'books'){
       AuthApiService.getBookComments(mediaType.thread, mediaType.id)
       .then(res => {
@@ -54,6 +57,43 @@ export default class ThreadRoute extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    const mediaType = this.props.match.params;
+    if (mediaType.id !== this.context.currentThreadId || mediaType.thread !== this.context.currentThread) {
+      this.context.setCurrentThread(mediaType.thread)
+      this.context.setCurrentThreadId(mediaType.id)
+    }
+      if(mediaType.thread === 'books'){
+        AuthApiService.getBookComments(mediaType.thread, mediaType.id)
+        .then(res => {
+          const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+          this.context.setCurrentThreadComments(orderedComments);
+        })
+      } 
+      else if(mediaType.thread === 'movies'){
+        AuthApiService.getMovieComments(mediaType.thread, mediaType.id)
+        .then(res => {
+          const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+          this.context.setCurrentThreadComments(orderedComments);
+        })
+      }
+      else if(mediaType.thread === 'podcasts'){
+        AuthApiService.getPodcastComments(mediaType.thread, mediaType.id)
+        .then(res => {
+          const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+          this.context.setCurrentThreadComments(orderedComments);
+        })
+      }
+      else if(mediaType.thread === 'tv_shows'){
+        AuthApiService.getTVShowComments(mediaType.thread, mediaType.id)
+        .then(res => {
+          const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+          this.context.setCurrentThreadComments(orderedComments);
+        })
+      }
+  }
+  
+
   renderCommentList = () => {
     if (this.state.comments && this.context.playing) {
       return (
@@ -70,6 +110,9 @@ export default class ThreadRoute extends React.Component {
   }
 
   render(){
+    console.log(this.context.currentThread, this.context.currentThreadId)
+    console.log(this.props.match.params)
+    console.log(this.context.currentThreadComments)
     return(
       <div className="ThreadRoute">
         <Header />

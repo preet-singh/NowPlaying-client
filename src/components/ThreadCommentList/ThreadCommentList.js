@@ -13,24 +13,16 @@ class ThreadCommentList extends React.Component {
     mediaTimer: '',
   }
   
-  async componentDidMount() {
-    await this.setState({comments: this.context.currentThreadComments})
-    let renderedComments2 = await this.renderCommentList();
-    await this.setState({renderedComments2});
+  componentDidMount() {
+   this.setState({comments: this.context.currentThreadComments})
+   let renderedComments2 = this.renderCommentList();
+   this.setState({renderedComments2});
   }
-  
-  // componentDidUpdate() {
-  //   let copy = [];
-  //   this.state.comments.forEach(comment => {
-  //     if(comment.comment_timestamp === this.context.mediaTimer){
-  //       copy.push(comment);
-  //     }
-  //   })
-  //   this.setState({
-  //     renderedComments: [...this.state.renderedComments, ...copy]
-  //   })
-  //   return copy;
-  // }
+
+  componentWillUnmount() {
+    this.setState({comments: []})
+    this.setState({renderedComments2: []})
+  }
 
   convertTimeString = timeValue => {
     if(timeValue < 10) {
