@@ -11,7 +11,6 @@ class FilterBox extends Component {
       minimumYear: '',
       maximumYear: '',
       rating: '',
-      familyRating: '',
       error: null,
       originalCategoryItems: []
     }
@@ -31,6 +30,7 @@ class FilterBox extends Component {
 
   handleSubmit = (e) => {
     let currentCategoryItems = this.context.searchedCategoryItems;
+    console.log(this.state.rating);
     e.preventDefault();
 
     if(this.state.minimumYear){
@@ -42,16 +42,7 @@ class FilterBox extends Component {
     if(this.state.rating) {
       currentCategoryItems = currentCategoryItems.filter(item => Number(item.imdb_rating) >= Number(this.state.rating));
     }
-    if(this.state.familyRating) {
-      currentCategoryItems = currentCategoryItems.filter(item => item.mpaa_rating === this.state.familyRating);
-    }
     this.context.setFilteredCategoryItems(currentCategoryItems);
-    this.setState({
-      minimumYear: '',
-      maximumYear: '',
-      rating: '',
-      familyRating: ''
-    })
   }
 
   handleClear = e => {
@@ -60,7 +51,6 @@ class FilterBox extends Component {
       minimumYear: '',
       maximumYear: '',
       rating: '',
-      familyRating: '',
       originalCategoryItems: this.state.originalCategoryItems
     })
     document.getElementById('searchBar').value='';
@@ -92,7 +82,7 @@ class FilterBox extends Component {
           id="rating" 
           name="rating" 
           defaultValue="1"
-          onChange={(e) => {this.setState({rating: e.target.rating})}} 
+          onChange={(e) => {this.setState({rating: e.target.value})}} 
         >
           <option value="10">10</option>
           <option value="9">9</option>
@@ -104,18 +94,6 @@ class FilterBox extends Component {
           <option value="3">3</option>
           <option value="2">2</option>
           <option value="1">1</option>
-        </select>
-        <label htmlFor="rating" id="ratingLabel" name="ratingLabel">Highest Family Rating:</label>
-        <select 
-          id="familyRating" 
-          name="familyRating" 
-          defaultValue="R"
-          onChange={(e) => this.setState({familyRating: e.target.value})} 
-        >
-          <option value="G">G</option>
-          <option value="PG">PG</option>
-          <option value="PG-13">PG-13</option>
-          <option value="R">R</option>
         </select>
         <button type="submit">Submit</button>
         <button type="button" onClick={(e) => this.handleClear(e)}>Clear</button>
