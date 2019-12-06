@@ -29,7 +29,7 @@ function Header(props) {
   let location = useLocation();
   return(
     <div className="Header">
-      <Link to='/'>
+      <Link to='/'>Now Playing
       </Link>
       {pathSpecificLogin(location)}
     </div>
