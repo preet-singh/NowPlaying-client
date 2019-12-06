@@ -22,6 +22,7 @@ import './App.css';
 
 class App extends React.Component {
   static contextType = UserContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -32,6 +33,8 @@ class App extends React.Component {
     let categories = await AuthService.getMain().then(response => response);
     await this.context.setCategoryList(categories);
     await this.context.setCategory(categories[0].media_type);
+    let happenings = await AuthService.getHappeningEvents().then(response => response);
+    await this.context.setHappenings(happenings);
   }
 
   render() {

@@ -12,6 +12,7 @@ const UserContext = React.createContext({
   filteredCategoryItems: [],
   currentThreadComments: [],
   renderedComments: [],
+  happenings: [],
   mediaTimer: null,
   playing: false,
   error: null,
@@ -21,6 +22,7 @@ const UserContext = React.createContext({
   setCategoryItems: () => {},
   setSearchedCategoryItems: () => {},
   setPlaying: () => {},
+  setHappenings: () => {},
   setCurrentThreadComments: () => {},
   clearError: () => {},
   setUser: () => {},
@@ -33,7 +35,7 @@ export default UserContext
 export class UserProvider extends Component {
   constructor(props) {
     super(props)
-    const state = { user: {}, mediaTimer: 0, error: null }
+    const state = { user: {}, mediaTimer: 0, happenings: [], error: null }
 
     const jwtPayload = TokenService.parseAuthToken()
 
@@ -78,6 +80,12 @@ export class UserProvider extends Component {
   }
   setFilteredCategoryItems = filteredCategoryItems => {
     this.setState({filteredCategoryItems})
+  }
+
+  setHappenings = events => {
+    this.setState({
+      happenings: events
+    })
   }
 
   clearError = () => {
@@ -142,6 +150,7 @@ export class UserProvider extends Component {
       playing: this.state.playing,
       currentThreadComments: this.state.currentThreadComments,
       renderedComments: this.state.renderedComments,
+      happenings: this.state.happenings,
       error: this.state.error,
       setError: this.setError,
       setPlaying: this.setPlaying,
@@ -154,6 +163,7 @@ export class UserProvider extends Component {
       setFilteredCategoryItems: this.setFilteredCategoryItems,
       setCurrentThreadComments: this.setCurrentThreadComments,
       setRenderedComments: this.setRenderedComments,
+      setHappenings: this.setHappenings,
       updateMediaTimer: this.updateMediaTimer,
       processLogin: this.processLogin,
       processLogout: this.processLogout,

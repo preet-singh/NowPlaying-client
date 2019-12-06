@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import config from '../../config';
+import UserContext from '../../utils/context';
+import AuthApiService from '../../utils/auth-service';
 import './Happenings.css'
 
 class Happenings extends Component {
+  static contextType = UserContext;
+
   constructor(props){
     super(props);
 
@@ -14,28 +18,19 @@ class Happenings extends Component {
   }
 
   componentDidMount() {
-    fetch(`${config.API_ENDPOINT}/happening`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-    .then(res => 
-      (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    )
-    .then(data => {
-      this.setState({
-        happenings: data
+    AuthApiService.getHappeningEvents()
+      .then(data => {
+        this.context.setHappenings(data);
+        this.setState({
+          happenings: data
+        })
       })
-    })
-    .catch(res => {
-      this.setState({
-        error: res.error
+      .catch(res => {
+        this.setState({
+          error: res.error
+        })
       })
-    })
-  }
+    }
 
   render() {
     let firstFourHappenings = this.state.happenings.slice(0,4);
