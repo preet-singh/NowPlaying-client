@@ -82,19 +82,16 @@ export class UserProvider extends Component {
     this.setState({filteredCategoryItems})
   }
 
-<<<<<<< HEAD
   updateCategoryItems = async () => {
     let categoryItems = await AuthApiService.getSpecificThreads(this.state.category).then(response=> response)
     this.setCategoryItems(categoryItems);
   }
-=======
   setHappenings = events => {
     this.setState({
       happenings: events
     })
   }
 
->>>>>>> working on happenings
   clearError = () => {
     this.setState({ error: null })
   }
