@@ -21,6 +21,9 @@ class ThreadsList extends React.Component {
       if (threads[i]) {
         returnItem.push(<ThreadItem details={threads[i]} key={i} />)
       }
+      else if (i === 0) {
+        returnItem.push('No threads exist!');
+      }
     }
     return returnItem;
   }
