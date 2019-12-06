@@ -12,6 +12,7 @@ const UserContext = React.createContext({
   filteredCategoryItems: [],
   currentThreadComments: [],
   renderedComments: [],
+  happenings: [],
   mediaTimer: null,
   playing: false,
   error: null,
@@ -22,6 +23,7 @@ const UserContext = React.createContext({
   setSearchedCategoryItems: () => {},
   setPlaying: () => {},
   updateCategoryItems: () => {},
+  setHappenings: () => {},
   setCurrentThreadComments: () => {},
   clearError: () => {},
   setUser: () => {},
@@ -34,7 +36,7 @@ export default UserContext
 export class UserProvider extends Component {
   constructor(props) {
     super(props)
-    const state = { user: {}, mediaTimer: 0, error: null }
+    const state = { user: {}, mediaTimer: 0, happenings: [], error: null }
 
     const jwtPayload = TokenService.parseAuthToken()
 
@@ -80,10 +82,19 @@ export class UserProvider extends Component {
     this.setState({filteredCategoryItems})
   }
 
+<<<<<<< HEAD
   updateCategoryItems = async () => {
     let categoryItems = await AuthApiService.getSpecificThreads(this.state.category).then(response=> response)
     this.setCategoryItems(categoryItems);
   }
+=======
+  setHappenings = events => {
+    this.setState({
+      happenings: events
+    })
+  }
+
+>>>>>>> working on happenings
   clearError = () => {
     this.setState({ error: null })
   }
@@ -146,6 +157,7 @@ export class UserProvider extends Component {
       playing: this.state.playing,
       currentThreadComments: this.state.currentThreadComments,
       renderedComments: this.state.renderedComments,
+      happenings: this.state.happenings,
       error: this.state.error,
       setError: this.setError,
       setPlaying: this.setPlaying,
@@ -159,6 +171,7 @@ export class UserProvider extends Component {
       setCurrentThreadComments: this.setCurrentThreadComments,
       updateCategoryItems: this.updateCategoryItems,
       setRenderedComments: this.setRenderedComments,
+      setHappenings: this.setHappenings,
       updateMediaTimer: this.updateMediaTimer,
       processLogin: this.processLogin,
       processLogout: this.processLogout,

@@ -180,6 +180,32 @@ const AuthApiService = {
             : res.json()
         )
   },
+  getHappeningEvents() {
+    return fetch(`${config.API_ENDPOINT}/happening`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then(res => 
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  },
+  deleteHappeningEvent(id) {
+    return fetch(`${config.API_ENDPOINT}/happening/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then(res => 
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  }
 }
   
   export default AuthApiService
