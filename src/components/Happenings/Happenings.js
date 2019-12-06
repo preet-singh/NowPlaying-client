@@ -74,8 +74,6 @@ export default Happenings;
 
 // Happenings table...it persists all data..we want it to have 5 items at a time
 
-// 1 2 3 4 5
-
 // Before we POST we NEED to check first of all IF there are 5 ITEMS IN OUR HAPPENINGS TABLE
 
 // IF THERE IS 5, WE REMOVE THE OLDEST ITEM IN THE DATABASE BASED ON TIMESTAMP USING THE DELETE REQUEST SO THAT IT PERSISTS IN DATABASE
@@ -83,5 +81,3 @@ export default Happenings;
 // NEED TO DELETE REQUEST IN OUR HAPPENINGS ROUTE 
 
 // AND THEN ONCE IT HAS BEEN DELETED, WE CALL THE POST REQUEST AND ADD THE NEW HAPPENING EVENT TO DATABASE
-
-// 1 2 3 4 5
