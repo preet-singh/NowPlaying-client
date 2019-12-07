@@ -73,7 +73,6 @@ class ThreadItem extends React.Component {
   }
   render() {
     let lastCommentExists = `Last comment: ${this.state.lastComment}` || '';
-    console.log(this.props)
     return (
       <div className='thread-item'>
         <Link to={`/${this.context.category}/${this.props.details.id}`}>

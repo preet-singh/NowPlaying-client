@@ -39,6 +39,7 @@ class Happenings extends Component {
 
   render() {
     let firstFourHappenings = this.state.happenings.slice(0,4);
+    console.log(firstFourHappenings);
     let lastHappening = this.state.happenings[4] || {};
     return (
       <div className="Happenings">

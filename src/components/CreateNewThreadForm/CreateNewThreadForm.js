@@ -71,10 +71,7 @@ class CreateNewThreadForm extends React.Component {
     let notCreatedItems = this.state.allMovieResults.results.map(movie => {
       let tryFind = this.state.findItems.find(item => movie.id === item.movie_id && movie.title === item.title);
       if (tryFind) {
-        console.log(tryFind);
-        console.log(movie);
         movie.nowplaying_id = tryFind.id;
-        console.log(movie)
         alreadyMadeItems.push(movie);
       }
       else {
@@ -161,7 +158,7 @@ class CreateNewThreadForm extends React.Component {
             alt={this.state.autoFillMovie.title}/>
             <p>{this.state.autoFillMovie.overview}</p>
             <p>Release Date: {this.state.autoFillMovie.release_date}</p>
-            <form onSubmit={this.handleNewThread}>
+            <form onSubmit={(e) => this.handleNewThread(e)}>
               <button type='submit'>Make new Thread</button>
             </form>
           </div>

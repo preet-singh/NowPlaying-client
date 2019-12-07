@@ -33,11 +33,8 @@ class ThreadCategory extends React.Component {
         third = movies[i]
       }
     }
-    console.log(movies)
     let results = [first, second, third]
-    console.log(results)
     return results.map(movie => {
-      console.log('details' + movie)
       return <ThreadItem details={movie} key={movie.id} />
     })
   }
