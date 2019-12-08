@@ -12,6 +12,7 @@ const UserContext = React.createContext({
   filteredCategoryItems: [],
   currentThreadComments: [],
   renderedComments: [],
+  happenings: [],
   mediaTimer: null,
   playing: false,
   playingCategory: null,
@@ -25,6 +26,7 @@ const UserContext = React.createContext({
   setPlaying: () => {},
   resetMediaTimer: () => {},
   updateCategoryItems: () => {},
+  setHappenings: () => {},
   setCurrentThreadComments: () => {},
   clearError: () => {},
   setUser: () => {},
@@ -37,7 +39,7 @@ export default UserContext
 export class UserProvider extends Component {
   constructor(props) {
     super(props)
-    const state = { user: {}, mediaTimer: 0, error: null }
+    const state = { user: {}, mediaTimer: 0, happenings: [], error: null }
 
     const jwtPayload = TokenService.parseAuthToken()
 
@@ -87,6 +89,12 @@ export class UserProvider extends Component {
     let categoryItems = await AuthApiService.getSpecificThreads(this.state.category).then(response=> response)
     this.setCategoryItems(categoryItems);
   }
+  setHappenings = events => {
+    this.setState({
+      happenings: events
+    })
+  }
+
   clearError = () => {
     this.setState({ error: null })
   }
@@ -163,6 +171,7 @@ export class UserProvider extends Component {
       playingID: this.state.playingID,
       currentThreadComments: this.state.currentThreadComments,
       renderedComments: this.state.renderedComments,
+      happenings: this.state.happenings,
       error: this.state.error,
       setError: this.setError,
       setPlaying: this.setPlaying,
@@ -176,8 +185,12 @@ export class UserProvider extends Component {
       setCurrentThreadComments: this.setCurrentThreadComments,
       updateCategoryItems: this.updateCategoryItems,
       setRenderedComments: this.setRenderedComments,
+<<<<<<< HEAD
       setPlayingCategory: this.setPlayingCategory,
       setPlayingID: this.setPlayingID,
+=======
+      setHappenings: this.setHappenings,
+>>>>>>> 1f30c983901ca4f57d6ba70af6cf0b8b97521aaa
       updateMediaTimer: this.updateMediaTimer,
       resetMediaTimer: this.resetMediaTimer,
       processLogin: this.processLogin,

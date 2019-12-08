@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import config from '../../config';
+import UserContext from '../../utils/context';
+import AuthApiService from '../../utils/auth-service';
 import './Happenings.css'
 
 class Happenings extends Component {
+  static contextType = UserContext;
+
   constructor(props){
     super(props);
 
@@ -14,38 +17,28 @@ class Happenings extends Component {
   }
 
   componentDidMount() {
-    fetch(`${config.API_ENDPOINT}/happening`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-    .then(res => 
-      (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    )
-    .then(data => {
-      this.setState({
-        happenings: data
+    AuthApiService.getHappeningEvents()
+      .then(data => {
+        this.context.setHappenings(data);
+        this.setState({
+          happenings: data
+        })
       })
-    })
-    .catch(res => {
-      this.setState({
-        error: res.error
+      .catch(res => {
+        this.setState({
+          error: res.error
+        })
       })
-    })
-  }
+    }
 
   render() {
-    let firstFourHappenings = this.state.happenings.slice(0,4);
-    console.log(firstFourHappenings);
-    let lastHappening = this.state.happenings[4] || {};
+    let firstHappenings = this.state.happenings.slice(0,this.state.happenings.length - 1);
+    let lastHappening = this.state.happenings[this.state.happenings.length - 1] || {};
     return (
       <div className="Happenings">
         <h3>What's happening</h3>
         <ul className="happenings-list">
-          {firstFourHappenings.map(event =>
+          {firstHappenings.map(event =>
               (event.media_title)
                ? <>
                   <li className="thread-created">A thread for the {event.media_type.slice(0,event.media_type.length - 1)}, <span className="media-title">{event.media_title}</span>, was created</li>
@@ -70,15 +63,3 @@ class Happenings extends Component {
 }
 
 export default Happenings;
-
-
-
-// Happenings table...it persists all data..we want it to have 5 items at a time
-
-// Before we POST we NEED to check first of all IF there are 5 ITEMS IN OUR HAPPENINGS TABLE
-
-// IF THERE IS 5, WE REMOVE THE OLDEST ITEM IN THE DATABASE BASED ON TIMESTAMP USING THE DELETE REQUEST SO THAT IT PERSISTS IN DATABASE
-
-// NEED TO DELETE REQUEST IN OUR HAPPENINGS ROUTE 
-
-// AND THEN ONCE IT HAS BEEN DELETED, WE CALL THE POST REQUEST AND ADD THE NEW HAPPENING EVENT TO DATABASE
