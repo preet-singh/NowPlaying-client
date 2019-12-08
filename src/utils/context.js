@@ -22,11 +22,8 @@ const UserContext = React.createContext({
   setCategoryItems: () => {},
   setSearchedCategoryItems: () => {},
   setPlaying: () => {},
-<<<<<<< HEAD
   updateCategoryItems: () => {},
-=======
   setHappenings: () => {},
->>>>>>> happening-branch-v2
   setCurrentThreadComments: () => {},
   clearError: () => {},
   setUser: () => {},
@@ -85,19 +82,16 @@ export class UserProvider extends Component {
     this.setState({filteredCategoryItems})
   }
 
-<<<<<<< HEAD
   updateCategoryItems = async () => {
     let categoryItems = await AuthApiService.getSpecificThreads(this.state.category).then(response=> response)
     this.setCategoryItems(categoryItems);
   }
-=======
   setHappenings = events => {
     this.setState({
       happenings: events
     })
   }
 
->>>>>>> happening-branch-v2
   clearError = () => {
     this.setState({ error: null })
   }
