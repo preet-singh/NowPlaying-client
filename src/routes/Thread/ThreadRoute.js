@@ -70,19 +70,54 @@ export default class ThreadRoute extends React.Component {
   }
 
   playButton = async () => {
-    if (this.props.match.params.thread !== this.context.playingCategory || this.props.match.params.id === this.context.playingID) {
-    this.context.setPlayingCategory(this.props.match.params.thread)
-    this.context.setPlayingID(this.props.match.params.id);
-    this.context.setPlaying(!this.context.playing);
+    if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {
+      if (!this.context.playing) {
+        let titleItem = this.context.categoryItems.find(item => item.id === this.props.match.params.id) || {}
+        let title = titleItem.title || '';
+        this.context.startInterval();
+        this.context.setPlayingCategory(this.props.match.params.thread)
+        this.context.setPlayingID(this.props.match.params.id);
+        this.context.setPlayingTitle(title)
+        this.context.setPlaying(!this.context.playing);
+      }
+      else {
+        if (!this.context.paused) {
+          this.context.pauseInterval();
+        }
+        else {
+          this.context.startInterval();
+        }
+        this.context.setPaused(!this.context.paused);
+      }
     }
     else {
-      await this.context.setPlaying(!this.context.playing)
-      if (this.context.playing) {
+      let titleItem = this.context.categoryItems.find(item => Number(item.id) === Number(this.props.match.params.id)) || {}
+      let title = titleItem.title || '';
+      this.context.resetMediaTimer();
       this.context.setPlayingCategory(this.props.match.params.thread)
       this.context.setPlayingID(this.props.match.params.id);
-      }
-      this.context.resetMediaTimer();
+      this.context.setPlayingTitle(title)
+      this.context.setPlaying(true);
+      this.context.pauseInterval();
+      this.context.startInterval();
     }
+  }
+
+  determineButtonText = () => {
+    if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {
+      if (!this.context.playing) {
+        return 'Play';
+      }
+      else {
+        if (!this.context.paused) {
+          return 'Pause';
+        }
+        else {
+          return 'Resume';
+        }
+      }
+    }
+    return 'Play';
   }
 
   render(){
@@ -92,7 +127,7 @@ export default class ThreadRoute extends React.Component {
         <Directory thread={this.props.match.params.thread} id={this.props.match.params.id} />
         <main>
           <ThreadDetails thread={this.props.match.params.thread} id={this.props.match.params.id}/>
-          <button onClick={() => this.playButton()} id='display-comment'>{this.context.playing ? 'Stop' : 'Start' }</button>
+          <button onClick={() => this.playButton()} id='display-comment'>{this.determineButtonText()}</button>
           <PrivateThreadMessage />
           {this.renderCommentList()}
         </main>

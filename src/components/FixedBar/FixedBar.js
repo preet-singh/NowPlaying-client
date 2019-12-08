@@ -7,13 +7,21 @@ import UserContext from '../../utils/context';
 class FixedBar extends React.Component {
   static contextType = UserContext;
 
-  componentDidMount() {
-    this.myInterval = setInterval(() => this.context.updateMediaTimer(), 1000)
-  }
+  // componentDidMount() {
+  //   this.myInterval = setInterval(() => this.context.updateMediaTimer(), 1000)
+  // }
 
-  componentWillUnmount() {
-    clearInterval(this.myInterval);
-  }
+  // clearInterval = () => {
+  //   clearInterval(this.myInterval);
+  // }
+
+  // restartInterval = () => {
+  //   this.myInterval = setInterval(() => this.context.updateMediaTimer(), 1000)
+  // }
+
+  // componentWillUnmount() {
+  //   clearInterval(this.myInterval);
+  // }
 
   convertTimeString = timeValue => {
     if(timeValue < 10) {
@@ -40,10 +48,11 @@ class FixedBar extends React.Component {
     return (
       <div className='fixed-bar'>
         <div className='fixed-bar-header'>
-        <PlayButton />
+          <h2>{this.context.playingTitle}</h2>
+        <PlayButton clearInterval={this.clearInterval} restartInterval={this.restartInterval} />
         <h3 id='media-timer'>{this.convertSeconds(this.context.mediaTimer)}</h3>
         </div>
-        <AddCommentBox category={this.props.category} mediaId={this.props.mediaId}/>
+        {!this.context.paused ? <AddCommentBox category={this.props.category} mediaId={this.props.mediaId} /> : null }
       </div>
     )
   }

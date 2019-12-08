@@ -76,14 +76,8 @@ class AddCommentBox extends React.Component {
     }
 
     AuthApiService.postComment(category, commentBody)
-<<<<<<< HEAD
     await this.refreshCommentsCheck();
     this.setState({comment: '', })
-=======
-      .then(() => {
-        this.setState({ comment: '' })
-      })
->>>>>>> 1f30c983901ca4f57d6ba70af6cf0b8b97521aaa
 
     AuthApiService.getSpecificEvent(this.props.category, this.props.mediaId)
       .then(res => {
@@ -111,10 +105,7 @@ class AddCommentBox extends React.Component {
   }
 
   render() {
-<<<<<<< HEAD
-=======
     console.log(this.state.happenings);
->>>>>>> 1f30c983901ca4f57d6ba70af6cf0b8b97521aaa
     return (
       <div className='add-comment-box'>
         <form className='add-comment-form' onSubmit={e => this.handleCommentSubmit(e)}>

@@ -15,6 +15,8 @@ const UserContext = React.createContext({
   happenings: [],
   mediaTimer: null,
   playing: false,
+  paused: false,
+  playingTitle: null,
   playingCategory: null,
   playingID: null,
   error: null,
@@ -24,6 +26,10 @@ const UserContext = React.createContext({
   setCategoryItems: () => {},
   setSearchedCategoryItems: () => {},
   setPlaying: () => {},
+  setPlayingTitle: () => {},
+  setPaused: () => {},
+  startInterval: () => {},
+  pauseInterval: () => {},
   resetMediaTimer: () => {},
   updateCategoryItems: () => {},
   setHappenings: () => {},
@@ -107,6 +113,14 @@ export class UserProvider extends Component {
     this.setState({playing});
   }
 
+  setPaused = paused => {
+    this.setState({paused});
+  }
+
+  setPlayingTitle = playingTitle => {
+    this.setState({playingTitle});
+  }
+
   setPlayingCategory = playingCategory => {
     this.setState({playingCategory});
   }
@@ -129,6 +143,16 @@ export class UserProvider extends Component {
 
   setRenderedComments = comments => {
     this.setState({renderedComments: [...comments]})
+  }
+
+  startInterval = () => {
+    this.myInterval = setInterval(() => {
+      this.updateMediaTimer();
+    }, 1000);
+  }
+
+  pauseInterval = () => {
+    clearInterval(this.myInterval);
   }
   
   processLogin = authToken => {
@@ -167,7 +191,9 @@ export class UserProvider extends Component {
       filteredCategoryItems: this.state.filteredCategoryItems,
       mediaTimer: this.state.mediaTimer,
       playing: this.state.playing,
+      paused: this.state.paused,
       playingCategory: this.state.playingCategory,
+      playingTitle: this.state.playingTitle,
       playingID: this.state.playingID,
       currentThreadComments: this.state.currentThreadComments,
       renderedComments: this.state.renderedComments,
@@ -175,6 +201,10 @@ export class UserProvider extends Component {
       error: this.state.error,
       setError: this.setError,
       setPlaying: this.setPlaying,
+      setPlayingTitle: this.setPlayingTitle,
+      setPaused: this.setPaused,
+      startInterval: this.startInterval,
+      pauseInterval: this.pauseInterval,
       clearError: this.clearError,
       setUser: this.setUser,
       setCategory: this.setCategory,
@@ -185,12 +215,9 @@ export class UserProvider extends Component {
       setCurrentThreadComments: this.setCurrentThreadComments,
       updateCategoryItems: this.updateCategoryItems,
       setRenderedComments: this.setRenderedComments,
-<<<<<<< HEAD
       setPlayingCategory: this.setPlayingCategory,
       setPlayingID: this.setPlayingID,
-=======
       setHappenings: this.setHappenings,
->>>>>>> 1f30c983901ca4f57d6ba70af6cf0b8b97521aaa
       updateMediaTimer: this.updateMediaTimer,
       resetMediaTimer: this.resetMediaTimer,
       processLogin: this.processLogin,
