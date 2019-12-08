@@ -1,3 +1,34 @@
+.playSlider {
+    position: relative;
+    width: 50%;
+    height: 80px;
+    margin: 30px;
+}
+
+.railStyle {
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    margin-top: 35px;
+    border-radius: 5px;
+    background-color: #8B9CB6;
+}
+
+.Handle {
+    position: absolute;
+    margin-left: -15px;
+    margin-top: 25px;
+    z-index: 2;
+    width: 30px;
+    height: 30px;
+    border: 0px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #2C4870;
+    color: #fff;
+}
+
 @media screen and (min-width: 320px){
     #display-comment {
         background-color: green;

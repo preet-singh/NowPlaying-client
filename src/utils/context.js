@@ -17,6 +17,7 @@ const UserContext = React.createContext({
   playing: false,
   paused: false,
   playingTitle: null,
+  playingRuntime: null,
   playingCategory: null,
   playingID: null,
   error: null,
@@ -27,10 +28,13 @@ const UserContext = React.createContext({
   setSearchedCategoryItems: () => {},
   setPlaying: () => {},
   setPlayingTitle: () => {},
+  setPlayingRuntime: () => {},
   setPaused: () => {},
   startInterval: () => {},
   pauseInterval: () => {},
   resetMediaTimer: () => {},
+  updateMediaTimer: () => {},
+  setMediaTimer: () => {},
   updateCategoryItems: () => {},
   setHappenings: () => {},
   setCurrentThreadComments: () => {},
@@ -113,6 +117,10 @@ export class UserProvider extends Component {
     this.setState({playing});
   }
 
+  setPlayingRuntime = playingRuntime => {
+    this.setState({playingRuntime});
+  }
+
   setPaused = paused => {
     this.setState({paused});
   }
@@ -131,6 +139,10 @@ export class UserProvider extends Component {
 
   updateMediaTimer = () => {
     this.setState({mediaTimer: this.state.mediaTimer + 1});
+  }
+
+  setMediaTimer = (time) => {
+    this.setState({mediaTimer: time})
   }
 
   resetMediaTimer = () => {
@@ -195,6 +207,7 @@ export class UserProvider extends Component {
       playingCategory: this.state.playingCategory,
       playingTitle: this.state.playingTitle,
       playingID: this.state.playingID,
+      playingRuntime: this.state.playingRuntime,
       currentThreadComments: this.state.currentThreadComments,
       renderedComments: this.state.renderedComments,
       happenings: this.state.happenings,
@@ -217,8 +230,10 @@ export class UserProvider extends Component {
       setRenderedComments: this.setRenderedComments,
       setPlayingCategory: this.setPlayingCategory,
       setPlayingID: this.setPlayingID,
+      setPlayingRuntime: this.setPlayingRuntime,
       setHappenings: this.setHappenings,
       updateMediaTimer: this.updateMediaTimer,
+      setMediaTimer: this.setMediaTimer,
       resetMediaTimer: this.resetMediaTimer,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
