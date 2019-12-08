@@ -78,6 +78,8 @@ class AddCommentBox extends React.Component {
           username: this.context.user.username,
           user_comment: this.state.comment,
           media_title_comments: res[0].title,
+          media_type: this.context.category,
+          media_id: this.props.mediaId,
         }
         AuthApiService.postCommentHappenings(commentBodyHappenings)
           .then(res => console.log(res))

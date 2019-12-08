@@ -183,6 +183,19 @@ class CreateNewThreadForm extends React.Component {
     await AuthApiService.makeThread(allMovieInfo, 'movies')
     await this.context.updateCategoryItems();
     let lastId = this.context.categoryItems[this.context.categoryItems.length-1].id
+    await AuthApiService.getSpecificEvent(this.context.category, lastId)
+      .then(res => {
+        console.log(res)
+        const commentBodyHappenings = {
+          username: this.context.user.username,
+          user_comment: this.state.comment,
+          media_title: allMovieInfo.title,
+          media_type: this.context.category,
+          media_id: lastId
+        }
+        AuthApiService.postCommentHappenings(commentBodyHappenings)
+          .then(res => console.log(res))
+      })
     this.props.history.push(`/${this.context.category}/${lastId}`)
   }
 
