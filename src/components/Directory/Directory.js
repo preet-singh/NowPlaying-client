@@ -16,6 +16,7 @@ class Directory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      firstClick: false
     }
   }
   
@@ -29,8 +30,13 @@ class Directory extends React.Component {
   }
 
   checkSelectChange = async e => {
+      if (this.state.firstClick) {
       await this.context.setCategory(e.target.value);
       this.props.history.push(`/category/${this.context.categoryID}`)
+      }
+      else {
+        this.setState({firstClick: !this.state.firstClick})
+      }
   }
 
   render() {
@@ -40,7 +46,7 @@ class Directory extends React.Component {
       <div className="Directory">
         <section className="directory-box">
           <div className="directory-dropdown">
-            <select onChange={(e) => this.checkSelectChange(e)} value={this.context.category}>
+            <select onClick={(e) => this.checkSelectChange(e)} value={this.context.category}>
               {this.getCategoryList(categoryList, category)}
             </select>
           </div>
