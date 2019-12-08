@@ -165,7 +165,15 @@ export default class ThreadRoute extends React.Component {
     step={1}
     mode={2}
     values={[scrollValue]}
-    onChange={(e) => this.context.setMediaTimer(Number(e[0]))} >
+    onChange={async (e) => {
+      await this.context.pauseInterval();
+      await this.context.setMediaTimer(Number(e[0]));
+      await this.context.startInterval();
+    }}
+    onUpdate={async (e) => {
+      await this.context.pauseInterval();
+    }} >
+
     <Rail>
       {({ getRailProps }) => (
         <div className="railStyle" {...getRailProps()} />

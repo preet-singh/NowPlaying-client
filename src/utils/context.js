@@ -164,7 +164,9 @@ export class UserProvider extends Component {
   }
 
   pauseInterval = () => {
-    clearInterval(this.myInterval);
+    if (this.myInterval) {
+      clearInterval(this.myInterval);
+    }
   }
   
   processLogin = authToken => {
