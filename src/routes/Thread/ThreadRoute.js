@@ -39,6 +39,7 @@ export default class ThreadRoute extends React.Component {
       .then(res => {
         const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
         this.context.setCurrentThreadComments(orderedComments);
+        this.setState({comments: orderedComments})
       })
     } 
     else if(mediaType.thread === 'movies'){
@@ -46,6 +47,7 @@ export default class ThreadRoute extends React.Component {
       .then(res => {
         const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
         this.context.setCurrentThreadComments(orderedComments);
+        this.setState({comments: orderedComments})
       })
     }
     else if(mediaType.thread === 'podcasts'){
@@ -53,6 +55,7 @@ export default class ThreadRoute extends React.Component {
       .then(res => {
         const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
         this.context.setCurrentThreadComments(orderedComments);
+        this.setState({comments: orderedComments})
       })
     }
     else if(mediaType.thread === 'tv_shows'){
@@ -60,6 +63,7 @@ export default class ThreadRoute extends React.Component {
       .then(res => {
         const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
         this.context.setCurrentThreadComments(orderedComments);
+        this.setState({comments: orderedComments})
       })
     }
   }
@@ -147,15 +151,6 @@ export default class ThreadRoute extends React.Component {
         <Directory thread={this.props.match.params.thread} id={this.props.match.params.id} />
         <main>
           <ThreadDetails thread={this.props.match.params.thread} id={this.props.match.params.id}/>
-          {/* <Slider className='playSlider' domain={[0,100]} values={[30]} step={1} mode={2}>
-            <div className='railStyle'>
-              <Handles>
-                <div className="slider-handles">
-                  <div className="Handle" key='1' style={{left: `${30}`}}/>
-                </div>
-              </Handles>
-            </div>
-          </Slider> */}
           <div className="goBackTen">
             <button type="button" onClick={() => this.context.setMediaTimer(this.context.mediaTimer - 10)}>Go back ten seconds!</button>
           </div>
@@ -166,9 +161,15 @@ export default class ThreadRoute extends React.Component {
     mode={2}
     values={[scrollValue]}
     onChange={async (e) => {
-      await this.context.pauseInterval();
-      await this.context.setMediaTimer(Number(e[0]));
-      await this.context.startInterval();
+      if (this.context.paused) {
+        await this.context.pauseInterval();
+        await this.context.setMediaTimer(Number(e[0]));
+      }
+      else {
+        await this.context.pauseInterval();
+        await this.context.setMediaTimer(Number(e[0]));
+        await this.context.startInterval();
+      }
     }}
     onUpdate={async (e) => {
       await this.context.pauseInterval();

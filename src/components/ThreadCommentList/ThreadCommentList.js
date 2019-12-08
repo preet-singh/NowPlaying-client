@@ -67,6 +67,8 @@ class ThreadCommentList extends React.Component {
   }
 
   renderCommentList = async () => {
+    console.log(this.context.currentThreadComments);
+    console.log(this.state.comments);
     if (this.context.currentThreadComments !== this.state.comments) {
       await this.setState({comments: this.context.currentThreadComments});
     }
@@ -105,7 +107,7 @@ class ThreadCommentList extends React.Component {
       }
     else {
       return         <ul className='thread-comment-list'>
-        <li>Press play to start these comment threads!</li>
+        <li>Press play to start this comment thread!</li>
     </ul>
     }
   }

@@ -82,22 +82,22 @@ export class UserProvider extends Component {
     this.setState({categoryList});
   }
 
-  setCategoryItems = categoryItems => {
-    this.setSearchedCategoryItems(categoryItems);
-    this.setState({categoryItems});
+  setCategoryItems = async categoryItems => {
+    await this.setSearchedCategoryItems(categoryItems);
+    await this.setState({categoryItems});
   }
 
-  setSearchedCategoryItems = searchedCategoryItems => {
-    this.setFilteredCategoryItems(searchedCategoryItems);
-    this.setState({searchedCategoryItems});
+  setSearchedCategoryItems = async searchedCategoryItems => {
+    await this.setFilteredCategoryItems(searchedCategoryItems);
+    await this.setState({searchedCategoryItems});
   }
-  setFilteredCategoryItems = filteredCategoryItems => {
-    this.setState({filteredCategoryItems})
+  setFilteredCategoryItems = async filteredCategoryItems => {
+    await this.setState({filteredCategoryItems})
   }
 
   updateCategoryItems = async () => {
     let categoryItems = await AuthApiService.getSpecificThreads(this.state.category).then(response=> response)
-    this.setCategoryItems(categoryItems);
+    await this.setCategoryItems(categoryItems);
   }
   setHappenings = events => {
     this.setState({

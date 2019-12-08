@@ -35,33 +35,26 @@ class AddCommentBox extends React.Component {
 
   refreshCommentsCheck = async () => {
     let mediaType = this.props.category;
-    if(mediaType.thread === 'books'){
-      await AuthApiService.getBookComments(mediaType.thread, mediaType.id)
-      .then(res => {
-        const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
-        this.context.setCurrentThreadComments(orderedComments);
-      })
+    if(mediaType === 'books'){
+      let res = await AuthApiService.getBookComments(mediaType.thread, this.context.playingID).then(res => res);
+      const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+      this.context.setCurrentThreadComments(orderedComments);
     } 
-    else if(mediaType.thread === 'movies'){
-      await AuthApiService.getMovieComments(mediaType.thread, mediaType.id)
-      .then(res => {
-        const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
-        this.context.setCurrentThreadComments(orderedComments);
-      })
+    else if(mediaType === 'movies'){
+      let res = await AuthApiService.getMovieComments(mediaType.thread, this.context.playingID).then(res => res);
+      console.log(res);
+      const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+      await this.context.setCurrentThreadComments(orderedComments);
     }
-    else if(mediaType.thread === 'podcasts'){
-      await AuthApiService.getPodcastComments(mediaType.thread, mediaType.id)
-      .then(res => {
-        const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
-        this.context.setCurrentThreadComments(orderedComments);
-      })
+    else if(mediaType === 'podcasts'){
+      let res = await AuthApiService.getPodcastComments(mediaType.thread, this.context.playingID).then(res => res);
+      const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+      await this.context.setCurrentThreadComments(orderedComments);
     }
-    else if(mediaType.thread === 'tv_shows'){
-      await AuthApiService.getTVShowComments(mediaType.thread, mediaType.id)
-      .then(res => {
-        const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
-        this.context.setCurrentThreadComments(orderedComments);
-      })
+    else if(mediaType === 'tv_shows'){
+      let res = await AuthApiService.getTVShowComments(mediaType.thread, this.context.playingID).then(res => res);
+      const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+      this.context.setCurrentThreadComments(orderedComments);
     }
   }
 
@@ -75,11 +68,10 @@ class AddCommentBox extends React.Component {
       media_id: this.props.mediaId,
     }
 
-    AuthApiService.postComment(category, commentBody)
+    await AuthApiService.postComment(category, commentBody)
     await this.refreshCommentsCheck();
-    this.setState({comment: '', })
 
-    AuthApiService.getSpecificEvent(this.props.category, this.props.mediaId)
+    await AuthApiService.getSpecificEvent(this.props.category, this.props.mediaId)
       .then(res => {
         console.log(res)
         const commentBodyHappenings = {
@@ -90,6 +82,7 @@ class AddCommentBox extends React.Component {
         AuthApiService.postCommentHappenings(commentBodyHappenings)
           .then(res => console.log(res))
       })
+    this.setState({comment: '', })
   }
 
   handleReactions = async reaction => {
@@ -100,12 +93,11 @@ class AddCommentBox extends React.Component {
       comment_timestamp: this.context.mediaTimer,
       media_id: this.props.mediaId,
     }
-    AuthApiService.postComment(category, commentBody)
+    await AuthApiService.postComment(category, commentBody)
     await this.refreshCommentsCheck();
   }
 
   render() {
-    console.log(this.state.happenings);
     return (
       <div className='add-comment-box'>
         <form className='add-comment-form' onSubmit={e => this.handleCommentSubmit(e)}>
