@@ -32,13 +32,13 @@ class Happenings extends Component {
     }
 
   render() {
-    let firstFourHappenings = this.state.happenings.slice(0,4);
-    let lastHappening = this.state.happenings[4] || {};
+    let firstHappenings = this.state.happenings.slice(0,this.state.happenings.length - 1);
+    let lastHappening = this.state.happenings[this.state.happenings.length - 1] || {};
     return (
       <div className="Happenings">
         <h3>What's happening</h3>
         <ul className="happenings-list">
-          {firstFourHappenings.map(event =>
+          {firstHappenings.map(event =>
               (event.media_title)
                ? <>
                   <li className="thread-created">A thread for the {event.media_type.slice(0,event.media_type.length - 1)}, <span className="media-title">{event.media_title}</span>, was created</li>
@@ -63,15 +63,3 @@ class Happenings extends Component {
 }
 
 export default Happenings;
-
-
-
-// Happenings table...it persists all data..we want it to have 5 items at a time
-
-// Before we POST we NEED to check first of all IF there are 5 ITEMS IN OUR HAPPENINGS TABLE
-
-// IF THERE IS 5, WE REMOVE THE OLDEST ITEM IN THE DATABASE BASED ON TIMESTAMP USING THE DELETE REQUEST SO THAT IT PERSISTS IN DATABASE
-
-// NEED TO DELETE REQUEST IN OUR HAPPENINGS ROUTE 
-
-// AND THEN ONCE IT HAS BEEN DELETED, WE CALL THE POST REQUEST AND ADD THE NEW HAPPENING EVENT TO DATABASE

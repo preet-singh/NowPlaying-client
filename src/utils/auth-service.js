@@ -190,17 +190,17 @@ const AuthApiService = {
     )
   },
   deleteHappeningEvent(id) {
-    fetch(`${config.API_ENDPOINT}/happening/${id}`, {
+    return fetch(`${config.API_ENDPOINT}/happening/${id}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
       }
     })
-    .then(res => 
-      (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    )
+    .then(res => {
+      if(!res.ok) {
+        return res.json().then(err => Promise.reject(err))
+      }
+    })
   }
 }
   

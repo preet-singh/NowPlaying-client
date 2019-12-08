@@ -9,7 +9,17 @@ class AddCommentBox extends React.Component {
 
   state = {
     comment: '',
-    error: null
+    error: null,
+    happenings: []
+  }
+
+  componentDidMount() {
+    AuthApiService.getHappeningEvents()
+      .then(data => {
+        this.setState({
+          happenings: data
+        })
+      })
   }
 
   handleCommentInput = text => {
@@ -32,72 +42,48 @@ class AddCommentBox extends React.Component {
         this.setState({ comment: '' })
       })
 
-    if (this.context.happenings.length < 5) {
-      AuthApiService.getSpecificEvent(this.props.category, this.props.mediaId)
-        .then(res => {
-          console.log(res)
-          const commentBodyHappenings = {
-            username: this.context.user.username,
-            user_comment: this.state.comment,
-            // media_type: this.props.category,
-            // media_title: res[0].title,
-            media_title_comments: res[0].title,
-          }
-          AuthApiService.postCommentHappenings(commentBodyHappenings)
-            .then(res => console.log(res))
-        })
+    AuthApiService.getSpecificEvent(this.props.category, this.props.mediaId)
+      .then(res => {
+        console.log(res)
+        const commentBodyHappenings = {
+          username: this.context.user.username,
+          user_comment: this.state.comment,
+          // media_type: this.props.category,
+          // media_title: res[0].title,
+          media_title_comments: res[0].title,
+        }
+        AuthApiService.postCommentHappenings(commentBodyHappenings)
+          .then(res => console.log(res))
+      })
     }
-    else {
-      let lastEvent = this.context.happenings[this.context.happenings.length - 1];
-      let id = lastEvent.id;
-      AuthApiService.deleteHappeningEvent(id)
-        .then(() => {
-          let newHappenings = this.context.happenings.filter(event => event.id !== id);
-          this.context.setHappenings(newHappenings);
-          AuthApiService.getSpecificEvent(this.props.category, this.props.mediaId)
-            .then(res => {
-              // console.log(res)
-              const commentBodyHappenings = {
-                username: this.context.user.username,
-                user_comment: this.state.comment,
-                // media_type: this.props.category,
-                // media_title: res[0].title,
-                media_title_comments: res[0].title,
-              }
-              AuthApiService.postCommentHappenings(commentBodyHappenings)
-                .then(res => console.log(res))
-            })
-        })
-    }
-  }
 
-  handleReactions = reaction => {
-    console.log(reaction)
-    let category = this.props.category.slice(0, this.props.category.length - 1)
-    const commentBody = {
-      user_comment: reaction,
-      comment_timestamp: this.context.mediaTimer,
-      media_id: this.props.mediaId,
+    handleReactions = reaction => {
+      console.log(reaction)
+      let category = this.props.category.slice(0, this.props.category.length - 1)
+      const commentBody = {
+        user_comment: reaction,
+        comment_timestamp: this.context.mediaTimer,
+        media_id: this.props.mediaId,
+      }
+      AuthApiService.postComment(category, commentBody)
     }
-    AuthApiService.postComment(category, commentBody)
-  }
 
-  render() {
-    // console.log(this.props)
-    return (
-      <div className='add-comment-box'>
-        <form className='add-comment-form' onSubmit={e => this.handleCommentSubmit(e)}>
-          <textarea id='comment-text-input' type='text' value={this.state.comment} onChange={e => this.handleCommentInput(e.target.value)} />
-          <button id='send-comment' type='submit'>Send</button>
-        </form>
-        <div className='reaction-buttons'>
-          <button className='reaction-button' type='button' value=':)' onClick={e => this.handleReactions(e.target.value)}>:)</button>
-          <button className='reaction-button' type='button' value=':(' onClick={e => this.handleReactions(e.target.value)}>:(</button>
-          <button className='reaction-button' type='button' value=':O' onClick={e => this.handleReactions(e.target.value)}>:O</button>
+    render() {
+      console.log(this.state.happenings);
+      return (
+        <div className='add-comment-box'>
+          <form className='add-comment-form' onSubmit={e => this.handleCommentSubmit(e)}>
+            <textarea id='comment-text-input' type='text' value={this.state.comment} onChange={e => this.handleCommentInput(e.target.value)} />
+            <button id='send-comment' type='submit'>Send</button>
+          </form>
+          <div className='reaction-buttons'>
+            <button className='reaction-button' type='button' value=':)' onClick={e => this.handleReactions(e.target.value)}>:)</button>
+            <button className='reaction-button' type='button' value=':(' onClick={e => this.handleReactions(e.target.value)}>:(</button>
+            <button className='reaction-button' type='button' value=':O' onClick={e => this.handleReactions(e.target.value)}>:O</button>
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
-}
 
-export default AddCommentBox;
+  export default AddCommentBox;
