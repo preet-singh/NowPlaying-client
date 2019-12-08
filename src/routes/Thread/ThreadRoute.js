@@ -8,8 +8,9 @@ import ThreadDetails from '../../components/ThreadDetails/ThreadDetails';
 import ScrubBox from '../../components/ScrubBox/ScrubBox';
 import PrivateThreadMessage from '../../components/PrivateThreadMessage/PrivateThreadMessage';
 import ThreadCommentList from '../../components/ThreadCommentList/ThreadCommentList';
-import FixedBar from '../../components/FixedBar/FixedBar';
+
 import AuthApiService from '../../utils/auth-service';
+import FixedBar from '../../components/FixedBar/FixedBar';
 import UserContext from '../../utils/context';
 //Style
 import './ThreadRoute.css'
@@ -22,51 +23,66 @@ export default class ThreadRoute extends React.Component {
     comments: [],
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    await this.getComments()
+  }
+
+  getComments = async () => {
     const mediaType = this.props.match.params;
     if(mediaType.thread === 'books'){
-      AuthApiService.getBookComments(mediaType.thread, mediaType.id)
+      await AuthApiService.getBookComments(mediaType.thread, mediaType.id)
       .then(res => {
         const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
         this.context.setCurrentThreadComments(orderedComments);
       })
     } 
     else if(mediaType.thread === 'movies'){
-      AuthApiService.getMovieComments(mediaType.thread, mediaType.id)
+      await AuthApiService.getMovieComments(mediaType.thread, mediaType.id)
       .then(res => {
         const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
         this.context.setCurrentThreadComments(orderedComments);
       })
     }
     else if(mediaType.thread === 'podcasts'){
-      AuthApiService.getPodcastComments(mediaType.thread, mediaType.id)
+      await AuthApiService.getPodcastComments(mediaType.thread, mediaType.id)
       .then(res => {
         const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
         this.context.setCurrentThreadComments(orderedComments);
       })
     }
     else if(mediaType.thread === 'tv_shows'){
-      AuthApiService.getTVShowComments(mediaType.thread, mediaType.id)
+      await AuthApiService.getTVShowComments(mediaType.thread, mediaType.id)
       .then(res => {
         const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
         this.context.setCurrentThreadComments(orderedComments);
       })
     }
   }
-
   renderCommentList = () => {
-    if (this.state.comments && this.context.playing) {
+    if (this.state.comments) {
       return (
-        <ThreadCommentList />
+        <ThreadCommentList getComments={this.getComments} />
       )
     }
     else {
-      return null;
+      return 'No comments in this thread yet!';
     }
   }
 
-  playButton = () => {
-    this.context.setPlaying({playing: !this.context.playing})
+  playButton = async () => {
+    if (this.props.match.params.thread !== this.context.playingCategory || this.props.match.params.id === this.context.playingID) {
+    this.context.setPlayingCategory(this.props.match.params.thread)
+    this.context.setPlayingID(this.props.match.params.id);
+    this.context.setPlaying(!this.context.playing);
+    }
+    else {
+      await this.context.setPlaying(!this.context.playing)
+      if (this.context.playing) {
+      this.context.setPlayingCategory(this.props.match.params.thread)
+      this.context.setPlayingID(this.props.match.params.id);
+      }
+      this.context.resetMediaTimer();
+    }
   }
 
   render(){
@@ -76,7 +92,7 @@ export default class ThreadRoute extends React.Component {
         <Directory thread={this.props.match.params.thread} id={this.props.match.params.id} />
         <main>
           <ThreadDetails thread={this.props.match.params.thread} id={this.props.match.params.id}/>
-          <button onClick={() => this.playButton()} id='display-comment'>Play</button>
+          <button onClick={() => this.playButton()} id='display-comment'>{this.context.playing ? 'Stop' : 'Start' }</button>
           <PrivateThreadMessage />
           {this.renderCommentList()}
         </main>

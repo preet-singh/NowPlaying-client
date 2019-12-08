@@ -36,6 +36,7 @@ class FixedBar extends React.Component {
   }
 
   render() {
+    if (this.context.playing) {
     return (
       <div className='fixed-bar'>
         <div className='fixed-bar-header'>
@@ -46,6 +47,10 @@ class FixedBar extends React.Component {
       </div>
     )
   }
+  else {
+    return null;
+}
+}
 }
 
 export default FixedBar;

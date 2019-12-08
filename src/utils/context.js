@@ -14,6 +14,8 @@ const UserContext = React.createContext({
   renderedComments: [],
   mediaTimer: null,
   playing: false,
+  playingCategory: null,
+  playingID: null,
   error: null,
   setError: () => {},
   setCategory: () => {},
@@ -21,6 +23,7 @@ const UserContext = React.createContext({
   setCategoryItems: () => {},
   setSearchedCategoryItems: () => {},
   setPlaying: () => {},
+  resetMediaTimer: () => {},
   updateCategoryItems: () => {},
   setCurrentThreadComments: () => {},
   clearError: () => {},
@@ -96,8 +99,20 @@ export class UserProvider extends Component {
     this.setState({playing});
   }
 
+  setPlayingCategory = playingCategory => {
+    this.setState({playingCategory});
+  }
+
+  setPlayingID = playingID => {
+    this.setState({playingID});
+  }
+
   updateMediaTimer = () => {
     this.setState({mediaTimer: this.state.mediaTimer + 1});
+  }
+
+  resetMediaTimer = () => {
+    this.setState({mediaTimer: 0});
   }
 
   setCurrentThreadComments = comments => {
@@ -144,6 +159,8 @@ export class UserProvider extends Component {
       filteredCategoryItems: this.state.filteredCategoryItems,
       mediaTimer: this.state.mediaTimer,
       playing: this.state.playing,
+      playingCategory: this.state.playingCategory,
+      playingID: this.state.playingID,
       currentThreadComments: this.state.currentThreadComments,
       renderedComments: this.state.renderedComments,
       error: this.state.error,
@@ -159,7 +176,10 @@ export class UserProvider extends Component {
       setCurrentThreadComments: this.setCurrentThreadComments,
       updateCategoryItems: this.updateCategoryItems,
       setRenderedComments: this.setRenderedComments,
+      setPlayingCategory: this.setPlayingCategory,
+      setPlayingID: this.setPlayingID,
       updateMediaTimer: this.updateMediaTimer,
+      resetMediaTimer: this.resetMediaTimer,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
     }

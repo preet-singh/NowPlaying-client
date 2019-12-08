@@ -17,7 +17,39 @@ class AddCommentBox extends React.Component {
     })
   }
 
-  handleCommentSubmit = e => {
+  refreshCommentsCheck = async () => {
+    let mediaType = this.props.category;
+    if(mediaType.thread === 'books'){
+      await AuthApiService.getBookComments(mediaType.thread, mediaType.id)
+      .then(res => {
+        const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+        this.context.setCurrentThreadComments(orderedComments);
+      })
+    } 
+    else if(mediaType.thread === 'movies'){
+      await AuthApiService.getMovieComments(mediaType.thread, mediaType.id)
+      .then(res => {
+        const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+        this.context.setCurrentThreadComments(orderedComments);
+      })
+    }
+    else if(mediaType.thread === 'podcasts'){
+      await AuthApiService.getPodcastComments(mediaType.thread, mediaType.id)
+      .then(res => {
+        const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+        this.context.setCurrentThreadComments(orderedComments);
+      })
+    }
+    else if(mediaType.thread === 'tv_shows'){
+      await AuthApiService.getTVShowComments(mediaType.thread, mediaType.id)
+      .then(res => {
+        const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
+        this.context.setCurrentThreadComments(orderedComments);
+      })
+    }
+  }
+
+  handleCommentSubmit = async e => {
     e.preventDefault()
     let category = this.props.category.slice(0, this.props.category.length - 1) 
 
@@ -27,9 +59,8 @@ class AddCommentBox extends React.Component {
       media_id: this.props.mediaId,
     }
     AuthApiService.postComment(category, commentBody)
-    .then(() => {
-      this.setState({comment: ''})
-    })
+    await this.refreshCommentsCheck();
+    this.setState({comment: '', })
 
     AuthApiService.getSpecificEvent(this.props.category, this.props.mediaId)
     .then(res => {
@@ -46,7 +77,7 @@ class AddCommentBox extends React.Component {
     })
   }
 
-  handleReactions = reaction => {
+  handleReactions = async reaction => {
     console.log(reaction)
     let category = this.props.category.slice(0, this.props.category.length - 1) 
     const commentBody = {
@@ -55,10 +86,10 @@ class AddCommentBox extends React.Component {
       media_id: this.props.mediaId,
     }
     AuthApiService.postComment(category, commentBody)
+    await this.refreshCommentsCheck();
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className='add-comment-box'>
         <form className='add-comment-form' onSubmit={e => this.handleCommentSubmit(e)}>

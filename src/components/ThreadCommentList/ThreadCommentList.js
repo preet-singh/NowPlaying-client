@@ -2,6 +2,7 @@ import React from 'react';
 import './ThreadCommentList.css';
 import ThreadCommentItem from '../ThreadCommentItem/ThreadCommentItem';
 import UserContext from '../../utils/context';
+import {withRouter} from 'react-router-dom';
 
 class ThreadCommentList extends React.Component {
   static contextType = UserContext;
@@ -14,6 +15,7 @@ class ThreadCommentList extends React.Component {
   }
   
   async componentDidMount() {
+    await this.props.getComments();
     await this.setState({comments: this.context.currentThreadComments})
     let renderedComments2 = await this.renderCommentList();
     await this.setState({renderedComments2});
@@ -54,14 +56,20 @@ class ThreadCommentList extends React.Component {
 
 
   handleTimedComments = () => {
-    return this.state.comments.filter(comment => {
+    console.log(this.context.currentThreadComments);
+    console.log(this.state.comments);
+    let comments = this.state.comments || [];
+    return comments.filter(comment => {
       if(comment.comment_timestamp <= this.context.mediaTimer){
         return comment;
       }
     }) || []
   }
 
-  renderCommentList = () => {
+  renderCommentList = async () => {
+    if (this.context.currentThreadComments !== this.state.comments) {
+      await this.setState({comments: this.context.currentThreadComments});
+    }
     let comments = this.handleTimedComments();
     let newData =  comments.map(comment => {
       return (
@@ -73,19 +81,34 @@ class ThreadCommentList extends React.Component {
         />
       )
     })
-    this.setState({renderedComments2: newData, mediaTimer: this.context.mediaTimer});
+    let finalData;
+    if (this.context.currentThreadComments[0]) {
+    finalData = `First comment at ${this.convertSeconds(this.context.currentThreadComments[0].comment_timestamp)}`
+    }
+    else {
+      finalData = 'No comments in this thread yet!';
+    }
+    if (newData.length > 0) { finalData = newData }
+    this.setState({renderedComments2: finalData, mediaTimer: this.context.mediaTimer});
   }
 
   render() {
-    if (this.context.mediaTimer !== this.state.mediaTimer) {
-      this.renderCommentList()
+    if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {
+      if (this.context.mediaTimer !== this.state.mediaTimer) {
+        this.renderCommentList()
+      }
+      return (
+        <ul className='thread-comment-list'>
+          {this.state.renderedComments2}
+        </ul>
+      )
+      }
+    else {
+      return         <ul className='thread-comment-list'>
+        <li>Press play to start these comment threads!</li>
+    </ul>
     }
-    return (
-      <ul className='thread-comment-list'>
-        {this.state.renderedComments2}
-      </ul>
-    )
   }
 }
 
-export default ThreadCommentList;
+export default withRouter(ThreadCommentList);
