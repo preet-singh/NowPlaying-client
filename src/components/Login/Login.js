@@ -99,7 +99,7 @@ class Login extends React.Component{
     let usernameError = this.validateUsername();
     return (
       <form className="Login" name="login" onSubmit={this.handleSubmit}>
-        <legend>Login <button className="displayV mobile show" onClick={(e) => {
+        <legend>Login <button type="button" className="displayV mobile show" onClick={(e) => {
           e.preventDefault();
           document.getElementById('login-form').classList.toggle('hide');
         }}>V</button></legend>
