@@ -41,6 +41,32 @@
         margin-bottom: 20px;
     }
 
+    .autoFill_form {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .autoFill_form img {
+        width: 50%;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+
+    .autoFill_form h2 {
+        padding: 10px;
+    }
+    
+    .autoFill_form p {
+        padding: 10px;
+    }
+
+    .autoFill_form button {
+        border: 1px solid white;
+        background-color: transparent;
+        color: white;
+    }
+
 }
 
 @media screen and (min-width: 768px){
@@ -90,6 +116,47 @@
         margin-top: 5px;
         width: 175px;
         max-height: 250px;
+    }
+
+    .autoFill_form {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .autoFill_form img {
+        width: initial;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+
+    .autoFill_form h2 {
+        padding: 10px;
+    }
+
+    .autoFill_form > p {
+        width: 40%;
+        margin: auto;
+    }
+    
+    .autoFill_form p {
+        padding: 10px;
+    }
+
+    .autoFill_form button {
+        border: 1px solid white;
+        background-color: transparent;
+        color: white;
+        margin-top: 10px;
+        width: 200px;
+        height: 40px;
+        transition: 0.3s ease-in all;
+    }
+
+    .autoFill_form button:hover {
+        cursor: pointer;
+        color: green;
+        border: 1px solid green;
     }
 
 }

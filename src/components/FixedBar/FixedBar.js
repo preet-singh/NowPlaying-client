@@ -45,7 +45,6 @@ class FixedBar extends React.Component {
   }
 
   render() {
-    if (this.context.playing) {
     return (
       <div className='fixed-bar'>
         <div className='fixed-bar-header'>
@@ -53,14 +52,10 @@ class FixedBar extends React.Component {
         <PlayButton clearInterval={this.clearInterval} restartInterval={this.restartInterval} />
         <h3 id='media-timer'>{this.convertSeconds(this.context.mediaTimer)}</h3>
         </div>
-        {!this.context.paused ? <AddCommentBox category={this.props.category} mediaId={this.props.mediaId} /> : null }
+        {!this.context.paused ? <AddCommentBox category={this.props.category} mediaId={this.props.mediaId} /> : <AddCommentBox category={this.props.category} mediaId={this.props.mediaId} /> }
       </div>
     )
   }
-  else {
-    return null;
-}
-}
 }
 
 export default FixedBar;

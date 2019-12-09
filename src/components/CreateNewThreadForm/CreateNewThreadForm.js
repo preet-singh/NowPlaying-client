@@ -149,7 +149,7 @@ class CreateNewThreadForm extends React.Component {
     console.log(this.state.autoFillMovie)
 
     return this.state.autoFillMovie ? 
-          <div>
+          <div className='autoFill_form'>
             <h2>{this.state.autoFillMovie.title}</h2>
             <img src={this.state.selectedMovieImg ? 
             `http://image.tmdb.org/t/p/w185//${this.state.selectedMovieImg}`
