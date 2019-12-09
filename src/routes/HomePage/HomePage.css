@@ -1,15 +1,9 @@
 @media screen and (min-width: 320px){
     .HomePage {
-        background-color: rgb(8, 8, 8);
-        color: white;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        min-height: 105vh;
+        /* min-height: 105vh; */
         padding-bottom: 20px;
     }
     
-    .HomePage h1 {
-        font-size: 60px;
-    }
 }
 
 

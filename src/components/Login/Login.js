@@ -99,7 +99,11 @@ class Login extends React.Component{
     let usernameError = this.validateUsername();
     return (
       <form className="Login" name="login" onSubmit={this.handleSubmit}>
-        <legend>Login</legend>
+        <legend>Login <button className="displayV mobile show" onClick={(e) => {
+          e.preventDefault();
+          document.getElementById('login-form').classList.toggle('hide');
+        }}>V</button></legend>
+        <div id="login-form" className="login-form mobile hide">
         <label htmlFor="username-input" id="username-label" name="username-label">Username:</label>
         <input 
           type="text" 
@@ -125,6 +129,7 @@ class Login extends React.Component{
         <Link to='/register'>
           <p className="sign-up">Don't have an account?</p>
         </Link>
+        </div>
       </form>
     )
   }

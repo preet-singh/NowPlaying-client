@@ -20,7 +20,7 @@ function LoginButton() {
   else{
     return(
       <div className="LoginButton">
-        <Link to="/login"><img src="#" alt="Login button" /></Link>
+        <Link to="/login"><button type="button">Login</button></Link>
       </div>
     );
   }

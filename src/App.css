@@ -1,22 +1,60 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
 .App {
   text-align: center;
 }
+  .mobile {
+    display: block;
+  }
 
-.App-logo {
-  height: 40vmin;
-}
+  .desktop {
+    display: none;
+  }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  .show {
+    display: block;
+  }
 
-.App-link {
-  color: #09d3ac;
+  .hide {
+    display: none;
+  }
+
+@media screen and (min-width: 768px){
+
+  .mobile {
+    display: none;
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .desktop-column {
+    flex-direction: column;
+  }
+
+  .desktop-row {
+    flex-direction: row;
+  }
+  
+  .mobile.hide {
+    display: block;
+  }
 }

@@ -9,6 +9,7 @@ import ThreadCategory from '../../components/ThreadCategory/ThreadCategory';
 import AuthApiService from '../../utils/auth-service';
 import FixedBar from '../../components/FixedBar/FixedBar';
 import UserContext from '../../utils/context';
+import LoginBox from '../../components/LoginBox/LoginBox';
 
 //Styling
 import './HomePage.css'
@@ -19,15 +20,16 @@ import TokenService from '../../utils/token-service'
 function HomePageRoute(props) {
   return(
     <div className="HomePage">
-      <h1>Now Playing</h1>
-      <div className={TokenService.hasAuthToken() ? 'signedIn_home' : 'home_eventBar'}>
         <div>
           <Header />
         </div>
         <section>
+        {/* <div className={TokenService.hasAuthToken() ? 'signedIn_home' : 'home_eventBar'}> */}
+        <div className="flex column desktop-row">
+          <LoginBox />
           <Happenings />
+        </div>
         </section>
-      </div>
       <Directory />
       <main>
         <ThreadCategory />

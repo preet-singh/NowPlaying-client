@@ -25,6 +25,13 @@
     border-radius: 5px;
     margin-bottom: 5px;
   }
+
+  
+  .displayV {
+    width: 30px;
+    font-size: 15px;
+    display: inline-block;
+  }
   
   #username-label, #password-label {
     display: none;
