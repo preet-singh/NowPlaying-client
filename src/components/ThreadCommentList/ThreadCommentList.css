@@ -14,8 +14,14 @@
     min-height: 600px;
     max-height: 600px;
     color: white;
-    display: flex;
-    flex-direction: column;
     overflow: auto;
+  }
+
+  #return {
+    position: fixed;
+    right: 175px;
+    bottom: 125px;
+    color: white;
+    font-size: 24px;
   }
 }
