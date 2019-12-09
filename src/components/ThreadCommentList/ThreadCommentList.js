@@ -3,6 +3,8 @@ import './ThreadCommentList.css';
 import ThreadCommentItem from '../ThreadCommentItem/ThreadCommentItem';
 import UserContext from '../../utils/context';
 import {withRouter} from 'react-router-dom';
+import * as Scroll from 'react-scroll';
+import { Link, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 
 class ThreadCommentList extends React.Component {
   static contextType = UserContext;
@@ -13,14 +15,23 @@ class ThreadCommentList extends React.Component {
     currentComment: [],
     mediaTimer: '',
   }
-  
+
   async componentDidMount() {
     await this.props.getComments();
     await this.setState({comments: this.context.currentThreadComments})
     let renderedComments2 = await this.renderCommentList();
     await this.setState({renderedComments2});
   }
+
+  componentDidUpdate() {
+    scroll.scrollToBottom({
+      duration: 300,
+      smooth: 'easeOutQuart',
+      containerId: 'thread-comment-list'
+    })
+  }
   
+
   // componentDidUpdate() {
   //   let copy = [];
   //   this.state.comments.forEach(comment => {
@@ -100,7 +111,7 @@ class ThreadCommentList extends React.Component {
         this.renderCommentList()
       }
       return (
-        <ul className='thread-comment-list'>
+        <ul id='thread-comment-list'>
           {this.state.renderedComments2}
         </ul>
       )

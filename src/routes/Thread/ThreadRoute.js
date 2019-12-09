@@ -14,6 +14,7 @@ import AuthApiService from '../../utils/auth-service';
 import FixedBar from '../../components/FixedBar/FixedBar';
 import UserContext from '../../utils/context';
 
+
 //Utilities
 import convertSeconds from '../../utils/convertSeconds';
 
@@ -32,6 +33,7 @@ export default class ThreadRoute extends React.Component {
     await this.getComments()
   }
 
+  
   getComments = async () => {
     const mediaType = this.props.match.params;
     if(mediaType.thread === 'books'){
@@ -70,7 +72,7 @@ export default class ThreadRoute extends React.Component {
   renderCommentList = () => {
     if (this.state.comments) {
       return (
-        <ThreadCommentList getComments={this.getComments} />
+        <ThreadCommentList getComments={this.getComments}/>
       )
     }
     else {

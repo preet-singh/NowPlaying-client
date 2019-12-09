@@ -7,7 +7,7 @@
     margin: auto;
     position: fixed;
     bottom: 0px;
-    left: 0px;
+    right: 0px;
     background-color: rgb(58, 175, 58);
     z-index: 2;
   }
@@ -37,7 +37,7 @@
     max-width: 30%;
     position: fixed;
     bottom: 0px;
-    right: -441px;
+    right: 450px;
     margin-right: 445px;
   }
 
