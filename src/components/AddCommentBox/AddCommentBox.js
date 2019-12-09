@@ -108,9 +108,9 @@ class AddCommentBox extends React.Component {
         </form>
         {this.context.displayCommentBox ? <button id='close_commentBox' onClick={() => this.context.displayCommentSection()}>X</button> : null}
         <div className={this.context.playing ? 'reaction-buttons' : 'reaction-buttons_notPlaying'}>
-          <button className='reaction-button' type='button' value=':)' onClick={e => this.handleReactions(e.target.value)}>:)</button>
-          <button className='reaction-button' type='button' value=':(' onClick={e => this.handleReactions(e.target.value)}>:(</button>
-          <button className='reaction-button' type='button' value=':O' onClick={e => this.handleReactions(e.target.value)}>:O</button>
+          <button className='reaction-button' type='button' value='😂' onClick={e => this.handleReactions(e.target.value)}><span role='img' aria-label='laughing emoji'>😂</span></button>
+          <button className='reaction-button' type='button' value='😔' onClick={e => this.handleReactions(e.target.value)}><span role='img' aria-label='laughing emoji'>😔</span></button>
+          <button className='reaction-button' type='button' value='😱' onClick={e => this.handleReactions(e.target.value)}><span role='img' aria-label='laughing emoji'>😱</span></button>
         </div>
       </div>
     )

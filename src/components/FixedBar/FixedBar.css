@@ -28,6 +28,7 @@
   .fixed-bar-header button {
     border: none;
   }
+  
 }
 
 @media screen and (min-width: 768px){
@@ -37,8 +38,8 @@
     max-width: 30%;
     position: fixed;
     bottom: 0px;
-    right: 450px;
-    margin-right: 445px;
+    left: 0px;
+    margin-left: 0px;
   }
 
   .fixed-bar-header {

@@ -14,9 +14,13 @@ class ThreadCommentList extends React.Component {
     renderedComments2: [],
     currentComment: [],
     mediaTimer: '',
+    scrolling: false,
   }
-
+  
   async componentDidMount() {
+    Events.scrollEvent.register('begin', this.handleScrollBegin()) 
+    Events.scrollEvent.register('end', this.handleScrollEnd()) 
+    scrollSpy.update();
     await this.props.getComments();
     await this.setState({comments: this.context.currentThreadComments})
     let renderedComments2 = await this.renderCommentList();
@@ -24,14 +28,25 @@ class ThreadCommentList extends React.Component {
   }
 
   componentDidUpdate() {
-    scroll.scrollToBottom({
-      duration: 300,
-      smooth: 'easeOutQuart',
-      containerId: 'thread-comment-list'
-    })
+    if(this.state.scrolling === false) {
+      scroll.scrollToBottom({
+        duration: 300,
+        smooth: 'easeOutQuart',
+        containerId: 'thread-comment-list',
+        ignoreCancelEvents: false,
+      })
+    }
+  }
+
+  handleScrollBegin = () => {
+    console.log('scroll event fired')
+    this.setState({scrolling: true})
+  }
+
+  handleScrollEnd = () => {
+    this.setState({scrolling: false})
   }
   
-
   // componentDidUpdate() {
   //   let copy = [];
   //   this.state.comments.forEach(comment => {
@@ -105,15 +120,27 @@ class ThreadCommentList extends React.Component {
     this.setState({renderedComments2: finalData, mediaTimer: this.context.mediaTimer});
   }
 
+  handleReturnToBottom = () => {
+    this.setState({scrolling: false})
+  }
+  renderReturnToBottom = () => {
+    return (
+      <div id='return' onClick={() => this.handleReturnToBottom()}>Return to latest comments</div>
+    )
+  }
   render() {
+    console.log(this.state.scrolling)
     if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {
       if (this.context.mediaTimer !== this.state.mediaTimer) {
         this.renderCommentList()
       }
       return (
-        <ul id='thread-comment-list'>
-          {this.state.renderedComments2}
-        </ul>
+        <div>
+          <ul id='thread-comment-list' onClick={() => this.handleScrollBegin()}>
+            {this.state.renderedComments2}
+          </ul>
+          {this.state.scrolling ? this.renderReturnToBottom() : null}
+        </div>
       )
       }
     else {
