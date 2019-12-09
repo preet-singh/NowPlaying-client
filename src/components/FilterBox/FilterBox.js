@@ -1,6 +1,7 @@
 //Dependencies
 import React, { Component } from 'react';
-import UserContext from '../../utils/context'
+import UserContext from '../../utils/context';
+import './FilterBox.css';
 
 class FilterBox extends Component {
   static contextType = UserContext;
@@ -95,8 +96,10 @@ class FilterBox extends Component {
           <option value="2">2</option>
           <option value="1">1</option>
         </select>
+        <div id='filter-buttons'>
         <button type="submit">Submit</button>
         <button type="button" onClick={(e) => this.handleClear(e)}>Clear</button>
+        </div>
       </form>
     );
   }
