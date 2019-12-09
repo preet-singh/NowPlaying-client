@@ -25,6 +25,18 @@
     height: 30px;
   }
 
+  .reaction-buttons_notPlaying button {
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: transparent;
+    margin-top: 10px;
+    width: 30px;
+    height: 30px;
+  }
+
   .add-comment-form > button {
     background-color: transparent;
     border: none !important;
@@ -39,6 +51,14 @@
     margin-top: -10px;
   }
 
+  #open_chatbox {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    height: 50px;
+    width: 50px;
+  }
+
 }
 
 @media screen and (min-width: 768px){
@@ -49,10 +69,22 @@
     height: 5em;
     min-width: 80%;
     max-width: 80%;
+    background-color: rgb(8, 8, 8);
+    border: 1px solid white;
+    color: white;
+    margin-left: 50px;
     min-height: 200px;
   }
 
   .reaction-buttons {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 115px;
+    left: 5px;
+  }
+
+  .reaction-buttons_notPlaying {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -61,6 +93,40 @@
   }
 
   .reaction-buttons button:hover {
+    cursor: pointer;
+  }
+
+  #send-comment {
+    margin-top: 5px;
+    margin-right: 45px;
+    position: absolute;
+    bottom: 10px;
+    right: -40px;
+  }
+
+  #open_chatbox {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    height: 65px;
+    width: 65px;
+  }
+
+  #open_chatbox:hover {
+    cursor: pointer;
+  }
+
+  #close_commentBox {
+    position: absolute;
+    bottom: 265px;
+    left: 5px;
+    z-index: 3;
+    color: black;
+    background-color: transparent;
+    border: none;
+  }
+
+  #close_commentBox:hover {
     cursor: pointer;
   }
 

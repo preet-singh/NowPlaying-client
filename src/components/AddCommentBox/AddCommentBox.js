@@ -1,6 +1,6 @@
 import React from 'react';
 import './AddCommentBox.css';
-import PlayButton from '../PlayButton/PlayButton';
+import comment from '../Images/comment.svg'
 import AuthApiService from '../../utils/auth-service';
 import UserContext from '../../utils/context';
 
@@ -106,7 +106,8 @@ class AddCommentBox extends React.Component {
           <textarea id='comment-text-input' type='text' value={this.state.comment} onChange={e => this.handleCommentInput(e.target.value)} />
           <button id='send-comment' type='submit'>Send</button>
         </form>
-        <div className='reaction-buttons'>
+        {this.context.displayCommentBox ? <button id='close_commentBox' onClick={() => this.context.displayCommentSection()}>X</button> : null}
+        <div className={this.context.playing ? 'reaction-buttons' : 'reaction-buttons_notPlaying'}>
           <button className='reaction-button' type='button' value=':)' onClick={e => this.handleReactions(e.target.value)}>:)</button>
           <button className='reaction-button' type='button' value=':(' onClick={e => this.handleReactions(e.target.value)}>:(</button>
           <button className='reaction-button' type='button' value=':O' onClick={e => this.handleReactions(e.target.value)}>:O</button>

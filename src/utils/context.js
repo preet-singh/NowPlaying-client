@@ -49,7 +49,7 @@ export default UserContext
 export class UserProvider extends Component {
   constructor(props) {
     super(props)
-    const state = { user: {}, mediaTimer: 0, happenings: [], error: null }
+    const state = { user: {}, mediaTimer: 0, happenings: [], displayCommentBox: false, error: null }
 
     const jwtPayload = TokenService.parseAuthToken()
 
@@ -66,6 +66,14 @@ export class UserProvider extends Component {
   setError = error => {
     console.error(error)
     this.setState({ error })
+  }
+
+  //display comment box
+
+  displayCommentSection = () => {
+    this.setState({
+      displayCommentBox: !this.state.displayCommentBox
+    })
   }
 
   //sets category AND categoryID AND categoryItems AND searchedCategoryItems AND filteredCategoryItems
@@ -239,6 +247,8 @@ export class UserProvider extends Component {
       resetMediaTimer: this.resetMediaTimer,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
+      displayCommentBox: this.state.displayCommentBox,
+      displayCommentSection: this.displayCommentSection,
     }
     return (
       <UserContext.Provider value={value}>

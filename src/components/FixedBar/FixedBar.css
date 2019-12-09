@@ -36,8 +36,9 @@
     height: 300px;
     max-width: 30%;
     position: fixed;
-    bottom: 0px;
-    right: -441px;
+    bottom: 3px;
+    border-radius: 5px;
+    right: -443px;
     margin-right: 445px;
   }
 

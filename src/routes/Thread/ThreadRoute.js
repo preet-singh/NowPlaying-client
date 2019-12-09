@@ -17,6 +17,9 @@ import UserContext from '../../utils/context';
 //Utilities
 import convertSeconds from '../../utils/convertSeconds';
 
+//Image
+import comment from '../../components/Images/comment.svg'
+
 //Style
 import './ThreadRoute.css'
 
@@ -91,6 +94,7 @@ export default class ThreadRoute extends React.Component {
         this.context.setPlayingTitle(title)
         this.context.setPlayingRuntime(timeInSeconds);
         this.context.setPlaying(!this.context.playing);
+        this.context.displayCommentSection();
       }
       else {
         if (!this.context.paused) {
@@ -115,6 +119,7 @@ export default class ThreadRoute extends React.Component {
       this.context.setPlaying(true);
       this.context.pauseInterval();
       this.context.startInterval();
+      this.context.displayCommentSection();
     }
   }
 
@@ -154,6 +159,7 @@ export default class ThreadRoute extends React.Component {
           <div className="goBackTen">
             <button type="button" onClick={() => this.context.setMediaTimer(this.context.mediaTimer - 10)}>Go back ten seconds!</button>
           </div>
+          {this.context.displayCommentBox ? <FixedBar category={this.props.match.params.thread} mediaId={this.props.match.params.id}/> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src={comment} alt='open chat box'></img>}
   <Slider
     className="playSlider"
     domain={[0, runTime]}
@@ -212,7 +218,6 @@ export default class ThreadRoute extends React.Component {
           <PrivateThreadMessage />
           {this.renderCommentList()}
         </main>
-        {this.context.playing ? <FixedBar category={this.props.match.params.thread} mediaId={this.props.match.params.id}/> : null}
       </div>
     );
   }
