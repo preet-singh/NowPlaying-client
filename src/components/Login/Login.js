@@ -101,9 +101,9 @@ class Login extends React.Component{
       <form className="Login" name="login" onSubmit={this.handleSubmit}>
         <legend>Login <button type="button" className="displayV mobile show" onClick={(e) => {
           e.preventDefault();
-          document.getElementById('login-form').classList.toggle('hide');
+          document.getElementById('login-form').classList.toggle('mobile-hide');
         }}>V</button></legend>
-        <div id="login-form" className="login-form mobile hide">
+        <div id="login-form" className="login-form mobile-hide">
         <label htmlFor="username-input" id="username-label" name="username-label">Username:</label>
         <input 
           type="text" 

@@ -34,7 +34,7 @@ class AddCommentBox extends React.Component {
   }
 
   refreshCommentsCheck = async () => {
-    let mediaType = this.props.category;
+    let mediaType = this.context.category;
     if(mediaType === 'books'){
       let res = await AuthApiService.getBookComments(mediaType.thread, this.context.playingID).then(res => res);
       const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
@@ -60,18 +60,18 @@ class AddCommentBox extends React.Component {
 
   handleCommentSubmit = async e => {
     e.preventDefault()
-    let category = this.props.category.slice(0, this.props.category.length - 1)
+    let category = this.context.category.slice(0, this.context.category.length - 1)
 
     const commentBody = {
       user_comment: this.state.comment,
       comment_timestamp: this.context.mediaTimer,
-      media_id: this.props.mediaId,
+      media_id: this.context.playingID,
     }
 
     await AuthApiService.postComment(category, commentBody)
     await this.refreshCommentsCheck();
 
-    await AuthApiService.getSpecificEvent(this.props.category, this.props.mediaId)
+    await AuthApiService.getSpecificEvent(this.context.category, this.context.playingID)
       .then(res => {
         console.log(res)
         const commentBodyHappenings = {
@@ -79,7 +79,7 @@ class AddCommentBox extends React.Component {
           user_comment: this.state.comment,
           media_title_comments: res[0].title,
           media_type: this.context.category,
-          media_id: this.props.mediaId,
+          media_id: this.context.playingID,
         }
         AuthApiService.postCommentHappenings(commentBodyHappenings)
           .then(res => console.log(res))
@@ -89,11 +89,11 @@ class AddCommentBox extends React.Component {
 
   handleReactions = async reaction => {
     console.log(reaction)
-    let category = this.props.category.slice(0, this.props.category.length - 1)
+    let category = this.context.category.slice(0, this.context.category.length - 1)
     const commentBody = {
       user_comment: reaction,
       comment_timestamp: this.context.mediaTimer,
-      media_id: this.props.mediaId,
+      media_id: this.context.playingID,
     }
     await AuthApiService.postComment(category, commentBody)
     await this.refreshCommentsCheck();

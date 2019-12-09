@@ -27,6 +27,7 @@ class NewThread extends React.Component {
           <Header />
           <main>
             <CreateNewThreadForm />
+            {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src="#" alt='open chat box'></img> : ''}
           </main>
       </div>
     );

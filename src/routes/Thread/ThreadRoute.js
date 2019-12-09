@@ -96,7 +96,7 @@ export default class ThreadRoute extends React.Component {
         this.context.setPlayingTitle(title)
         this.context.setPlayingRuntime(timeInSeconds);
         this.context.setPlaying(!this.context.playing);
-        this.context.displayCommentSection();
+        this.context.displayCommentSection(true);
       }
       else {
         if (!this.context.paused) {
@@ -104,6 +104,7 @@ export default class ThreadRoute extends React.Component {
         }
         else {
           this.context.startInterval();
+          this.context.displayCommentSection(true);
         }
         this.context.setPaused(!this.context.paused);
       }
@@ -121,7 +122,7 @@ export default class ThreadRoute extends React.Component {
       this.context.setPlaying(true);
       this.context.pauseInterval();
       this.context.startInterval();
-      this.context.displayCommentSection();
+      this.context.displayCommentSection(true);
     }
   }
 
@@ -161,7 +162,7 @@ export default class ThreadRoute extends React.Component {
           <div className="goBackTen">
             <button type="button" onClick={() => this.context.setMediaTimer(this.context.mediaTimer - 10)}>Go back ten seconds!</button>
           </div>
-          {this.context.displayCommentBox ? <FixedBar category={this.props.match.params.thread} mediaId={this.props.match.params.id}/> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src={comment} alt='open chat box'></img>}
+          {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src={comment} alt='open chat box'></img> : ''}
   <Slider
     className="playSlider"
     domain={[0, runTime]}

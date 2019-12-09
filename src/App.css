@@ -1,7 +1,14 @@
 body {
   background-color: black;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
   color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#root {
+  background: rgba(0,0,0,0.8);
 }
 
 .flex {
@@ -19,6 +26,7 @@ body {
 
 .App {
   text-align: center;
+  padding-top: 40px;
 }
   .mobile {
     display: block;
@@ -33,6 +41,10 @@ body {
   }
 
   .hide {
+    display: none;
+  }
+
+  .mobile-hide {
     display: none;
   }
 
@@ -53,8 +65,12 @@ body {
   .desktop-row {
     flex-direction: row;
   }
-  
+
   .mobile.hide {
+    display: block;
+  }
+
+  .mobile-hide {
     display: block;
   }
 }

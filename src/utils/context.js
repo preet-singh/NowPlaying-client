@@ -70,9 +70,13 @@ export class UserProvider extends Component {
 
   //display comment box
 
-  displayCommentSection = () => {
+  displayCommentSection = (falsy) => {
+    let change = !this.state.displayCommentBox;
+    if (falsy === true) {
+      change = true;
+    }
     this.setState({
-      displayCommentBox: !this.state.displayCommentBox
+      displayCommentBox: change
     })
   }
 
