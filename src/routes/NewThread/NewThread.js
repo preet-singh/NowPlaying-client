@@ -23,12 +23,10 @@ class NewThread extends React.Component {
   }
   render() {
     return(
-      <div className="
-      ">
+      <div className="NewThread">
           <Header />
           <main>
             <CreateNewThreadForm />
-            <FixedBar />
           </main>
       </div>
     );
