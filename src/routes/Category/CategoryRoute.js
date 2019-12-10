@@ -19,6 +19,7 @@ import './CategoryRoute.css'
 
 class CategoryRoute extends React.Component {
   static contextType = UserContext;
+  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
     }
