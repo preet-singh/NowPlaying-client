@@ -17,10 +17,10 @@ class ThreadCategory extends React.Component {
   }
 
   mostPopular = () => {
-    if(!this.context.filteredCategoryItems || this.context.filteredCategoryItems.length < 3){
-      return null
+    if(!this.context.categoryItems){
+      return 'No threads yet!'
     }
-    let movies = this.context.filteredCategoryItems;
+    let movies = this.context.categoryItems;
     let first = movies[0];
     let second = movies[1];
     let third = movies[2];
