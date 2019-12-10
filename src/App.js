@@ -52,7 +52,7 @@ class App extends React.Component {
           <Route exact path="/" component={HomePageRoute} />
           <Route path="/category/:id" component={CategoryRoute} />
           <Route path="/:thread/:id" component={ThreadRoute} />
-          <Route path="/new" component={NewThread} />
+          <PrivateOnlyRoute path="/new" component={NewThread} />
           <PublicOnlyRoute path="/login" component={LoginRoute} />
           <PublicOnlyRoute path="/register" component={RegisterRoute} />
           <Route component={NotFoundRoute} />
