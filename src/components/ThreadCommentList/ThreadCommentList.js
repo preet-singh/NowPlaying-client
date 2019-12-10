@@ -35,15 +35,18 @@ class ThreadCommentList extends React.Component {
         containerId: 'thread-comment-list',
       })
     }
+    // this.scrollToBottom();
   }
-  scrollToBottom() {
-    let height = window.scrollHeight;
-    console.log(height)
-    // if(document.getElementById('thread-comment-list').scrollHeight){
-    //   let height = document.getElementById('thread-comment-list').scrollHeight;
-    //   console.log(height)
-    // }
-  }
+
+  // scrollToBottom() {
+  //   let height = window.scrollHeight;
+  //   let element = document.getElementById('thread-comment-list');
+  //   let scrollHeight;
+  //   if(element) {
+  //    element.scrollTop = element.scrollHeight;
+  //   }
+  // }
+
   handleScrollBegin = () => {
     console.log('scroll event fired')
     this.setState({scrolling: true})
@@ -116,7 +119,7 @@ class ThreadCommentList extends React.Component {
   handleReturnToBottom = () => {
     this.setState({scrolling: false})
   }
-  
+
   renderReturnToBottom = () => {
     return (
       <div id='return' onClick={() => this.handleReturnToBottom()}>Click to return to latest comments</div>
@@ -124,7 +127,6 @@ class ThreadCommentList extends React.Component {
   }
 
   render() {
-    console.log(this.scrollToBottom())
     if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {
       if (this.context.mediaTimer !== this.state.mediaTimer) {
         this.renderCommentList()

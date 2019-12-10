@@ -47,10 +47,6 @@ class CategoryRoute extends React.Component {
     }
   }
 
-    componentDidUpdate() {
-      window.scrollTo(0,0)
-    }
-
   render() {
     if (this.state.checkedBackground === false) {
       this.checkBackground();
