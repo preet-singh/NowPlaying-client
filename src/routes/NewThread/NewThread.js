@@ -15,6 +15,9 @@ import UserContext from '../../utils/context';
 //Style
 import './NewThread.css'
 
+//Images
+import comment from '../../components/Images/comment.svg';
+
 class NewThread extends React.Component {
   static contextType = UserContext;
   
@@ -27,7 +30,7 @@ class NewThread extends React.Component {
           <Header />
           <main>
             <CreateNewThreadForm />
-            {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src="#" alt='open chat box'></img> : ''}
+            {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src={comment} alt='open chat box'></img> : ''}
           </main>
       </div>
     );

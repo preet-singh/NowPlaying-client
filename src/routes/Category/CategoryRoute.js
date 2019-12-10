@@ -14,6 +14,9 @@ import UserContext from '../../utils/context';
 //Style
 import './CategoryRoute.css'
 
+//Images
+import comment from '../../components/Images/comment.svg'
+
 
 
 class CategoryRoute extends React.Component {
@@ -35,7 +38,7 @@ class CategoryRoute extends React.Component {
         <SortOptions state={this.state} />
         <main>
           <ThreadsList />
-          {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src="#" alt='open chat box'></img> : ''}
+          {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src={comment} alt='open chat box'></img> : ''}
         </main>
       </div>
     );

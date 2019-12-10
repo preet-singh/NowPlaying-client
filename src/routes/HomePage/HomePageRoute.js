@@ -14,6 +14,9 @@ import LoginBox from '../../components/LoginBox/LoginBox';
 //Styling
 import './HomePage.css';
 
+//Image
+import comment from '../../components/Images/comment.svg';
+
 //Token
 import TokenService from '../../utils/token-service'
 
@@ -35,7 +38,7 @@ class HomePageRoute extends React.Component {
         <Directory />
         <main>
           <ThreadCategory />
-          {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src="#" alt='open chat box'></img> : ''}
+          {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src={comment} alt='open chat box'></img> : ''}
         </main>
       </div>
     );
