@@ -1,54 +1,60 @@
-@media screen and (min-width: 320px){
-    .thread-item {
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid gray;
-    background-color: hsl(84, 60%, 45%);
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 10px;
-    position: relative;
-    overflow: hidden;
-  }
+  .thread-item {
+  margin: 5px 1px;
+  border: 1px solid #00d838;
+  background-color: black;
+  color: white;
+}
 
   .thread-item a {
-    color: white;
-    text-decoration: none;
     display: flex;
-    flex-direction: column;
-    height: 150px;
-    width: 50%;
-    margin-left: auto;
-    margin-right: 25px;
+    flex-direction: row;
+  }
+  .thread-item:hover {
+    background-color: #00d838;
+    color: black;
   }
 
-  .thread-item a:visited {
-    color: white;
-    text-decoration: none;
+  .thread-item:hover a {
+    color: black;
   }
 
-  .thread-item a > img {
-    position: absolute;
-    height: 150px;
+  .thread-item-image-container {
     width: 40%;
-    object-fit: cover;
-    min-height: 200px;
-    left: 0px;
-    top: 0px;
   }
 
-  #play-button_home {
-    position: absolute;
-    bottom: -40px;
-    right: 5px;
-    width: 40px;
-    height: 130px;
-    border: none !important;
-    border: none;
-  }
+.thread-item a { 
+  text-decoration: none;
+}
+
+
+.thread-item a:visited {
+  text-decoration: none;
+}
+
+.thread-item-poster {
+  object-fit: contain;
+}
+
+.thread-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.play-button-home-container {
+  width: 45px;
+  height: 45px;
+  background: url('https://i.imgur.com/QwphC2T.png');
+  background-size: contain;
+  align-self: center;
+}
+
+.thread-item:hover .play-button-home-container {
+  background: url('https://i.imgur.com/uTCb1eb.png');
+  background-size: contain;
 }
 
 @media screen and (min-width: 768px){

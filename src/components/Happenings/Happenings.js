@@ -37,7 +37,7 @@ class Happenings extends Component {
     // let lastHappening = this.state.happenings[this.state.happenings.length - 1] || {};
     return (
       <div className="Happenings">
-        <h3>What's happening</h3>
+        <h3>ACTIVITY</h3>
         <ul className="happenings-list">
           {firstHappenings.map(event => {
           if (event) {

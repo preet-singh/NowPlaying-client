@@ -30,10 +30,22 @@ export default class ThreadRoute extends React.Component {
 
   state = {
     comments: [],
+    checkedBackground: false
   }
 
   async componentDidMount() {
+    this.checkBackground();
     await this.getComments()
+
+  }
+
+  checkBackground = () => {
+    if (this.context.categoryItems) {
+    let find = this.context.categoryItems.find(item => item.id === Number(this.props.match.params.id));
+    let backdrop = find.backdrop;
+    let fullUrl = `http://image.tmdb.org/t/p/original/${backdrop}`;
+    document.body.style.background = `fixed center center url('${fullUrl}`;
+    }
   }
 
   
@@ -144,6 +156,9 @@ export default class ThreadRoute extends React.Component {
   }
 
   render(){
+    if (this.state.checkedBackground !== true) {
+      this.checkBackground();
+    }
     let runTime = 1;
     if (this.context.playingRuntime) {
       runTime = this.context.playingRuntime

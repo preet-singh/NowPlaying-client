@@ -29,7 +29,9 @@ function Header(props) {
   let location = useLocation();
   return(
     <div className="Header">
-      <Link to='/'><h1><span>NOW </span> PLAYING</h1></Link>
+      <Link to='/'><h1><span>N<img src="https://i.imgur.com/uTCb1eb.png" className="header-o" />W </span> PLAYING</h1></Link>
+      <LoginButton classNames="header-login mobile-hide" />
+      <LoginButton classNames="mobile-login tablet-hide" />
       {/* {pathSpecificLogin(location)} */}
     </div>
 
