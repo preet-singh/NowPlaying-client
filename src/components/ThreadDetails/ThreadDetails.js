@@ -8,13 +8,17 @@ export default class ThreadDetails extends React.Component {
     
   }
 
-  componentDidMount(){
+  async componentDidMount(){
     let thread = this.props.thread;
     let id = this.props.id;
-    AuthApi.getSpecificEvent(thread, id)
-    .then(resJSON => this.setState({
-      event: {...resJSON}
-    }))
+    console.log(thread, id)
+    await AuthApi.getSpecificEvent(thread, id)
+    .then(resJSON => {
+      console.log(resJSON)
+      this.setState({
+        event: {...resJSON}
+    })
+    })
   }
 
   convertDate = date => {

@@ -106,7 +106,7 @@ class AddCommentBox extends React.Component {
         <form className='add-comment-form' onSubmit={e => this.handleCommentSubmit(e)}>
         {TokenService.hasAuthToken() ? <textarea id='comment-text-input' type='text' value={this.state.comment} onChange={e => this.handleCommentInput(e.target.value)}/> : <textarea id='comment-text-input' type='text' value={this.state.comment} onChange={e => this.handleCommentInput(e.target.value)} placeholder='Log in to enter a comment' disabled/>
         }
-        <button id='send-comment' type='submit' disabled>Send</button>
+        <button id='send-comment' type='submit'>Send</button>
         </form>
         {this.context.displayCommentBox ? <button id='close_commentBox' onClick={() => this.context.displayCommentSection()}>X</button> : null}
         <div className={this.context.playing ? 'reaction-buttons' : 'reaction-buttons_notPlaying'}>
