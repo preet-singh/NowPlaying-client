@@ -37,8 +37,10 @@ class ThreadsList extends React.Component {
   render() {
     return (
       <div className='threads-list'>
-        <h3>{this.context.category} {this.checkIfHome()}</h3>
-        {this.getThreads()}
+        <h3>MOVIES</h3>
+        <div className="threads-list-container">
+          {this.getThreads()}
+        </div>
       </div>
     )
   }

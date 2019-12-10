@@ -2,38 +2,26 @@
     margin-top: 20px;
     flex: 1;
     background-color: rgba(0,0,0,0.8);
+    color: white;
 }
     .Happenings h3 {
         font-size: 28px;
         background-color: black;
     }
 
-    .underline {
-        border: 0;
-        height: 1px;
-        border-top: 1px solid #C9C9C9;
-        margin-top: 0;
-        margin-bottom: 0;
-        margin-left: 35%;
-        margin-right: 35%;
-      }
+    .happening-label {
+        font-weight: bold;
+    }
 
-      .thread-created {
-          color: rgb(135, 135, 252);
-      }
+.Happenings li:hover {
+    background-color: #00d838;
+    color: black;
+}
 
-      .comment-created {
-          color: rgb(245, 204, 129);
-      }
+.Happenings li:hover a {
+    color: black;
+}
 
-      .media-title {
-          color: rgb(223, 65, 223);
-          font-weight: bold;
-      }
-
-      .user-comment {
-          color: rgb(63, 63, 214);
-      }
 
 @media screen and (min-width: 768px){
 

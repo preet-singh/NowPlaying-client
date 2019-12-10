@@ -11,6 +11,7 @@ import FixedBar from '../../components/FixedBar/FixedBar';
 import UserContext from '../../utils/context';
 import LoginBox from '../../components/LoginBox/LoginBox';
 import LoginButton from '../../components/LoginButton/LoginButton';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 //Styling
 import './HomePage.css';
@@ -52,6 +53,7 @@ class HomePageRoute extends React.Component {
       <div className="HomePage">
           <Header />
           <Happenings />
+          <SearchBar />
         <main>
           <ThreadCategory />
           {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src="#" alt='open chat box'></img> : ''}

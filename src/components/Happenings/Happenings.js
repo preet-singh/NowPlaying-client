@@ -42,10 +42,10 @@ class Happenings extends Component {
           {firstHappenings.map(event => {
           if (event) {
              if (event.media_title) { return(
-                  <li className="thread-created">A thread for the {event.media_type.slice(0,event.media_type.length - 1)} <Link to={`${event.media_type}/${event.media_id}`}><span className="media-title">{event.media_title}</span></Link> was created</li>
+                  <li><span className="happening-label">New thread:</span> <Link to={`${event.media_type}/${event.media_id}`}><span className="media-title">{event.media_title}</span></Link></li>
              ); }
              else { return(
-                 <li className="comment-created">{event.username} commented <span className="user-comment">"{event.user_comment}"</span> in the <Link to={`${event.media_type}/${event.media_id}`}><span className="media-title">{event.media_title_comments}</span></Link> thread</li>
+                 <li><span className="happening-label">New comment:</span> <Link to={`${event.media_type}/${event.media_id}`}><span className="media-title">{event.media_title_comments}</span></Link></li>
              ); }
           }})}
         {/* //   (lastHappening.media_title)

@@ -51,7 +51,9 @@ class ThreadCategory extends React.Component {
       <div className='threads-list'>
         <h3>POPULAR MOVIES</h3>
         <h4><Link to="/category/1">(see more)</Link></h4>
-        {this.mostPopular()}
+          <div className="threads-list-container">
+            {this.mostPopular()}
+          </div>
       </div>
     )
   }

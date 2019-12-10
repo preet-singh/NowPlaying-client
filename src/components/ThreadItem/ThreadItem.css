@@ -19,7 +19,7 @@
   }
 
   .thread-item-image-container {
-    width: 40%;
+    width: 30%;
   }
 
 .thread-item a { 
@@ -39,22 +39,39 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-content: center;
   text-align: center;
 }
 
+.thread-item-info h3 {
+  font-size: 25px;
+}
+
 .play-button-home-container {
-  width: 45px;
-  height: 45px;
+  height: 30%;
+  width: 30%;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
   background: url('https://i.imgur.com/QwphC2T.png');
   background-size: contain;
+  background-repeat: no-repeat;
   align-self: center;
 }
 
 .thread-item:hover .play-button-home-container {
   background: url('https://i.imgur.com/uTCb1eb.png');
   background-size: contain;
+  background-repeat: no-repeat;
+  align-self: center;
+}
+
+.last-comment {
+  font-size: 14px;
 }
 
 @media screen and (min-width: 768px){

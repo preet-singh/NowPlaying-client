@@ -7,6 +7,7 @@ import Directory from '../../components/Directory/Directory';
 import ThreadsList from '../../components/ThreadsList/ThreadsList';
 import SortOptions from '../../components/SortOptions/SortOptions';
 import FixedBar from '../../components/FixedBar/FixedBar';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 
 //Utilities
@@ -50,7 +51,7 @@ class CategoryRoute extends React.Component {
     return(
       <div className="CategoryRoute">
         <Header />
-        <Directory />
+        <SearchBar />
         <SortOptions state={this.state} />
         <main>
           <ThreadsList />
