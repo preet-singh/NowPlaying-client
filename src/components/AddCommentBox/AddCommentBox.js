@@ -15,6 +15,11 @@ class AddCommentBox extends React.Component {
   }
 
   componentDidMount() {
+    let element = document.getElementById("comment-text-input")
+    if(element){
+      document.getElementById("comment-text-input").addEventListener("keypress", this.submitOnEnter);
+    }
+
     AuthApiService.getHappeningEvents()
       .then(data => {
         this.setState({
@@ -99,6 +104,14 @@ class AddCommentBox extends React.Component {
     await AuthApiService.postComment(category, commentBody)
     await this.refreshCommentsCheck();
   }
+
+  submitOnEnter(event){
+    if(event.which === 13){
+        event.target.form.dispatchEvent(new Event("submit", {cancelable: true}));
+        event.preventDefault();
+    }
+  }
+
 
   render() {
     return (

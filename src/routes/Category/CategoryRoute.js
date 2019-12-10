@@ -8,7 +8,6 @@ import ThreadsList from '../../components/ThreadsList/ThreadsList';
 import SortOptions from '../../components/SortOptions/SortOptions';
 import FixedBar from '../../components/FixedBar/FixedBar';
 
-
 //Utilities
 import UserContext from '../../utils/context';
 
@@ -24,9 +23,13 @@ class CategoryRoute extends React.Component {
     super(props);
     }
 
+    componentDidUpdate() {
+      window.scrollTo(0,0)
+    }
+
   render() {
     return(
-      <div className="CategoryRoute">
+      <div id="CategoryRoute">
         <Header />
         <Directory />
         <SortOptions state={this.state} />

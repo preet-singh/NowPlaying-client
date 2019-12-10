@@ -80,13 +80,13 @@
   .add-comment-box textarea {
     display: block;
     margin: auto;
-    height: 5em;
     min-width: 80%;
     max-width: 80%;
     border: 1px solid white;
     color: white;
     margin-left: 50px;
     min-height: 200px;
+    resize: none;
   }
 
   .reaction-buttons {
