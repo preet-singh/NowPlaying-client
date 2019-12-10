@@ -3,6 +3,7 @@ import './AddCommentBox.css';
 import comment from '../Images/comment.svg'
 import AuthApiService from '../../utils/auth-service';
 import UserContext from '../../utils/context';
+import TokenService from '../../utils/token-service';
 
 class AddCommentBox extends React.Component {
   static contextType = UserContext;
@@ -103,8 +104,9 @@ class AddCommentBox extends React.Component {
     return (
       <div className='add-comment-box'>
         <form className='add-comment-form' onSubmit={e => this.handleCommentSubmit(e)}>
-          <textarea id='comment-text-input' type='text' value={this.state.comment} onChange={e => this.handleCommentInput(e.target.value)} />
-          <button id='send-comment' type='submit'>Send</button>
+        {TokenService.hasAuthToken() ? <textarea id='comment-text-input' type='text' value={this.state.comment} onChange={e => this.handleCommentInput(e.target.value)}/> : <textarea id='comment-text-input' type='text' value={this.state.comment} onChange={e => this.handleCommentInput(e.target.value)} placeholder='Log in to enter a comment' disabled/>
+        }
+        <button id='send-comment' type='submit' disabled>Send</button>
         </form>
         {this.context.displayCommentBox ? <button id='close_commentBox' onClick={() => this.context.displayCommentSection()}>X</button> : null}
         <div className={this.context.playing ? 'reaction-buttons' : 'reaction-buttons_notPlaying'}>

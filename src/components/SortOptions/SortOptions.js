@@ -20,7 +20,7 @@ class SortOptions extends React.Component {
 
   render() {
     return(
-      <div className="SortOptions">
+      <div className="sortOptions">
         <div id="filterButton">
           <button type="button" onClick={() => this.setState({displayFilter: true})}>Filter</button>
         </div>
