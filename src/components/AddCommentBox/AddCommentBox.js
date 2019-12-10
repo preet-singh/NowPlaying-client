@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React from 'react';
 import './AddCommentBox.css';
 import comment from '../Images/comment.svg'
@@ -43,7 +44,6 @@ class AddCommentBox extends React.Component {
     } 
     else if(mediaType === 'movies'){
       let res = await AuthApiService.getMovieComments(mediaType.thread, this.context.playingID).then(res => res);
-      console.log(res);
       const orderedComments = res.sort((a,b) => a.comment_timestamp - b.comment_timestamp)
       await this.context.setCurrentThreadComments(orderedComments);
     }
@@ -74,7 +74,6 @@ class AddCommentBox extends React.Component {
 
     await AuthApiService.getSpecificEvent(this.context.category, this.context.playingID)
       .then(res => {
-        console.log(res)
         const commentBodyHappenings = {
           username: this.context.user.username,
           user_comment: this.state.comment,
@@ -89,7 +88,13 @@ class AddCommentBox extends React.Component {
   }
 
   handleReactions = async reaction => {
-    console.log(reaction)
+    if(reaction == 1){
+      reaction = `😂`
+    } else if (reaction == 2){
+      reaction = `😔`
+    } else if (reaction == 3){
+      reaction = `😱`
+    }
     let category = this.context.category.slice(0, this.context.category.length - 1)
     const commentBody = {
       user_comment: reaction,
@@ -110,9 +115,9 @@ class AddCommentBox extends React.Component {
         </form>
         {this.context.displayCommentBox ? <button id='close_commentBox' onClick={() => this.context.displayCommentSection()}>X</button> : null}
         <div className={this.context.playing ? 'reaction-buttons' : 'reaction-buttons_notPlaying'}>
-          <button className='reaction-button' type='button' value='😂' onClick={e => this.handleReactions(e.target.value)}><span role='img' aria-label='laughing emoji'>😂</span></button>
-          <button className='reaction-button' type='button' value='😔' onClick={e => this.handleReactions(e.target.value)}><span role='img' aria-label='laughing emoji'>😔</span></button>
-          <button className='reaction-button' type='button' value='😱' onClick={e => this.handleReactions(e.target.value)}><span role='img' aria-label='laughing emoji'>😱</span></button>
+          <button className='reaction-button' type='button' value='1' onClick={e => this.handleReactions('1')}><span role='img' aria-label='laughing emoji'>😂</span></button>
+          <button className='reaction-button' type='button' value='2' onClick={e => this.handleReactions('2')}><span role='img' aria-label='sad emoji'>😔</span></button>
+          <button className='reaction-button' type='button' value='3' onClick={e => this.handleReactions('3')}><span role='img' aria-label='shocked emoji'>😱</span></button>
         </div>
       </div>
     )
