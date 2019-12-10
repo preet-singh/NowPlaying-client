@@ -33,12 +33,16 @@ class ThreadCommentList extends React.Component {
         duration: 300,
         smooth: 'easeOutQuart',
         containerId: 'thread-comment-list',
-        ignoreCancelEvents: false,
       })
     }
   }
-  scrollToBottom () {
-    
+  scrollToBottom() {
+    let height = window.scrollHeight;
+    console.log(height)
+    // if(document.getElementById('thread-comment-list').scrollHeight){
+    //   let height = document.getElementById('thread-comment-list').scrollHeight;
+    //   console.log(height)
+    // }
   }
   handleScrollBegin = () => {
     console.log('scroll event fired')
@@ -112,11 +116,13 @@ class ThreadCommentList extends React.Component {
   handleReturnToBottom = () => {
     this.setState({scrolling: false})
   }
+  
   renderReturnToBottom = () => {
     return (
       <div id='return' onClick={() => this.handleReturnToBottom()}>Click to return to latest comments</div>
     )
   }
+
   render() {
     console.log(this.scrollToBottom())
     if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {

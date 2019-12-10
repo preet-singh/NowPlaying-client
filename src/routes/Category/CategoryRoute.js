@@ -9,12 +9,14 @@ import SortOptions from '../../components/SortOptions/SortOptions';
 import FixedBar from '../../components/FixedBar/FixedBar';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
-
 //Utilities
 import UserContext from '../../utils/context';
 
 //Style
 import './CategoryRoute.css'
+
+//Images
+import comment from '../../components/Images/comment.svg'
 
 
 
@@ -45,18 +47,22 @@ class CategoryRoute extends React.Component {
     }
   }
 
+    componentDidUpdate() {
+      window.scrollTo(0,0)
+    }
+
   render() {
     if (this.state.checkedBackground === false) {
       this.checkBackground();
     }
     return(
-      <div className="CategoryRoute">
+      <div id="CategoryRoute">
         <Header />
         <SearchBar />
         <SortOptions state={this.state} />
         <main>
           <ThreadsList />
-          {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src="#" alt='open chat box'></img> : ''}
+          {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src={comment} alt='open chat box'></img> : ''}
         </main>
       </div>
     );

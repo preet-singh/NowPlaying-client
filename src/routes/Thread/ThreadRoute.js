@@ -175,7 +175,7 @@ export default class ThreadRoute extends React.Component {
         <main>
           <ThreadDetails thread={this.props.match.params.thread} id={this.props.match.params.id}/>
           <div className="goBackTen">
-            <button type="button" onClick={() => this.context.setMediaTimer(this.context.mediaTimer - 10)}>Go back ten seconds!</button>
+            <button type="button" onClick={this.context.mediaTimer >= 10 ? () => this.context.setMediaTimer(this.context.mediaTimer - 10) : () => this.context.setMediaTimer(0)}>Go back ten seconds!</button>
           </div>
           {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src={comment} alt='open chat box'></img> : ''}
   <Slider
