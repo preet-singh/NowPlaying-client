@@ -1,6 +1,7 @@
 //Dependencies
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './SortOptions.css'
 
 //Components
 import FilterBox from '../FilterBox/FilterBox';
@@ -20,7 +21,7 @@ class SortOptions extends React.Component {
   render() {
     return(
       <div className="SortOptions">
-        <div className="filterButton">
+        <div id="filterButton">
           <button type="button" onClick={() => this.setState({displayFilter: true})}>Filter</button>
         </div>
         {this.state.displayFilter ? <FilterBox /> : ''}

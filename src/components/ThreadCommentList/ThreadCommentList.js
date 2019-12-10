@@ -37,7 +37,9 @@ class ThreadCommentList extends React.Component {
       })
     }
   }
-
+  scrollToBottom () {
+    
+  }
   handleScrollBegin = () => {
     console.log('scroll event fired')
     this.setState({scrolling: true})
@@ -47,19 +49,6 @@ class ThreadCommentList extends React.Component {
     this.setState({scrolling: false})
   }
   
-  // componentDidUpdate() {
-  //   let copy = [];
-  //   this.state.comments.forEach(comment => {
-  //     if(comment.comment_timestamp === this.context.mediaTimer){
-  //       copy.push(comment);
-  //     }
-  //   })
-  //   this.setState({
-  //     renderedComments: [...this.state.renderedComments, ...copy]
-  //   })
-  //   return copy;
-  // }
-
   convertTimeString = timeValue => {
     if(timeValue < 10) {
       return `0${timeValue}`;
@@ -125,11 +114,11 @@ class ThreadCommentList extends React.Component {
   }
   renderReturnToBottom = () => {
     return (
-      <div id='return' onClick={() => this.handleReturnToBottom()}>Return to latest comments</div>
+      <div id='return' onClick={() => this.handleReturnToBottom()}>Click to return to latest comments</div>
     )
   }
   render() {
-    console.log(this.state.scrolling)
+    console.log(this.scrollToBottom())
     if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {
       if (this.context.mediaTimer !== this.state.mediaTimer) {
         this.renderCommentList()
