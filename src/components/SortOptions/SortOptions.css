@@ -2,3 +2,12 @@
 .sortOptions a:visited {
   color: white !important;
 }
+
+.sortOptions a {
+  text-decoration: none;
+  line-height: 1.0;
+}
+
+.sortOptions p {
+  margin: 20px;
+}

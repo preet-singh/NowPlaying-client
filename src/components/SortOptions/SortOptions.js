@@ -25,7 +25,7 @@ class SortOptions extends React.Component {
           <button type="button" onClick={() => this.setState({displayFilter: true})}>Filter</button>
         </div>
         {this.state.displayFilter ? <FilterBox /> : ''}
-        <p><Link to="/new">Don't see what you want? Search for it and create it yourself!</Link></p>
+        <p><Link to="/new">Movie not here? <span className="block bold">Create a new thread!</span></Link></p>
       </div>
     );
   }
