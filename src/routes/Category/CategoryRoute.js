@@ -23,10 +23,6 @@ class CategoryRoute extends React.Component {
     super(props);
     }
 
-    componentDidUpdate() {
-      window.scrollTo(0,0)
-    }
-
   render() {
     return(
       <div id="CategoryRoute">

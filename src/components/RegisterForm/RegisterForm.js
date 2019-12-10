@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './RegisterForm.css'
 import FormValidationError from '../FormValidationError/FormValidationError';
 import AuthApiService from '../../utils/auth-service';
+import { Link } from 'react-router-dom';
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -136,6 +137,7 @@ class RegisterForm extends Component {
           />
           {this.state.passwordTouch && <FormValidationError message={passwordError} />}
           <button id='reg_button' type="submit" value="submit">Submit</button>
+          <Link to='/login'>Already have an account?</Link>
         </form>
       );
   }

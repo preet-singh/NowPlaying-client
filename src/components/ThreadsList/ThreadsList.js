@@ -44,7 +44,6 @@ class ThreadsList extends React.Component {
   }
 
   setPosts = () => {
-    window.scrollTo(0,0)
     if(this.context.categoryItems){
       let postsPerPage = 5;
       let currentPage = this.state.newPageNumber;
@@ -62,6 +61,7 @@ class ThreadsList extends React.Component {
       }
 
       if(this.state.currentPageNumber !== this.state.newPageNumber){
+        window.scrollTo(0,0)
         this.setState({
           posts: currentPosts,
           currentPageNumber: this.state.newPageNumber
