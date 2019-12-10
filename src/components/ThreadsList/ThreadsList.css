@@ -3,7 +3,7 @@
     background-color: rgba(0,0,0,0.8);
     margin-top: 30px;
 }
-.threads-list h3 {
+.threads-list > h3 {
     font-size: 32px;
     color: black;
     background-color: #00d838;
