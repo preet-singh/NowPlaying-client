@@ -35,13 +35,14 @@ class App extends React.Component {
     await this.context.setCategory(categories[0].media_type);
     let happenings = await AuthService.getHappeningEvents().then(response => response);
     await this.context.setHappenings(happenings);
-    let fullUrl = 'http://image.tmdb.org/t/p/w1280/or06FN3Dka5tukK1e9sl16pB3iy.jpg'
+    let fullUrl = 'http://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg'
     if (this.context.categoryItems.length > 0) {
       let randomNumber = Math.floor(Math.random() * this.context.categoryItems.length);
-      let imageUrlEnding = this.context.categoryItems[randomNumber].poster;
+      let imageUrlEnding = this.context.categoryItems[randomNumber].backdrop;
       fullUrl = `http://image.tmdb.org/t/p/original/${imageUrlEnding}`
     }
-    document.body.style.background = `url('${fullUrl}`;
+    document.body.style.background = `fixed center center url('${fullUrl}`;
+    this.context.setBackground(fullUrl);
 
   }
 

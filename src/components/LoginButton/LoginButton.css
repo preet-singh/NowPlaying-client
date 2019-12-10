@@ -1,10 +1,19 @@
-@media screen and (min-width: 320px){
-
-    .LoginButton {
-        padding-top: 25px;
-        width: 100%;
+    .LoginButton .mobile-login {
+        background: none;
+        border: none;
+        padding: 5px;
+        margin: 0px;
+        font-size: 16px;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    
+    .LoginButton .header-login {
         text-align: right;
-        padding-right: 25px;
+        position: absolute;
+        top: 90px;
+        right: 20px;
     }
 
     .LoginButton a {
@@ -16,10 +25,17 @@
         color: white;
         text-decoration: none;
     }
-}
+
+    .mobile-login {
+        margin: 5px;
+        display: block;
+    }
 
 @media screen and (min-width: 768px){
 
+    .LoginButton .header-login {
+        right: 40px;
+    }
     #logout_button {
         position: absolute;
         top: -125px;
@@ -35,4 +51,10 @@
         cursor: pointer;
     }
 
+}
+
+@media screen and (min-width: 968px){
+    .LoginButton .header-login {
+        right: 100px;
+    }
 }

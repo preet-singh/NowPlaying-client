@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import './ThreadCategory.css';
+import '../ThreadsList/ThreadsList.css';
 import ThreadsList from '../ThreadsList/ThreadsList';
 import UserContext from '../../utils/context';
 import ThreadItem from '../ThreadItem/ThreadItem';
@@ -17,10 +17,10 @@ class ThreadCategory extends React.Component {
   }
 
   mostPopular = () => {
-    if(!this.context.filteredCategoryItems || this.context.filteredCategoryItems.length < 3){
-      return null
+    if(!this.context.categoryItems){
+      return 'No threads yet!'
     }
-    let movies = this.context.filteredCategoryItems;
+    let movies = this.context.categoryItems;
     let first = movies[0];
     let second = movies[1];
     let third = movies[2];
@@ -48,10 +48,12 @@ class ThreadCategory extends React.Component {
 
   render(){
     return (
-      <div className='thread-category'>
-        <h3>Popular</h3>
-        <h4>{this.context.category} {this.checkIfHome()}</h4>
-        {this.mostPopular()}
+      <div className='threads-list'>
+        <h3>POPULAR MOVIES</h3>
+        <h4><Link to="/category/1">(see more)</Link></h4>
+          <div className="threads-list-container">
+            {this.mostPopular()}
+          </div>
       </div>
     )
   }

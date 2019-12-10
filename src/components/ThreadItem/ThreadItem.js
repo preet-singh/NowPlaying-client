@@ -23,7 +23,7 @@ class ThreadItem extends React.Component {
       .then(comments => {
         if (comments.length > 0) {
           let final = comments[comments.length-1] || {}
-          let date = moment(final.date_created).format('MMMM Do YYYY, h:mm:ss a')
+          let date = moment(final.date_created).format('MMMM Do YYYY')
           if (!this.state.lastComment) {
             this.setState({lastComment: date})
           }
@@ -76,11 +76,13 @@ class ThreadItem extends React.Component {
     return (
       <div className='thread-item'>
         <Link to={`/${this.context.category}/${this.props.details.id}`}>
+        <div className="thread-item-image-container"><img src={`http://image.tmdb.org/t/p/w780/${this.props.details.poster}`} className="thread-item-poster" alt='Movie backdrop'/></div>
+        <div className="thread-item-info">
           <h3>{this.props.details.title}</h3>
-          <img src={`http://image.tmdb.org/t/p/w780//${this.props.details.poster}`} alt='Movie poster'/>
-          <p id='last_comment'>{this.state.lastComment? lastCommentExists : 'No comments yet! Be the first!'}</p>
+          <p className='last-comment'>{this.state.lastComment? lastCommentExists : 'No comments yet! Be the first!'}</p>
+          <div className="play-button-home-container"></div>
+        </div>
         </Link>
-        <img id='play-button_home' src={playbutton} alt='play button' />
       </div>
     )
   }

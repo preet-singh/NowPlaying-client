@@ -3,6 +3,7 @@ import AuthApiService from './auth-service'
 import TokenService from './token-service'
 
 const UserContext = React.createContext({
+  background: '',
   user: {},
   category: '',
   categoryID: '',
@@ -22,6 +23,7 @@ const UserContext = React.createContext({
   playingID: null,
   error: null,
   setError: () => {},
+  setBackground: () => {},
   setCategory: () => {},
   setCategoryList: () => {},
   setCategoryItems: () => {},
@@ -121,6 +123,10 @@ export class UserProvider extends Component {
     this.setState({ error: null })
   }
 
+  setBackground = background => {
+    this.setState({background})
+  }
+
   setUser = user => {
     this.setState({ user })
   }
@@ -208,6 +214,7 @@ export class UserProvider extends Component {
 
   render() {
     const value = {
+      background: this.state.background,
       user: this.state.user,
       category: this.state.category,
       categoryID: this.state.categoryID,
@@ -225,6 +232,7 @@ export class UserProvider extends Component {
       currentThreadComments: this.state.currentThreadComments,
       renderedComments: this.state.renderedComments,
       happenings: this.state.happenings,
+      setBackground: this.setBackground,
       error: this.state.error,
       setError: this.setError,
       setPlaying: this.setPlaying,

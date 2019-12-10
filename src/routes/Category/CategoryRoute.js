@@ -7,6 +7,7 @@ import Directory from '../../components/Directory/Directory';
 import ThreadsList from '../../components/ThreadsList/ThreadsList';
 import SortOptions from '../../components/SortOptions/SortOptions';
 import FixedBar from '../../components/FixedBar/FixedBar';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 
 //Utilities
@@ -22,13 +23,36 @@ class CategoryRoute extends React.Component {
   // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
+    this.state = {
+      checkedBackground: false
     }
+  }
+
+  componentDidMount() {
+    this.checkBackground();
+  }
+
+  checkBackground = () => {
+    let image = document.body.style.background || '';
+    let split = image.split(' ') || [];
+    if (split[4]) {
+      let imageUrl = split[4].slice(5, -1) || ''
+      let imageFullUrl = imageUrl.slice(0,imageUrl.length-1) || ''
+      if (this.context.background !== imageFullUrl) {
+        document.body.style.background = `fixed center center url('${this.context.background}')`;
+      }
+      this.setState({checkedBackground: true})
+    }
+  }
 
   render() {
+    if (this.state.checkedBackground === false) {
+      this.checkBackground();
+    }
     return(
       <div className="CategoryRoute">
         <Header />
-        <Directory />
+        <SearchBar />
         <SortOptions state={this.state} />
         <main>
           <ThreadsList />

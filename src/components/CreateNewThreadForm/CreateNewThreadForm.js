@@ -178,6 +178,7 @@ class CreateNewThreadForm extends React.Component {
       mpaa_rating: "PG-13",
       movie_id: this.state.autoFillMovie.id,
       poster: this.state.autoFillMovie.poster_path,
+      backdrop: this.state.autoFillMovie.backdrop_path,
       media_id: this.state.selectedMovieId,
     }
     await AuthApiService.makeThread(allMovieInfo, 'movies')
