@@ -5,8 +5,10 @@ import toJson from 'enzyme-to-json'
 
 describe(`RegisterForm component`, () => {
 
+  let history = {}
+
   it('renders the RegisterForm', () => {
-    const wrapper = shallow(<RegisterForm />)
+    const wrapper = shallow(<RegisterForm history={history}/>)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
