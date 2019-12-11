@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Playbutton component renders the playbutton 1`] = `
+<button
+  id="play-button"
+  onClick={[Function]}
+  type="button"
+>
+  Pause
+</button>
+`;

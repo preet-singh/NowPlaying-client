@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SortOptions component renders the RegisterForm 1`] = `
+<div
+  className="sortOptions"
+>
+  <div
+    id="filterButton"
+  >
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Filter
+    </button>
+  </div>
+  <p>
+    <Link
+      to="/new"
+    >
+      Movie not here? 
+      <span
+        className="block bold"
+      >
+        Create a new thread!
+      </span>
+    </Link>
+  </p>
+</div>
+`;
