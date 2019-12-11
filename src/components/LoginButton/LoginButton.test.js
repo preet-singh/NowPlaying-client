@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import LoginButton from './LoginButton';
 import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json'
+// import { shallow } from 'enzyme';
+// import toJson from 'enzyme-to-json'
 
 
 
@@ -25,8 +25,4 @@ describe('Login button testing', () => {
         expect(tree).toMatchSnapshot();
   })
 
-  it('renders empty given no tabs', () => {
-    const wrapper = shallow(<LoginButton />)
-    expect(toJson(wrapper)).toMatchSnapshot()
-  })
 })
