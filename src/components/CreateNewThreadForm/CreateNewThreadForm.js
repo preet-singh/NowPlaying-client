@@ -151,7 +151,9 @@ class CreateNewThreadForm extends React.Component {
             console.log(res)
             let resultTrailer = res.results.find(result => result.type === 'Trailer' && result.site === 'YouTube')
             console.log(resultTrailer);
-            this.setState({selectedMovieTrailerKey: resultTrailer.key})
+            if (resultTrailer){
+              this.setState({selectedMovieTrailerKey: resultTrailer.key})
+            }
           })
         })
     }

@@ -1,24 +1,21 @@
 import React from 'react';
 import ReactPlayer from 'react-player'
 
-class MediaPlayer extends React.Component {
+class TrailerPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      seconds: this.myRef,
     }
   }
   render() {
-    console.log(this.state)
     return (
-      <div className='media-player'>
+      <div className='trailer-player'>
         <ReactPlayer 
-        url='https://www.youtube.com/watch?v=J---aiyznGQ' 
-        onStart={() => this.props.play()}
+        url={`https://www.youtube.com/watch?v=${this.props.videoKey}`}
         controls={true}/>
       </div>
     )
   }
 }
 
-export default MediaPlayer;
+export default TrailerPlayer;

@@ -14,6 +14,7 @@ import FixedBar from '../../components/FixedBar/FixedBar';
 import UserContext from '../../utils/context';
 
 
+
 //Utilities
 import convertSeconds from '../../utils/convertSeconds';
 
