@@ -205,6 +205,14 @@ const AuthApiService = {
         return res.json().then(err => Promise.reject(err))
       }
     })
+  },
+  getVideoLink(movie_id) {
+    return fetch(`https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=${config.API_KEY}&language=en-US`)
+    .then(res => 
+      (!res.ok)
+      ? res.json().then(e => Promise.reject(e))
+      : res.json()
+    )
   }
 }
   

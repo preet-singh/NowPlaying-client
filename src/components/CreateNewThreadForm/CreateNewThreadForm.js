@@ -37,6 +37,7 @@ class CreateNewThreadForm extends React.Component {
       selectedMovie: null,
       showMovies: null,
       selectedMovieImg: null,
+      selectedMovieTrailerKey: null,
     });
     let findItems = this.context.categoryItems.filter(item => item.title.toLowerCase().includes(this.state.title.toLowerCase()));
     let API_Key = config.API_KEY;
@@ -144,6 +145,15 @@ class CreateNewThreadForm extends React.Component {
           }
         } 
       )
+        .then(() => {
+          AuthApiService.getVideoLink(this.state.selectedMovieId)
+          .then(res => {
+            console.log(res)
+            let resultTrailer = res.results.find(result => result.type === 'Trailer' && result.site === 'YouTube')
+            console.log(resultTrailer);
+            this.setState({selectedMovieTrailerKey: resultTrailer.key})
+          })
+        })
     }
 
     console.log(this.state.autoFillMovie)
@@ -180,6 +190,7 @@ class CreateNewThreadForm extends React.Component {
       poster: this.state.autoFillMovie.poster_path,
       backdrop: this.state.autoFillMovie.backdrop_path,
       media_id: this.state.selectedMovieId,
+      video_key: this.state.selectedMovieTrailerKey
     }
     await AuthApiService.makeThread(allMovieInfo, 'movies')
     await this.context.updateCategoryItems();
