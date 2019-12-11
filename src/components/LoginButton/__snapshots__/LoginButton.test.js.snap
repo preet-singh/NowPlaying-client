@@ -1,23 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login button testing renders UI as expected 1`] = `
-<div
-  className="LoginButton"
->
-  <a
-    href="/login"
-    onClick={[Function]}
-  >
-    <button
-      type="button"
-    >
-      LOGIN
-    </button>
-  </a>
-</div>
-`;
-
-exports[`Login button testing renders empty given no tabs 1`] = `
+exports[`Login button testing renders the playbutton 1`] = `
 <div
   className="LoginButton"
 >
