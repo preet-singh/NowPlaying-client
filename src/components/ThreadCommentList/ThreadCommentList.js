@@ -142,7 +142,6 @@ class ThreadCommentList extends React.Component {
       }
     else {
       return         <ul className='thread-comment-list'>
-        <li>Press play to start this comment thread!</li>
     </ul>
     }
   }

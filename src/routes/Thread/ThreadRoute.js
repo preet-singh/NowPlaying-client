@@ -1,6 +1,5 @@
 //Dependencies
 import React from 'react';
-import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
 
 //Components
 import Header from '../../components/Header/Header';
@@ -95,78 +94,9 @@ export default class ThreadRoute extends React.Component {
     }
   }
 
-  playButton = async () => {
-    if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {
-      if (!this.context.playing) {
-        let titleItem = this.context.categoryItems.find(item => item.id === this.props.match.params.id) || {}
-        let title = titleItem.title || '';
-        let timeInMinutes = titleItem.media_runtime;
-        let timeInSeconds = timeInMinutes * 60;
-        this.context.startInterval();
-        this.context.setPlayingCategory(this.props.match.params.thread)
-        this.context.setPlayingID(this.props.match.params.id);
-        this.context.setPlayingTitle(title)
-        this.context.setPlayingRuntime(timeInSeconds);
-        this.context.setPlaying(!this.context.playing);
-        this.context.displayCommentSection(true);
-      }
-      else {
-        if (!this.context.paused) {
-          this.context.pauseInterval();
-        }
-        else {
-          this.context.startInterval();
-          this.context.displayCommentSection(true);
-        }
-        this.context.setPaused(!this.context.paused);
-      }
-    }
-    else {
-      let titleItem = this.context.categoryItems.find(item => Number(item.id) === Number(this.props.match.params.id)) || {}
-      let title = titleItem.title || '';
-      let timeInMinutes = titleItem.media_runtime;
-      let timeInSeconds = timeInMinutes * 60;
-      this.context.resetMediaTimer();
-      this.context.setPlayingCategory(this.props.match.params.thread)
-      this.context.setPlayingID(this.props.match.params.id);
-      this.context.setPlayingRuntime(timeInSeconds);
-      this.context.setPlayingTitle(title)
-      this.context.setPlaying(true);
-      this.context.pauseInterval();
-      this.context.startInterval();
-      this.context.displayCommentSection(true);
-    }
-  }
-
-  determineButtonText = () => {
-    if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {
-      if (!this.context.playing) {
-        return 'Play';
-      }
-      else {
-        if (!this.context.paused) {
-          return 'Pause';
-        }
-        else {
-          return 'Resume';
-        }
-      }
-    }
-    return 'Play';
-  }
-
   render(){
     if (this.state.checkedBackground !== true) {
       this.checkBackground();
-    }
-    let runTime = 1;
-    if (this.context.playingRuntime) {
-      runTime = this.context.playingRuntime
-    }
-    let scrollValue = this.context.mediaTimer;
-    if (this.props.match.params.thread !== this.context.playingCategory || this.props.match.params.id !== this.context.playingID) {
-      runTime = 1;
-      scrollValue = 0;
     }
     return(
       <div className="ThreadRoute">
@@ -174,67 +104,8 @@ export default class ThreadRoute extends React.Component {
         <Directory thread={this.props.match.params.thread} id={this.props.match.params.id} />
         <main>
           <ThreadDetails thread={this.props.match.params.thread} id={this.props.match.params.id}/>
-          <div className="goBackTen">
-            <button type="button" onClick={this.context.mediaTimer >= 10 ? () => this.context.setMediaTimer(this.context.mediaTimer - 10) : () => this.context.setMediaTimer(0)}>Go back ten seconds!</button>
-          </div>
-          {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src={comment} alt='open chat box'></img> : ''}
-  <Slider
-    className="playSlider"
-    domain={[0, runTime]}
-    step={1}
-    mode={2}
-    values={[scrollValue]}
-    onChange={async (e) => {
-      if (this.context.paused) {
-        await this.context.pauseInterval();
-        await this.context.setMediaTimer(Number(e[0]));
-      }
-      else {
-        await this.context.pauseInterval();
-        await this.context.setMediaTimer(Number(e[0]));
-        await this.context.startInterval();
-      }
-    }}
-    onUpdate={async (e) => {
-      await this.context.pauseInterval();
-    }} >
-
-    <Rail>
-      {({ getRailProps }) => (
-        <div className="railStyle" {...getRailProps()} />
-      )}
-    </Rail>
-    <Handles>
-      {({ handles, getHandleProps }) => (
-        <div className="slider-handles">
-          {handles.map(handle => (
-            <Handle
-              key={handle.id}
-              handle={handle}
-              getHandleProps={getHandleProps}
-            />
-          ))}
-        </div>
-      )}
-    </Handles>
-    <Tracks right={false}>
-      {({ tracks, getTrackProps }) => (
-        <div className="slider-tracks">
-          {tracks.map(({ id, source, target }) => (
-            <Track
-              key={id}
-              source={source}
-              target={target}
-              getTrackProps={getTrackProps}
-            />
-          ))}
-        </div>
-      )}
-    </Tracks>
-  </Slider>
-          <button onClick={() => this.playButton()} id='display-comment'>{this.determineButtonText()}</button>
-          <PrivateThreadMessage />
           {this.renderCommentList()}
+          {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src={comment} alt='open chat box'></img> : ''}
         </main>
       </div>
     );

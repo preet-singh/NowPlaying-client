@@ -1,60 +1,27 @@
-.playSlider {
-    position: relative;
-    width: 50%;
-    height: 80px;
-    margin: 30px;
+#display-comment {
+    background-color: green;
 }
 
-.railStyle {
-    position: absolute;
-    width: 100%;
-    height: 10px;
-    margin-top: 35px;
-    border-radius: 5px;
-    background-color: #8B9CB6;
+.ThreadRoute {
+    color: white;
 }
 
-.Handle {
-    position: absolute;
-    margin-left: -15px;
-    margin-top: 25px;
-    z-index: 2;
-    width: 30px;
-    height: 30px;
-    border: 0px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: #2C4870;
-    color: #fff;
+.ThreadRoute main > button {
+    width: 40%;
+    height: 40px;
+    border: 1px solid white;
+    background-color: transparent;
+    font-weight: bold;
+    color: white;
 }
 
-@media screen and (min-width: 320px){
-    #display-comment {
-        background-color: green;
-    }
+.ThreadRoute > main {
+    padding-bottom: 35vh;
+}
 
-    .ThreadRoute {
-        color: white;
-    }
-
-    .ThreadRoute main > button {
-        width: 40%;
-        height: 40px;
-        border: 1px solid white;
-        background-color: transparent;
-        font-weight: bold;
-        color: white;
-    }
-
-    .ThreadRoute > main {
-        padding-bottom: 35vh;
-    }
-
-    .ThreadRoute > main h4 {
-        font-size: 32px;
-        padding: 10px;
-    }
+.ThreadRoute > main h4 {
+    font-size: 32px;
+    padding: 10px;
 }
 
 @media screen and (min-width: 768px){
