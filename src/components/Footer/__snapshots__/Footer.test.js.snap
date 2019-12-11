@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer testing renders the footer 1`] = `
+<a
+  className="footer"
+  href="http://www.tmdb.org"
+  target="_blank"
+>
+  Movie info from TMDB. Thanks!
+</a>
+`;

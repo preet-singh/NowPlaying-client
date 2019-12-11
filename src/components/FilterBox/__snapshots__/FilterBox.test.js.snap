@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter box testing renders the filter box UI 1`] = `
+<form
+  id="filterForm"
+  name="filterForm"
+  onSubmit={[Function]}
+>
+  <label
+    htmlFor="minimumYear"
+    id="minimumYearLabel"
+    name="minimumYearLabel"
+  >
+    Earliest Year:
+  </label>
+  <input
+    id="minimumYear"
+    name="minimumYear"
+    onChange={[Function]}
+    placeholder="1920"
+    type="text"
+  />
+  <label
+    htmlFor="latestYear"
+    id="latestYearLabel"
+    name="latestYearLabel"
+  >
+    Latest Year:
+  </label>
+  <input
+    id="latestYear"
+    name="maximumYear"
+    onChange={[Function]}
+    placeholder={2019}
+    type="text"
+  />
+  <label
+    htmlFor="rating"
+    id="ratingLabel"
+    name="ratingLabel"
+  >
+    Minimum Rating:
+  </label>
+  <select
+    defaultValue="1"
+    id="rating"
+    name="rating"
+    onChange={[Function]}
+  >
+    <option
+      value="10"
+    >
+      10
+    </option>
+    <option
+      value="9"
+    >
+      9
+    </option>
+    <option
+      value="8"
+    >
+      8
+    </option>
+    <option
+      value="7"
+    >
+      7
+    </option>
+    <option
+      value="6"
+    >
+      6
+    </option>
+    <option
+      value="5"
+    >
+      5
+    </option>
+    <option
+      value="4"
+    >
+      4
+    </option>
+    <option
+      value="3"
+    >
+      3
+    </option>
+    <option
+      value="2"
+    >
+      2
+    </option>
+    <option
+      value="1"
+    >
+      1
+    </option>
+  </select>
+  <div
+    id="filter-buttons"
+  >
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Clear
+    </button>
+  </div>
+</form>
+`;

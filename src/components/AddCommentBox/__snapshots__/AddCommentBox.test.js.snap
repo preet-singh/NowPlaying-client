@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add comment box testing renders the user comment box 1`] = `
+<div
+  className="add-comment-box"
+>
+  <form
+    className="add-comment-form"
+    onSubmit={[Function]}
+  >
+    <textarea
+      disabled={true}
+      id="comment-text-input"
+      onChange={[Function]}
+      placeholder="Log in to enter a comment"
+      type="text"
+      value=""
+    />
+    <button
+      id="send-comment"
+      type="submit"
+    >
+      Send
+    </button>
+  </form>
+  <div
+    className="reaction-buttons_notPlaying"
+  >
+    <button
+      className="reaction-button"
+      onClick={[Function]}
+      type="button"
+      value="1"
+    >
+      <span
+        aria-label="laughing emoji"
+        role="img"
+      >
+        😂
+      </span>
+    </button>
+    <button
+      className="reaction-button"
+      onClick={[Function]}
+      type="button"
+      value="2"
+    >
+      <span
+        aria-label="sad emoji"
+        role="img"
+      >
+        😔
+      </span>
+    </button>
+    <button
+      className="reaction-button"
+      onClick={[Function]}
+      type="button"
+      value="3"
+    >
+      <span
+        aria-label="shocked emoji"
+        role="img"
+      >
+        😱
+      </span>
+    </button>
+  </div>
+</div>
+`;
