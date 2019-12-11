@@ -44,14 +44,7 @@ class Directory extends React.Component {
     let category = this.context.category || ''
     return(
       <div className="Directory">
-        <section className="directory-box">
-          <div className="directory-dropdown">
-            {/* <select onClick={(e) => this.checkSelectChange(e)} value={this.context.category}>
-              {this.getCategoryList(categoryList, category)}
-            </select> */}
-            <h3><Link to="/category/1">Movies ></Link></h3>
-          </div>
-        </section>
+        <h3><Link to="/category/1"> {`<`} MOVIES </Link></h3>
         <SearchBar />
       </div>
     );

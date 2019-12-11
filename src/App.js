@@ -14,6 +14,7 @@ import AuthService from './utils/auth-service';
 import PublicOnlyRoute from './routes/PublicOnlyRoute/PublicOnlyRoute';
 import PrivateOnlyRoute from './routes/PrivateOnlyRoute/PrivateOnlyRoute';
 import NewThread from './routes/NewThread/NewThread';
+import Footer from './components/Footer/Footer';
 
 //EJ IS TESTING HERE TO PUSH
 
@@ -58,6 +59,7 @@ class App extends React.Component {
           <PublicOnlyRoute path="/register" component={RegisterRoute} />
           <Route component={NotFoundRoute} />
         </Switch>
+        <Footer />
       </div>
     );
   }
