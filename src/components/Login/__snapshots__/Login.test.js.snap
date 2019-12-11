@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login box testing renders the login form 1`] = `
+<form
+  className="Login"
+  name="login"
+  onSubmit={[Function]}
+>
+  <legend>
+    Login 
+    <button
+      className="displayV mobile show"
+      onClick={[Function]}
+      type="button"
+    >
+      V
+    </button>
+  </legend>
+  <div
+    className="login-form mobile-hide"
+    id="login-form"
+  >
+    <label
+      htmlFor="username-input"
+      id="username-label"
+      name="username-label"
+    >
+      Username:
+    </label>
+    <input
+      id="username-input"
+      name="username"
+      onChange={[Function]}
+      placeholder="ex. FlixMaster12"
+      required={true}
+      type="text"
+    />
+    <label
+      htmlFor="password-input"
+      id="password-label"
+      name="password-label"
+    >
+      Password:
+    </label>
+    <input
+      autoComplete="on"
+      id="password-input"
+      name="password"
+      onChange={[Function]}
+      placeholder="********"
+      required={true}
+      type="password"
+    />
+    <button
+      type="submit"
+      value="submit"
+    >
+      Submit
+    </button>
+    <Link
+      to="/register"
+    >
+      <p
+        className="sign-up"
+      >
+        Don't have an account?
+      </p>
+    </Link>
+  </div>
+</form>
+`;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header testing renders the header 1`] = `
+<div
+  className="Header"
+>
+  <Link
+    to="/"
+  >
+    <h1>
+      <span>
+        N
+        <img
+          className="header-o"
+          src="https://i.imgur.com/uTCb1eb.png"
+        />
+        W 
+      </span>
+       PLAYING
+    </h1>
+  </Link>
+  <LoginButton
+    classNames="header-login mobile-hide"
+  />
+  <LoginButton
+    classNames="mobile-login tablet-hide"
+  />
+</div>
+`;
