@@ -128,7 +128,7 @@ class CreateNewThreadForm extends React.Component {
 
     if(this.state.title){
       console.log('movie selected still');
-    } else {
+    } else if(this.state.showMovies !== false) {
       fetch(`https://api.themoviedb.org/3/movie/${this.state.selectedMovieId}?api_key=${API_Key}&language=en-US`)
         .then(res => 
           (!res.ok)
@@ -137,6 +137,7 @@ class CreateNewThreadForm extends React.Component {
         )
         .then(resJSON => {
           console.log(resJSON)
+          //this line is causing error
           if(this.state.showMovies !== false && this.state.autoFillMovie !== resJSON){
             this.setState({
               showMovies: false,
