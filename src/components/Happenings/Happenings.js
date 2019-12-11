@@ -40,12 +40,13 @@ class Happenings extends Component {
         <h3>ACTIVITY</h3>
         <ul className="happenings-list">
           {firstHappenings.map(event => {
+            console.log(event);
           if (event) {
              if (event.media_title) { return(
-                  <li><span className="happening-label">New thread:</span> <Link to={`${event.media_type}/${event.media_id}`}><span className="media-title">{event.media_title}</span></Link></li>
+                  <li key={event.id}><span className="happening-label">New thread:</span> <Link to={`${event.media_type}/${event.media_id}`}><span className="media-title">{event.media_title}</span></Link></li>
              ); }
              else { return(
-                 <li><span className="happening-label">New comment:</span> <Link to={`${event.media_type}/${event.media_id}`}><span className="media-title">{event.media_title_comments}</span></Link></li>
+                 <li key={event.id}><span className="happening-label">New comment:</span> <Link to={`${event.media_type}/${event.media_id}`}><span className="media-title">{event.media_title_comments}</span></Link></li>
              ); }
           }})}
         {/* //   (lastHappening.media_title)

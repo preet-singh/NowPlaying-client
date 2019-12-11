@@ -127,8 +127,7 @@ class CreateNewThreadForm extends React.Component {
     let API_Key = config.API_KEY;
 
     if(this.state.title){
-      console.log('movie selected still');
-    } else {
+    } else if(this.state.showMovies !== false) {
       fetch(`https://api.themoviedb.org/3/movie/${this.state.selectedMovieId}?api_key=${API_Key}&language=en-US&append_to_response=videos`)
         .then(res => 
           (!res.ok)
@@ -136,7 +135,6 @@ class CreateNewThreadForm extends React.Component {
           : res.json()
         )
         .then(resJSON => {
-          console.log(resJSON)
           if(this.state.showMovies !== false && this.state.autoFillMovie !== resJSON) {
             this.setState({
               showMovies: false,
@@ -151,20 +149,7 @@ class CreateNewThreadForm extends React.Component {
           }
         } 
       )
-        // .then(() => {
-        //   AuthApiService.getVideoLink(this.state.selectedMovieId)
-        //   .then(res => {
-        //     console.log(res)
-        //     let resultTrailer = res.results.find(result => result.type === 'Trailer' && result.site === 'YouTube')
-        //     console.log(resultTrailer);
-        //     if (resultTrailer){
-        //       this.setState({selectedMovieTrailerKey: resultTrailer.key})
-        //     }
-        //   })
-        // })
     }
-
-    console.log(this.state.autoFillMovie)
 
     return this.state.autoFillMovie ? 
           <div className='autoFill_form'>
@@ -205,7 +190,6 @@ class CreateNewThreadForm extends React.Component {
     let lastId = this.context.categoryItems[this.context.categoryItems.length-1].id
     await AuthApiService.getSpecificEvent(this.context.category, lastId)
       .then(res => {
-        console.log(res)
         const commentBodyHappenings = {
           username: this.context.user.username,
           user_comment: this.state.comment,
@@ -214,7 +198,6 @@ class CreateNewThreadForm extends React.Component {
           media_id: lastId
         }
         AuthApiService.postCommentHappenings(commentBodyHappenings)
-          .then(res => console.log(res))
       })
     this.props.history.push(`/${this.context.category}/${lastId}`)
   }
