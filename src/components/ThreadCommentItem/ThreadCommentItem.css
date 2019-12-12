@@ -1,19 +1,31 @@
-.thread-comment-item {
-  display: flex;
-  flex-direction: column-reverse;
-  text-align: center;
-  width: 100%;
-  padding: 5px 20px;
-  margin: auto;
-  margin-bottom: 10px;
-
+@media screen and (min-width: 328px) and (max-width: 768px) {
+  .thread-comment-item {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: left;
+    width: 100%;
+    padding: 5px;
+    border-bottom: 1px solid white;
+  }
 }
 
-.thread-comment-item {
-  /* border: 1px solid black; */
-  padding: 0.3em;
-}
+@media screen and (min-width: 768px) {
+  .thread-comment-item {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+    width: 100%;
+    padding: 5px 20px;
+    margin: auto;
+    margin-bottom: 10px;
+  }
 
-.comment-time-stamp {
-  font-weight: bold;
+  .thread-comment-item {
+    /* border: 1px solid black; */
+    padding: 0.3em;
+  }
+
+  .comment-time-stamp {
+    font-weight: bold;
+  }
 }

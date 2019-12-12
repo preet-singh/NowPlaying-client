@@ -33,21 +33,21 @@ class ThreadCommentList extends React.Component {
         console.log(element.scrollHeight)
         scroll.scrollToBottom({
           duration: 300,
-          smooth: 'easeOutQuart',
+          smooth: 'easeInOutQuint',
           containerId: 'thread-comment-list',
         })
       }
     }
   }
 
-  scrollToBottom() {
-    let height = window.scrollHeight;
-    let element = document.getElementById('thread-comment-list');
-    let scrollHeight;
-    if(element) {
-     element.scrollTop = element.scrollHeight;
-    }
-  }
+  // scrollToBottom() {
+  //   let height = window.scrollHeight;
+  //   let element = document.getElementById('thread-comment-list');
+  //   let scrollHeight;
+  //   if(element) {
+  //    element.scrollTop = element.scrollHeight;
+  //   }
+  // }
 
   handleScrollBegin = () => {
     console.log('scroll event fired')
@@ -125,6 +125,9 @@ class ThreadCommentList extends React.Component {
   }
 
   render() {
+    // let commentHeader = document.getElementById('comments-header')
+    // let height = commentHeader.scrollHeight;
+    // console.log(height);
     if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {
       if (this.context.mediaTimer !== this.state.mediaTimer) {
         this.renderCommentList()
@@ -142,8 +145,8 @@ class ThreadCommentList extends React.Component {
     else {
       return (    
         <div id="ThreadCommentList">    
-        <h4>Comments</h4>
-          <ul id='thread-comment-list'>
+        <h4 id="comments-header">Comments</h4>
+          <ul id="thread-comment-list">
             <li>Click 'Play' to start the comments!</li>
           </ul>
       </div>
