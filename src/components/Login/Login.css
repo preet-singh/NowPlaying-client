@@ -1,59 +1,44 @@
-@media screen and (min-width: 320px){
-  .Login {
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid white;
-    justify-content: center;
-    padding: 2em;
-    color: white;
-  }
-  
-  .Login legend {
-    font-size: 30px;
-  }
-  
-  .Login button {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid grey;
-    background-color: transparent;
-    color: white;
-    border-radius: 5px;
-    margin-bottom: 5px;
-  }
+.Login {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  color: white;
+  background: rgba(0,0,0,0.7);
+}
 
-  
-  .Login .displayV {
-    width: 30px;
-    font-size: 15px;
-    display: inline-block;
-  }
-  
-  #username-label, #password-label {
-    display: none;
-  }
-  
-  #username-input, #password-input {
-    margin-top: 10px;
-    border: none;
-    background-color: transparent;
-    border-bottom: 1px solid grey;
-    border-radius: 3px;
-    text-align: left;
-    padding-left: 10px;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    color: white;
-  }
-  
-  #password-input {
-    margin-bottom: 10px;
-  }
+.Login legend {
+  font-size: 32px;
+  color: #00d838;
+  background: black;
+  font-weight: bold;
+}
+
+.Login .black-button {
+  width: 60%;
+  margin: 0 auto;
+}
+
+#username-input, #password-input {
+  border: none;
+  background: none;
+  border-bottom: 1px solid white;
+  border-radius: 3px;
+  text-align: left;
+  padding-left: 10px;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 10px;
+  color: white;
+}
+
+#password-input {
+  margin-bottom: 10px;
+}
+
+.Login .sign-up:hover {
+  color: #00d838;
 }
 
 
