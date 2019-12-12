@@ -48,6 +48,17 @@ export default class ThreadDetails extends React.Component {
     return `${newDate.toDateString()}`
   }
 
+  rewindTen = () => {
+    if (this.context.mediaTimer <= 10){
+      this.context.setMediaTimer(0);
+    }
+    else{
+      this.context.setMediaTimer(this.context.mediaTimer - 10);
+    }
+    this.context.pauseInterval()
+    setTimeout(this.context.startInterval(), 100)
+  }
+
   playButton = async () => {
     if (this.props.thread === this.context.playingCategory && this.props.id === this.context.playingID) {
       if (!this.context.playing) {
@@ -182,7 +193,7 @@ export default class ThreadDetails extends React.Component {
       )}
     </Tracks>
   </Slider>
-          <button type="button" className="go-back-ten" onClick={this.context.mediaTimer >= 10 ? () => this.context.setMediaTimer(this.context.mediaTimer - 10) : () => this.context.setMediaTimer(0)}><FontAwesomeIcon className="play-main" icon={stepBackwardIcon} />10s</button>
+          <button type="button" className="go-back-ten" onClick={() => this.rewindTen()}><FontAwesomeIcon className="play-main" icon={stepBackwardIcon} />10s</button>
           <button type="button" onClick={() => this.playButton()} id='display-comment' className="play-button"><FontAwesomeIcon className="play-main" icon={this.determineButtonText()[1]} />{this.determineButtonText()[0]}</button>
           {this.context.playing ? '' : <span className="block margin10">Click 'play' to view the comments</span>}
           </div>

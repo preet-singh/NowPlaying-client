@@ -2,14 +2,14 @@
   background: black;
 }
 
-.thread-comment-list {
+#thread-comment-list {
   text-align: center;
   background: black;
+  padding: 1em 1em 1em 1em;
 }
 
-
 @media screen and (min-width: 768px){
-  .thread-comment-list {
+  #thread-comment-list {
     position: absolute;
     top: 200px; 
     right: 50px;
