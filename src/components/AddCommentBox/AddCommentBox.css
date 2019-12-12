@@ -13,7 +13,8 @@
   background-color: rgb(30,30,30);
   border: 1px solid rgb(70,70,70);
   border: 1px solid black;
-  color: black !important;
+  text-align: center;
+  color: white;
   margin-top: 5px;
 }
 
@@ -51,7 +52,7 @@
   height: 30px;
 }
 
-.add-comment-form > button {
+/* .add-comment-form > button {
   background-color: transparent;
   border: none !important;
   color: white;
@@ -59,7 +60,7 @@
   margin-top: 10px;
   float: right;
   margin-right: 21px;
-}
+} */
 
 .send-comment {
   width: 30%;
@@ -101,6 +102,8 @@
   cursor: pointer;
   color: #00d838;
 }
+
+
 
 @media screen and (min-width: 768px){
   
