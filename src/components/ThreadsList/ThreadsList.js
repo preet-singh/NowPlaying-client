@@ -20,14 +20,9 @@ class ThreadsList extends React.Component {
   getThreads = () => {
     let limit = this.props.limit || 5;
     let returnItem = [];
-<<<<<<< HEAD
-
-    if(this.context.filteredCategoryItems){
-=======
     console.log(this.context.filteredCategoryItems)
     console.log(this.context.categoryItems)
     if(this.context.filteredCategoryItems !== this.context.categoryItems){
->>>>>>> 3efd2aa04191105abe1df84d4ea499d45adb6559
       for(let i = 0; i < this.context.filteredCategoryItems.length; i++){
         returnItem.push(<ThreadItem details={this.context.filteredCategoryItems[i]} key={i} />)
       }

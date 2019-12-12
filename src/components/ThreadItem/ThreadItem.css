@@ -69,14 +69,14 @@
   background: url('https://i.imgur.com/QwphC2T.png');
   background-size: contain;
   background-repeat: no-repeat;
-  align-self: center;
+  align-self: flex-end;
 }
 
 .thread-item:hover .play-button-home-container {
   background: url('https://i.imgur.com/uTCb1eb.png');
   background-size: contain;
   background-repeat: no-repeat;
-  align-self: center;
+  align-self: flex-end;
 }
 
 .last-comment {

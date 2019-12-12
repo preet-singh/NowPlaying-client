@@ -1,10 +1,6 @@
-@media screen and (min-width: 320px){
-    .HomePage {
-        padding-bottom: 20px;
-    }
-    
+.HomePage {
+    padding-bottom: 20px;
 }
-
 
 @media screen and (min-width: 768px){
 

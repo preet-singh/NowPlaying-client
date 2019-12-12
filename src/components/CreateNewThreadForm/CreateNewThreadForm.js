@@ -206,11 +206,13 @@ class CreateNewThreadForm extends React.Component {
     return(
       <div>
         <form className="CreateNewThreadForm" onSubmit={(e) => this.checkForm(e)}>
-          <legend>Start a new thread!</legend>
-          {this.state.existError ? this.threadExists() : ''}
-          <label htmlFor="newThreadTitle" id="newThreadTitleLabel" name="newThreadTitleLabel">{this.context.category} title:</label>
-          <input type="text" id="newThreadTitle" name="newThreadTitle" placeholder="The Producers" value={this.state.title} onChange={(e) => this.setState({title: e.target.value})} />
-          <button type="submit">Search!</button>
+          <legend><h3>Start a new thread!</h3></legend>
+          <div className="width70percent">
+            {this.state.existError ? this.threadExists() : ''}
+            <label htmlFor="newThreadTitle" id="newThreadTitleLabel" name="newThreadTitleLabel">Title:</label>
+            <input type="text" id="newThreadTitle" name="newThreadTitle" placeholder="The Producers" value={this.state.title} onChange={(e) => this.setState({title: e.target.value})} />
+            <button type="submit" className="black-button">Search!</button>
+          </div>
         </form>
         <div className='grid_for_desktop'>
           <ul className='UL_displayMovies'>
