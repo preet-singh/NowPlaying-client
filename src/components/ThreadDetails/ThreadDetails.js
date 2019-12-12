@@ -175,7 +175,7 @@ export default class ThreadDetails extends React.Component {
           <p className="item-info">{this.state.event ? this.state.event[0].event_description : 'Loading...'}</p>
           <img className="item-poster" src={this.state.event ? `http://image.tmdb.org/t/p/w780/${this.state.event[0].poster}` : ''} alt="poster" />
           <h4>Trailers</h4>
-          {this.state.event[0].video_key ? <TrailerPlayer videoKey={this.state.event[0].video_key}/> : <div className="item-info trailer-list">None yet!</div>}
+          {this.state.event[0].video_key ? <TrailerPlayer videoKey={this.state.event[0].video_key}/> : <div className="item-info trailer-list">No trailers found!</div>}
           <h4>Information</h4>
           <ul>
             <li>Runtime: {this.state.event[0].media_runtime}m</li>
