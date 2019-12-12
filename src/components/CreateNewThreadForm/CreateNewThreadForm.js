@@ -2,6 +2,10 @@
 //Dependencies
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { findIconDefinition, icon } from '@fortawesome/fontawesome-svg-core'  
 
 //Utilities
 import UserContext from '../../utils/context';
@@ -10,6 +14,14 @@ import config from '../../config';
 
 //Style
 import './CreateNewThread.css'
+
+library.add(
+  fas
+);
+
+
+const backArrow = findIconDefinition({ prefix: 'fas', iconName: 'arrow-left' })
+const backArrowIcon = icon(backArrow);
 
 class CreateNewThreadForm extends React.Component {
   static contextType = UserContext;
@@ -212,6 +224,15 @@ class CreateNewThreadForm extends React.Component {
             <label htmlFor="newThreadTitle" id="newThreadTitleLabel" name="newThreadTitleLabel">Title:</label>
             <input type="text" id="newThreadTitle" name="newThreadTitle" placeholder="The Producers" value={this.state.title} onChange={(e) => this.setState({title: e.target.value})} />
             <button type="submit" className="black-button">Search!</button>
+            <div className="return-directory"><h3><Link to={() => {
+            if (!this.state.selectedMovie) {
+               return '/category/1';
+             }
+             }} onClick={() => { 
+              if (this.state.selectedMovie) {
+                this.setState({showMovies: true, selectedMovie: false})
+              }
+            }}><FontAwesomeIcon className="back-icon" icon={backArrowIcon} />{!this.state.selectedMovie ? 'MOVIES' : 'RESULTS' }</Link></h3></div>
           </div>
         </form>
         <div className='grid_for_desktop'>

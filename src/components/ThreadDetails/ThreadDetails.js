@@ -123,8 +123,6 @@ export default class ThreadDetails extends React.Component {
 
 
   render(){
-    console.log(this.context.playing);
-    console.log(this.context.paused);
     let runTime = 1;
     if (this.context.playingRuntime) {
       runTime = this.context.playingRuntime
