@@ -8,10 +8,18 @@ exports[`SortOptions component renders the RegisterForm 1`] = `
     id="filterButton"
   >
     <button
+      className="black-button margin10"
       onClick={[Function]}
       type="button"
     >
       Filter
+    </button>
+    <button
+      className="black-button margin10"
+      onClick={[Function]}
+      type="button"
+    >
+      Clear
     </button>
   </div>
   <p>
