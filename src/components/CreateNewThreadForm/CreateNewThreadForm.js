@@ -154,15 +154,15 @@ class CreateNewThreadForm extends React.Component {
     return this.state.autoFillMovie ? 
           <div className='autoFill_form'>
             <h2>{this.state.autoFillMovie.title}</h2>
+            <p>Release Date: {this.state.autoFillMovie.release_date}</p>
             <img src={this.state.selectedMovieImg ? 
             `http://image.tmdb.org/t/p/w185//${this.state.selectedMovieImg}`
             : 
             '#'} 
             alt={this.state.autoFillMovie.title}/>
             <p>{this.state.autoFillMovie.overview}</p>
-            <p>Release Date: {this.state.autoFillMovie.release_date}</p>
             <form onSubmit={(e) => this.handleNewThread(e)}>
-              <button type='submit'>Make new Thread</button>
+              <button type='submit' className="black-button">Make new Thread</button>
             </form>
           </div>
           : 

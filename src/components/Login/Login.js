@@ -95,16 +95,11 @@ class Login extends React.Component{
   }
 
   render() {
-    let passwordError = this.validatePassword();
-    let usernameError = this.validateUsername();
+    let passwordError = this.validatePassword;
+    let usernameError = this.validateUsername;
     return (
-      <form className="Login" name="login" onSubmit={this.handleSubmit}>
-        <legend>Login <button type="button" className="displayV mobile show" onClick={(e) => {
-          e.preventDefault();
-          document.getElementById('login-form').classList.toggle('mobile-hide');
-        }}>V</button></legend>
-        <div id="login-form" className="login-form mobile-hide">
-        <label htmlFor="username-input" id="username-label" name="username-label">Username:</label>
+      <form className="Login" name="login" onSubmit={(e) => this.handleSubmit(e)}>
+        <legend>LOGIN</legend>
         <input 
           type="text" 
           id="username-input" 
@@ -114,7 +109,6 @@ class Login extends React.Component{
           onChange={(e) => {this.handleInputChange(e); this.handleUsernameTouch(e)}}
         />
         {this.state.usernameTouch && <FormValidationError message={usernameError} />}
-        <label htmlFor="password-input" id="password-label" name="password-label">Password:</label>
         <input 
           type="password" 
           id="password-input" 
@@ -125,11 +119,10 @@ class Login extends React.Component{
           onChange={(e) => {this.handleInputChange(e); this.handlePasswordTouch(e)}}
         />
         {this.state.passwordTouch && <FormValidationError message={passwordError} />}
-        <button type="submit" value="submit">Submit</button>
+        <button type="submit" value="submit" className="black-button">Submit</button>
         <Link to='/register'>
           <p className="sign-up">Don't have an account?</p>
         </Link>
-        </div>
       </form>
     )
   }

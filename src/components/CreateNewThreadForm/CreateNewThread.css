@@ -25,9 +25,24 @@
     text-align: center;
 }
 
-.displayedSearch {
+.displayedSearch, .autoFill_form {
     list-style-type: none;
     width: 100%;
+    background: rgba(0,0,0,0.7);
+    padding-bottom: 15px;
+}
+
+.displayedSearch h2, .autoFill_form h2 {
+    color: #00d838;
+}
+
+.displayedSearch:hover {
+    background-color: #00d838;
+    color: black;
+}
+
+.displayedSearch:hover h2, .displayedSearch:hover p {
+    color: black
 }
 
 .UL_displayMovies {
@@ -67,7 +82,7 @@
 }
 
 .autoFill_form h2 {
-    padding: 10px;
+    padding: 10px 0px 0px 0px;
 }
 
 .autoFill_form p {
