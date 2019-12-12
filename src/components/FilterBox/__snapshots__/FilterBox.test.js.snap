@@ -102,11 +102,13 @@ exports[`Filter box testing renders the filter box UI 1`] = `
     id="filter-buttons"
   >
     <button
+      className="black-button margin10"
       type="submit"
     >
       Submit
     </button>
     <button
+      className="black-button margin10"
       onClick={[Function]}
       type="button"
     >
