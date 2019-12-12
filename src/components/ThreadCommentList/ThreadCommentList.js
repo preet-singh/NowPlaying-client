@@ -78,8 +78,6 @@ class ThreadCommentList extends React.Component {
 
 
   handleTimedComments = () => {
-    console.log(this.context.currentThreadComments);
-    console.log(this.state.comments);
     let comments = this.state.comments || [];
     return comments.filter(comment => {
       if(comment.comment_timestamp <= this.context.mediaTimer){
@@ -89,8 +87,6 @@ class ThreadCommentList extends React.Component {
   }
 
   renderCommentList = async () => {
-    console.log(this.context.currentThreadComments);
-    console.log(this.state.comments);
     if (this.context.currentThreadComments !== this.state.comments) {
       await this.setState({comments: this.context.currentThreadComments});
     }
@@ -132,8 +128,9 @@ class ThreadCommentList extends React.Component {
         this.renderCommentList()
       }
       return (
-        <div>
-          <ul id='thread-comment-list' onClick={() => this.handleScrollBegin()}>
+        <div id="ThreadCommentList">    
+          <h4>Comments</h4>
+          <ul className='thread-comment-list' onClick={() => this.handleScrollBegin()}>
             {this.state.renderedComments2}
           </ul>
           {this.state.scrolling ? this.renderReturnToBottom() : null}
@@ -141,8 +138,14 @@ class ThreadCommentList extends React.Component {
       )
       }
     else {
-      return         <ul className='thread-comment-list'>
-    </ul>
+      return (    
+        <div id="ThreadCommentList">    
+        <h4>Comments</h4>
+          <ul className='thread-comment-list'>
+            <li>Click 'Play' to start the comments!</li>
+          </ul>
+      </div>
+      );
     }
   }
 }

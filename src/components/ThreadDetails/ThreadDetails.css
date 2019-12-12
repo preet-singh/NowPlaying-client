@@ -1,6 +1,6 @@
 .playSlider {
     position: relative;
-    width: 85%;
+    width: 80%;
     height: 80px;
     margin: 0 auto;
 }
@@ -29,6 +29,15 @@
     color: #00d838;
 }
 
+.play {
+    background: none;
+}
+
+.fixed-play-button {
+    background: none;
+    cursor: pointer;
+}
+
 
 .thread-details {
     margin-top: 30px;
@@ -39,6 +48,7 @@
 
 .play-and-title {
     background-color: black;
+    padding-bottom: 10px;
 }
 
 .item-poster {
@@ -68,6 +78,17 @@
     color: white;
     padding: 5px 10px;
     margin-right: 10px;
+    cursor: pointer;
+}
+
+.go-back-ten svg, #display-comment svg {
+    margin: 0;
+    padding: 0;
+    margin-right: 5px;
+}
+
+#display-comment {
+    cursor: pointer;
 }
 
 .item-info {

@@ -97,8 +97,8 @@ class FilterBox extends Component {
           <option value="1">1</option>
         </select>
         <div id='filter-buttons'>
-        <button type="submit">Submit</button>
-        <button type="button" onClick={(e) => this.handleClear(e)}>Clear</button>
+        <button type="submit" className="black-button margin10">Submit</button>
+        <button type="button" className="black-button margin10" onClick={(e) => this.handleClear(e)}>Clear</button>
         </div>
       </form>
     );

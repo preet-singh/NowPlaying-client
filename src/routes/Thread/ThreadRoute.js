@@ -11,7 +11,7 @@ import ThreadCommentList from '../../components/ThreadCommentList/ThreadCommentL
 
 import AuthApiService from '../../utils/auth-service';
 import FixedBar from '../../components/FixedBar/FixedBar';
-import UserContext from '../../utils/context';
+import UserContext from '../../utils/context'; 
 
 
 //Utilities
@@ -105,7 +105,7 @@ export default class ThreadRoute extends React.Component {
         <main>
           <ThreadDetails thread={this.props.match.params.thread} id={this.props.match.params.id}/>
           {this.renderCommentList()}
-          {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src={comment} alt='open chat box'></img> : ''}
+          {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <div className="bottom-bar"><img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src={comment} alt='open chat box'></img></div> : ''}
         </main>
       </div>
     );

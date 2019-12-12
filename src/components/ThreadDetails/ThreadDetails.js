@@ -1,6 +1,10 @@
 //Dependencies
 import React from 'react';
 import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { findIconDefinition, icon } from '@fortawesome/fontawesome-svg-core'  
 
 //CSS
 import './ThreadDetails.css';
@@ -9,6 +13,15 @@ import './ThreadDetails.css';
 import convertSeconds from '../../utils/convertSeconds';
 import AuthApi from '../../utils/auth-service'
 import UserContext from '../../utils/context';
+
+const play = findIconDefinition({ prefix: 'fas', iconName: 'play' })
+const playIcon = icon(play);
+
+const pause = findIconDefinition({ prefix: 'fas', iconName: 'pause' })
+const pauseIcon = icon(pause);
+
+const stepBackward = findIconDefinition({ prefix: 'fas', iconName: 'step-backward' })
+const stepBackwardIcon = icon(stepBackward);
 
 export default class ThreadDetails extends React.Component {
   static contextType = UserContext;
@@ -82,18 +95,18 @@ export default class ThreadDetails extends React.Component {
   determineButtonText = () => {
     if (this.props.thread === this.context.playingCategory && this.props.id === this.context.playingID) {
       if (!this.context.playing) {
-        return 'Play';
+        return ['Play', playIcon];
       }
       else {
         if (!this.context.paused) {
-          return 'Pause';
+          return ['Pause', pauseIcon];
         }
         else {
-          return 'Resume';
+          return ['Resume', playIcon];
         }
       }
     }
-    return 'Play';
+    return ['Play',playIcon];
   }
 
 
@@ -166,8 +179,8 @@ export default class ThreadDetails extends React.Component {
       )}
     </Tracks>
   </Slider>
-          <button type="button" className="go-back-ten" onClick={this.context.mediaTimer >= 10 ? () => this.context.setMediaTimer(this.context.mediaTimer - 10) : () => this.context.setMediaTimer(0)}>10s</button>
-          <button type="button" onClick={() => this.playButton()} id='display-comment' className="play-button">{this.determineButtonText()}</button>
+          <button type="button" className="go-back-ten" onClick={this.context.mediaTimer >= 10 ? () => this.context.setMediaTimer(this.context.mediaTimer - 10) : () => this.context.setMediaTimer(0)}><FontAwesomeIcon className="play-main" icon={stepBackwardIcon} />10s</button>
+          <button type="button" onClick={() => this.playButton()} id='display-comment' className="play-button"><FontAwesomeIcon className="play-main" icon={this.determineButtonText()[1]} />{this.determineButtonText()[0]}</button>
           {this.context.playing ? '' : <span className="block margin10">Click 'play' to view the comments</span>}
           </div>
           <p className="item-info">{this.state.event ? this.state.event[0].event_description : 'Loading...'}</p>

@@ -48,11 +48,11 @@ class FixedBar extends React.Component {
     return (
       <div className='fixed-bar'>
         <div className='fixed-bar-header'>
+        {this.context.displayCommentBox ? <button id='close_commentBox' onClick={() => this.context.displayCommentSection()}>-</button> : null}
           <h2><Link to={`/${this.context.category}/${this.context.playingID}`}>{this.context.playingTitle}</Link></h2>
-        <PlayButton clearInterval={this.clearInterval} restartInterval={this.restartInterval} />
-        <h3 id='media-timer'>{this.convertSeconds(this.context.mediaTimer)}</h3>
+        <div className="fixed-time"><h3 className='media-timer'>{this.convertSeconds(this.context.mediaTimer)}</h3><PlayButton clearInterval={this.clearInterval} restartInterval={this.restartInterval} /></div>
         </div>
-        <AddCommentBox /> }
+        <AddCommentBox />
       </div>
     )
   }

@@ -1,19 +1,15 @@
-@media screen and (min-width: 320px){
-    #play-button{
-    margin: auto;
-    margin-top: 0px;
-    color: white;
-    /* border: 1px solid white; */
-    background-color: transparent;
-    height: 40px;
-    width: 40%;
-    font-weight: bold;
-  }
+.FixedBar .fixed-play-button {
+  margin-left: 30px;
+  background: none;
+  /* background: url('https://i.imgur.com/IYOSQ5U.png') no-repeat; */
 }
 
-@media screen and (min-width: 768px){
-  #play-button {
-    width: 20%;
-    margin-top: 25px;
-  }
+.play {
+  color: white;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.play:hover {
+  color: #00d838;
 }

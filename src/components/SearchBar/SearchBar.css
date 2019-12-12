@@ -6,13 +6,14 @@
     border: none;
     border-radius: 10px;
     overflow: hidden;
+    width: 75%;
 }
 
 .SearchBar input {
     flex: 1;
     padding: 5px;
     border: none;
-    text-align: left
+    text-align: left;
 }
 
 .SearchBar .search-icon {

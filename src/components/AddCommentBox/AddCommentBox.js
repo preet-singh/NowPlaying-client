@@ -124,14 +124,13 @@ class AddCommentBox extends React.Component {
         <form className='add-comment-form' onSubmit={e => this.handleCommentSubmit(e)}>
         {TokenService.hasAuthToken() ? <textarea id='comment-text-input' type='text' value={this.state.comment} onChange={e => this.handleCommentInput(e.target.value)}/> : <textarea id='comment-text-input' type='text' value={this.state.comment} onChange={e => this.handleCommentInput(e.target.value)} placeholder='Log in to enter a comment' disabled/>
         }
-        <button id='send-comment' type='submit'>Send</button>
         </form>
-        {this.context.displayCommentBox ? <button id='close_commentBox' onClick={() => this.context.displayCommentSection()}>X</button> : null}
         <div className={this.context.playing ? 'reaction-buttons' : 'reaction-buttons_notPlaying'}>
           <button className='reaction-button' type='button' value='1' onClick={e => this.handleReactions('1')}><span role='img' aria-label='laughing emoji'>😂</span></button>
           <button className='reaction-button' type='button' value='2' onClick={e => this.handleReactions('2')}><span role='img' aria-label='sad emoji'>😔</span></button>
           <button className='reaction-button' type='button' value='3' onClick={e => this.handleReactions('3')}><span role='img' aria-label='shocked emoji'>😱</span></button>
         </div>
+        <button className='send-comment' type='submit'>Send</button>
       </div>
     )
   }

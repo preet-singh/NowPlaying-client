@@ -26,6 +26,12 @@
     padding: 0px;
 }
 
+.Directory .return-directory {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .directory-dropdown {
     padding: 10px;
 }

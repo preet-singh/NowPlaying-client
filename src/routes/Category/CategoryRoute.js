@@ -58,7 +58,7 @@ class CategoryRoute extends React.Component {
         <SortOptions state={this.state} />
         <main>
           <ThreadsList />
-          {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src={comment} alt='open chat box'></img> : ''}
+          {this.context.playing ? this.context.displayCommentBox ? <FixedBar /> : <div className="bottom-bar"><img onClick={() => this.context.displayCommentSection()} id='open_chatbox' src={comment} alt='open chat box'></img></div> : ''}
         </main>
       </div>
     );

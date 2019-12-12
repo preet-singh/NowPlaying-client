@@ -14,9 +14,11 @@ class SearchBar extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    let find = this.context.categoryItems.filter(item => item.title.toLowerCase().includes(this.state.title.toLowerCase())) || [];
-    await this.context.setSearchedCategoryItems(find);
-    this.props.history.push(`/category/${this.context.categoryID}`)
+    if (this.state.title && this.context.categoryItems.length > 0) {
+      let find = this.context.categoryItems.filter(item => item.title.toLowerCase().includes(this.state.title.toLowerCase())) || [];
+      await this.context.setSearchedCategoryItems(find);
+      this.props.history.push(`/category/${this.context.categoryID}`)
+    }
   }
   render() {
     return (
