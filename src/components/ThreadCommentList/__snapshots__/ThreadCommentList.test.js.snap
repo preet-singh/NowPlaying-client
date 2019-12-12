@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThreadCommentList component renders the ThreadCommentList 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;

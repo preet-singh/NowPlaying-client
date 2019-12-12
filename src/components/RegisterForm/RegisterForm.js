@@ -101,7 +101,6 @@ class RegisterForm extends Component {
     let emailError = this.validateEmail();
     let usernameError = this.validateUsername();
     let passwordError = this.validatePassword();
-    console.log(this.props.history);
       return(
         <form className="Login" name="register" onSubmit={this.handleSubmit}>
           <legend>Register</legend>

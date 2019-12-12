@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScrubBox component renders the ScrubBox 1`] = `
+<div
+  className="scrub-box"
+>
+  <PlayButton />
+  <ScrubBar />
+</div>
+`;

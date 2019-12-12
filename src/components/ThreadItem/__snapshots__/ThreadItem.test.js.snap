@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThreadItem component renders the ThreadItem 1`] = `
+<div
+  className="thread-item"
+>
+  <Link
+    to="/undefined/20019"
+  >
+    <div
+      className="thread-item-image-container"
+    >
+      <img
+        alt="Movie backdrop"
+        className="thread-item-poster"
+        src="http://image.tmdb.org/t/p/w780/2nvwe9d15fan3"
+      />
+    </div>
+    <div
+      className="thread-item-info"
+    >
+      <h3>
+        Avengers
+      </h3>
+      <p
+        className="last-comment"
+      >
+        No comments yet! Be the first!
+      </p>
+      <div
+        className="play-button-home-container"
+      />
+    </div>
+  </Link>
+</div>
+`;

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login button testing renders the playbutton 1`] = `
+<div
+  className="LoginButton"
+>
+  <Link
+    to="/login"
+  >
+    <button
+      type="button"
+    >
+      LOGIN
+    </button>
+  </Link>
+</div>
+`;

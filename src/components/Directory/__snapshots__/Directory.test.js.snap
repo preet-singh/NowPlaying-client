@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Directory testing renders the categories within the directory 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
