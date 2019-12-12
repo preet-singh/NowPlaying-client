@@ -59,7 +59,21 @@ export default class ThreadDetails extends React.Component {
     setTimeout(this.context.startInterval(), 100)
   }
 
+  scrollToComments() {
+    console.log('Scroll to comments fired');
+    let element = document.getElementById('comments-header');
+    let yPosition = element.getBoundingClientRect().y
+ 
+    if(element) {
+     window.scrollTo(0, yPosition)
+    }
+  }
+
   playButton = async () => {
+    if(window.innerWidth < 400 && (this.context.paused || !this.context.playing)) {
+      this.scrollToComments();
+    }
+  
     if (this.props.thread === this.context.playingCategory && this.props.id === this.context.playingID) {
       if (!this.context.playing) {
         let titleItem = this.context.categoryItems.find(item => item.id === this.props.id) || {}
@@ -123,8 +137,6 @@ export default class ThreadDetails extends React.Component {
 
 
   render(){
-    console.log(this.context.playing);
-    console.log(this.context.paused);
     let runTime = 1;
     if (this.context.playingRuntime) {
       runTime = this.context.playingRuntime

@@ -13,6 +13,8 @@ import AuthApiService from '../../utils/auth-service';
 import FixedBar from '../../components/FixedBar/FixedBar';
 import UserContext from '../../utils/context'; 
 
+import * as Scroll from 'react-scroll';
+import { Link, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 
 
 //Utilities
@@ -92,6 +94,15 @@ export default class ThreadRoute extends React.Component {
     }
     else {
       return 'No comments in this thread yet!';
+    }
+  }
+
+    scrollToComments() {
+    let element = document.getElementById('comments-header');
+    let yPosition = element.getBoundingClientRect().y
+ 
+    if(element) {
+     window.scrollTo(0, yPosition)
     }
   }
 

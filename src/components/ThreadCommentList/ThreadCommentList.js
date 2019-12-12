@@ -50,7 +50,6 @@ class ThreadCommentList extends React.Component {
   // }
 
   handleScrollBegin = () => {
-    console.log('scroll event fired')
     this.setState({scrolling: true})
   }
 
@@ -134,7 +133,7 @@ class ThreadCommentList extends React.Component {
       }
       return (
         <div id="ThreadCommentList">    
-          <h4>Comments</h4>
+          <h4 id="comments-header">Comments</h4>
           <ul id='thread-comment-list' onClick={() => this.handleScrollBegin()}>
             {this.state.renderedComments2}
           </ul>
