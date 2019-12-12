@@ -127,9 +127,8 @@ class CreateNewThreadForm extends React.Component {
     let API_Key = config.API_KEY;
 
     if(this.state.title){
-      console.log('movie selected still');
     } else if(this.state.showMovies !== false) {
-      fetch(`https://api.themoviedb.org/3/movie/${this.state.selectedMovieId}?api_key=${API_Key}&language=en-US`)
+      fetch(`https://api.themoviedb.org/3/movie/${this.state.selectedMovieId}?api_key=${API_Key}&language=en-US&append_to_response=videos`)
         .then(res => 
           (!res.ok)
           ? res.json().then(e => Promise.reject(e))
