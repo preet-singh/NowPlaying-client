@@ -23,6 +23,9 @@ class ThreadsList extends React.Component {
     console.log(this.context.filteredCategoryItems)
     console.log(this.context.categoryItems)
     if(this.context.filteredCategoryItems !== this.context.categoryItems){
+      if(this.context.filteredCategoryItems.length === 0){
+        return <p>No movies found! Click the create a new thread above to get started.</p>
+      }
       for(let i = 0; i < this.context.filteredCategoryItems.length; i++){
         returnItem.push(<ThreadItem details={this.context.filteredCategoryItems[i]} key={i} />)
       }
@@ -59,6 +62,10 @@ class ThreadsList extends React.Component {
       let currentPage = this.state.newPageNumber;
 
       let allPosts = this.context.categoryItems;
+
+      if(this.context.filteredCategoryItems !== this.context.categoryItems){
+        allPosts = this.context.filteredCategoryItems
+      }
 
       const indexOfLastPost = currentPage * postsPerPage;
       const indexOfFirstPost = indexOfLastPost - postsPerPage;
