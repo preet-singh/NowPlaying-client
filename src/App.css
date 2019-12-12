@@ -78,6 +78,7 @@ a {
 .App {
   text-align: center;
   padding-top: 0px;
+  padding-bottom: 150px;
 }
   .mobile {
     display: block;
@@ -100,6 +101,9 @@ a {
   }
 
   .footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 0;
     width: 100%;
     display: block;
     background: rgba(255,255,255,0.1);

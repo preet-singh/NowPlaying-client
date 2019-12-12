@@ -38,6 +38,10 @@
     cursor: pointer;
 }
 
+.trailer-player > div {
+    max-width: 99vw;
+}
+
 
 .thread-details {
     margin-top: 30px;
