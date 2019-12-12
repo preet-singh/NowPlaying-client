@@ -12,7 +12,11 @@ class TrailerPlayer extends React.Component {
       <div className='trailer-player'>
         <ReactPlayer 
         url={`https://www.youtube.com/watch?v=${this.props.videoKey}`}
-        controls={true}/>
+        controls={true}
+        youtubeConfig={{ 
+          playerVars: { 
+            color: 'white',
+             } }}/>
       </div>
     )
   }

@@ -121,15 +121,21 @@ export default class ThreadDetails extends React.Component {
     mode={2}
     values={[scrollValue]}
     onChange={async (e) => {
-      if (this.context.paused) {
-        await this.context.pauseInterval();
-        await this.context.setMediaTimer(Number(e[0]));
+      if(this.context.mediaTimer !== 0) {
+        if (this.context.paused) {
+          await this.context.pauseInterval();
+          await this.context.setMediaTimer(Number(e[0]));
+        }
+        else {
+          await this.context.pauseInterval();
+          await this.context.setMediaTimer(Number(e[0]));
+          await this.context.startInterval();
+        }
       }
-      else {
+      else{
         await this.context.pauseInterval();
-        await this.context.setMediaTimer(Number(e[0]));
-        await this.context.startInterval();
       }
+
     }}
     onUpdate={async (e) => {
       await this.context.pauseInterval();
