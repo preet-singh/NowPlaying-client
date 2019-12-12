@@ -7,3 +7,15 @@
   text-decoration: none;
   line-height: 1.0;
 }
+
+.sortOptions p:hover {
+  color: #00d838;
+}
+
+.sortOptions a:hover {
+  color: #00d838;
+}
+
+.sortOptions a:hover span {
+  color: #00d838;
+}

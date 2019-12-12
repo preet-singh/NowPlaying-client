@@ -1,19 +1,9 @@
-@media screen and (min-width: 768px){
-    .pagination {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    }
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 
-    .pagination li button {
-        padding: 4px;
-        color: white;
-        font-size: 20px;
-        background-color: transparent;
-        margin-right: 5px;
-    }
-
-    .pagination li button:hover {
-        cursor: pointer;
-    }
+.pagination .black-button {
+    margin: 5px;
 }

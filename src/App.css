@@ -80,6 +80,11 @@ a {
   padding-top: 0px;
   padding-bottom: 150px;
 }
+
+.black-bg {
+  background: black;
+  padding: 5px;
+}
   .mobile {
     display: block;
   }

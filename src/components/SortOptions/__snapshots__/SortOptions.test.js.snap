@@ -22,7 +22,7 @@ exports[`SortOptions component renders the RegisterForm 1`] = `
       <span
         className="block bold"
       >
-        Create a new thread!
+        Find your movie!
       </span>
     </Link>
   </p>
