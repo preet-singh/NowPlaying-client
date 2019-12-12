@@ -28,14 +28,16 @@ class ThreadCommentList extends React.Component {
   }
 
   componentDidUpdate() {
-    if(this.state.scrolling === false) {
-      scroll.scrollToBottom({
-        duration: 300,
-        smooth: 'easeOutQuart',
-        containerId: 'thread-comment-list',
-      })
+    let element = document.getElementById('thread-comment-list');
+    if(this.state.scrolling === false && element) {
+      if(element.scrollHeight >= 600){
+        scroll.scrollToBottom({
+          duration: 300,
+          smooth: 'easeOutQuart',
+          containerId: 'thread-comment-list',
+        })
+      }
     }
-    // this.scrollToBottom();
   }
 
   // scrollToBottom() {
@@ -78,8 +80,6 @@ class ThreadCommentList extends React.Component {
 
 
   handleTimedComments = () => {
-    console.log(this.context.currentThreadComments);
-    console.log(this.state.comments);
     let comments = this.state.comments || [];
     return comments.filter(comment => {
       if(comment.comment_timestamp <= this.context.mediaTimer){
@@ -89,8 +89,6 @@ class ThreadCommentList extends React.Component {
   }
 
   renderCommentList = async () => {
-    console.log(this.context.currentThreadComments);
-    console.log(this.state.comments);
     if (this.context.currentThreadComments !== this.state.comments) {
       await this.setState({comments: this.context.currentThreadComments});
     }

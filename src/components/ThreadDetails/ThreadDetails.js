@@ -20,10 +20,8 @@ export default class ThreadDetails extends React.Component {
   async componentDidMount(){
     let thread = this.props.thread;
     let id = this.props.id;
-    console.log(thread, id)
     await AuthApi.getSpecificEvent(thread, id)
     .then(resJSON => {
-      console.log(resJSON)
       this.setState({
         event: {...resJSON}
     })
@@ -50,6 +48,7 @@ export default class ThreadDetails extends React.Component {
         this.context.setPlayingTitle(title)
         this.context.setPlayingRuntime(timeInSeconds);
         this.context.setPlaying(!this.context.playing);
+        
         this.context.displayCommentSection(true);
       }
       else {
@@ -74,6 +73,7 @@ export default class ThreadDetails extends React.Component {
       this.context.setPlayingRuntime(timeInSeconds);
       this.context.setPlayingTitle(title)
       this.context.setPlaying(true);
+      this.context.setPaused(false)
       this.context.pauseInterval();
       this.context.startInterval();
       this.context.displayCommentSection(true);
@@ -99,7 +99,8 @@ export default class ThreadDetails extends React.Component {
 
 
   render(){
-    console.log(this.state)
+    console.log(this.context.playing);
+    console.log(this.context.paused);
     let runTime = 1;
     if (this.context.playingRuntime) {
       runTime = this.context.playingRuntime
@@ -121,7 +122,6 @@ export default class ThreadDetails extends React.Component {
     mode={2}
     values={[scrollValue]}
     onChange={async (e) => {
-      if(this.context.mediaTimer !== 0) {
         if (this.context.paused) {
           await this.context.pauseInterval();
           await this.context.setMediaTimer(Number(e[0]));
@@ -131,11 +131,6 @@ export default class ThreadDetails extends React.Component {
           await this.context.setMediaTimer(Number(e[0]));
           await this.context.startInterval();
         }
-      }
-      else{
-        await this.context.pauseInterval();
-      }
-
     }}
     onUpdate={async (e) => {
       await this.context.pauseInterval();
