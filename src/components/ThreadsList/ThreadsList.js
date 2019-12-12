@@ -23,12 +23,15 @@ class ThreadsList extends React.Component {
     console.log(this.context.filteredCategoryItems)
     console.log(this.context.categoryItems)
     if(this.context.filteredCategoryItems !== this.context.categoryItems){
+      if(this.context.filteredCategoryItems.length === 0){
+        return <p>No movies found! Click the create a new thread above to get started.</p>
+      }
       for(let i = 0; i < this.context.filteredCategoryItems.length; i++){
         returnItem.push(<ThreadItem details={this.context.filteredCategoryItems[i]} key={i} />)
       }
     } else {
 
-    for (let i=0;i<limit;i++) {
+    for (let i=0;i<=limit;i++) {
       if (this.state.posts[i]) {
         returnItem.push(<ThreadItem details={this.state.posts[i]} key={i} />)
       }
@@ -60,6 +63,10 @@ class ThreadsList extends React.Component {
 
       let allPosts = this.context.categoryItems;
 
+      if(this.context.filteredCategoryItems !== this.context.categoryItems){
+        allPosts = this.context.filteredCategoryItems
+      }
+
       const indexOfLastPost = currentPage * postsPerPage;
       const indexOfFirstPost = indexOfLastPost - postsPerPage;
       const currentPosts = allPosts.slice(indexOfFirstPost, indexOfLastPost);
@@ -82,7 +89,7 @@ class ThreadsList extends React.Component {
 
       return <Pagination postsPerPage={postsPerPage} totalPosts={allPosts.length} paginate={this.paginate}/>
     } else {
-      return <button>1</button>
+      return <button className="black-button">1</button>
     }
   }
 

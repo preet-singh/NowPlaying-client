@@ -26,7 +26,7 @@ class SortOptions extends React.Component {
           <button type="button" className="black-button margin10" onClick={() => this.context.setSearchedCategoryItems(this.context.categoryItems)}>Clear</button>
         </div>
         {this.state.displayFilter ? <FilterBox /> : ''}
-        <p><Link to="/new">Movie not here? <span className="block bold">Create a new thread!</span></Link></p>
+        <p className="black-bg"><Link to="/new">Movie not here? <span className="block bold">Find your movie!</span></Link></p>
       </div>
     );
   }

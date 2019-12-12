@@ -12,14 +12,17 @@ exports[`Fixed bar testing renders the play button within the fixed bar 1`] = `
         to="/undefined/undefined"
       />
     </h2>
-    <PlayButton />
-    <h3
-      id="media-timer"
+    <div
+      className="fixed-time"
     >
-      00:NaN:NaN
-    </h3>
+      <h3
+        className="media-timer"
+      >
+        00:NaN:NaN
+      </h3>
+      <PlayButton />
+    </div>
   </div>
   <AddCommentBox />
-   }
 </div>
 `;

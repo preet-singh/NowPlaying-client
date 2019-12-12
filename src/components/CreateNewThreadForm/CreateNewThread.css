@@ -1,72 +1,77 @@
-@media screen and (min-width: 320px){
+.CreateNewThreadForm {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0,0,0,0.7);
+    padding-bottom: 15px;
+}
 
-    .CreateNewThreadForm {
-        margin-bottom: 25px;
-    }
+.CreateNewThreadForm .width70percent {
+    display: flex;
+    flex-direction: column;
+}
 
+.CreateNewThreadForm .width70percent * {
+    margin-top: 10px;
+}
 
-    .CreateNewThreadForm button {
-        border: 1px solid white;
-        color: white; 
-        background-color: transparent;
-        margin-left: 10px;
-    }
+.CreateNewThreadForm h3 {
+    background: black;
+    padding: 10px;
+    font-size: 26px;
+}
 
-    .displayedSearch {
-        list-style-type: none;
-        width: 100%;
-    }
+.CreateNewThread input {
+    text-align: center;
+}
 
-    .UL_displayMovies {
-        list-style-type: none;
-        list-style-position: inside;
-        display: flex;
-        flex-direction: column;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-    }
+.displayedSearch {
+    list-style-type: none;
+    width: 100%;
+}
 
-    .displayedSearch a {
-        text-decoration: none;
-        color: white;
-        text-align: center;
-        display: block;
-    }
+.UL_displayMovies {
+    list-style-type: none;
+    list-style-position: inside;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
 
-    .displayedSearch a img {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
+.displayedSearch a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    display: block;
+}
 
-    .autoFill_form {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-    }
+.displayedSearch a img {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
 
-    .autoFill_form img {
-        width: 50%;
-        margin: auto;
-        margin-bottom: 10px;
-    }
+.autoFill_form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
 
-    .autoFill_form h2 {
-        padding: 10px;
-    }
-    
-    .autoFill_form p {
-        padding: 10px;
-    }
+.autoFill_form img {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 10px;
+}
 
-    .autoFill_form button {
-        border: 1px solid white;
-        background-color: transparent;
-        color: white;
-    }
+.autoFill_form h2 {
+    padding: 10px;
+}
 
+.autoFill_form p {
+    padding: 10px;
 }
 
 @media screen and (min-width: 768px){

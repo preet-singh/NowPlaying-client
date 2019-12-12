@@ -1,16 +1,16 @@
 
 .threads-list-container {
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .threads-list {
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.6);
     margin-top: 30px;
 }
 .threads-list > h3 {
     font-size: 32px;
-    color: black;
-    background-color: #00d838;
+    color: #00d838;
+    background-color: black;
 }
 
 .threads-list h4 {
