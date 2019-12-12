@@ -8,7 +8,7 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-
+      title: ''
     }
   }
 
@@ -19,11 +19,14 @@ class SearchBar extends React.Component {
       await this.context.setSearchedCategoryItems(find);
       this.props.history.push(`/category/${this.context.categoryID}`)
     }
+    this.setState({
+      title: ''
+    })
   }
   render() {
     return (
       <form className="SearchBar" onSubmit={(e) => this.handleSubmit(e)}>
-        <input type="text" placeholder='Frozen' id="searchBar" name="searchBar" aria-label="search bar" onChange={(e) => this.setState({title: e.target.value})} />
+        <input type="text" placeholder='Frozen' id="searchBar" name="searchBar" aria-label="search bar" value={this.state.title} onChange={(e) => this.setState({title: e.target.value})} />
         <span className="search-icon" onClick={(e) => this.handleSubmit(e)}><img src="https://i.imgur.com/vSQGka1.png" alt="search icon" /></span>
       </form>
     )

@@ -21,8 +21,8 @@ class ThreadsList extends React.Component {
     let limit = this.props.limit || 5;
     let returnItem = [];
     console.log(this.context.filteredCategoryItems)
-
-    if(this.context.filteredCategoryItems){
+    console.log(this.context.categoryItems)
+    if(this.context.filteredCategoryItems !== this.context.categoryItems){
       for(let i = 0; i < this.context.filteredCategoryItems.length; i++){
         returnItem.push(<ThreadItem details={this.context.filteredCategoryItems[i]} key={i} />)
       }
@@ -64,6 +64,8 @@ class ThreadsList extends React.Component {
       const indexOfFirstPost = indexOfLastPost - postsPerPage;
       const currentPosts = allPosts.slice(indexOfFirstPost, indexOfLastPost);
 
+      console.log(currentPosts)
+
       if(!this.state.posts){
         this.setState({
           posts: currentPosts
@@ -71,14 +73,14 @@ class ThreadsList extends React.Component {
       }
 
       if(this.state.currentPageNumber !== this.state.newPageNumber){
-        window.scrollTo(0,0)
         this.setState({
           posts: currentPosts,
           currentPageNumber: this.state.newPageNumber
         })
+        window.scrollTo(0,0)
       }
 
-      return <Pagination postsPerPage={5} totalPosts={allPosts.length} paginate={this.paginate}/>
+      return <Pagination postsPerPage={postsPerPage} totalPosts={allPosts.length} paginate={this.paginate}/>
     } else {
       return <button>1</button>
     }
