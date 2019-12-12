@@ -15,6 +15,7 @@ import PublicOnlyRoute from './routes/PublicOnlyRoute/PublicOnlyRoute';
 import PrivateOnlyRoute from './routes/PrivateOnlyRoute/PrivateOnlyRoute';
 import NewThread from './routes/NewThread/NewThread';
 import Footer from './components/Footer/Footer';
+import LandingPage from './components/LandingPage/LandingPage';
 
 //EJ IS TESTING HERE TO PUSH
 
@@ -52,6 +53,7 @@ class App extends React.Component {
       <div className="App">
         <Switch>
           <Route exact path="/" component={HomePageRoute} />
+          <Route path="/about" component={LandingPage} />
           <Route path="/category/:id" component={CategoryRoute} />
           <Route path="/:thread/:id" component={ThreadRoute} />
           <PrivateOnlyRoute path="/new" component={NewThread} />

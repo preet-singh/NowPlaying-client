@@ -5,6 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { findIconDefinition, icon } from '@fortawesome/fontawesome-svg-core'  
+import TrailerPlayer from '../TrailerPlayer/TrailerPlayer';
 
 //CSS
 import './ThreadDetails.css';
@@ -32,10 +33,8 @@ export default class ThreadDetails extends React.Component {
   async componentDidMount(){
     let thread = this.props.thread;
     let id = this.props.id;
-    console.log(thread, id)
     await AuthApi.getSpecificEvent(thread, id)
     .then(resJSON => {
-      console.log(resJSON)
       this.setState({
         event: {...resJSON}
     })
@@ -62,6 +61,7 @@ export default class ThreadDetails extends React.Component {
         this.context.setPlayingTitle(title)
         this.context.setPlayingRuntime(timeInSeconds);
         this.context.setPlaying(!this.context.playing);
+        
         this.context.displayCommentSection(true);
       }
       else {
@@ -86,6 +86,7 @@ export default class ThreadDetails extends React.Component {
       this.context.setPlayingRuntime(timeInSeconds);
       this.context.setPlayingTitle(title)
       this.context.setPlaying(true);
+      this.context.setPaused(false)
       this.context.pauseInterval();
       this.context.startInterval();
       this.context.displayCommentSection(true);
@@ -111,6 +112,8 @@ export default class ThreadDetails extends React.Component {
 
 
   render(){
+    console.log(this.context.playing);
+    console.log(this.context.paused);
     let runTime = 1;
     if (this.context.playingRuntime) {
       runTime = this.context.playingRuntime
@@ -132,15 +135,15 @@ export default class ThreadDetails extends React.Component {
     mode={2}
     values={[scrollValue]}
     onChange={async (e) => {
-      if (this.context.paused) {
-        await this.context.pauseInterval();
-        await this.context.setMediaTimer(Number(e[0]));
-      }
-      else {
-        await this.context.pauseInterval();
-        await this.context.setMediaTimer(Number(e[0]));
-        await this.context.startInterval();
-      }
+        if (this.context.paused) {
+          await this.context.pauseInterval();
+          await this.context.setMediaTimer(Number(e[0]));
+        }
+        else {
+          await this.context.pauseInterval();
+          await this.context.setMediaTimer(Number(e[0]));
+          await this.context.startInterval();
+        }
     }}
     onUpdate={async (e) => {
       await this.context.pauseInterval();
@@ -186,7 +189,7 @@ export default class ThreadDetails extends React.Component {
           <p className="item-info">{this.state.event ? this.state.event[0].event_description : 'Loading...'}</p>
           <img className="item-poster" src={this.state.event ? `http://image.tmdb.org/t/p/w780/${this.state.event[0].poster}` : ''} alt="poster" />
           <h4>Trailers</h4>
-          <div className="item-info trailer-list">None yet!</div>
+          {this.state.event[0].video_key ? <TrailerPlayer videoKey={this.state.event[0].video_key}/> : <div className="item-info trailer-list">No trailers found!</div>}
           <h4>Information</h4>
           <ul>
             <li>Runtime: {this.state.event[0].media_runtime}m</li>

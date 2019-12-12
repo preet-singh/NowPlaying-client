@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Happenings testing renders the hapenning table 1`] = `
+<div
+  className="Happenings"
+>
+  <h3>
+    ACTIVITY
+  </h3>
+  <ul
+    className="happenings-list"
+  />
+</div>
+`;

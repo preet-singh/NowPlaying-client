@@ -28,14 +28,16 @@ class ThreadCommentList extends React.Component {
   }
 
   componentDidUpdate() {
-    if(this.state.scrolling === false) {
-      scroll.scrollToBottom({
-        duration: 300,
-        smooth: 'easeOutQuart',
-        containerId: 'thread-comment-list',
-      })
+    let element = document.getElementById('thread-comment-list');
+    if(this.state.scrolling === false && element) {
+      if(element.scrollHeight >= 600){
+        scroll.scrollToBottom({
+          duration: 300,
+          smooth: 'easeOutQuart',
+          containerId: 'thread-comment-list',
+        })
+      }
     }
-    // this.scrollToBottom();
   }
 
   // scrollToBottom() {

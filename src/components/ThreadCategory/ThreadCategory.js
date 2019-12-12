@@ -17,7 +17,7 @@ class ThreadCategory extends React.Component {
   }
 
   mostPopular = () => {
-    if(!this.context.categoryItems){
+    if(!this.context.categoryItems || this.context.categoryItems.length < 3) {
       return 'No threads yet!'
     }
     let movies = this.context.categoryItems;

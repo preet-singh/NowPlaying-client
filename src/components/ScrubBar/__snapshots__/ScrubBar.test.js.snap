@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScrubBar component renders the ScrubBar 1`] = `
+<div
+  className="scrub-bar"
+/>
+`;
