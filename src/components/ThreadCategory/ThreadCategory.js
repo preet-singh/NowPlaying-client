@@ -17,28 +17,20 @@ class ThreadCategory extends React.Component {
   }
 
   mostPopular = () => {
-    if(!this.context.categoryItems || this.context.categoryItems.length < 3) {
+    if(!this.context.categoryItems) {
       return 'No threads yet!'
     }
     let movies = this.context.categoryItems;
-    let first = movies[0];
-    let second = movies[1];
-    let third = movies[2];
-    for(let i = 3; i < movies.length; i++){
-      if(movies[i].imdb_rating > first.imdb_rating){
-        first = movies[i]
-      } else if (movies[i].imdb_rating > second.imdb_rating){
-        second = movies[i]
-      } else if (movies[i].imdb_rating > third.imdb_rating){
-        third = movies[i]
-      }
+    movies.sort((a,b) => (a.imdb_rating > b.imdb_rating));
+    let amount = 3;
+    if (movies.length < 3) { amount = movies.length }
+    let results = [];
+    for (let i=0;i < amount; i++) {
+      results.push(<ThreadItem details={movies[i]} key={movies[i].id} />);
     }
-    let results = [first, second, third]
-    return results.map(movie => {
-      return <ThreadItem details={movie} key={movie.id} />
-    })
+    return results;
   }
-
+  
   checkIfHome = () => {
     if (this.props.location.pathname === '/') {
       return <Link to={`category/${this.context.categoryID}`}>see more</Link>
