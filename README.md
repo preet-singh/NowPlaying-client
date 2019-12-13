@@ -58,7 +58,7 @@ Now Playing is a React application that provides users a platform to engage with
 ![](public/images/create-thread2.PNG)
 
 
-#### Technologies
+## Technologies
 * HTML5
 * CSS3
 * ReactJS
