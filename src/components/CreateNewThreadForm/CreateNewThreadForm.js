@@ -100,7 +100,7 @@ class CreateNewThreadForm extends React.Component {
   });
   let alreadyMadeItemsMap = alreadyMadeItems.map(movie => {
     return(
-      <li key={movie.id}>
+      <li key={movie.id} className="displayedSearch">
         <Link to={`/movie/${movie.nowplaying_id}`}>
           <h2>{movie.title}</h2>
           <p>Release Date: {movie.release_date}</p>

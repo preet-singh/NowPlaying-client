@@ -21,7 +21,7 @@ import { Link, Element , Events, animateScroll as scroll, scrollSpy, scroller } 
 import convertSeconds from '../../utils/convertSeconds';
 
 //Image
-import comment from '../../components/Images/comment.svg'
+import comment from '../../assets/comment.svg';
 
 //Style
 import './ThreadRoute.css'

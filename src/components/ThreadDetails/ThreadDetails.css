@@ -114,30 +114,14 @@
 }
 
 @media screen and (min-width: 768px){
+
     .thread-details {
-        width: 50%;
-        margin: initial;
-        margin-bottom: 20px;
-        padding-top: 30px;
-        padding-left: 30px;
-        text-align: left;
-        /* background-color: turquoise; */
+        flex: 1;
+        margin-right: 25px;
     }
 
-    .thread-details h3 {
-        font-size: 48px;
-        padding: initial;
-    }
-
-    .thread-details p:nth-child(even){
-        padding: 5px 17px 5px 5px;
-        font-size: 16px;
-    }
-
-    .thread-details p:nth-child(odd){
-        margin-left: auto;
-        text-align: right;
-        padding: 5px 50px 5px 5px;
-        font-size: 13px;
+    .trailer-player > div {
+        max-width: 45vw;
+        margin: 0 auto;
     }
 }

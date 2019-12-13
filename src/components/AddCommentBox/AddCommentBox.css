@@ -109,80 +109,10 @@
   
   .add-comment-box textarea {
     display: block;
-    margin: auto;
-    min-width: 80%;
-    max-width: 80%;
+    margin: 0 auto;
+    width: 60%;
     border: 1px solid white;
     color: white;
-    margin-left: 50px;
-    min-height: 200px;
     resize: none;
   }
-
-  .reaction-buttons {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 115px;
-    left: 5px;
-  }
-
-  .reaction-buttons button {
-    border: none;
-  }
-
-  .reaction-buttons_notPlaying button {
-    border: none;
-  }
-
-  .reaction-buttons_notPlaying {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 85px;
-    left: 5px;
-  }
-
-  .reaction-buttons button:hover {
-    cursor: pointer;
-  }
-
-  #send-comment {
-    margin-top: 5px;
-    margin-right: 45px;
-    position: absolute;
-    bottom: 10px;
-    right: -40px;
-  }
-
-  #send-comment:hover {
-    cursor: pointer;
-  }
-
-  #open_chatbox {
-    position: fixed;
-    bottom: 15px;
-    left: 15px;
-    height: 65px;
-    width: 65px;
-  }
-
-  #open_chatbox:hover {
-    cursor: pointer;
-  }
-
-  #close_commentBox {
-    position: absolute;
-    bottom: 265px;
-    right: 5px;
-    z-index: 3;
-    color: black;
-    background-color: transparent;
-    border: none;
-  }
-
-  #close_commentBox:hover {
-    cursor: pointer;
-  }
-
 }
