@@ -38,7 +38,7 @@ export default class LandingPage extends Component {
         <div className="section-flex">
           <section className="section-one">
             <h2 className="section-h2">View a Thread</h2>
-            <img className="section-img" src="https://media2.giphy.com/media/l0ExxaH283o56Avuw/giphy.gif" alt="gif" />
+            <img className="section-img" src="https://media.giphy.com/media/Thv1sRJ70riyb2sbmC/giphy.gif" alt="gif" />
             <p className="section-p">Want to see others' reactions to a movie? Find, play, sit back, and enjoy the show!</p>
           </section>
 
@@ -46,15 +46,15 @@ export default class LandingPage extends Component {
 
           <section className="section-two">
             <h2 className="section-h2">Create a Thread</h2>
-            <img className="section-img" src="https://media2.giphy.com/media/l0ExxaH283o56Avuw/giphy.gif" alt="gif" />
-            <p className="section-p">Don't see your favorite movie? Simply search, find, be the first to create!</p>
+            <img className="section-img" src="https://media.giphy.com/media/iD7egFh7eQJBcCeTio/giphy.gif" alt="gif" />
+            <p className="section-p">Don't see your favorite movie? Simply search, find, and be the first to create!</p>
           </section>
 
           <hr className="underline"></hr>
 
           <section className="section-three">
             <h2 className="section-h2">Comment Alongside Others</h2>
-            <img className="section-img" src="https://media2.giphy.com/media/l0ExxaH283o56Avuw/giphy.gif" alt="gif" />
+            <img className="section-img" src="https://media.giphy.com/media/jP5TY3uDAWZbOuyeu7/giphy.gif" alt="gif" />
             <p className="section-p">Participate in the conversation. Add you reactions and comments. Share your thoughts with the community!</p>
           </section>
         </div>
