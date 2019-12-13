@@ -104,12 +104,6 @@ class ThreadCommentList extends React.Component {
     this.setState({scrolling: false})
   }
 
-  renderReturnToBottom = () => {
-    return (
-      <div id='return' onClick={() => this.handleReturnToBottom()}>Click to return to latest comments</div>
-    )
-  }
-
   render() {
     console.log(window.innerWidth)
     if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {
@@ -118,18 +112,18 @@ class ThreadCommentList extends React.Component {
       }
       return (
         <div id="ThreadCommentList">    
-          {window.innerWidth <= 768 ? <h4 id="comments-header">Comments</h4> : null}
+          <h4 id="comments-header">Comments</h4>
+          {!this.state.scrolling ? <p id='stop-auto-scroll'>Click comment box to pause auto-scroll</p> : <p id='resume-auto-scroll' onClick={() => this.handleReturnToBottom()}>Click here to return to latest comments</p>}
           <ul id='thread-comment-list' onClick={() => this.handleScrollBegin()}>
             {this.state.renderedComments2}
           </ul>
-          {this.state.scrolling ? this.renderReturnToBottom() : null}
         </div>
       )
       }
     else {
       return (    
         <div id="ThreadCommentList">    
-        {window.innerWidth <= 768 ? <h4 id="comments-header">Comments</h4> : null}
+        <h4 id="comments-header">Comments</h4>
           <ul id="thread-comment-list">
             <li>Click 'Play' to start the comments!</li>
           </ul>
