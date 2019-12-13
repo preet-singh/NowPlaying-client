@@ -105,7 +105,6 @@ class ThreadCommentList extends React.Component {
   }
 
   render() {
-    console.log(window.innerWidth)
     if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {
       if (this.context.mediaTimer !== this.state.mediaTimer) {
         this.renderCommentList()
