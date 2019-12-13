@@ -31,7 +31,6 @@ class FilterBox extends Component {
 
   handleSubmit = (e) => {
     let currentCategoryItems = this.context.searchedCategoryItems;
-    console.log(this.state.rating);
     e.preventDefault();
 
     if(this.state.minimumYear){
@@ -68,6 +67,7 @@ class FilterBox extends Component {
           placeholder="1920" 
           id="minimumYear" 
           name="minimumYear" 
+          aria-label="Minimum year for filter"
           onChange={(e) => this.setState({minimumYear: e.target.value})}
         />
         <label htmlFor="latestYear" id="latestYearLabel" name="latestYearLabel">Latest Year:</label>
@@ -76,6 +76,7 @@ class FilterBox extends Component {
           placeholder={new Date().getFullYear()}
           id="latestYear"
           name="maximumYear" 
+          aria-label="Maximum year for filter"
           onChange={(e) => this.setState({maximumYear: e.target.value})} 
         />
         <label htmlFor="rating" id="ratingLabel" name="ratingLabel">Minimum Rating:</label>
@@ -83,6 +84,7 @@ class FilterBox extends Component {
           id="rating" 
           name="rating" 
           defaultValue="1"
+          aria-label="Rating for filter"
           onChange={(e) => {this.setState({rating: e.target.value})}} 
         >
           <option value="10">10</option>

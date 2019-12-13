@@ -68,7 +68,6 @@ class ThreadsList extends React.Component {
       const indexOfFirstPost = indexOfLastPost - postsPerPage;
       const currentPosts = allPosts.slice(indexOfFirstPost, indexOfLastPost);
 
-
       if(!this.state.posts){
         this.setState({
           posts: currentPosts

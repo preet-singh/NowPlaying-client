@@ -1,10 +1,11 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-restricted-globals */
 //Dependencies
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas, faLessThanEqual } from '@fortawesome/free-solid-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 import { findIconDefinition, icon } from '@fortawesome/fontawesome-svg-core'  
 
 //Utilities
@@ -254,7 +255,7 @@ class CreateNewThreadForm extends React.Component {
           <div className="width70percent">
             {this.state.existError ? this.threadExists() : ''}
             <label htmlFor="newThreadTitle" id="newThreadTitleLabel" name="newThreadTitleLabel">Title:</label>
-            <input type="text" id="newThreadTitle" name="newThreadTitle" placeholder="The Producers" value={this.state.title} onChange={(e) => this.setState({title: e.target.value})} />
+            <input type="text" id="newThreadTitle" name="newThreadTitle" aria-label="Thread title" placeholder="The Producers" value={this.state.title} onChange={(e) => this.setState({title: e.target.value})} />
             <button type="submit" className="black-button">Search!</button>
             <div className="return-directory"><h3><Link to={() => {
             if (!this.state.selectedMovie) {

@@ -9,7 +9,7 @@ import { findIconDefinition, icon } from '@fortawesome/fontawesome-svg-core'
 //Components
 import SearchBar from '../SearchBar/SearchBar';
 import UserContext from '../../utils/context';
-import AuthService from '../../utils/auth-service';
+// import AuthService from '../../utils/auth-service';
 
 //Style
 import './Directory.css';
@@ -51,8 +51,8 @@ class Directory extends React.Component {
   }
 
   render() {
-    let categoryList = this.context.categoryList || [];
-    let category = this.context.category || ''
+    // let categoryList = this.context.categoryList || [];
+    // let category = this.context.category || ''
     return(
       <div className="Directory">
         <div className="return-directory"><h3><Link to="/category/1"><FontAwesomeIcon className="back-icon" icon={backArrowIcon} /> MOVIES </Link></h3></div>

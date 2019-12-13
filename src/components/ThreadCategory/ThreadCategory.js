@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import '../ThreadsList/ThreadsList.css';
-import ThreadsList from '../ThreadsList/ThreadsList';
+// import ThreadsList from '../ThreadsList/ThreadsList';
 import UserContext from '../../utils/context';
 import ThreadItem from '../ThreadItem/ThreadItem';
 

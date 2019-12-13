@@ -1,9 +1,9 @@
 //Dependencies
 import React from 'react';
-import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
+import { Slider, Rail, Handles, Tracks, /*Ticks*/ } from "react-compound-slider";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { fas } from '@fortawesome/free-solid-svg-icons'
 import { findIconDefinition, icon } from '@fortawesome/fontawesome-svg-core'  
 import TrailerPlayer from '../TrailerPlayer/TrailerPlayer';
 

@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { Component } from 'react';
 import UserContext from '../../utils/context';
 import AuthApiService from '../../utils/auth-service';
@@ -40,7 +41,6 @@ class Happenings extends Component {
         <h3>ACTIVITY</h3>
         <ul className="happenings-list">
           {firstHappenings.map(event => {
-            console.log(event);
           if (event) {
              if (event.media_title) { return(
                   <li key={event.id}><span className="happening-label">New thread:</span> <Link to={`${event.media_type}/${event.media_id}`}><span className="media-title">{event.media_title}</span></Link></li>
