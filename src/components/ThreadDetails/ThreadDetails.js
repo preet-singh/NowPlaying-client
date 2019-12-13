@@ -2,8 +2,6 @@
 import React from 'react';
 import { Slider, Rail, Handles, Tracks, /*Ticks*/ } from "react-compound-slider";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { fas } from '@fortawesome/free-solid-svg-icons'
 import { findIconDefinition, icon } from '@fortawesome/fontawesome-svg-core'  
 import TrailerPlayer from '../TrailerPlayer/TrailerPlayer';
 
@@ -228,8 +226,6 @@ export default class ThreadDetails extends React.Component {
             <li>Release date: {this.state.event[0].release_date}</li>
             <li>IMDB Rating: {this.state.event[0].imdb_rating}</li>
           </ul>
-
-        {/* <p>{this.state.event ? this.convertDate(this.state.event[0].date_created) : 'Loading...'}</p> */}
       </div> : 'Loading'}
       </>
       )

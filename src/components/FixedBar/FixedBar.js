@@ -8,22 +8,6 @@ import {Link} from 'react-router-dom';
 class FixedBar extends React.Component {
   static contextType = UserContext;
 
-  // componentDidMount() {
-  //   this.myInterval = setInterval(() => this.context.updateMediaTimer(), 1000)
-  // }
-
-  // clearInterval = () => {
-  //   clearInterval(this.myInterval);
-  // }
-
-  // restartInterval = () => {
-  //   this.myInterval = setInterval(() => this.context.updateMediaTimer(), 1000)
-  // }
-
-  // componentWillUnmount() {
-  //   clearInterval(this.myInterval);
-  // }
-
   convertTimeString = timeValue => {
     if(timeValue < 10) {
       return `0${timeValue}`;

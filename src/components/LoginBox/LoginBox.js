@@ -1,7 +1,6 @@
 //Dependencies
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
 
 //Components
 import Login from '../../components/Login/Login';
