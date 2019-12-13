@@ -4,7 +4,7 @@ import './ThreadCommentList.css';
 import ThreadCommentItem from '../ThreadCommentItem/ThreadCommentItem';
 import UserContext from '../../utils/context';
 import {withRouter} from 'react-router-dom';
-import { Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
+import { animateScroll as scroll } from 'react-scroll';
 
 class ThreadCommentList extends React.Component {
   static contextType = UserContext;
