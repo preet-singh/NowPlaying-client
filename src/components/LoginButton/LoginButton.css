@@ -21,3 +21,11 @@
 .LoginButton button:hover {
     cursor: pointer;
 }
+
+#logout_button {
+    display: flex;
+}
+#logout_button span {
+    font-weight: normal;
+    padding-left: 5px;
+}

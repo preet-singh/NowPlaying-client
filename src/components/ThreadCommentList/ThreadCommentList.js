@@ -17,9 +17,6 @@ class ThreadCommentList extends React.Component {
   }
   
   async componentDidMount() {
-    Events.scrollEvent.register('begin', this.handleScrollBegin()) 
-    Events.scrollEvent.register('end', this.handleScrollEnd()) 
-    scrollSpy.update();
     await this.props.getComments();
     await this.setState({comments: this.context.currentThreadComments})
     let renderedComments2 = await this.renderCommentList();
@@ -107,13 +104,8 @@ class ThreadCommentList extends React.Component {
     this.setState({scrolling: false})
   }
 
-  renderReturnToBottom = () => {
-    return (
-      <div id='return' onClick={() => this.handleReturnToBottom()}>Click to return to latest comments</div>
-    )
-  }
-
   render() {
+    console.log(window.innerWidth)
     if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {
       if (this.context.mediaTimer !== this.state.mediaTimer) {
         this.renderCommentList()
@@ -121,10 +113,10 @@ class ThreadCommentList extends React.Component {
       return (
         <div id="ThreadCommentList">    
           <h4 id="comments-header">Comments</h4>
-          <ul id='thread-comment-list' onClick={() => this.handleScrollBegin()}>
+          {!this.state.scrolling ? <p onClick={() => this.handleScrollBegin()} id='stop-auto-scroll'><button className="black-button">Click here to pause auto-scroll</button></p> : <p id='resume-auto-scroll' onClick={() => this.handleReturnToBottom()}><button className="black-button">Click here to return to recent comments</button></p>}
+          <ul id='thread-comment-list'>
             {this.state.renderedComments2}
           </ul>
-          {this.state.scrolling ? this.renderReturnToBottom() : null}
         </div>
       )
       }

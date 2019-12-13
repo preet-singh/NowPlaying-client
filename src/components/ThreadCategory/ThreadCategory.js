@@ -21,7 +21,7 @@ class ThreadCategory extends React.Component {
       return 'No threads yet!'
     }
     let movies = this.context.categoryItems;
-    movies.sort((a,b) => (a.imdb_rating > b.imdb_rating));
+    movies.sort((a,b) => (a.imdb_rating < b.imdb_rating));
     let amount = 3;
     if (movies.length < 3) { amount = movies.length }
     let results = [];
@@ -30,7 +30,7 @@ class ThreadCategory extends React.Component {
     }
     return results;
   }
-  
+
   checkIfHome = () => {
     if (this.props.location.pathname === '/') {
       return <Link to={`category/${this.context.categoryID}`}>see more</Link>

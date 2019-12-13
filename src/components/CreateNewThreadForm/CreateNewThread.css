@@ -119,6 +119,14 @@
     
 }
 
+.results {
+    width: 100%;
+}
+
+.notCreatedItems {
+    width: 100%;
+}
+
 @media screen and (min-width: 768px){
 
     .CreateNewThreadForm {
@@ -219,6 +227,10 @@
         cursor: pointer;
         color: green;
         border: 1px solid green;
+    }
+
+    .results { 
+        margin: 0 auto;
     }
 
 }

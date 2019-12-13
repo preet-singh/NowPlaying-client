@@ -41,8 +41,13 @@ export default class ThreadRoute extends React.Component {
     if (this.context.categoryItems) {
     let find = this.context.categoryItems.find(item => item.id === Number(this.props.match.params.id));
     let backdrop = find.backdrop;
-    let fullUrl = `http://image.tmdb.org/t/p/original/${backdrop}`;
-    document.body.style.background = `fixed center center url('${fullUrl}`;
+    let fullUrl;
+    if(backdrop.startsWith('/')) {
+      fullUrl = `http://image.tmdb.org/t/p/original/${backdrop}`;
+    } else {
+      fullUrl = backdrop;
+    }
+    document.body.style.background = `fixed center center url('${fullUrl}')`;
     }
   }
 
