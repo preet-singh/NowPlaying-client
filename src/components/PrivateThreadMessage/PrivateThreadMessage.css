@@ -13,7 +13,6 @@
 @media screen and (min-width: 768px){
     .hidden-play-message {
         text-align: center;
-        /* background-color: lightblue; */
         width: 40%;
         padding-left: 50px;
     }

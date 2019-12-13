@@ -97,6 +97,7 @@ class Login extends React.Component{
   render() {
     let passwordError = this.validatePassword;
     let usernameError = this.validateUsername;
+    console.log(this.context.error)
     return (
       <form className="Login" name="login" onSubmit={(e) => this.handleSubmit(e)}>
         <legend>LOGIN</legend>
@@ -122,6 +123,9 @@ class Login extends React.Component{
         />
         {this.state.passwordTouch && <FormValidationError message={passwordError} />}
         <button type="submit" value="submit" className="black-button">Submit</button>
+        <div className='error-message' role='alert'>
+          {this.state.error && <p>{this.state.error}</p>}
+        </div>
         <Link to='/register'>
           <p className="sign-up">Don't have an account?</p>
         </Link>

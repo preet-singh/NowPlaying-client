@@ -6,13 +6,9 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { findIconDefinition, icon } from '@fortawesome/fontawesome-svg-core' 
 import UserContext from '../../utils/context';
 
-
-
-
 library.add(
   fas
 );
-
 
 const exit = findIconDefinition({ prefix: 'fas', iconName: 'times-circle' })
 const exitIcon = icon(exit);

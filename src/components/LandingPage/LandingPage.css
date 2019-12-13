@@ -63,10 +63,6 @@
 }
 
 .hero {
-  /* background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://media.istockphoto.com/photos/striped-box-with-popcorn-picture-id869302366?k=6&m=869302366&s=612x612&w=0&h=FllPhnE4eH0E7m8n300_WXYuGCzyCpH6K2bA318pgOA=');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,75 +82,3 @@
   cursor: pointer;
 }
 
-/* @media only screen and (min-width: 768px) { 
-
- .header-tag {
-   padding-top: 2%;
-   padding-bottom: 2%;
-   font-size: 36px;
-   letter-spacing: 2px;
- }
-
- .app-title-headline {
-   font-size: 24px;
- }
-
- .section-one, .section-two, .section-three {
-   margin-top: 3%;
- }
-
- .section-three {
-   margin-bottom: 4%;
- }
-
- .section-h2 {
-   font-size: 22px;
- }
-
- .section-p {
-   font-size: 14px;
- }
-}
-
-@media only screen and (min-width: 1300px) {
-  .header-tag {
-    font-size: 50px;
-    letter-spacing: 3.5px;
-  }
-
-  .hero {
-    height: 520px;
-  }
-
-  .app-title-headline {
-    font-size: 29px;
-  }
-
-  .section-flex {
-    display: flex;
-    justify-content: space-evenly;
-  }
-
-  .section-one, .section-two, .section-three {
-    width: 30%;
-  }
-
-  .section-two {
-    border-right: 1.5px solid white;
-    border-left: 1.5px solid white;
-    padding-left: 2%;
-    padding-right: 2%;
-  }
-
-  .underline {
-    display: none;
-  }
-
-  .section-h2 {
-    font-size: 30px;
-  }
-
-  .section-p {
-    font-size: 20px;
-  } 
-} */

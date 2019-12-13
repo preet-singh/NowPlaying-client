@@ -35,7 +35,6 @@ class Happenings extends Component {
 
   render() {
     let firstHappenings = this.state.happenings;
-    // let lastHappening = this.state.happenings[this.state.happenings.length - 1] || {};
     return (
       <div className="Happenings">
         <h3>ACTIVITY</h3>
@@ -49,13 +48,6 @@ class Happenings extends Component {
                  <li key={event.id}><span className="happening-label">New comment:</span> <Link to={`${event.media_type}/${event.media_id}`}><span className="media-title">{event.media_title_comments}</span></Link></li>
              ); }
           }})}
-        {/* //   (lastHappening.media_title)
-        //       ? 
-        //         <li className="thread-created">A thread for the {lastHappening.media_type.slice(0,lastHappening.media_type.length - 1)}, <span className="media-title">{lastHappening.media_title}</span>, was created</li>
-        //       : 
-        //         <li className="comment-created">{lastHappening.username} commented <span className="user-comment">"{lastHappening.user_comment}"</span> in the <span className="media-title">{lastHappening.media_title_comments}</span> thread</li> 
-        //   }
-        // } */}
         </ul>
       </div>
     );

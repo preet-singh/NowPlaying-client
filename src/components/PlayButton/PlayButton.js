@@ -32,8 +32,6 @@ class PlayButton extends React.Component {
   render() {
     return (
       <button className='fixed-play-button' type='button' onClick={(e) => this.handlePlay(e)}>
-        {//this.context.paused ? 'Resume' : 'Pause'} 
-        }
           <FontAwesomeIcon className="play" icon={this.context.paused ? playIcon : pauseIcon} />
       </button>
     )
