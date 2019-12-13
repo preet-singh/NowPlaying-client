@@ -13,8 +13,9 @@
 
 #stop-auto-scroll, #resume-auto-scroll {
   background: black;
-  opacity: 70%;
   font-size: 1.2em;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
 @media screen and (max-width: 768px) {

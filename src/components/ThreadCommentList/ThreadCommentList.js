@@ -113,8 +113,8 @@ class ThreadCommentList extends React.Component {
       return (
         <div id="ThreadCommentList">    
           <h4 id="comments-header">Comments</h4>
-          {!this.state.scrolling ? <p id='stop-auto-scroll'>Click comment box to pause auto-scroll</p> : <p id='resume-auto-scroll' onClick={() => this.handleReturnToBottom()}>Click here to return to latest comments</p>}
-          <ul id='thread-comment-list' onClick={() => this.handleScrollBegin()}>
+          {!this.state.scrolling ? <p onClick={() => this.handleScrollBegin()} id='stop-auto-scroll'><button className="black-button">Click here to pause auto-scroll</button></p> : <p id='resume-auto-scroll' onClick={() => this.handleReturnToBottom()}><button className="black-button">Click here to return to recent comments</button></p>}
+          <ul id='thread-comment-list'>
             {this.state.renderedComments2}
           </ul>
         </div>
