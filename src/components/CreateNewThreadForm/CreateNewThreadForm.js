@@ -91,7 +91,6 @@ class CreateNewThreadForm extends React.Component {
         return(
       <li className='displayedSearch' key={movie.id}>
         <Link onClick={() => {
-          console.log(movie.movie_id);
           this.doesMovieExistinDatabase(movie.movie_id);
           this.setState({ selectedMovie: true, selectedMovieId: movie.id, selectedMovieImg: movie.poster_path });}}
         >
