@@ -30,7 +30,7 @@ class ThreadsList extends React.Component {
     } 
     else {
 
-    for (let i=0;i<=limit;i++) {
+    for (let i=0;i<=limit-1;i++) {
       if (this.context.filteredCategoryItems) {
         returnItem.push(<ThreadItem details={this.context.filteredCategoryItems[i]} key={i} />)
       }
@@ -97,8 +97,8 @@ class ThreadsList extends React.Component {
       <div className='threads-list'>
         <h3>MOVIES</h3>
         <div className="threads-list-container">
+        {this.getThreads()}
         {this.setPosts()}
-          {this.getThreads()}
         </div>
 
       </div>
