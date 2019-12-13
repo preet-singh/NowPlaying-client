@@ -7,65 +7,40 @@ exports[`Login box testing renders the login form 1`] = `
   onSubmit={[Function]}
 >
   <legend>
-    Login 
-    <button
-      className="displayV mobile show"
-      onClick={[Function]}
-      type="button"
-    >
-      V
-    </button>
+    LOGIN
   </legend>
-  <div
-    className="login-form mobile-hide"
-    id="login-form"
+  <input
+    id="username-input"
+    name="username"
+    onChange={[Function]}
+    placeholder="ex. FlixMaster12"
+    required={true}
+    type="text"
+  />
+  <input
+    autoComplete="on"
+    id="password-input"
+    name="password"
+    onChange={[Function]}
+    placeholder="********"
+    required={true}
+    type="password"
+  />
+  <button
+    className="black-button"
+    type="submit"
+    value="submit"
   >
-    <label
-      htmlFor="username-input"
-      id="username-label"
-      name="username-label"
+    Submit
+  </button>
+  <Link
+    to="/register"
+  >
+    <p
+      className="sign-up"
     >
-      Username:
-    </label>
-    <input
-      id="username-input"
-      name="username"
-      onChange={[Function]}
-      placeholder="ex. FlixMaster12"
-      required={true}
-      type="text"
-    />
-    <label
-      htmlFor="password-input"
-      id="password-label"
-      name="password-label"
-    >
-      Password:
-    </label>
-    <input
-      autoComplete="on"
-      id="password-input"
-      name="password"
-      onChange={[Function]}
-      placeholder="********"
-      required={true}
-      type="password"
-    />
-    <button
-      type="submit"
-      value="submit"
-    >
-      Submit
-    </button>
-    <Link
-      to="/register"
-    >
-      <p
-        className="sign-up"
-      >
-        Don't have an account?
-      </p>
-    </Link>
-  </div>
+      Don't have an account?
+    </p>
+  </Link>
 </form>
 `;
