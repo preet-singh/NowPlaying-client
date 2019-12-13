@@ -1,0 +1,21 @@
+{
+    "version": 2,
+    "name": "Playing",
+    "env": {
+        "API_KEY": "process.env.API_KEY"
+    },
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": "^/manifest.json$",
+          "dest": "/manifest.json"
+         },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+    ]
+  }

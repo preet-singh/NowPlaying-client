@@ -22,7 +22,9 @@ exports[`SortOptions component renders the RegisterForm 1`] = `
       Clear
     </button>
   </div>
-  <p>
+  <p
+    className="black-bg"
+  >
     <Link
       to="/new"
     >
