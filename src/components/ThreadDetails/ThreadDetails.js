@@ -31,16 +31,21 @@ export default class ThreadDetails extends React.Component {
   }
 
   async componentDidMount(){
-    let thread = this.props.thread;
-    let id = this.props.id;
-    await AuthApi.getSpecificEvent(thread, id)
-    .then(resJSON => {
-      this.setState({
-        event: {...resJSON}
-    })
-    })
+    this.getEvent();
   }
 
+  getEvent = async () => {
+    if (!this.state.event) {
+      let thread = this.props.thread;
+      let id = this.props.id;
+    await AuthApi.getSpecificEvent(thread, id)
+      .then(resJSON => {
+        this.setState({
+          event: {...resJSON}
+        });
+      });
+    }
+  }
   convertDate = date => {
 
     let newDate = new Date(date)
@@ -134,6 +139,9 @@ export default class ThreadDetails extends React.Component {
 
 
   render(){
+    if (!this.state.event) {
+      this.getEvent();
+    }
     let runTime = 1;
     if (this.context.playingRuntime) {
       runTime = this.context.playingRuntime
@@ -143,7 +151,6 @@ export default class ThreadDetails extends React.Component {
       runTime = 1;
       scrollValue = 0;
     }
-    console.log(this.state.event ? this.state.event[0] : null)
     return (
       <>
       {this.state.event ? 

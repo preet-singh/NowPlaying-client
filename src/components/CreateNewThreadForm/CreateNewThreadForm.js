@@ -55,11 +55,16 @@ class CreateNewThreadForm extends React.Component {
     let API_Key = config.API_KEY;
     let search = this.state.title
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_Key}&language=en-US&query=${search}&page=1`)
-    .then(res => 
-      (!res.ok)
-      ? res.json().then(e => Promise.reject(e))
-      : res.json()
-    )
+    .then(res => {
+      console.log('res');
+      console.log(res);
+      if (!res.ok) {
+      return res.json().then(e => Promise.reject(e))
+      }
+      else {
+      return res.json()
+      }
+    })
     .then(resJSON => {
       this.setState({
       allMovieResults: resJSON,
