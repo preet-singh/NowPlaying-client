@@ -5,23 +5,19 @@ import React from 'react';
 import Header from '../../components/Header/Header';
 import Directory from '../../components/Directory/Directory';
 import ThreadDetails from '../../components/ThreadDetails/ThreadDetails';
-import ScrubBox from '../../components/ScrubBox/ScrubBox';
-import PrivateThreadMessage from '../../components/PrivateThreadMessage/PrivateThreadMessage';
 import ThreadCommentList from '../../components/ThreadCommentList/ThreadCommentList';
 
 import AuthApiService from '../../utils/auth-service';
 import FixedBar from '../../components/FixedBar/FixedBar';
 import UserContext from '../../utils/context'; 
 
-import * as Scroll from 'react-scroll';
-import { Link, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 
 
 //Utilities
 import convertSeconds from '../../utils/convertSeconds';
 
 //Image
-import comment from '../../components/Images/comment.svg'
+import comment from '../../assets/comment.svg';
 
 //Style
 import './ThreadRoute.css'

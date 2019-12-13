@@ -103,7 +103,7 @@ class CreateNewThreadForm extends React.Component {
   });
   let alreadyMadeItemsMap = alreadyMadeItems.map(movie => {
     return(
-      <li key={movie.id}>
+      <li key={movie.id} className="displayedSearch">
         <Link to={`/movie/${movie.nowplaying_id}`}>
           <h2>{movie.title}</h2>
           <p>Release Date: {movie.release_date}</p>
@@ -193,6 +193,7 @@ class CreateNewThreadForm extends React.Component {
   }
 
   handleNewThread = async ev => {
+    console.log('handling thread');
     ev.preventDefault()
     // title, event_description, id, media_runtime, release_date, genre, imdb_rating, mpaa_rating, poster
     let allMovieInfo = {

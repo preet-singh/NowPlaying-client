@@ -110,8 +110,7 @@ a {
   }
 
   .footer {
-    position: fixed;
-    bottom: 0;
+    margin-top: 220px;
     z-index: 0;
     width: 100%;
     display: block;
@@ -149,4 +148,5 @@ a {
   .tablet-hide {
     display: none;
   }
+
 }

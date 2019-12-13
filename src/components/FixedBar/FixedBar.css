@@ -73,36 +73,21 @@
 
 @media screen and (min-width: 768px){
   .fixed-bar {
-    min-width: 445px;
-    height: 300px;
-    max-width: 30%;
+    width: 100%;
     position: fixed;
     bottom: 0px;
-    left: 0px;
-    margin-left: 0px;
   }
 
   .fixed-bar-header {
-    margin-top: 0px;
-    margin-left: 0px;
-    padding: 0px;
-    position: relative;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .fixed-bar-header h3 {
-    position: initial;
+  .fixed-bar-header h2 {
+    margin-right: 25px;
   }
 
-  .fixed-bar-header button {
-    position: absolute !important;
-    z-index: 3;
-    top: -25px !important;
-    right: 45px !important;
-  }
-
-  .fixed-bar-header button:hover {
-    cursor: pointer;
-  }
 
 }

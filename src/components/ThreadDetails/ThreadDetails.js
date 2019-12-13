@@ -145,63 +145,64 @@ export default class ThreadDetails extends React.Component {
     }
     return (
       <>
-      {this.state.event ? <div className='thread-details'>
+      {this.state.event ? 
+      <div className='thread-details'>
         <div className="play-and-title">
         <h3>{this.state.event ? this.state.event[0].title : 'Loading...'}</h3>
-  <Slider
-    className="playSlider"
-    domain={[0, runTime]}
-    step={1}
-    mode={2}
-    values={[scrollValue]}
-    onChange={async (e) => {
-        if (this.context.paused) {
-          await this.context.pauseInterval();
-          await this.context.setMediaTimer(Number(e[0]));
-        }
-        else {
-          await this.context.pauseInterval();
-          await this.context.setMediaTimer(Number(e[0]));
-          await this.context.startInterval();
-        }
-    }}
-    onUpdate={async (e) => {
-      await this.context.pauseInterval();
-    }} >
+        <Slider
+          className="playSlider"
+          domain={[0, runTime]}
+          step={1}
+          mode={2}
+          values={[scrollValue]}
+          onChange={async (e) => {
+              if (this.context.paused) {
+                await this.context.pauseInterval();
+                await this.context.setMediaTimer(Number(e[0]));
+              }
+              else {
+                await this.context.pauseInterval();
+                await this.context.setMediaTimer(Number(e[0]));
+                await this.context.startInterval();
+              }
+          }}
+          onUpdate={async (e) => {
+            await this.context.pauseInterval();
+          }} >
 
-    <Rail>
-      {({ getRailProps }) => (
-        <div className="railStyle" {...getRailProps()} />
-      )}
-    </Rail>
-    <Handles>
-      {({ handles, getHandleProps }) => (
-        <div className="slider-handles">
-          {handles.map(handle => (
-            <Handle
-              key={handle.id}
-              handle={handle}
-              getHandleProps={getHandleProps}
-            />
-          ))}
-        </div>
-      )}
-    </Handles>
-    <Tracks right={false}>
-      {({ tracks, getTrackProps }) => (
-        <div className="slider-tracks">
-          {tracks.map(({ id, source, target }) => (
-            <Track
-              key={id}
-              source={source}
-              target={target}
-              getTrackProps={getTrackProps}
-            />
-          ))}
-        </div>
-      )}
-    </Tracks>
-  </Slider>
+          <Rail>
+            {({ getRailProps }) => (
+              <div className="railStyle" {...getRailProps()} />
+            )}
+          </Rail>
+          <Handles>
+            {({ handles, getHandleProps }) => (
+              <div className="slider-handles">
+                {handles.map(handle => (
+                  <Handle
+                    key={handle.id}
+                    handle={handle}
+                    getHandleProps={getHandleProps}
+                  />
+                ))}
+              </div>
+            )}
+          </Handles>
+          <Tracks right={false}>
+            {({ tracks, getTrackProps }) => (
+              <div className="slider-tracks">
+                {tracks.map(({ id, source, target }) => (
+                  <Track
+                    key={id}
+                    source={source}
+                    target={target}
+                    getTrackProps={getTrackProps}
+                  />
+                ))}
+              </div>
+            )}
+          </Tracks>
+        </Slider>
           <button type="button" className="go-back-ten" onClick={() => this.rewindTen()}><FontAwesomeIcon className="play-main" icon={stepBackwardIcon} />10s</button>
           <button type="button" onClick={() => this.playButton()} id='display-comment' className="play-button"><FontAwesomeIcon className="play-main" icon={this.determineButtonText()[1]} />{this.determineButtonText()[0]}</button>
           {this.context.playing ? '' : <span className="block margin10">Click 'play' to view the comments</span>}

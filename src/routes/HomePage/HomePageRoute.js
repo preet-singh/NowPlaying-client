@@ -12,12 +12,13 @@ import UserContext from '../../utils/context';
 import LoginBox from '../../components/LoginBox/LoginBox';
 import LoginButton from '../../components/LoginButton/LoginButton';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import LandingPage from '../../components/LandingPage/LandingPage'
 
 //Styling
 import './HomePage.css';
 
 //Image
-import comment from '../../components/Images/comment.svg';
+import comment from '../../assets/comment.svg';
 
 //Token
 import TokenService from '../../utils/token-service'

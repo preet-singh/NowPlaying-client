@@ -15,10 +15,6 @@
     color: white;
 }
 
-.ThreadRoute > main {
-    padding-bottom: 35vh;
-}
-
 .ThreadRoute > main h4 {
     font-size: 32px;
     padding: 10px;
@@ -26,24 +22,8 @@
 
 @media screen and (min-width: 768px){
 
-    .ThreadRoute > main > button {
-        display: block;
-        margin-left: 50px;
-        width: 35%;
-        max-width: 650px;
-        min-width: 300px;
-        height: 30px;
-        text-align: center;
-        border: none;
-    }
+    .ThreadRoute main {
+        display: flex;
 
-    .ThreadRoute > main > button:hover {
-        cursor: pointer;
     }
-
-    .ThreadRoute > main > h4 {
-        text-align: center;
-        width: 40%;
-        padding-left: 50px;
-    }
-}
+} 

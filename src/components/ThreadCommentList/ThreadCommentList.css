@@ -8,16 +8,27 @@
   padding: 0em 1em 1em 1em;
 }
 
-@media screen and (min-width: 328px) and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   #thread-comment-list {
     overflow: auto;
-    min-height: 500px;
     max-height: 500px;
   }
 }
 
 @media screen and (min-width: 768px){
+
+  #ThreadCommentList {
+    flex: 1;
+    margin-left: 25px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
   #thread-comment-list {
+    max-height: 600px;
+    overflow: auto;
+  }
+  /* #thread-comment-list {
     position: absolute;
     top: 200px; 
     right: 50px;
@@ -31,7 +42,7 @@
     max-height: 600px;
     color: white;
     overflow: auto;
-  }
+  } */
 
   #return {
     position: absolute;
@@ -40,8 +51,8 @@
     opacity: 85%;
     width: 40%;
     right: 50px;
-    bottom: 122px;
+    top: 350px;
     color: white;
     font-size: 20px;
-  }
+  } 
 }

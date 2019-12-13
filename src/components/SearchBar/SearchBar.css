@@ -6,7 +6,7 @@
     border: none;
     border-radius: 10px;
     overflow: hidden;
-    width: 75%;
+    width: 60%;
 }
 
 .SearchBar input {
@@ -27,3 +27,10 @@
     height: 20px;
     border: none;
 }
+
+
+@media screen and (min-width: 768px){
+    .SearchBar {
+      width: 30%;
+    }
+  }

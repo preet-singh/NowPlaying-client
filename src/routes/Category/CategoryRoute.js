@@ -16,7 +16,7 @@ import UserContext from '../../utils/context';
 import './CategoryRoute.css'
 
 //Images
-import comment from '../../components/Images/comment.svg'
+import comment from '../../assets/comment.svg';
 
 
 

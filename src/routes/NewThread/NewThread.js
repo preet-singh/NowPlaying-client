@@ -16,7 +16,7 @@ import UserContext from '../../utils/context';
 import './NewThread.css'
 
 //Images
-import comment from '../../components/Images/comment.svg';
+import comment from '../../assets/comment.svg';
 
 class NewThread extends React.Component {
   static contextType = UserContext;

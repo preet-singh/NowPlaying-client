@@ -25,32 +25,29 @@
 
 @media screen and (min-width: 768px){
 
+    .Happenings {
+        width: 60%;
+        margin: 0 auto;
+    }
     .Happenings h3 {
         padding: 15px;
     }
 
     .Happenings ul {
-        list-style-type: none;
-        /* display: flex;
-        flex-direction: row;
-        justify-content: space-evenly; */
+        list-style: none;
         width: 60%;
-        min-height: 200px;
-        border: 1px solid grey;
-        transform: translateX(35%);
+        margin: 0 auto;
+    }
 
+    .Happenings .happenings-list {
+        margin: 0 auto;
     }
 
     .Happenings ul li {
-        list-style-type: none;
-        /* background-color: yellow; */
-        /* border: 1px solid yellow; */
-        /* height: 175px; */
-        /* width: 30%; */
+        margin: 0 auto;
         text-align: center;
         justify-content: center;
-        padding-top: 8px;
-        padding-bottom: 8px;
+        margin-bottom: 5px;
     }
 
 }

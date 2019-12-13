@@ -3,6 +3,8 @@ import UserContext from '../../utils/context';
 import {withRouter} from 'react-router-dom';
 import './SearchBar.css'
 
+import searchIcon from '../../assets/searchIcon.png'
+
 class SearchBar extends React.Component {
   static contextType = UserContext;
   constructor(props) {
@@ -24,7 +26,7 @@ class SearchBar extends React.Component {
     return (
       <form className="SearchBar" onSubmit={(e) => this.handleSubmit(e)}>
         <input type="text" placeholder='Frozen' id="searchBar" name="searchBar" aria-label="search bar" onChange={(e) => this.setState({title: e.target.value})} />
-        <span className="search-icon" onClick={(e) => this.handleSubmit(e)}><img src="https://i.imgur.com/vSQGka1.png" alt="search icon" /></span>
+        <span className="search-icon" onClick={(e) => this.handleSubmit(e)}><img src={searchIcon} alt="search icon" /></span>
       </form>
     )
   }

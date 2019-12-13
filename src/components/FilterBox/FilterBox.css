@@ -31,24 +31,25 @@
 @media screen and (min-width: 768px) {
   #filterForm {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     margin: 1em;
     margin-left: auto;
     margin-right: auto;
-    width: 55%;
+    width: 60%;
     border: 2px outset white;
     border-radius: 3px;
-    padding: 1em;
+    padding: 10px 20%;
   }
 
   #filterForm label {
     margin: 0.5em;
   }
 
-  #filterForm button {
-    width: 100px;
-    height: 3em;
-    margin-left: 0.5em;
+  #filterButton .filter-button {
+    width: 15%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
   }
 }

@@ -35,3 +35,14 @@
 .directory-dropdown {
     padding: 10px;
 }
+
+@media screen and (min-width: 768px){
+    .Directory {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .Directory .SearchBar {
+        width: 50%;
+    }
+}

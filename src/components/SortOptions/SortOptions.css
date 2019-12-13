@@ -19,3 +19,12 @@
 .sortOptions a:hover span {
   color: #00d838;
 }
+
+
+@media screen and (min-width: 768px){
+  .sortOptions .black-bg {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+}

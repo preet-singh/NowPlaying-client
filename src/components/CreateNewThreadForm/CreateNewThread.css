@@ -109,10 +109,23 @@
     padding: 10px;
 }
 
+.createdItems {
+    background: rgba(0,0,0,0.7);
+}
+
+.createdItems h4 {
+    font-size: 32px;
+    color: white;
+    
+}
+
 @media screen and (min-width: 768px){
 
     .CreateNewThreadForm {
         margin-bottom: 25px;
+        width: 60%;
+        margin: 0 auto;
+        margin-bottom: 20px;
     }
 
 
@@ -127,6 +140,12 @@
         cursor: pointer;
     }
 
+    .grid_for_desktop {
+        background: rgba(0,0,0,0.7);
+        margin: 0 auto;
+        width: 60%;
+    }
+
     .UL_displayMovies {
         list-style-type: none;
         list-style-position: inside;
@@ -136,12 +155,14 @@
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+        margin: 0 auto;
     }
 
     .displayedSearch {
         list-style-type: none;
         width: 20%;
         display: inline-block;
+        background: none;
     }
 
     .displayedSearch a {
@@ -198,6 +219,10 @@
         cursor: pointer;
         color: green;
         border: 1px solid green;
+    }
+
+    .results { 
+        margin: 0 auto;
     }
 
 }

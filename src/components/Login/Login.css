@@ -43,34 +43,15 @@
 
 
 @media screen and (min-width: 768px){
-  
-  .Login legend {
-    font-size: 30px;
-    margin-bottom: 5px;
-  }
-  
-  .Login button {
-    width: 200px;
-    margin-top: 10px;
-  }
+  .Login {
+    width: 60%;
+    margin: 0 auto;
+  } 
 
-  .Login button:hover {
-    color: green;
-    border: 1px solid green;
-    cursor: pointer;
-    animation-name: slider;
-    animation-duration: 0.5s;
-    width: 250px;
+  .Login *:not(legend) {
+    margin: 5px;
   }
-  
-  #username-input, #password-input {
-    width: 200px;
-  }
-  
-  #password-input {
-    margin-bottom: 10px;
-    margin-top: 15px;
-  }
+ 
 }
 
 @keyframes slider {
