@@ -4,7 +4,7 @@ import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fas, faLessThanEqual } from '@fortawesome/free-solid-svg-icons'
 import { findIconDefinition, icon } from '@fortawesome/fontawesome-svg-core'  
 
 //Utilities
@@ -29,7 +29,7 @@ class CreateNewThreadForm extends React.Component {
     super(props);
     this.state = {
       title: '',
-      existError: false
+      existError: false    
     }
   }
 
@@ -90,7 +90,10 @@ class CreateNewThreadForm extends React.Component {
       else {
         return(
       <li className='displayedSearch' key={movie.id}>
-        <Link onClick={() => this.setState({ selectedMovie: true, selectedMovieId: movie.id, selectedMovieImg: movie.poster_path })}>
+        <Link onClick={() => {
+          this.doesMovieExistinDatabase(movie.title);
+          this.setState({ selectedMovie: true, selectedMovieId: movie.id, selectedMovieImg: movie.poster_path });}}
+        >
           <h2>{movie.title}</h2>
           <p>Release Date: {movie.release_date}</p>
           <img src={`http://image.tmdb.org/t/p/w185//${movie.poster_path}`} alt={movie.title} />
@@ -134,10 +137,18 @@ class CreateNewThreadForm extends React.Component {
     return finalJSX;
   }
 
+  doesMovieExistinDatabase = (movieTitle) => {
+    return AuthApiService.getSpecificThreads(this.context.category)
+      .then(resJSON => {
+        let thread = resJSON.find(thread => thread.title === movieTitle);
+        if(thread) {
+          this.props.history.push(`${this.context.category}/${thread.id}`)
+        }
+      })
+  }
+
   autoFillMovie = () => {
-
     let API_Key = config.API_KEY;
-
     if(this.state.title){
     } else if(this.state.showMovies !== false) {
       fetch(`https://api.themoviedb.org/3/movie/${this.state.selectedMovieId}?api_key=${API_Key}&language=en-US&append_to_response=videos`)

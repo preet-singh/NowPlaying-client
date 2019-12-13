@@ -30,7 +30,6 @@ class ThreadCommentList extends React.Component {
     let element = document.getElementById('thread-comment-list');
     if(this.state.scrolling === false && element) {
       if(element.scrollHeight >= 600){
-        console.log(element.scrollHeight)
         scroll.scrollToBottom({
           duration: 300,
           smooth: 'easeInOutQuint',
@@ -39,15 +38,6 @@ class ThreadCommentList extends React.Component {
       }
     }
   }
-
-  // scrollToBottom() {
-  //   let height = window.scrollHeight;
-  //   let element = document.getElementById('thread-comment-list');
-  //   let scrollHeight;
-  //   if(element) {
-  //    element.scrollTop = element.scrollHeight;
-  //   }
-  // }
 
   handleScrollBegin = () => {
     this.setState({scrolling: true})
@@ -124,9 +114,6 @@ class ThreadCommentList extends React.Component {
   }
 
   render() {
-    // let commentHeader = document.getElementById('comments-header')
-    // let height = commentHeader.scrollHeight;
-    // console.log(height);
     if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {
       if (this.context.mediaTimer !== this.state.mediaTimer) {
         this.renderCommentList()

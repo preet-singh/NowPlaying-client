@@ -55,15 +55,12 @@ export default class ThreadDetails extends React.Component {
     else{
       this.context.setMediaTimer(this.context.mediaTimer - 10);
     }
-    this.context.pauseInterval()
-    setTimeout(this.context.startInterval(), 100)
   }
 
   scrollToComments() {
-    console.log('Scroll to comments fired');
     let element = document.getElementById('comments-header');
-    let yPosition = element.getBoundingClientRect().y
- 
+    let yPosition = window.scrollY + element.getBoundingClientRect().top 
+
     if(element) {
      window.scrollTo(0, yPosition)
     }
