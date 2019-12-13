@@ -23,6 +23,7 @@ const UserContext = React.createContext({
   playingCategory: null,
   playingID: null,
   error: null,
+  setCategoryPage: () => {},
   setLanding: () => {},
   setError: () => {},
   setBackground: () => {},
@@ -65,6 +66,10 @@ export class UserProvider extends Component {
       }
 
     this.state = state;
+  }
+
+  setCategoryPage = categoryPage => {
+    this.setState({categoryPage});
   }
 
   setLanding = landing => {
@@ -220,6 +225,7 @@ export class UserProvider extends Component {
 
   render() {
     const value = {
+      categoryPage: this.state.categoryPage,
       landing: this.state.landing,
       background: this.state.background,
       user: this.state.user,
@@ -249,6 +255,7 @@ export class UserProvider extends Component {
       startInterval: this.startInterval,
       pauseInterval: this.pauseInterval,
       clearError: this.clearError,
+      setCategoryPage: this.setCategoryPage,
       setUser: this.setUser,
       setCategory: this.setCategory,
       setCategoryList: this.setCategoryList,
