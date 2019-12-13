@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 //Dependencies
 import React, { Component } from 'react';
 import './RegisterForm.css'
@@ -135,7 +136,7 @@ class RegisterForm extends Component {
             onChange={(e) => {this.handleChange(e); this.handlePasswordTouch(e)}}
           />
           {this.state.passwordTouch && <FormValidationError message={passwordError} />}
-          <button id='reg_button' type="submit" value="submit" className="black-button">Submit</button>
+          <button id='reg_button' type="submit" value="submit" className="black-button" disabled={emailError || usernameError || passwordError}>Submit</button>
           <Link to='/login' className="login-link">Already have an account?</Link>
         </form>
       );

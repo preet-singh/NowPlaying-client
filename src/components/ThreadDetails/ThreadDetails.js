@@ -143,6 +143,7 @@ export default class ThreadDetails extends React.Component {
       runTime = 1;
       scrollValue = 0;
     }
+    console.log(this.state.event ? this.state.event[0] : null)
     return (
       <>
       {this.state.event ? 
@@ -213,7 +214,10 @@ export default class ThreadDetails extends React.Component {
           {this.state.event[0].video_key ? <TrailerPlayer videoKey={this.state.event[0].video_key}/> : <div className="item-info trailer-list">No trailer found!</div>}
           <h4>Information</h4>
           <ul>
-            <li>Runtime: {this.state.event[0].media_runtime}m</li>
+            <li>Runtime: {this.state.event[0].media_runtime === 240 
+              ? <span>No runtime was found for this movie. Runtime defaulted to 240</span> 
+              : this.state.event[0].media_runtime}m
+            </li>
             <li>Release date: {this.state.event[0].release_date}</li>
             <li>IMDB Rating: {this.state.event[0].imdb_rating}</li>
           </ul>
