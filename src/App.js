@@ -22,6 +22,11 @@ import LandingPage from './components/LandingPage/LandingPage';
 //CSS
 import './App.css';
 
+function onlyUnique(value, index, self) { 
+  return self.indexOf(value) === index;
+}
+
+
 class App extends React.Component {
   static contextType = UserContext;
 
@@ -39,8 +44,10 @@ class App extends React.Component {
     await this.context.setHappenings(happenings);
     let fullUrl = 'http://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg'
     if (this.context.categoryItems.length > 0) {
-      let randomNumber = Math.floor(Math.random() * this.context.categoryItems.length);
-      let imageUrlEnding = this.context.categoryItems[randomNumber].backdrop;
+      let categoryItemsBackdrop = this.context.categoryItems.map(item => item.backdrop);
+      let uniqueBackdrops = categoryItemsBackdrop.filter(onlyUnique)
+      let randomNumber = Math.floor(Math.random() * uniqueBackdrops.length);
+      let imageUrlEnding = uniqueBackdrops[randomNumber];
       fullUrl = `http://image.tmdb.org/t/p/original/${imageUrlEnding}`
     }
     document.body.style.background = `fixed center center url('${fullUrl}`;

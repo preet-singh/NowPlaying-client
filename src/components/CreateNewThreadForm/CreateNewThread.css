@@ -119,6 +119,14 @@
     
 }
 
+.results {
+    width: 100%;
+}
+
+.notCreatedItems {
+    width: 100%;
+}
+
 @media screen and (min-width: 768px){
 
     .CreateNewThreadForm {
