@@ -158,6 +158,21 @@ class CreateNewThreadForm extends React.Component {
           : res.json()
         )
         .then(resJSON => {
+          if(!resJSON.runtime) {
+            this.setState({
+              null_media_runtime: 240 // This is an arbitrary runtime of 240m that is POSTed to the server if no runtime is provided by TMDb
+            })
+          }
+          if(!resJSON.title) {
+            this.setState({
+              null_title: 'Title Was Not Found' // This is an arbitrary title value that is POSTed to the server if no title is provided by TMDb
+            })
+          }
+          if(!resJSON.backdrop_path) {
+            this.setState({
+              null_backdrop_path: 'https://www.freegreatpicture.com/files/147/11485-background-color.jpg' // This is an arbitrary backdrop URL value that is POSTed to the server if no backdrop is provided by TMDb
+            })
+          }
           if(this.state.showMovies !== false && this.state.autoFillMovie !== resJSON) {
             this.setState({
               showMovies: false,
@@ -196,15 +211,15 @@ class CreateNewThreadForm extends React.Component {
     ev.preventDefault()
     // title, event_description, id, media_runtime, release_date, genre, imdb_rating, mpaa_rating, poster
     let allMovieInfo = {
-      title: this.state.autoFillMovie.title,
+      title: !this.state.autoFillMovie.title ? this.state.null_title : this.state.autoFillMovie.title,
       event_description: this.state.autoFillMovie.overview,
-      media_runtime: this.state.autoFillMovie.runtime,
+      media_runtime: !this.state.autoFillMovie.runtime ? this.state.null_media_runtime : this.state.autoFillMovie.runtime,
       release_date: this.state.autoFillMovie.release_date,
       imdb_rating: Math.floor(this.state.autoFillMovie.vote_average),
       mpaa_rating: "PG-13",
       movie_id: this.state.autoFillMovie.id,
       poster: this.state.autoFillMovie.poster_path,
-      backdrop: this.state.autoFillMovie.backdrop_path,
+      backdrop: !this.state.autoFillMovie.backdrop_path ? this.state.null_backdrop_path : this.state.autoFillMovie.backdrop_path,
       media_id: this.state.selectedMovieId,
       video_key: this.state.selectedMovieTrailerKey
     }
