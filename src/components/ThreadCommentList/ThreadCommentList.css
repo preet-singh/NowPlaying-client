@@ -7,7 +7,6 @@
   background: black;
   padding: 0em 1em 1em 1em;
   margin: 0;
-  min-height: 475px;
   overflow: auto;
 }
 
@@ -21,7 +20,7 @@
 @media screen and (max-width: 768px) {
   #thread-comment-list {
     overflow: auto;
-    max-height: 500px;
+    height: 455px;
   }
 }
 
@@ -35,7 +34,7 @@
   }
 
   #thread-comment-list {
-    max-height: 600px;
+    height: 550px;
     overflow: auto;
   }
 
