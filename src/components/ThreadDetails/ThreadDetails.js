@@ -67,7 +67,7 @@ export default class ThreadDetails extends React.Component {
   }
 
   playButton = async () => {
-    if(window.innerWidth < 400 && (this.context.paused || !this.context.playing)) {
+    if(window.innerWidth < 768 && (this.context.paused || !this.context.playing)) {
       this.scrollToComments();
     }
   
