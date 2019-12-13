@@ -139,6 +139,9 @@ class RegisterForm extends Component {
             onChange={(e) => {this.handleChange(e); this.handlePasswordTouch(e)}}
           />
           {this.state.passwordTouch && <FormValidationError message={passwordError} />}
+          <div className='error-message' role='alert'>
+          {this.state.error && <p>{this.state.error}</p>}
+          </div>
           <button id='reg_button' type="submit" value="submit" className="black-button" disabled={emailError || usernameError || passwordError}>Submit</button>
           <Link to='/login' className="login-link">Already have an account?</Link>
         </form>
