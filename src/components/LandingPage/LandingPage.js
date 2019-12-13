@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { findIconDefinition, icon } from '@fortawesome/fontawesome-svg-core' 
+import UserContext from '../../utils/context';
 
 
 
@@ -13,15 +14,24 @@ library.add(
 );
 
 
-const exit = findIconDefinition({ prefix: 'far', iconName: 'times-circle' })
+const exit = findIconDefinition({ prefix: 'fas', iconName: 'times-circle' })
 const exitIcon = icon(exit);
 
 export default class LandingPage extends Component {
+  static contextType = UserContext;
+  state = {
+    inProgress: false
+  }
+
   render() {
+    if (!window.localStorage.getItem('nowPlayingSeenLanding') && this.context.landing !== true) {
     return (
     <div className="fixed-whole-container">
-      <FontAwesomeIcon className="exit-icon" icon={exitIcon} />
       <section className="landing">
+      <FontAwesomeIcon size='3x' className="exit-icon" icon={exitIcon} onClick={() => {
+        this.context.setLanding(true);
+        window.localStorage.setItem('nowPlayingSeenLanding', true)}
+       } />
         <div className="hero">
           <h3>Enjoy the moviegoing experience in the comfort of your home</h3>
         </div>
@@ -51,5 +61,9 @@ export default class LandingPage extends Component {
       </section>
     </div>
     )
+    }
+    else {
+      return null;
+    }
   }
 }

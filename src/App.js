@@ -51,7 +51,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/* <LandingPage /> */}
+        <LandingPage />
         <Switch>
           <Route exact path="/" component={HomePageRoute} />
           <Route path="/category/:id" component={CategoryRoute} />
