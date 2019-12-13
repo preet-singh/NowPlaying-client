@@ -1,10 +1,10 @@
+/* eslint-disable no-useless-escape */
 //Dependencies
 import React from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
 import AuthApiService from '../../utils/auth-service';
 import FormValidationError from '../FormValidationError/FormValidationError';
-import TokenService from '../../utils/token-service';
 import UserContext from '../../utils/context';
 
 //Styling

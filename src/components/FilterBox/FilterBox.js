@@ -31,7 +31,6 @@ class FilterBox extends Component {
 
   handleSubmit = (e) => {
     let currentCategoryItems = this.context.searchedCategoryItems;
-    console.log(this.state.rating);
     e.preventDefault();
 
     if(this.state.minimumYear){

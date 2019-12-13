@@ -1,7 +1,7 @@
 import React from 'react';
 import ThreadItem from '../ThreadItem/ThreadItem';
 import './ThreadsList.css';
-import AuthService from '../../utils/auth-service';
+// import AuthService from '../../utils/auth-service';
 import UserContext from '../../utils/context';
 import {withRouter, Link} from 'react-router-dom';
 import Pagination from '../Pagination/Pagination.js'
@@ -20,8 +20,6 @@ class ThreadsList extends React.Component {
   getThreads = () => {
     let limit = this.props.limit || 5;
     let returnItem = [];
-    console.log(this.context.filteredCategoryItems)
-    console.log(this.context.categoryItems)
     if(this.context.filteredCategoryItems !== this.context.categoryItems){
       if(this.context.filteredCategoryItems.length === 0){
         return <p>No movies found! Click the create a new thread above to get started.</p>
@@ -70,8 +68,6 @@ class ThreadsList extends React.Component {
       const indexOfLastPost = currentPage * postsPerPage;
       const indexOfFirstPost = indexOfLastPost - postsPerPage;
       const currentPosts = allPosts.slice(indexOfFirstPost, indexOfLastPost);
-
-      console.log(currentPosts)
 
       if(!this.state.posts){
         this.setState({

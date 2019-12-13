@@ -1,10 +1,11 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-restricted-globals */
 //Dependencies
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas, faLessThanEqual } from '@fortawesome/free-solid-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 import { findIconDefinition, icon } from '@fortawesome/fontawesome-svg-core'  
 
 //Utilities

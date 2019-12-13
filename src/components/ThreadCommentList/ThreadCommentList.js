@@ -1,10 +1,10 @@
+/* eslint-disable array-callback-return */
 import React from 'react';
 import './ThreadCommentList.css';
 import ThreadCommentItem from '../ThreadCommentItem/ThreadCommentItem';
 import UserContext from '../../utils/context';
 import {withRouter} from 'react-router-dom';
-import * as Scroll from 'react-scroll';
-import { Link, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
+import { Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
 
 class ThreadCommentList extends React.Component {
   static contextType = UserContext;

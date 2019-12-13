@@ -1,7 +1,7 @@
 /* eslint-disable eqeqeq */
 import React from 'react';
 import './AddCommentBox.css';
-import comment from '../Images/comment.svg'
+// import comment from '../Images/comment.svg'
 import AuthApiService from '../../utils/auth-service';
 import UserContext from '../../utils/context';
 import TokenService from '../../utils/token-service';
@@ -65,7 +65,6 @@ class AddCommentBox extends React.Component {
   }
 
   handleCommentSubmit = async e => {
-    console.log('submitting');
     e.preventDefault()
     let category = this.context.category.slice(0, this.context.category.length - 1)
 
