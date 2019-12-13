@@ -15,7 +15,7 @@ class LoginButton extends React.Component {
     return TokenService.hasAuthToken() ? 
           <div className="LoginButton">
                 <Link to='/'><button type="button" id='logout_button' className={this.props.classNames} onClick={() => this.context.processLogout()}>
-              LOGOUT
+              LOGOUT <span>({this.context.user.username})</span>
             </button></Link>
           </div>
 

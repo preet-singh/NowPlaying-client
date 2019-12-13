@@ -193,6 +193,7 @@ class CreateNewThreadForm extends React.Component {
   }
 
   handleNewThread = async ev => {
+    console.log('handling thread');
     ev.preventDefault()
     // title, event_description, id, media_runtime, release_date, genre, imdb_rating, mpaa_rating, poster
     let allMovieInfo = {

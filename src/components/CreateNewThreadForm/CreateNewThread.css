@@ -221,4 +221,8 @@
         border: 1px solid green;
     }
 
+    .results { 
+        margin: 0 auto;
+    }
+
 }
