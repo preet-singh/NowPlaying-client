@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination testing paginates the posts 1`] = `
+<nav>
+  <ul
+    className="pagination"
+  />
+</nav>
+`;
