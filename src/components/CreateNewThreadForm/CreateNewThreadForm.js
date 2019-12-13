@@ -2,6 +2,10 @@
 //Dependencies
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas, faLessThanEqual } from '@fortawesome/free-solid-svg-icons'
+import { findIconDefinition, icon } from '@fortawesome/fontawesome-svg-core'  
 
 //Utilities
 import UserContext from '../../utils/context';
@@ -11,13 +15,21 @@ import config from '../../config';
 //Style
 import './CreateNewThread.css'
 
+library.add(
+  fas
+);
+
+
+const backArrow = findIconDefinition({ prefix: 'fas', iconName: 'arrow-left' })
+const backArrowIcon = icon(backArrow);
+
 class CreateNewThreadForm extends React.Component {
   static contextType = UserContext;
   constructor(props) {
     super(props);
     this.state = {
       title: '',
-      existError: false
+      existError: false    
     }
   }
 
@@ -78,7 +90,10 @@ class CreateNewThreadForm extends React.Component {
       else {
         return(
       <li className='displayedSearch' key={movie.id}>
-        <Link onClick={() => this.setState({ selectedMovie: true, selectedMovieId: movie.id, selectedMovieImg: movie.poster_path })}>
+        <Link onClick={() => {
+          this.doesMovieExistinDatabase(movie.title);
+          this.setState({ selectedMovie: true, selectedMovieId: movie.id, selectedMovieImg: movie.poster_path });}}
+        >
           <h2>{movie.title}</h2>
           <p>Release Date: {movie.release_date}</p>
           <img src={`http://image.tmdb.org/t/p/w185//${movie.poster_path}`} alt={movie.title} />
@@ -122,10 +137,18 @@ class CreateNewThreadForm extends React.Component {
     return finalJSX;
   }
 
+  doesMovieExistinDatabase = (movieTitle) => {
+    return AuthApiService.getSpecificThreads(this.context.category)
+      .then(resJSON => {
+        let thread = resJSON.find(thread => thread.title === movieTitle);
+        if(thread) {
+          this.props.history.push(`${this.context.category}/${thread.id}`)
+        }
+      })
+  }
+
   autoFillMovie = () => {
-
     let API_Key = config.API_KEY;
-
     if(this.state.title){
     } else if(this.state.showMovies !== false) {
       fetch(`https://api.themoviedb.org/3/movie/${this.state.selectedMovieId}?api_key=${API_Key}&language=en-US&append_to_response=videos`)
@@ -212,6 +235,15 @@ class CreateNewThreadForm extends React.Component {
             <label htmlFor="newThreadTitle" id="newThreadTitleLabel" name="newThreadTitleLabel">Title:</label>
             <input type="text" id="newThreadTitle" name="newThreadTitle" placeholder="The Producers" value={this.state.title} onChange={(e) => this.setState({title: e.target.value})} />
             <button type="submit" className="black-button">Search!</button>
+            <div className="return-directory"><h3><Link to={() => {
+            if (!this.state.selectedMovie) {
+               return '/category/1';
+             }
+             }} onClick={() => { 
+              if (this.state.selectedMovie) {
+                this.setState({showMovies: true, selectedMovie: false})
+              }
+            }}><FontAwesomeIcon className="back-icon" icon={backArrowIcon} />{!this.state.selectedMovie ? 'MOVIES' : 'RESULTS' }</Link></h3></div>
           </div>
         </form>
         <div className='grid_for_desktop'>

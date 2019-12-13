@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json'
 
-describe('Fixed bar testing', () => {
+describe.only('Fixed bar testing', () => {
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
