@@ -1,7 +1,6 @@
 /* eslint-disable eqeqeq */
 import React from 'react';
 import './AddCommentBox.css';
-// import comment from '../Images/comment.svg'
 import AuthApiService from '../../utils/auth-service';
 import UserContext from '../../utils/context';
 import TokenService from '../../utils/token-service';

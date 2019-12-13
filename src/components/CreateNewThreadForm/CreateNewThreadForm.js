@@ -34,12 +34,6 @@ class CreateNewThreadForm extends React.Component {
     }
   }
 
-  //Check if the item exists in our database alraedy. 
-  //If not, query the 3rd-party API
-  //gather the details
-  //send them to the NowPlaying server
-  //gather the response
-  //direct user to the new link
   checkForm = (e) => {
     e.preventDefault();
     this.setState({
@@ -167,17 +161,17 @@ class CreateNewThreadForm extends React.Component {
         .then(resJSON => {
           if(!resJSON.runtime) {
             this.setState({
-              null_media_runtime: 240 // This is an arbitrary runtime of 240m that is POSTed to the server if no runtime is provided by TMDb
+              null_media_runtime: 240 
             })
           }
           if(!resJSON.title) {
             this.setState({
-              null_title: 'Title Was Not Found' // This is an arbitrary title value that is POSTed to the server if no title is provided by TMDb
+              null_title: 'Title Was Not Found' 
             })
           }
           if(!resJSON.backdrop_path) {
             this.setState({
-              null_backdrop_path: 'https://www.freegreatpicture.com/files/147/11485-background-color.jpg' // This is an arbitrary backdrop URL value that is POSTed to the server if no backdrop is provided by TMDb
+              null_backdrop_path: 'https://www.freegreatpicture.com/files/147/11485-background-color.jpg' 
             })
           }
           if(this.state.showMovies !== false && this.state.autoFillMovie !== resJSON) {
@@ -217,7 +211,6 @@ class CreateNewThreadForm extends React.Component {
   handleNewThread = async ev => {
     console.log('handling thread');
     ev.preventDefault()
-    // title, event_description, id, media_runtime, release_date, genre, imdb_rating, mpaa_rating, poster
     let allMovieInfo = {
       title: !this.state.autoFillMovie.title ? this.state.null_title : this.state.autoFillMovie.title,
       event_description: this.state.autoFillMovie.overview,
