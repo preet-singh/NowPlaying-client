@@ -57,8 +57,8 @@
 }
 
 .section-img {
-  width: 550px;
-  height: 320px;
+  width: 280px;
+  height: 203px;
   margin: 3% auto 3% auto;
 }
 
@@ -82,3 +82,11 @@
   cursor: pointer;
 }
 
+@media screen and (min-width: 768px) {
+  .section-img {
+    width: 550px;
+    height: 320px;
+    margin: 3% auto 3% auto;
+  }
+  
+}
