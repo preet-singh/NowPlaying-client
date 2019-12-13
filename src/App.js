@@ -17,7 +17,6 @@ import NewThread from './routes/NewThread/NewThread';
 import Footer from './components/Footer/Footer';
 import LandingPage from './components/LandingPage/LandingPage';
 
-//EJ IS TESTING HERE TO PUSH
 
 //CSS
 import './App.css';

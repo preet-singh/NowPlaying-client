@@ -18,9 +18,6 @@ import comment from '../../assets/comment.svg';
 class NewThread extends React.Component {
   static contextType = UserContext;
   
-  componentDidMount() {
-    // this.context.setSearchedCategoryItems([]);
-  }
   render() {
     return(
       <div className="NewThread">
@@ -36,7 +33,3 @@ class NewThread extends React.Component {
 
 export default NewThread;
 
-// <Directory />
-// <SortOptions />
-// <ThreadsList />
-// Line 23, 24, 25, 26
