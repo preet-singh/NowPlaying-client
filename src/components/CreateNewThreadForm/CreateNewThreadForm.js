@@ -234,7 +234,7 @@ class CreateNewThreadForm extends React.Component {
           <div className="width70percent">
             {this.state.existError ? this.threadExists() : ''}
             <label htmlFor="newThreadTitle" id="newThreadTitleLabel" name="newThreadTitleLabel">Title:</label>
-            <input type="text" id="newThreadTitle" name="newThreadTitle" placeholder="The Producers" value={this.state.title} onChange={(e) => this.setState({title: e.target.value})} />
+            <input type="text" id="newThreadTitle" name="newThreadTitle" aria-label="Thread title" placeholder="The Producers" value={this.state.title} onChange={(e) => this.setState({title: e.target.value})} />
             <button type="submit" className="black-button">Search!</button>
             <div className="return-directory"><h3><Link to={() => {
             if (!this.state.selectedMovie) {
