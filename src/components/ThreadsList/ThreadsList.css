@@ -6,12 +6,12 @@
     font-size: 32px;
     color: #00d838;
     background-color: black;
+    font-family: 'Fugaz One', cursive;
 }
 
 .threads-list h4 {
     font-style: italic;
     text-decoration: none;
-    margin: 10px 0px 0px 0px;
 }
 
 .threads-list h4:hover a {
