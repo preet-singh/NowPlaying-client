@@ -104,6 +104,7 @@ class Login extends React.Component{
           type="text" 
           id="username-input" 
           name="username" 
+          aria-label="Username"
           placeholder='ex. FlixMaster12'
           required
           onChange={(e) => {this.handleInputChange(e); this.handleUsernameTouch(e)}}
@@ -113,6 +114,7 @@ class Login extends React.Component{
           type="password" 
           id="password-input" 
           name="password" 
+          aria-label="Password"
           autoComplete="on"
           placeholder='********'
           required

@@ -109,6 +109,7 @@ class RegisterForm extends Component {
             type="email" 
             id="email-input"
             name="email"
+            aria-label="Email"
             placeholder='ex. john123@super.com'
             required 
             onChange={(e) => {this.handleChange(e); this.handleEmailTouch(e)}}
@@ -119,6 +120,7 @@ class RegisterForm extends Component {
             type="text" 
             id="username-input" 
             name="username" 
+            aria-label="Username"
             placeholder='ex. John123'
             required
             onChange={(e) => {this.handleChange(e); this.handleUsernameTouch(e)}}
@@ -129,6 +131,7 @@ class RegisterForm extends Component {
             type="password" 
             id="password-input" 
             name="password" 
+            aria-label="Password"
             autoComplete="off" 
             placeholder='******'
             required

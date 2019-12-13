@@ -25,7 +25,7 @@ class SearchBar extends React.Component {
   render() {
     return (
       <form className="SearchBar" onSubmit={(e) => this.handleSubmit(e)}>
-        <input type="text" placeholder='Frozen' id="searchBar" name="searchBar" aria-label="search bar" onChange={(e) => this.setState({title: e.target.value})} />
+        <input type="text" placeholder='Frozen' id="searchBar" name="searchBar" aria-label="Ssearch Bar" onChange={(e) => this.setState({title: e.target.value})} />
         <span className="search-icon" onClick={(e) => this.handleSubmit(e)}><img src={searchIcon} alt="search icon" /></span>
       </form>
     )
