@@ -97,7 +97,8 @@ class CreateNewThreadForm extends React.Component {
         return(
       <li className='displayedSearch' key={movie.id}>
         <Link onClick={() => {
-          this.doesMovieExistinDatabase(movie.title);
+          console.log(movie.movie_id);
+          this.doesMovieExistinDatabase(movie.movie_id);
           this.setState({ selectedMovie: true, selectedMovieId: movie.id, selectedMovieImg: movie.poster_path });}}
         >
           <h2>{movie.title}</h2>
@@ -143,10 +144,10 @@ class CreateNewThreadForm extends React.Component {
     return finalJSX;
   }
 
-  doesMovieExistinDatabase = (movieTitle) => {
+  doesMovieExistinDatabase = (movieId) => {
     return AuthApiService.getSpecificThreads(this.context.category)
       .then(resJSON => {
-        let thread = resJSON.find(thread => thread.title === movieTitle);
+        let thread = resJSON.find(thread => thread.movie_id === movieId);
         if(thread) {
           this.props.history.push(`${this.context.category}/${thread.id}`)
         }
