@@ -37,7 +37,7 @@ export default class ThreadDetails extends React.Component {
   getEvent = async () => {
     if (!this.state.event) {
       let thread = this.props.thread;
-      let id = this.props.id;
+      let id = Number(this.props.id);
     await AuthApi.getSpecificEvent(thread, id)
       .then(resJSON => {
         this.setState({

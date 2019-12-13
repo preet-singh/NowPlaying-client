@@ -109,7 +109,7 @@ class CreateNewThreadForm extends React.Component {
   let alreadyMadeItemsMap = alreadyMadeItems.map(movie => {
     return(
       <li key={movie.id} className="displayedSearch">
-        <Link to={`/movie/${movie.nowplaying_id}`}>
+        <Link to={`/movies/${movie.nowplaying_id}`}>
           <h2>{movie.title}</h2>
           <p>Release Date: {movie.release_date}</p>
           <img src={`http://image.tmdb.org/t/p/w185//${movie.poster_path}`} alt={movie.title} />
@@ -132,7 +132,7 @@ class CreateNewThreadForm extends React.Component {
           <section className="results">
             <div className="notCreatedItems">
               <h4>All items with this title have been created!</h4>
-              <h4>Previously created items:</h4>
+              <h4>Previously created:</h4>
               {alreadyMadeItemsMap}
             </div>
           </section>
