@@ -13,20 +13,22 @@ class ThreadsList extends React.Component {
       posts: false,
       currentPageNumber: 1,
       newPageNumber: 1,
+      postsPerPage: 5,
     }
   }
 
   getThreads = () => {
-    let limit = this.props.limit || 5;
+    let limit = this.props.limit || this.state.postsPerPage;
     let returnItem = [];
     if(this.context.filteredCategoryItems !== this.context.categoryItems){
       if(this.context.filteredCategoryItems.length === 0){
-        return <p>No movies found! Click the create a new thread above to get started.</p>
+        return <p>No movies found! Start a new thread to get it started.</p>
       }
       for(let i = 0; i < this.context.filteredCategoryItems.length; i++){
         returnItem.push(<ThreadItem details={this.context.filteredCategoryItems[i]} key={i} />)
       }
-    } else {
+    } 
+    else {
 
     for (let i=0;i<=limit;i++) {
       if (this.context.filteredCategoryItems) {
@@ -48,14 +50,15 @@ class ThreadsList extends React.Component {
   }
 
   paginate = pageNumber => {
-    this.setState({
-      newPageNumber: pageNumber
-    })
+    this.context.setCategoryPage(pageNumber);
+    console.log(this.context.searchedCategoryItems);
+    let slice = this.context.searchedCategoryItems.slice((pageNumber*this.state.postsPerPage)-this.state.postsPerPage, (pageNumber*this.state.postsPerPage))
+    this.context.setFilteredCategoryItems(slice)
   }
 
   setPosts = () => {
     if(this.context.categoryItems){
-      let postsPerPage = 5;
+      let postsPerPage = this.state.postsPerPage;
       let currentPage = this.state.newPageNumber;
 
       let allPosts = this.context.categoryItems;
@@ -64,9 +67,10 @@ class ThreadsList extends React.Component {
         allPosts = this.context.filteredCategoryItems
       }
 
-      const indexOfLastPost = currentPage * postsPerPage;
+      const indexOfLastPost = (currentPage * postsPerPage) - 1;
       const indexOfFirstPost = indexOfLastPost - postsPerPage;
       const currentPosts = allPosts.slice(indexOfFirstPost, indexOfLastPost);
+      if (this.context.filteredCategoryItems !== allPosts) { this.context.setFilteredCategoryItems(currentPosts); }
 
       if(!this.state.posts){
         this.setState({
@@ -82,7 +86,7 @@ class ThreadsList extends React.Component {
         window.scrollTo(0,0)
       }
 
-      return <Pagination postsPerPage={postsPerPage} totalPosts={allPosts.length} paginate={this.paginate}/>
+      return <Pagination postsPerPage={postsPerPage} totalPosts={this.context.searchedCategoryItems.length} paginate={this.paginate}/>
     } else {
       return <button className="black-button">1</button>
     }
@@ -93,8 +97,8 @@ class ThreadsList extends React.Component {
       <div className='threads-list'>
         <h3>MOVIES</h3>
         <div className="threads-list-container">
+        {this.setPosts()}
           {this.getThreads()}
-          {this.setPosts()}
         </div>
 
       </div>
