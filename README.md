@@ -1,68 +1,67 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Now Playing
+* Live version: https://playing-phi-ten.now.sh/
+  * Demo username: tester
+  * Demo password: Password1!
+* Live link to API endpoints: https://murmuring-lowlands-61113.herokuapp.com/api
 
-## Available Scripts
+* Link to Server Repo: https://github.com/thinkful-ei-gecko/NowPlaying-server
+* Link to Client Repo: https://github.com/thinkful-ei-gecko/NowPlaying-Client
 
-In the project directory, you can run:
 
-### `npm start`
+## Contributors to Repository:
+* EJ Gonzalez
+* Leon Dail
+* Marlon Agno
+* Preet Singh
+* William Bae
+  
+  
+## Getting Started
+* Clone the repository and install dependencies using ```npm install```
+* Start the development server using ```npm start```
+* Run tests using Jest & Enzyme using ```npm test```
+  
+  
+## Description
+Now Playing is a React application that provides users a platform to engage with a live audience when watching movies. Users are able to view movie threads and see comments made from the community. Additionally, they can create new threads and comment alongside others in real-time. Now Playing utilizes the TMDb API to offer a large breadth of movies that users can search and create new threads from.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## TMDb API Endpoint
+* Link to TMDb API: https://www.themoviedb.org/documentation/api
 
-### `npm test`
+* ```GET /movie/{movie_id}``` : Returns an object of a specific movie's details
+* ```GET /movie/{movie_id}/videos``` : Returns an object of a specific movie's video details (This was used to obtain the "key", which allowed us to query for a given movie's YouTube trailer)
+* ```GET /search``` : Returns relevant movie titles based on the user's search input
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Screenshots
+#### Landing Page
+![](public/images/landing-page.PNG)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Registration Page (Once user successfully creates an account they are directed to Login page)
+![](public/images/register.PNG)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### Login Page (Once user successfully logs in they are directed to the Home or Landing page)
+![](public/images/login.PNG)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Home Page
+![](public/images/home-page.PNG)
 
-### `npm run eject`
+#### Category Page
+![](public/images/category-page.PNG)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Thread Page
+![](public/images/thread-page.PNG)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Create New Thread Page (Fields are populated with data grabbed from TMDb API)
+![](public/images/create-thread.PNG)
+![](public/images/create-thread2.PNG)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### Technologies
+* HTML5
+* CSS3
+* ReactJS
+  * React Compound Slider
+  * React Player
+  * React Scroll
