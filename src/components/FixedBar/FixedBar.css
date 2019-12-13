@@ -15,7 +15,7 @@
 
 .fixed-bar h2 a {
   text-decoration: none;
-  font-size: 26px;
+  font-size: 22px;
   color: #00d838;
 }
 
@@ -39,6 +39,7 @@
 }
 
 .fixed-bar h3 {
+  font-size: 1.08em;
   display: inline;
 }
 

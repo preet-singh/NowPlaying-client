@@ -97,15 +97,6 @@ export default class ThreadRoute extends React.Component {
     }
   }
 
-    scrollToComments() {
-    let element = document.getElementById('comments-header');
-    let yPosition = element.getBoundingClientRect().y
- 
-    if(element) {
-     window.scrollTo(0, yPosition)
-    }
-  }
-
   render(){
     if (this.state.checkedBackground !== true) {
       this.checkBackground();
