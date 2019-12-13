@@ -17,9 +17,6 @@ class ThreadCommentList extends React.Component {
   }
   
   async componentDidMount() {
-    Events.scrollEvent.register('begin', this.handleScrollBegin()) 
-    Events.scrollEvent.register('end', this.handleScrollEnd()) 
-    scrollSpy.update();
     await this.props.getComments();
     await this.setState({comments: this.context.currentThreadComments})
     let renderedComments2 = await this.renderCommentList();
@@ -114,13 +111,14 @@ class ThreadCommentList extends React.Component {
   }
 
   render() {
+    console.log(window.innerWidth)
     if (this.props.match.params.thread === this.context.playingCategory && this.props.match.params.id === this.context.playingID) {
       if (this.context.mediaTimer !== this.state.mediaTimer) {
         this.renderCommentList()
       }
       return (
         <div id="ThreadCommentList">    
-          <h4 id="comments-header">Comments</h4>
+          {window.innerWidth <= 768 ? <h4 id="comments-header">Comments</h4> : null}
           <ul id='thread-comment-list' onClick={() => this.handleScrollBegin()}>
             {this.state.renderedComments2}
           </ul>
@@ -131,7 +129,7 @@ class ThreadCommentList extends React.Component {
     else {
       return (    
         <div id="ThreadCommentList">    
-        <h4 id="comments-header">Comments</h4>
+        {window.innerWidth <= 768 ? <h4 id="comments-header">Comments</h4> : null}
           <ul id="thread-comment-list">
             <li>Click 'Play' to start the comments!</li>
           </ul>
