@@ -51,8 +51,6 @@ class CreateNewThreadForm extends React.Component {
     let search = this.state.title
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_Key}&language=en-US&query=${search}&page=1`)
     .then(res => {
-      console.log('res');
-      console.log(res);
       if (!res.ok) {
       return res.json().then(e => Promise.reject(e))
       }
@@ -91,7 +89,7 @@ class CreateNewThreadForm extends React.Component {
         return(
       <li className='displayedSearch' key={movie.id}>
         <Link onClick={() => {
-          this.doesMovieExistinDatabase(movie.movie_id);
+          this.doesMovieExistinDatabase(movie.id);
           this.setState({ selectedMovie: true, selectedMovieId: movie.id, selectedMovieImg: movie.poster_path });}}
         >
           <h2>{movie.title}</h2>
@@ -208,7 +206,6 @@ class CreateNewThreadForm extends React.Component {
   }
 
   handleNewThread = async ev => {
-    console.log('handling thread');
     ev.preventDefault()
     let allMovieInfo = {
       title: !this.state.autoFillMovie.title ? this.state.null_title : this.state.autoFillMovie.title,
