@@ -97,7 +97,6 @@ class Login extends React.Component{
   render() {
     let passwordError = this.validatePassword;
     let usernameError = this.validateUsername;
-    console.log(this.context.error)
     return (
       <form className="Login" name="login" onSubmit={(e) => this.handleSubmit(e)}>
         <legend>LOGIN</legend>

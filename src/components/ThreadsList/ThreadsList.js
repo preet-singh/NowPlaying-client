@@ -51,7 +51,6 @@ class ThreadsList extends React.Component {
 
   paginate = pageNumber => {
     this.context.setCategoryPage(pageNumber);
-    console.log(this.context.searchedCategoryItems);
     let slice = this.context.searchedCategoryItems.slice((pageNumber*this.state.postsPerPage)-this.state.postsPerPage, (pageNumber*this.state.postsPerPage))
     this.context.setFilteredCategoryItems(slice)
   }

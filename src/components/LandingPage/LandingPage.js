@@ -53,6 +53,14 @@ export default class LandingPage extends Component {
             <img className="section-img" src="https://media.giphy.com/media/jP5TY3uDAWZbOuyeu7/giphy.gif" alt="gif" />
             <p className="section-p">Participate in the conversation. Add you reactions and comments. Share your thoughts with the community!</p>
           </section>
+
+          <hr className="underline"></hr>
+
+          <section className="section-four">
+            <h3>Test out the application:</h3>
+            <p><span className="bold">Test Username:</span> tester</p>
+            <p><span className="bold">Test Password:</span> Password1!</p>
+          </section>
         </div>
       </section>
     </div>
