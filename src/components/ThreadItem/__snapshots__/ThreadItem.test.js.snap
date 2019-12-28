@@ -3,6 +3,8 @@
 exports[`ThreadItem component renders the ThreadItem 1`] = `
 <div
   className="thread-item"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
 >
   <Link
     to="/undefined/20019"
@@ -29,7 +31,14 @@ exports[`ThreadItem component renders the ThreadItem 1`] = `
       </p>
       <div
         className="play-button-home-container"
-      />
+        id="play-button-home-container"
+      >
+        <img
+          alt="play button"
+          className="playImage"
+          src="white-play-button.png"
+        />
+      </div>
     </div>
   </Link>
 </div>

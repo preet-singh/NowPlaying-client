@@ -11,19 +11,28 @@ exports[`Header testing renders the header 1`] = `
       <span>
         N
         <img
+          alt="glowing o"
           className="header-o"
-          src="https://i.imgur.com/uTCb1eb.png"
+          src="white-play-button-glow.png"
         />
         W 
       </span>
        PLAYING
     </h1>
   </Link>
-  <LoginButton
-    classNames="header-login mobile-hide"
-  />
-  <LoginButton
-    classNames="mobile-login tablet-hide"
-  />
+  <div
+    className="under-bar"
+  >
+    <Link
+      className="about-link"
+      onClick={[Function]}
+      to=""
+    >
+      ABOUT
+    </Link>
+    <LoginButton
+      classNames="log-button"
+    />
+  </div>
 </div>
 `;

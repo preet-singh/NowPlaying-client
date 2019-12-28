@@ -8,7 +8,7 @@ exports[`ThreadCommentItem component renders the ThreadCommentItem 1`] = `
     : 
   </p>
   <p
-    className="comment-time-stamp"
+    className="comment-time-stamp bold"
   />
 </li>
 `;

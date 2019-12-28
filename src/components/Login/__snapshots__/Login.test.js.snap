@@ -10,6 +10,7 @@ exports[`Login box testing renders the login form 1`] = `
     LOGIN
   </legend>
   <input
+    aria-label="Username"
     id="username-input"
     name="username"
     onChange={[Function]}
@@ -18,6 +19,7 @@ exports[`Login box testing renders the login form 1`] = `
     type="text"
   />
   <input
+    aria-label="Password"
     autoComplete="on"
     id="password-input"
     name="password"
@@ -33,6 +35,10 @@ exports[`Login box testing renders the login form 1`] = `
   >
     Submit
   </button>
+  <div
+    className="error-message"
+    role="alert"
+  />
   <Link
     to="/register"
   >

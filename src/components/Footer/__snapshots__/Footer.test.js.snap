@@ -4,6 +4,7 @@ exports[`Footer testing renders the footer 1`] = `
 <a
   className="footer"
   href="http://www.tmdb.org"
+  rel="noreferrer noopener"
   target="_blank"
 >
   Movie info from TMDB. Thanks!

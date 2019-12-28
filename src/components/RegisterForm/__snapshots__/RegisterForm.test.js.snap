@@ -15,6 +15,7 @@ exports[`RegisterForm component renders the RegisterForm 1`] = `
     E-Mail:
   </label>
   <input
+    aria-label="Email"
     id="email-input"
     name="email"
     onChange={[Function]}
@@ -28,6 +29,7 @@ exports[`RegisterForm component renders the RegisterForm 1`] = `
     Username:
   </label>
   <input
+    aria-label="Username"
     id="username-input"
     name="username"
     onChange={[Function]}
@@ -41,6 +43,7 @@ exports[`RegisterForm component renders the RegisterForm 1`] = `
     Password:
   </label>
   <input
+    aria-label="Password"
     autoComplete="off"
     id="password-input"
     name="password"
@@ -49,8 +52,13 @@ exports[`RegisterForm component renders the RegisterForm 1`] = `
     required={true}
     type="password"
   />
+  <div
+    className="error-message"
+    role="alert"
+  />
   <button
     className="black-button"
+    disabled="Please enter your email"
     id="reg_button"
     type="submit"
     value="submit"

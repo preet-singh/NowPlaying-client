@@ -14,6 +14,7 @@ exports[`Filter box testing renders the filter box UI 1`] = `
     Earliest Year:
   </label>
   <input
+    aria-label="Minimum year for filter"
     id="minimumYear"
     name="minimumYear"
     onChange={[Function]}
@@ -28,6 +29,7 @@ exports[`Filter box testing renders the filter box UI 1`] = `
     Latest Year:
   </label>
   <input
+    aria-label="Maximum year for filter"
     id="latestYear"
     name="maximumYear"
     onChange={[Function]}
@@ -42,6 +44,7 @@ exports[`Filter box testing renders the filter box UI 1`] = `
     Minimum Rating:
   </label>
   <select
+    aria-label="Rating for filter"
     defaultValue="1"
     id="rating"
     name="rating"
