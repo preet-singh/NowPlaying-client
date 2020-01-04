@@ -33,7 +33,7 @@ exports[`Filter box testing renders the filter box UI 1`] = `
     id="latestYear"
     name="maximumYear"
     onChange={[Function]}
-    placeholder={2019}
+    placeholder={2020}
     type="text"
   />
   <label
