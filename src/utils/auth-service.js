@@ -136,7 +136,7 @@ const AuthApiService = {
       )
     },
     makeThread(obj, thread){
-      return fetch(`${config.API_ENDPOINT}/main/${thread}`, {
+      fetch(`${config.API_ENDPOINT}/main/${thread}`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

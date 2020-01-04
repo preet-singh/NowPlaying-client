@@ -46,7 +46,8 @@ class CreateNewThreadForm extends React.Component {
       selectedMovieImg: null,
       selectedMovieTrailerKey: null,
     });
-    let findItems = this.context.categoryItems.filter(item => item.title.toLowerCase().includes(this.state.title.toLowerCase()));
+    let categoryItems = this.context.categoryItems || [];
+    let findItems = categoryItems.filter(item => item.title.toLowerCase().includes(this.state.title.toLowerCase()));
     let API_Key = config.API_KEY;
     let search = this.state.title
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_Key}&language=en-US&query=${search}&page=1`)
