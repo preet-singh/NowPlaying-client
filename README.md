@@ -1,5 +1,5 @@
 # Now Playing
-* Live version: https://nowplaying.ldail.now.sh/
+* Live version: https://whatsplaying.now.sh/
   * Demo username: tester
   * Demo password: Password1!
 * Live link to API endpoints: https://murmuring-lowlands-61113.herokuapp.com/api
